@@ -1,0 +1,681 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  spanish,
+  us-letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrreprt}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Tabla de contenidos}
+\else
+  \newcommand\contentsname{Tabla de contenidos}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Listado de Figuras}
+\else
+  \newcommand\listfigurename{Listado de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Listado de Tablas}
+\else
+  \newcommand\listtablename{Listado de Tablas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figura}
+\else
+  \newcommand\figurename{Figura}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Tabla}
+\else
+  \newcommand\tablename{Tabla}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listado}
+\newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Tesis},
+  pdfauthor={Mariana Belén Cruz Rodríguez; Yofre Hernán García Gómez},
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Tesis}
+\author{Mariana Belén Cruz Rodríguez \and Yofre Hernán García Gómez}
+\date{}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Tabla de contenidos}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\bookmarksetup{startatroot}
+
+\chapter{Introducción}\label{introducciuxf3n}
+
+Una \textbf{red neuronal convolucional} (\emph{Convolutional Neural
+Network}, CNN) es una arquitectura de aprendizaje profundo diseñada para
+procesar datos que poseen una estructura de tipo rejilla (es decir, un
+dominio discreto regular donde los datos están indexados por coordenadas
+enteras y presentan relaciones locales bien definidas), como es el caso
+de las imágenes digitales.
+
+Desde un punto de vista formal, una CNN puede entenderse como una
+función parametrizada
+
+\[
+f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longrightarrow \mathbb{R}^{k},
+\]
+
+donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathcal{X}\) es el espacio de entrada (por ejemplo, imágenes),
+\item
+  \(H\) representa la \textbf{altura} (\emph{height}) de la imagen, es
+  decir, el número de filas,
+\item
+  \(W\) representa el \textbf{ancho} (\emph{width}), es decir, el número
+  de columnas,
+\item
+  \(C\) representa el \textbf{número de canales} (\emph{channels}), que
+  corresponde a la cantidad de valores asociados a cada píxel,
+\item
+  \(k\) es la dimensión del espacio de salida (por ejemplo, número de
+  clases en clasificación),
+\item
+  \(\theta\) denota el conjunto total de parámetros entrenables del
+  modelo.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Representación de
+imágenes}\label{representaciuxf3n-de-imuxe1genes}
+
+Una imagen se modela matemáticamente como un tensor de orden 3:
+
+\[
+X \in \mathbb{R}^{H \times W \times C}.
+\]
+
+Esto significa que:
+
+\begin{itemize}
+\tightlist
+\item
+  Para cada posición espacial \((i,j)\) con \(1 \leq i \leq H\),
+  \(1 \leq j \leq W\),
+\item
+  el valor \(X(i,j)\) no es escalar, sino un vector en
+  \(\mathbb{R}^{C}\):
+\end{itemize}
+
+\[
+X(i,j) = \big(x_1, x_2, \dots, x_C\big).
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Estructura funcional de la
+red}\label{estructura-funcional-de-la-red}
+
+Una CNN se construye como una composición de funciones:
+
+\[
+f(x; \theta) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x),
+\]
+
+donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(L \in \mathbb{N}\) es el número total de capas de la red,
+\item
+  cada \(f^{(l)}\) es una función asociada a la capa \(l\)-ésima.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Parámetros del modelo}\label{paruxe1metros-del-modelo}
+
+El conjunto de parámetros \(\theta\) contiene todos los elementos
+ajustables del modelo:
+
+\[
+\theta = {\theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)}}.
+\]
+
+En una CNN, estos parámetros incluyen principalmente:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{kernels} (filtros convolucionales),
+\item
+  \textbf{sesgos} (bias) asociados a cada filtro.
+\end{itemize}
+
+Estos parámetros determinan completamente la forma de la función
+\(f(x;\theta)\) y son aprendidos a partir de los datos mediante
+optimización.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\bookmarksetup{startatroot}
+
+\chapter{Operación de Convolución}\label{operaciuxf3n-de-convoluciuxf3n}
+
+La operación fundamental en una CNN es la \textbf{convolución discreta}
+(en la práctica, correlación cruzada).
+
+\section{Caso unicanal}\label{caso-unicanal}
+
+Sea una imagen:
+
+\[
+X \in \mathbb{R}^{H \times W}
+\]
+
+y un kernel (o filtro):
+
+\[
+K \in \mathbb{R}^{k_h \times k_w},
+\]
+
+donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(k_h\): altura del kernel,
+\item
+  \(k_w\): ancho del kernel.
+\end{itemize}
+
+La salida \(Y\) se define como:
+
+\[
+Y(i,j) = \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v), X(i+u, j+v).
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Interpretación como producto
+interno}\label{interpretaciuxf3n-como-producto-interno}
+
+Sea \(X_{(i,j)}\) la submatriz de \(X\) de tamaño \(k_h \times k_w\):
+
+\[
+X_{(i,j)} = {X(i+u, j+v)}_{u,v}.
+\]
+
+Entonces:
+
+\[
+Y(i,j) = \langle K, X_{(i,j)} \rangle,
+\]
+
+donde \(\langle \cdot, \cdot \rangle\) denota el producto interno en
+\(\mathbb{R}^{k_h \times k_w}\).
+
+Esto implica que la convolución mide la \textbf{similitud entre el
+kernel y una región local de la imagen}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\bookmarksetup{startatroot}
+
+\chapter{Convolución Multicanal}\label{convoluciuxf3n-multicanal}
+
+En el caso general, la entrada es:
+
+\[
+X \in \mathbb{R}^{H \times W \times C},
+\]
+
+y el kernel:
+
+\[
+K \in \mathbb{R}^{k_h \times k_w \times C}.
+\]
+
+La convolución se define como:
+
+\[
+Y(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v,c), X(i+u, j+v, c).
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Interpretación tensorial}\label{interpretaciuxf3n-tensorial}
+
+Si se vectoriza cada ventana:
+
+\[
+X_{(i,j)} \in \mathbb{R}^{k_h k_w C}, \quad K \in \mathbb{R}^{k_h k_w C},
+\]
+
+entonces:
+
+\[
+Y(i,j) = K^\top X_{(i,j)}.
+\]
+
+Esto muestra que la convolución es un operador lineal local.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\bookmarksetup{startatroot}
+
+\chapter{Múltiples Filtros (Mapas de
+Características)}\label{muxfaltiples-filtros-mapas-de-caracteruxedsticas}
+
+En una CNN no se utiliza un solo kernel, sino un conjunto de filtros:
+
+\[
+K^{(f)} \in \mathbb{R}^{k_h \times k_w \times C}, \quad f = 1,\dots,F.
+\]
+
+Cada filtro produce un mapa de activación distinto:
+
+\[
+Y_f(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1}
+K^{(f)}(u,v,c), X(i+u, j+v, c).
+\]
+
+Por tanto, la salida total es un tensor:
+
+\[
+Y \in \mathbb{R}^{H' \times W' \times F},
+\]
+
+donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(H'\) y \(W'\) dependen del tamaño del kernel, el padding y el
+  stride,
+\item
+  \(F\) es el número de filtros, es decir, el número de \textbf{canales
+  de salida}.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\bookmarksetup{startatroot}
+
+\chapter{Interpretación de los
+kernels}\label{interpretaciuxf3n-de-los-kernels}
+
+Cada kernel puede interpretarse como un \textbf{detector de patrones
+locales}.
+
+Formalmente:
+
+\[
+Y_f(i,j) = \langle K^{(f)}, X_{(i,j)} \rangle.
+\]
+
+Por tanto:
+
+\begin{itemize}
+\tightlist
+\item
+  Si \(Y_f(i,j)\) es grande, entonces la región \(X_{(i,j)}\) es similar
+  al patrón definido por \(K^{(f)}\).
+\item
+  Si es pequeño o negativo, no hay coincidencia significativa.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Propiedad de compartición de
+parámetros}\label{propiedad-de-comparticiuxf3n-de-paruxe1metros}
+
+Un aspecto fundamental es que el mismo kernel \(K^{(f)}\) se aplica en
+todas las posiciones \((i,j)\):
+
+\[
+K^{(f)}(u,v,c) \text{ es independiente de } (i,j).
+\]
+
+Esto implica:
+
+\begin{itemize}
+\tightlist
+\item
+  reducción significativa del número de parámetros,
+\item
+  capacidad de detectar patrones independientemente de su posición
+  (invarianza traslacional).
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\bookmarksetup{startatroot}
+
+\chapter{Resumen}\label{resumen}
+
+Una CNN puede entenderse como una función parametrizada
+
+\[
+f(x;\theta) = f^{(L)} \circ \cdots \circ f^{(1)}(x),
+\]
+
+donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(x \in \mathbb{R}^{H \times W \times C}\) es una imagen,
+\item
+  cada capa aplica operadores lineales locales (convoluciones) seguidos
+  de no linealidades,
+\item
+  los parámetros \(\theta\) están formados principalmente por kernels,
+\item
+  cada kernel actúa como un detector de patrones mediante productos
+  internos locales.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\bookmarksetup{startatroot}
+
+\chapter{Stride y Padding}\label{stride-y-padding}
+
+\section{Stride}\label{stride}
+
+El stride \(s\) controla el desplazamiento del kernel. Las dimensiones
+de salida son:
+
+\[
+H' = \left\lfloor \frac{H - k_h + 2p}{s} \right\rfloor + 1, \quad
+W' = \left\lfloor \frac{W - k_w + 2p}{s} \right\rfloor + 1.
+\]
+
+\section{Padding}\label{padding}
+
+Se define como la adición de ceros alrededor de la imagen:
+
+\[
+X_{\text{pad}} \in \mathbb{R}^{(H+2p)\times(W+2p)\times C}.
+\]
+
+\bookmarksetup{startatroot}
+
+\chapter{Función de Activación}\label{funciuxf3n-de-activaciuxf3n}
+
+Después de la convolución se aplica una función no lineal. Un ejemplo
+común es la función ReLU:
+
+\[
+\phi(x) = \max(0,x).
+\]
+
+La salida es:
+
+\[
+Z = \phi(Y).
+\]
+
+\bookmarksetup{startatroot}
+
+\chapter{Pooling}\label{pooling}
+
+El pooling reduce la dimensionalidad.
+
+\section{Max Pooling}\label{max-pooling}
+
+\[
+Y(i,j) = \max_{(u,v)\in \mathcal{R}} X(i+u, j+v).
+\]
+
+\section{Average Pooling}\label{average-pooling}
+
+\[
+Y(i,j) = \frac{1}{|\mathcal{R}|} \sum_{(u,v)\in \mathcal{R}} X(i+u, j+v).
+\]
+
+\bookmarksetup{startatroot}
+
+\chapter{Capa Totalmente Conectada}\label{capa-totalmente-conectada}
+
+Se transforma el tensor en un vector:
+
+\[
+X \in \mathbb{R}^{H \times W \times C} \rightarrow x \in \mathbb{R}^{n}.
+\]
+
+Luego:
+
+\[
+y = Wx + b,
+\]
+
+donde \(W \in \mathbb{R}^{m \times n}\) y \(b \in \mathbb{R}^{m}\).
+
+\bookmarksetup{startatroot}
+
+\chapter{Función de Pérdida}\label{funciuxf3n-de-puxe9rdida}
+
+\section{Softmax}\label{softmax}
+
+\[
+\hat{y}_i = \frac{e^{z_i}}{\sum_{j} e^{z_j}}.
+\]
+
+\section{Entropía Cruzada}\label{entropuxeda-cruzada}
+
+\[
+\mathcal{L} = -\sum_{i} y_i \log(\hat{y}_i).
+\]
+
+\bookmarksetup{startatroot}
+
+\chapter{Entrenamiento}\label{entrenamiento}
+
+El problema de optimización es:
+
+\[
+\min_{\theta} \mathcal{L}(f(x;\theta), y).
+\]
+
+Se utiliza descenso de gradiente:
+
+\[
+\theta \leftarrow \theta - \eta \nabla_{\theta} \mathcal{L}.
+\]
+
+\bookmarksetup{startatroot}
+
+\chapter{Propiedades Fundamentales}\label{propiedades-fundamentales}
+
+\section{Conectividad Local}\label{conectividad-local}
+
+Cada neurona depende de una región pequeña de la entrada.
+
+\section{Compartición de
+Parámetros}\label{comparticiuxf3n-de-paruxe1metros}
+
+El mismo kernel se aplica en toda la imagen.
+
+\section{Invarianza Traslacional}\label{invarianza-traslacional}
+
+El modelo detecta patrones independientemente de su posición.
+
+\bookmarksetup{startatroot}
+
+\chapter{Flujo de una CNN}\label{flujo-de-una-cnn}
+
+\[
+\text{Imagen} \rightarrow \text{Convolución} \rightarrow \text{ReLU} \rightarrow \text{Pooling} \rightarrow \cdots \rightarrow \text{Fully Connected} \rightarrow \text{Softmax}
+\]
+
+\bookmarksetup{startatroot}
+
+\chapter{Interpretación
+Matemática}\label{interpretaciuxf3n-matemuxe1tica}
+
+Una CNN puede verse como una función:
+
+\[
+f: \mathbb{R}^{H \times W \times C} \to \mathbb{R}^{k},
+\]
+
+compuesta por operadores lineales, no lineales y de reducción.
+
+Las redes neuronales convolucionales son modelos altamente eficientes
+para el procesamiento de imágenes debido a la combinación de
+convoluciones, no linealidades y reducción de dimensionalidad, junto con
+propiedades estructurales como la compartición de parámetros y la
+conectividad local.
+
+
+
+
+\end{document}
