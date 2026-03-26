@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Mariana Belén Cruz Rodríguez">
+<meta name="author" content="Yofre Hernán García Gómez">
+
+<title>Tesis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d640c705e8c17715bca3574aa719063f.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d6a2ae2cb249da1580f0a11f71b8f854.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5b2cc3fa21794160b313e4ac029c03c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-fe2070592f9b8f3438b31c1dc38ae10b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Tesis">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Tesis">
+<meta name="twitter:title" content="Tesis">
+<meta name="twitter:description" content="">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Tesis</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/maribecrurod-art/CNN_HMM_tesis" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Tesis_MBCR.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Tesis_MBCR.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> Introducción</a>
+  <ul class="collapse">
+  <li><a href="#representación-de-imágenes" id="toc-representación-de-imágenes" class="nav-link" data-scroll-target="#representación-de-imágenes"><span class="header-section-number">1.1</span> Representación de imágenes</a></li>
+  <li><a href="#estructura-funcional-de-la-red" id="toc-estructura-funcional-de-la-red" class="nav-link" data-scroll-target="#estructura-funcional-de-la-red"><span class="header-section-number">1.2</span> Estructura funcional de la red</a></li>
+  <li><a href="#parámetros-del-modelo" id="toc-parámetros-del-modelo" class="nav-link" data-scroll-target="#parámetros-del-modelo"><span class="header-section-number">1.3</span> Parámetros del modelo</a></li>
+  </ul></li>
+  <li><a href="#operación-de-convolución" id="toc-operación-de-convolución" class="nav-link" data-scroll-target="#operación-de-convolución"><span class="header-section-number">2</span> Operación de Convolución</a>
+  <ul class="collapse">
+  <li><a href="#caso-unicanal" id="toc-caso-unicanal" class="nav-link" data-scroll-target="#caso-unicanal"><span class="header-section-number">2.1</span> Caso unicanal</a></li>
+  <li><a href="#interpretación-como-producto-interno" id="toc-interpretación-como-producto-interno" class="nav-link" data-scroll-target="#interpretación-como-producto-interno"><span class="header-section-number">2.2</span> Interpretación como producto interno</a></li>
+  </ul></li>
+  <li><a href="#convolución-multicanal" id="toc-convolución-multicanal" class="nav-link" data-scroll-target="#convolución-multicanal"><span class="header-section-number">3</span> Convolución Multicanal</a>
+  <ul class="collapse">
+  <li><a href="#interpretación-tensorial" id="toc-interpretación-tensorial" class="nav-link" data-scroll-target="#interpretación-tensorial"><span class="header-section-number">3.1</span> Interpretación tensorial</a></li>
+  </ul></li>
+  <li><a href="#múltiples-filtros-mapas-de-características" id="toc-múltiples-filtros-mapas-de-características" class="nav-link" data-scroll-target="#múltiples-filtros-mapas-de-características"><span class="header-section-number">4</span> Múltiples Filtros (Mapas de Características)</a></li>
+  <li><a href="#interpretación-de-los-kernels" id="toc-interpretación-de-los-kernels" class="nav-link" data-scroll-target="#interpretación-de-los-kernels"><span class="header-section-number">5</span> Interpretación de los kernels</a>
+  <ul class="collapse">
+  <li><a href="#propiedad-de-compartición-de-parámetros" id="toc-propiedad-de-compartición-de-parámetros" class="nav-link" data-scroll-target="#propiedad-de-compartición-de-parámetros"><span class="header-section-number">5.1</span> Propiedad de compartición de parámetros</a></li>
+  </ul></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">6</span> Resumen</a></li>
+  <li><a href="#stride-y-padding" id="toc-stride-y-padding" class="nav-link" data-scroll-target="#stride-y-padding"><span class="header-section-number">7</span> Stride y Padding</a>
+  <ul class="collapse">
+  <li><a href="#stride" id="toc-stride" class="nav-link" data-scroll-target="#stride"><span class="header-section-number">7.1</span> Stride</a></li>
+  <li><a href="#padding" id="toc-padding" class="nav-link" data-scroll-target="#padding"><span class="header-section-number">7.2</span> Padding</a></li>
+  </ul></li>
+  <li><a href="#función-de-activación" id="toc-función-de-activación" class="nav-link" data-scroll-target="#función-de-activación"><span class="header-section-number">8</span> Función de Activación</a></li>
+  <li><a href="#pooling" id="toc-pooling" class="nav-link" data-scroll-target="#pooling"><span class="header-section-number">9</span> Pooling</a>
+  <ul class="collapse">
+  <li><a href="#max-pooling" id="toc-max-pooling" class="nav-link" data-scroll-target="#max-pooling"><span class="header-section-number">9.1</span> Max Pooling</a></li>
+  <li><a href="#average-pooling" id="toc-average-pooling" class="nav-link" data-scroll-target="#average-pooling"><span class="header-section-number">9.2</span> Average Pooling</a></li>
+  </ul></li>
+  <li><a href="#capa-totalmente-conectada" id="toc-capa-totalmente-conectada" class="nav-link" data-scroll-target="#capa-totalmente-conectada"><span class="header-section-number">10</span> Capa Totalmente Conectada</a></li>
+  <li><a href="#función-de-pérdida" id="toc-función-de-pérdida" class="nav-link" data-scroll-target="#función-de-pérdida"><span class="header-section-number">11</span> Función de Pérdida</a>
+  <ul class="collapse">
+  <li><a href="#softmax" id="toc-softmax" class="nav-link" data-scroll-target="#softmax"><span class="header-section-number">11.1</span> Softmax</a></li>
+  <li><a href="#entropía-cruzada" id="toc-entropía-cruzada" class="nav-link" data-scroll-target="#entropía-cruzada"><span class="header-section-number">11.2</span> Entropía Cruzada</a></li>
+  </ul></li>
+  <li><a href="#entrenamiento" id="toc-entrenamiento" class="nav-link" data-scroll-target="#entrenamiento"><span class="header-section-number">12</span> Entrenamiento</a></li>
+  <li><a href="#propiedades-fundamentales" id="toc-propiedades-fundamentales" class="nav-link" data-scroll-target="#propiedades-fundamentales"><span class="header-section-number">13</span> Propiedades Fundamentales</a>
+  <ul class="collapse">
+  <li><a href="#conectividad-local" id="toc-conectividad-local" class="nav-link" data-scroll-target="#conectividad-local"><span class="header-section-number">13.1</span> Conectividad Local</a></li>
+  <li><a href="#compartición-de-parámetros" id="toc-compartición-de-parámetros" class="nav-link" data-scroll-target="#compartición-de-parámetros"><span class="header-section-number">13.2</span> Compartición de Parámetros</a></li>
+  <li><a href="#invarianza-traslacional" id="toc-invarianza-traslacional" class="nav-link" data-scroll-target="#invarianza-traslacional"><span class="header-section-number">13.3</span> Invarianza Traslacional</a></li>
+  </ul></li>
+  <li><a href="#flujo-de-una-cnn" id="toc-flujo-de-una-cnn" class="nav-link" data-scroll-target="#flujo-de-una-cnn"><span class="header-section-number">14</span> Flujo de una CNN</a></li>
+  <li><a href="#interpretación-matemática" id="toc-interpretación-matemática" class="nav-link" data-scroll-target="#interpretación-matemática"><span class="header-section-number">15</span> Interpretación Matemática</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tesis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autores/as</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mariana Belén Cruz Rodríguez <a href="mailto:mariana.cruz68@unach.mx" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+             <p>Yofre Hernán García Gómez, PhD <a href="mailto:yofre.garcia@unach.mx" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1>
+<p>Una <strong>red neuronal convolucional</strong> (<em>Convolutional Neural Network</em>, CNN) es una arquitectura de aprendizaje profundo diseñada para procesar datos que poseen una estructura de tipo rejilla (es decir, un dominio discreto regular donde los datos están indexados por coordenadas enteras y presentan relaciones locales bien definidas), como es el caso de las imágenes digitales.</p>
+<p>Desde un punto de vista formal, una CNN puede entenderse como una función parametrizada</p>
+<p><span class="math display">\[
+f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longrightarrow \mathbb{R}^{k},
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\mathcal{X}\)</span> es el espacio de entrada (por ejemplo, imágenes),</li>
+<li><span class="math inline">\(H\)</span> representa la <strong>altura</strong> (<em>height</em>) de la imagen, es decir, el número de filas,</li>
+<li><span class="math inline">\(W\)</span> representa el <strong>ancho</strong> (<em>width</em>), es decir, el número de columnas,</li>
+<li><span class="math inline">\(C\)</span> representa el <strong>número de canales</strong> (<em>channels</em>), que corresponde a la cantidad de valores asociados a cada píxel,</li>
+<li><span class="math inline">\(k\)</span> es la dimensión del espacio de salida (por ejemplo, número de clases en clasificación),</li>
+<li><span class="math inline">\(\theta\)</span> denota el conjunto total de parámetros entrenables del modelo.</li>
+</ul>
+<hr>
+<section id="representación-de-imágenes" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="representación-de-imágenes"><span class="header-section-number">1.1</span> Representación de imágenes</h2>
+<p>Una imagen se modela matemáticamente como un tensor de orden 3:</p>
+<p><span class="math display">\[
+X \in \mathbb{R}^{H \times W \times C}.
+\]</span></p>
+<p>Esto significa que:</p>
+<ul>
+<li>Para cada posición espacial <span class="math inline">\((i,j)\)</span> con <span class="math inline">\(1 \leq i \leq H\)</span>, <span class="math inline">\(1 \leq j \leq W\)</span>,</li>
+<li>el valor <span class="math inline">\(X(i,j)\)</span> no es escalar, sino un vector en <span class="math inline">\(\mathbb{R}^{C}\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+X(i,j) = \big(x_1, x_2, \dots, x_C\big).
+\]</span></p>
+<hr>
+</section>
+<section id="estructura-funcional-de-la-red" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="estructura-funcional-de-la-red"><span class="header-section-number">1.2</span> Estructura funcional de la red</h2>
+<p>Una CNN se construye como una composición de funciones:</p>
+<p><span class="math display">\[
+f(x; \theta) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x),
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(L \in \mathbb{N}\)</span> es el número total de capas de la red,</li>
+<li>cada <span class="math inline">\(f^{(l)}\)</span> es una función asociada a la capa <span class="math inline">\(l\)</span>-ésima.</li>
+</ul>
+<hr>
+</section>
+<section id="parámetros-del-modelo" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="parámetros-del-modelo"><span class="header-section-number">1.3</span> Parámetros del modelo</h2>
+<p>El conjunto de parámetros <span class="math inline">\(\theta\)</span> contiene todos los elementos ajustables del modelo:</p>
+<p><span class="math display">\[
+\theta = {\theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)}}.
+\]</span></p>
+<p>En una CNN, estos parámetros incluyen principalmente:</p>
+<ul>
+<li><strong>kernels</strong> (filtros convolucionales),</li>
+<li><strong>sesgos</strong> (bias) asociados a cada filtro.</li>
+</ul>
+<p>Estos parámetros determinan completamente la forma de la función <span class="math inline">\(f(x;\theta)\)</span> y son aprendidos a partir de los datos mediante optimización.</p>
+<hr>
+</section>
+</section>
+<section id="operación-de-convolución" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Operación de Convolución</h1>
+<p>La operación fundamental en una CNN es la <strong>convolución discreta</strong> (en la práctica, correlación cruzada).</p>
+<section id="caso-unicanal" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="caso-unicanal"><span class="header-section-number">2.1</span> Caso unicanal</h2>
+<p>Sea una imagen:</p>
+<p><span class="math display">\[
+X \in \mathbb{R}^{H \times W}
+\]</span></p>
+<p>y un kernel (o filtro):</p>
+<p><span class="math display">\[
+K \in \mathbb{R}^{k_h \times k_w},
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(k_h\)</span>: altura del kernel,</li>
+<li><span class="math inline">\(k_w\)</span>: ancho del kernel.</li>
+</ul>
+<p>La salida <span class="math inline">\(Y\)</span> se define como:</p>
+<p><span class="math display">\[
+Y(i,j) = \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v), X(i+u, j+v).
+\]</span></p>
+<hr>
+</section>
+<section id="interpretación-como-producto-interno" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="interpretación-como-producto-interno"><span class="header-section-number">2.2</span> Interpretación como producto interno</h2>
+<p>Sea <span class="math inline">\(X_{(i,j)}\)</span> la submatriz de <span class="math inline">\(X\)</span> de tamaño <span class="math inline">\(k_h \times k_w\)</span>:</p>
+<p><span class="math display">\[
+X_{(i,j)} = {X(i+u, j+v)}_{u,v}.
+\]</span></p>
+<p>Entonces:</p>
+<p><span class="math display">\[
+Y(i,j) = \langle K, X_{(i,j)} \rangle,
+\]</span></p>
+<p>donde <span class="math inline">\(\langle \cdot, \cdot \rangle\)</span> denota el producto interno en <span class="math inline">\(\mathbb{R}^{k_h \times k_w}\)</span>.</p>
+<p>Esto implica que la convolución mide la <strong>similitud entre el kernel y una región local de la imagen</strong>.</p>
+<hr>
+</section>
+</section>
+<section id="convolución-multicanal" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Convolución Multicanal</h1>
+<p>En el caso general, la entrada es:</p>
+<p><span class="math display">\[
+X \in \mathbb{R}^{H \times W \times C},
+\]</span></p>
+<p>y el kernel:</p>
+<p><span class="math display">\[
+K \in \mathbb{R}^{k_h \times k_w \times C}.
+\]</span></p>
+<p>La convolución se define como:</p>
+<p><span class="math display">\[
+Y(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v,c), X(i+u, j+v, c).
+\]</span></p>
+<hr>
+<section id="interpretación-tensorial" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="interpretación-tensorial"><span class="header-section-number">3.1</span> Interpretación tensorial</h2>
+<p>Si se vectoriza cada ventana:</p>
+<p><span class="math display">\[
+X_{(i,j)} \in \mathbb{R}^{k_h k_w C}, \quad K \in \mathbb{R}^{k_h k_w C},
+\]</span></p>
+<p>entonces:</p>
+<p><span class="math display">\[
+Y(i,j) = K^\top X_{(i,j)}.
+\]</span></p>
+<p>Esto muestra que la convolución es un operador lineal local.</p>
+<hr>
+</section>
+</section>
+<section id="múltiples-filtros-mapas-de-características" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Múltiples Filtros (Mapas de Características)</h1>
+<p>En una CNN no se utiliza un solo kernel, sino un conjunto de filtros:</p>
+<p><span class="math display">\[
+K^{(f)} \in \mathbb{R}^{k_h \times k_w \times C}, \quad f = 1,\dots,F.
+\]</span></p>
+<p>Cada filtro produce un mapa de activación distinto:</p>
+<p><span class="math display">\[
+Y_f(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1}
+K^{(f)}(u,v,c), X(i+u, j+v, c).
+\]</span></p>
+<p>Por tanto, la salida total es un tensor:</p>
+<p><span class="math display">\[
+Y \in \mathbb{R}^{H' \times W' \times F},
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(H'\)</span> y <span class="math inline">\(W'\)</span> dependen del tamaño del kernel, el padding y el stride,</li>
+<li><span class="math inline">\(F\)</span> es el número de filtros, es decir, el número de <strong>canales de salida</strong>.</li>
+</ul>
+<hr>
+</section>
+<section id="interpretación-de-los-kernels" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Interpretación de los kernels</h1>
+<p>Cada kernel puede interpretarse como un <strong>detector de patrones locales</strong>.</p>
+<p>Formalmente:</p>
+<p><span class="math display">\[
+Y_f(i,j) = \langle K^{(f)}, X_{(i,j)} \rangle.
+\]</span></p>
+<p>Por tanto:</p>
+<ul>
+<li>Si <span class="math inline">\(Y_f(i,j)\)</span> es grande, entonces la región <span class="math inline">\(X_{(i,j)}\)</span> es similar al patrón definido por <span class="math inline">\(K^{(f)}\)</span>.</li>
+<li>Si es pequeño o negativo, no hay coincidencia significativa.</li>
+</ul>
+<hr>
+<section id="propiedad-de-compartición-de-parámetros" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="propiedad-de-compartición-de-parámetros"><span class="header-section-number">5.1</span> Propiedad de compartición de parámetros</h2>
+<p>Un aspecto fundamental es que el mismo kernel <span class="math inline">\(K^{(f)}\)</span> se aplica en todas las posiciones <span class="math inline">\((i,j)\)</span>:</p>
+<p><span class="math display">\[
+K^{(f)}(u,v,c) \text{ es independiente de } (i,j).
+\]</span></p>
+<p>Esto implica:</p>
+<ul>
+<li>reducción significativa del número de parámetros,</li>
+<li>capacidad de detectar patrones independientemente de su posición (invarianza traslacional).</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="resumen" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Resumen</h1>
+<p>Una CNN puede entenderse como una función parametrizada</p>
+<p><span class="math display">\[
+f(x;\theta) = f^{(L)} \circ \cdots \circ f^{(1)}(x),
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(x \in \mathbb{R}^{H \times W \times C}\)</span> es una imagen,</li>
+<li>cada capa aplica operadores lineales locales (convoluciones) seguidos de no linealidades,</li>
+<li>los parámetros <span class="math inline">\(\theta\)</span> están formados principalmente por kernels,</li>
+<li>cada kernel actúa como un detector de patrones mediante productos internos locales.</li>
+</ul>
+<hr>
+</section>
+<section id="stride-y-padding" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Stride y Padding</h1>
+<section id="stride" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="stride"><span class="header-section-number">7.1</span> Stride</h2>
+<p>El stride <span class="math inline">\(s\)</span> controla el desplazamiento del kernel. Las dimensiones de salida son:</p>
+<p><span class="math display">\[
+H' = \left\lfloor \frac{H - k_h + 2p}{s} \right\rfloor + 1, \quad
+W' = \left\lfloor \frac{W - k_w + 2p}{s} \right\rfloor + 1.
+\]</span></p>
+</section>
+<section id="padding" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="padding"><span class="header-section-number">7.2</span> Padding</h2>
+<p>Se define como la adición de ceros alrededor de la imagen:</p>
+<p><span class="math display">\[
+X_{\text{pad}} \in \mathbb{R}^{(H+2p)\times(W+2p)\times C}.
+\]</span></p>
+</section>
+</section>
+<section id="función-de-activación" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Función de Activación</h1>
+<p>Después de la convolución se aplica una función no lineal. Un ejemplo común es la función ReLU:</p>
+<p><span class="math display">\[
+\phi(x) = \max(0,x).
+\]</span></p>
+<p>La salida es:</p>
+<p><span class="math display">\[
+Z = \phi(Y).
+\]</span></p>
+</section>
+<section id="pooling" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Pooling</h1>
+<p>El pooling reduce la dimensionalidad.</p>
+<section id="max-pooling" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="max-pooling"><span class="header-section-number">9.1</span> Max Pooling</h2>
+<p><span class="math display">\[
+Y(i,j) = \max_{(u,v)\in \mathcal{R}} X(i+u, j+v).
+\]</span></p>
+</section>
+<section id="average-pooling" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="average-pooling"><span class="header-section-number">9.2</span> Average Pooling</h2>
+<p><span class="math display">\[
+Y(i,j) = \frac{1}{|\mathcal{R}|} \sum_{(u,v)\in \mathcal{R}} X(i+u, j+v).
+\]</span></p>
+</section>
+</section>
+<section id="capa-totalmente-conectada" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Capa Totalmente Conectada</h1>
+<p>Se transforma el tensor en un vector:</p>
+<p><span class="math display">\[
+X \in \mathbb{R}^{H \times W \times C} \rightarrow x \in \mathbb{R}^{n}.
+\]</span></p>
+<p>Luego:</p>
+<p><span class="math display">\[
+y = Wx + b,
+\]</span></p>
+<p>donde <span class="math inline">\(W \in \mathbb{R}^{m \times n}\)</span> y <span class="math inline">\(b \in \mathbb{R}^{m}\)</span>.</p>
+</section>
+<section id="función-de-pérdida" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Función de Pérdida</h1>
+<section id="softmax" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="softmax"><span class="header-section-number">11.1</span> Softmax</h2>
+<p><span class="math display">\[
+\hat{y}_i = \frac{e^{z_i}}{\sum_{j} e^{z_j}}.
+\]</span></p>
+</section>
+<section id="entropía-cruzada" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="entropía-cruzada"><span class="header-section-number">11.2</span> Entropía Cruzada</h2>
+<p><span class="math display">\[
+\mathcal{L} = -\sum_{i} y_i \log(\hat{y}_i).
+\]</span></p>
+</section>
+</section>
+<section id="entrenamiento" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Entrenamiento</h1>
+<p>El problema de optimización es:</p>
+<p><span class="math display">\[
+\min_{\theta} \mathcal{L}(f(x;\theta), y).
+\]</span></p>
+<p>Se utiliza descenso de gradiente:</p>
+<p><span class="math display">\[
+\theta \leftarrow \theta - \eta \nabla_{\theta} \mathcal{L}.
+\]</span></p>
+</section>
+<section id="propiedades-fundamentales" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Propiedades Fundamentales</h1>
+<section id="conectividad-local" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="conectividad-local"><span class="header-section-number">13.1</span> Conectividad Local</h2>
+<p>Cada neurona depende de una región pequeña de la entrada.</p>
+</section>
+<section id="compartición-de-parámetros" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="compartición-de-parámetros"><span class="header-section-number">13.2</span> Compartición de Parámetros</h2>
+<p>El mismo kernel se aplica en toda la imagen.</p>
+</section>
+<section id="invarianza-traslacional" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="invarianza-traslacional"><span class="header-section-number">13.3</span> Invarianza Traslacional</h2>
+<p>El modelo detecta patrones independientemente de su posición.</p>
+</section>
+</section>
+<section id="flujo-de-una-cnn" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Flujo de una CNN</h1>
+<p><span class="math display">\[
+\text{Imagen} \rightarrow \text{Convolución} \rightarrow \text{ReLU} \rightarrow \text{Pooling} \rightarrow \cdots \rightarrow \text{Fully Connected} \rightarrow \text{Softmax}
+\]</span></p>
+</section>
+<section id="interpretación-matemática" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Interpretación Matemática</h1>
+<p>Una CNN puede verse como una función:</p>
+<p><span class="math display">\[
+f: \mathbb{R}^{H \times W \times C} \to \mathbb{R}^{k},
+\]</span></p>
+<p>compuesta por operadores lineales, no lineales y de reducción.</p>
+<p>Las redes neuronales convolucionales son modelos altamente eficientes para el procesamiento de imágenes debido a la combinación de convoluciones, no linealidades y reducción de dimensionalidad, junto con propiedades estructurales como la compartición de parámetros y la conectividad local.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></div></div></footer></body></html>

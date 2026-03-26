@@ -1,0 +1,72 @@
+project:
+  type: book
+  output-dir: _book
+
+website:
+#  favicon: FCFMLOGO.png
+  reader-mode: true
+  search:
+    location: sidebar
+    type: overlay
+  comments:
+    hypothesis: true
+
+book:
+  title: "Tesis"
+  reader-mode: true
+  language: es
+  #date: "02/14/2024"
+  output-file: "Tesis_MBCR"
+  #image: logofcfm.png
+  #cover-image: FCFMLOGO.png
+  sharing: [twitter, facebook]
+  downloads: [pdf, epub]
+  #favicon: logofcfm.png
+  sidebar:
+  #  logo: #LOGO50.png
+    style: floating
+    collapse-level: 2
+    border: true
+    search: true
+  open-graph: true
+  twitter-card: true
+  repo-url: https://github.com/maribecrurod-art/CNN_HMM_tesis
+  repo-actions: [edit, issue, source]
+  page-navigation: true
+  chapters:
+    - index.qmd
+    #- intro.qmd
+    #- objetivos.qmd
+    #- references.qmd
+
+comments:
+    hypothesis: true
+
+#bibliography: references.bib
+
+format:
+  html:
+    theme:
+      dark: darkly
+      light: cerulean
+    highlight-style: a11y
+    lang: es
+    html-math-method: mathjax
+    grid:
+      sidebar-width: 300px
+      body-width: 900px
+      margin-width: 300px
+      gutter-width: 1.5rem
+    code-copy: true
+    code-fold: true
+  pdf:
+    lang: es
+    documentclass: scrreprt
+    papersize: us-letter
+    #titlegraphic: FCFMLOGO.png
+    institution: Benemérita Universidad Autónoma de Chiapas
+    email: mariana.cruz68@unach.mx
+    keep-tex: true
+#  epub:
+#    cover-image: FCFMLOGO.png
+editor: visual
