@@ -13,12 +13,18 @@ author:
 
 # Introducción
 
-Una **red neuronal convolucional** (*Convolutional Neural Network*, CNN) es una arquitectura de aprendizaje profundo diseñada para procesar datos que poseen una estructura de tipo rejilla (es decir, un dominio discreto regular donde los datos están indexados por coordenadas enteras y presentan relaciones locales bien definidas), como es el caso de las imágenes digitales.
+
+
+En este trabajo se aborda el problema de **reconocimiento automático de glifos del alfabeto náhuatl** mediante el uso de redes neuronales convolucionales (*Convolutional Neural Networks*, CNN). Este problema puede formularse como una tarea de clasificación de imágenes, en la cual cada glifo es representado mediante una estructura matricial que codifica su información visual.
+
+Los glifos presentan variaciones en forma, trazo y estilo, lo que dificulta su identificación mediante métodos tradicionales. En este contexto, las CNN resultan particularmente adecuadas debido a su capacidad para extraer características espaciales relevantes directamente a partir de los datos, tales como bordes, curvas y patrones geométricos distintivos.
+
 
 Desde un punto de vista formal, una CNN puede entenderse como una función parametrizada
 
 $$
 f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longrightarrow \mathbb{R}^{k},
+\tag{1}
 $$
 
 donde:
@@ -38,6 +44,7 @@ Una imagen se modela matemáticamente como un tensor de orden 3:
 
 $$
 X \in \mathbb{R}^{H \times W \times C}.
+\tag{2}
 $$
 
 Esto significa que:
@@ -47,8 +54,8 @@ Esto significa que:
 
 $$
 X(i,j) = \big(x_1, x_2, \dots, x_C\big).
+\tag{3}
 $$
-
 ---
 
 ## Estructura funcional de la red
@@ -57,6 +64,7 @@ Una CNN se construye como una composición de funciones:
 
 $$
 f(x; \theta) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x),
+\tag{1}
 $$
 
 donde:
@@ -72,6 +80,7 @@ El conjunto de parámetros $\theta$ contiene todos los elementos ajustables del 
 
 $$
 \theta = {\theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)}}.
+\tag{4}
 $$
 
 En una CNN, estos parámetros incluyen principalmente:
@@ -110,6 +119,7 @@ La salida $Y$ se define como:
 
 $$
 Y(i,j) = \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v), X(i+u, j+v).
+\tag{5}
 $$
 
 ---
@@ -120,12 +130,14 @@ Sea $X_{(i,j)}$ la submatriz de $X$ de tamaño $k_h \times k_w$:
 
 $$
 X_{(i,j)} = {X(i+u, j+v)}_{u,v}.
+\tag{6}
 $$
 
 Entonces:
 
 $$
 Y(i,j) = \langle K, X_{(i,j)} \rangle,
+\tag{7}
 $$
 
 donde $\langle \cdot, \cdot \rangle$ denota el producto interno en $\mathbb{R}^{k_h \times k_w}$.
@@ -152,6 +164,7 @@ La convolución se define como:
 
 $$
 Y(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v,c), X(i+u, j+v, c).
+\tag{1}
 $$
 
 ---
@@ -168,6 +181,7 @@ entonces:
 
 $$
 Y(i,j) = K^\top X_{(i,j)}.
+\tag{8}
 $$
 
 Esto muestra que la convolución es un operador lineal local.

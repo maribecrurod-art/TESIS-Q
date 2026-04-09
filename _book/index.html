@@ -452,10 +452,12 @@ window.Quarto = {
 
 <section id="introducción" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1>
-<p>Una <strong>red neuronal convolucional</strong> (<em>Convolutional Neural Network</em>, CNN) es una arquitectura de aprendizaje profundo diseñada para procesar datos que poseen una estructura de tipo rejilla (es decir, un dominio discreto regular donde los datos están indexados por coordenadas enteras y presentan relaciones locales bien definidas), como es el caso de las imágenes digitales.</p>
+<p>En este trabajo se aborda el problema de <strong>reconocimiento automático de glifos del alfabeto náhuatl</strong> mediante el uso de redes neuronales convolucionales (<em>Convolutional Neural Networks</em>, CNN). Este problema puede formularse como una tarea de clasificación de imágenes, en la cual cada glifo es representado mediante una estructura matricial que codifica su información visual.</p>
+<p>Los glifos presentan variaciones en forma, trazo y estilo, lo que dificulta su identificación mediante métodos tradicionales. En este contexto, las CNN resultan particularmente adecuadas debido a su capacidad para extraer características espaciales relevantes directamente a partir de los datos, tales como bordes, curvas y patrones geométricos distintivos.</p>
 <p>Desde un punto de vista formal, una CNN puede entenderse como una función parametrizada</p>
 <p><span class="math display">\[
 f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longrightarrow \mathbb{R}^{k},
+\tag{1}
 \]</span></p>
 <p>donde:</p>
 <ul>
@@ -472,6 +474,7 @@ f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longr
 <p>Una imagen se modela matemáticamente como un tensor de orden 3:</p>
 <p><span class="math display">\[
 X \in \mathbb{R}^{H \times W \times C}.
+\tag{2}
 \]</span></p>
 <p>Esto significa que:</p>
 <ul>
@@ -480,14 +483,15 @@ X \in \mathbb{R}^{H \times W \times C}.
 </ul>
 <p><span class="math display">\[
 X(i,j) = \big(x_1, x_2, \dots, x_C\big).
-\]</span></p>
-<hr>
+\tag{3}
+\]</span> —</p>
 </section>
 <section id="estructura-funcional-de-la-red" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="estructura-funcional-de-la-red"><span class="header-section-number">1.2</span> Estructura funcional de la red</h2>
 <p>Una CNN se construye como una composición de funciones:</p>
 <p><span class="math display">\[
 f(x; \theta) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x),
+\tag{1}
 \]</span></p>
 <p>donde:</p>
 <ul>
@@ -501,6 +505,7 @@ f(x; \theta) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x),
 <p>El conjunto de parámetros <span class="math inline">\(\theta\)</span> contiene todos los elementos ajustables del modelo:</p>
 <p><span class="math display">\[
 \theta = {\theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)}}.
+\tag{4}
 \]</span></p>
 <p>En una CNN, estos parámetros incluyen principalmente:</p>
 <ul>
@@ -532,6 +537,7 @@ K \in \mathbb{R}^{k_h \times k_w},
 <p>La salida <span class="math inline">\(Y\)</span> se define como:</p>
 <p><span class="math display">\[
 Y(i,j) = \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v), X(i+u, j+v).
+\tag{5}
 \]</span></p>
 <hr>
 </section>
@@ -540,10 +546,12 @@ Y(i,j) = \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v), X(i+u, j+v).
 <p>Sea <span class="math inline">\(X_{(i,j)}\)</span> la submatriz de <span class="math inline">\(X\)</span> de tamaño <span class="math inline">\(k_h \times k_w\)</span>:</p>
 <p><span class="math display">\[
 X_{(i,j)} = {X(i+u, j+v)}_{u,v}.
+\tag{6}
 \]</span></p>
 <p>Entonces:</p>
 <p><span class="math display">\[
 Y(i,j) = \langle K, X_{(i,j)} \rangle,
+\tag{7}
 \]</span></p>
 <p>donde <span class="math inline">\(\langle \cdot, \cdot \rangle\)</span> denota el producto interno en <span class="math inline">\(\mathbb{R}^{k_h \times k_w}\)</span>.</p>
 <p>Esto implica que la convolución mide la <strong>similitud entre el kernel y una región local de la imagen</strong>.</p>
@@ -563,6 +571,7 @@ K \in \mathbb{R}^{k_h \times k_w \times C}.
 <p>La convolución se define como:</p>
 <p><span class="math display">\[
 Y(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v,c), X(i+u, j+v, c).
+\tag{1}
 \]</span></p>
 <hr>
 <section id="interpretación-tensorial" class="level2" data-number="3.1">
@@ -574,6 +583,7 @@ X_{(i,j)} \in \mathbb{R}^{k_h k_w C}, \quad K \in \mathbb{R}^{k_h k_w C},
 <p>entonces:</p>
 <p><span class="math display">\[
 Y(i,j) = K^\top X_{(i,j)}.
+\tag{8}
 \]</span></p>
 <p>Esto muestra que la convolución es un operador lineal local.</p>
 <hr>
