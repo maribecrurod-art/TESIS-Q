@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Tesis",
     "section": "",
-    "text": "1 Introducción\nUna red neuronal convolucional (Convolutional Neural Network, CNN) es una arquitectura de aprendizaje profundo diseñada para procesar datos que poseen una estructura de tipo rejilla (es decir, un dominio discreto regular donde los datos están indexados por coordenadas enteras y presentan relaciones locales bien definidas), como es el caso de las imágenes digitales.\nDesde un punto de vista formal, una CNN puede entenderse como una función parametrizada\n\\[\nf(\\cdot , \\theta): \\mathcal{X} \\subseteq \\mathbb{R}^{H \\times W \\times C} \\longrightarrow \\mathbb{R}^{k},\n\\]\ndonde:",
+    "text": "1 Introducción\nEn este trabajo se aborda el problema de reconocimiento automático de glifos del alfabeto náhuatl mediante el uso de redes neuronales convolucionales (Convolutional Neural Networks, CNN). Este problema puede formularse como una tarea de clasificación de imágenes, en la cual cada glifo es representado mediante una estructura matricial que codifica su información visual.\nLos glifos presentan variaciones en forma, trazo y estilo, lo que dificulta su identificación mediante métodos tradicionales. En este contexto, las CNN resultan particularmente adecuadas debido a su capacidad para extraer características espaciales relevantes directamente a partir de los datos, tales como bordes, curvas y patrones geométricos distintivos.\nDesde un punto de vista formal, una CNN puede entenderse como una función parametrizada\n\\[\nf(\\cdot , \\theta): \\mathcal{X} \\subseteq \\mathbb{R}^{H \\times W \\times C} \\longrightarrow \\mathbb{R}^{k},\n\\tag{1}\n\\]\ndonde:",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
     ]
@@ -14,7 +14,7 @@
     "href": "index.html#representación-de-imágenes",
     "title": "Tesis",
     "section": "1.1 Representación de imágenes",
-    "text": "1.1 Representación de imágenes\nUna imagen se modela matemáticamente como un tensor de orden 3:\n\\[\nX \\in \\mathbb{R}^{H \\times W \\times C}.\n\\]\nEsto significa que:\n\nPara cada posición espacial \\((i,j)\\) con \\(1 \\leq i \\leq H\\), \\(1 \\leq j \\leq W\\),\nel valor \\(X(i,j)\\) no es escalar, sino un vector en \\(\\mathbb{R}^{C}\\):\n\n\\[\nX(i,j) = \\big(x_1, x_2, \\dots, x_C\\big).\n\\]",
+    "text": "1.1 Representación de imágenes\nUna imagen se modela matemáticamente como un tensor de orden 3:\n\\[\nX \\in \\mathbb{R}^{H \\times W \\times C}.\n\\tag{2}\n\\]\nEsto significa que:\n\nPara cada posición espacial \\((i,j)\\) con \\(1 \\leq i \\leq H\\), \\(1 \\leq j \\leq W\\),\nel valor \\(X(i,j)\\) no es escalar, sino un vector en \\(\\mathbb{R}^{C}\\):\n\n\\[\nX(i,j) = \\big(x_1, x_2, \\dots, x_C\\big).\n\\tag{3}\n\\] —",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
     ]
@@ -24,7 +24,7 @@
     "href": "index.html#estructura-funcional-de-la-red",
     "title": "Tesis",
     "section": "1.2 Estructura funcional de la red",
-    "text": "1.2 Estructura funcional de la red\nUna CNN se construye como una composición de funciones:\n\\[\nf(x; \\theta) = f^{(L)} \\circ f^{(L-1)} \\circ \\cdots \\circ f^{(1)}(x),\n\\]\ndonde:\n\n\\(L \\in \\mathbb{N}\\) es el número total de capas de la red,\ncada \\(f^{(l)}\\) es una función asociada a la capa \\(l\\)-ésima.",
+    "text": "1.2 Estructura funcional de la red\nUna CNN se construye como una composición de funciones:\n\\[\nf(x; \\theta) = f^{(L)} \\circ f^{(L-1)} \\circ \\cdots \\circ f^{(1)}(x),\n\\tag{1}\n\\]\ndonde:\n\n\\(L \\in \\mathbb{N}\\) es el número total de capas de la red,\ncada \\(f^{(l)}\\) es una función asociada a la capa \\(l\\)-ésima.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
     ]
@@ -34,7 +34,7 @@
     "href": "index.html#parámetros-del-modelo",
     "title": "Tesis",
     "section": "1.3 Parámetros del modelo",
-    "text": "1.3 Parámetros del modelo\nEl conjunto de parámetros \\(\\theta\\) contiene todos los elementos ajustables del modelo:\n\\[\n\\theta = {\\theta^{(1)}, \\theta^{(2)}, \\dots, \\theta^{(L)}}.\n\\]\nEn una CNN, estos parámetros incluyen principalmente:\n\nkernels (filtros convolucionales),\nsesgos (bias) asociados a cada filtro.\n\nEstos parámetros determinan completamente la forma de la función \\(f(x;\\theta)\\) y son aprendidos a partir de los datos mediante optimización.",
+    "text": "1.3 Parámetros del modelo\nEl conjunto de parámetros \\(\\theta\\) contiene todos los elementos ajustables del modelo:\n\\[\n\\theta = {\\theta^{(1)}, \\theta^{(2)}, \\dots, \\theta^{(L)}}.\n\\tag{4}\n\\]\nEn una CNN, estos parámetros incluyen principalmente:\n\nkernels (filtros convolucionales),\nsesgos (bias) asociados a cada filtro.\n\nEstos parámetros determinan completamente la forma de la función \\(f(x;\\theta)\\) y son aprendidos a partir de los datos mediante optimización.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
     ]
@@ -44,7 +44,7 @@
     "href": "index.html#caso-unicanal",
     "title": "Tesis",
     "section": "2.1 Caso unicanal",
-    "text": "2.1 Caso unicanal\nSea una imagen:\n\\[\nX \\in \\mathbb{R}^{H \\times W}\n\\]\ny un kernel (o filtro):\n\\[\nK \\in \\mathbb{R}^{k_h \\times k_w},\n\\]\ndonde:\n\n\\(k_h\\): altura del kernel,\n\\(k_w\\): ancho del kernel.\n\nLa salida \\(Y\\) se define como:\n\\[\nY(i,j) = \\sum_{u=0}^{k_h-1} \\sum_{v=0}^{k_w-1} K(u,v), X(i+u, j+v).\n\\]",
+    "text": "2.1 Caso unicanal\nSea una imagen:\n\\[\nX \\in \\mathbb{R}^{H \\times W}\n\\]\ny un kernel (o filtro):\n\\[\nK \\in \\mathbb{R}^{k_h \\times k_w},\n\\]\ndonde:\n\n\\(k_h\\): altura del kernel,\n\\(k_w\\): ancho del kernel.\n\nLa salida \\(Y\\) se define como:\n\\[\nY(i,j) = \\sum_{u=0}^{k_h-1} \\sum_{v=0}^{k_w-1} K(u,v), X(i+u, j+v).\n\\tag{5}\n\\]",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
     ]
@@ -54,7 +54,7 @@
     "href": "index.html#interpretación-como-producto-interno",
     "title": "Tesis",
     "section": "2.2 Interpretación como producto interno",
-    "text": "2.2 Interpretación como producto interno\nSea \\(X_{(i,j)}\\) la submatriz de \\(X\\) de tamaño \\(k_h \\times k_w\\):\n\\[\nX_{(i,j)} = {X(i+u, j+v)}_{u,v}.\n\\]\nEntonces:\n\\[\nY(i,j) = \\langle K, X_{(i,j)} \\rangle,\n\\]\ndonde \\(\\langle \\cdot, \\cdot \\rangle\\) denota el producto interno en \\(\\mathbb{R}^{k_h \\times k_w}\\).\nEsto implica que la convolución mide la similitud entre el kernel y una región local de la imagen.",
+    "text": "2.2 Interpretación como producto interno\nSea \\(X_{(i,j)}\\) la submatriz de \\(X\\) de tamaño \\(k_h \\times k_w\\):\n\\[\nX_{(i,j)} = {X(i+u, j+v)}_{u,v}.\n\\tag{6}\n\\]\nEntonces:\n\\[\nY(i,j) = \\langle K, X_{(i,j)} \\rangle,\n\\tag{7}\n\\]\ndonde \\(\\langle \\cdot, \\cdot \\rangle\\) denota el producto interno en \\(\\mathbb{R}^{k_h \\times k_w}\\).\nEsto implica que la convolución mide la similitud entre el kernel y una región local de la imagen.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
     ]
@@ -64,7 +64,7 @@
     "href": "index.html#interpretación-tensorial",
     "title": "Tesis",
     "section": "3.1 Interpretación tensorial",
-    "text": "3.1 Interpretación tensorial\nSi se vectoriza cada ventana:\n\\[\nX_{(i,j)} \\in \\mathbb{R}^{k_h k_w C}, \\quad K \\in \\mathbb{R}^{k_h k_w C},\n\\]\nentonces:\n\\[\nY(i,j) = K^\\top X_{(i,j)}.\n\\]\nEsto muestra que la convolución es un operador lineal local.",
+    "text": "3.1 Interpretación tensorial\nSi se vectoriza cada ventana:\n\\[\nX_{(i,j)} \\in \\mathbb{R}^{k_h k_w C}, \\quad K \\in \\mathbb{R}^{k_h k_w C},\n\\]\nentonces:\n\\[\nY(i,j) = K^\\top X_{(i,j)}.\n\\tag{8}\n\\]\nEsto muestra que la convolución es un operador lineal local.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
     ]
