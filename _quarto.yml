@@ -3,7 +3,7 @@ project:
   output-dir: _book
 
 website:
-#  favicon: FCFMLOGO.png
+  favicon: LOGOunach.png
   reader-mode: true
   search:
     location: sidebar
@@ -17,13 +17,13 @@ book:
   language: es
   #date: "02/14/2024"
   output-file: "Tesis_MBCR"
-  #image: logofcfm.png
-  #cover-image: FCFMLOGO.png
+  image: LOGOunach.png
+  cover-image: LOGOunach.png
   sharing: [twitter, facebook]
   downloads: [pdf, epub]
-  #favicon: logofcfm.png
+  favicon: LOGOunach.png
   sidebar:
-  #  logo: #LOGO50.png
+    logo: LOGOunach.png
     style: floating
     collapse-level: 2
     border: true
@@ -35,7 +35,7 @@ book:
   page-navigation: true
   chapters:
     - index.qmd
-    #- intro.qmd
+    - capitulo1.qmd
     #- objetivos.qmd
     #- references.qmd
 
@@ -63,10 +63,10 @@ format:
     lang: es
     documentclass: scrreprt
     papersize: us-letter
-    #titlegraphic: FCFMLOGO.png
+    titlegraphic: LOGOunach.png
     institution: Benemérita Universidad Autónoma de Chiapas
     email: mariana.cruz68@unach.mx
     keep-tex: true
-#  epub:
-#    cover-image: FCFMLOGO.png
+  epub:
+    cover-image: LOGOunach.png
 editor: visual
