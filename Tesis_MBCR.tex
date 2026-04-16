@@ -206,13 +206,15 @@ capacidad para extraer características espaciales relevantes
 directamente a partir de los datos, tales como bordes, curvas y patrones
 geométricos distintivos.
 
+\section{CNN adaptada a la clasificación de
+glifos}\label{cnn-adaptada-a-la-clasificaciuxf3n-de-glifos}
+
 Desde un punto de vista formal, una CNN puede entenderse como una
 función parametrizada
 
-\[
-f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longrightarrow \mathbb{R}^{k},
-\tag{1}
-\]
+\begin{equation}\phantomsection\label{eq-cnn-func}{
+f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longrightarrow \mathbb{R}^{k}
+}\end{equation}
 
 donde:
 
@@ -237,17 +239,14 @@ donde:
   modelo.
 \end{itemize}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
 \section{Representación de
 imágenes}\label{representaciuxf3n-de-imuxe1genes}
 
 Una imagen se modela matemáticamente como un tensor de orden 3:
 
-\[
-X \in \mathbb{R}^{H \times W \times C}.
-\tag{2}
-\]
+\begin{equation}\phantomsection\label{eq-img-tensor}{
+X \in \mathbb{R}^{H \times W \times C}
+}\end{equation}
 
 Esto significa que:
 
@@ -258,23 +257,21 @@ Esto significa que:
   \(1 \leq j \leq W\),
 \item
   el valor \(X(i,j)\) no es escalar, sino un vector en
-  \(\mathbb{R}^{C}\):
+  \(\mathbb{R}^{C}:\)
 \end{itemize}
 
-\[
-X(i,j) = \big(x_1, x_2, \dots, x_C\big).
-\tag{3}
-\] ---
+\begin{equation}\phantomsection\label{eq-pixel-vec}{
+X(i,j) = \big(x_1, x_2, \dots, x_C\big)
+}\end{equation}
 
 \section{Estructura funcional de la
 red}\label{estructura-funcional-de-la-red}
 
 Una CNN se construye como una composición de funciones:
 
-\[
-f(x; \theta) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x),
-\tag{1}
-\]
+\begin{equation}\phantomsection\label{eq-composition}{
+f(x; \theta) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x)
+}\end{equation}
 
 donde:
 
@@ -286,17 +283,14 @@ donde:
   cada \(f^{(l)}\) es una función asociada a la capa \(l\)-ésima.
 \end{itemize}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
 \section{Parámetros del modelo}\label{paruxe1metros-del-modelo}
 
 El conjunto de parámetros \(\theta\) contiene todos los elementos
 ajustables del modelo:
 
-\[
-\theta = {\theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)}}.
-\tag{4}
-\]
+\begin{equation}\phantomsection\label{eq-params}{
+\theta = {\theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)}}
+}\end{equation}
 
 En una CNN, estos parámetros incluyen principalmente:
 
@@ -312,8 +306,6 @@ Estos parámetros determinan completamente la forma de la función
 \(f(x;\theta)\) y son aprendidos a partir de los datos mediante
 optimización.
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
 \bookmarksetup{startatroot}
 
 \chapter{Operación de Convolución}\label{operaciuxf3n-de-convoluciuxf3n}
@@ -325,15 +317,15 @@ La operación fundamental en una CNN es la \textbf{convolución discreta}
 
 Sea una imagen:
 
-\[
+\begin{equation}\phantomsection\label{eq-img-single}{
 X \in \mathbb{R}^{H \times W}
-\]
+}\end{equation}
 
 y un kernel (o filtro):
 
-\[
-K \in \mathbb{R}^{k_h \times k_w},
-\]
+\begin{equation}\phantomsection\label{eq-kernel-single}{
+K \in \mathbb{R}^{k_h \times k_w}
+}\end{equation}
 
 donde:
 
@@ -347,29 +339,24 @@ donde:
 
 La salida \(Y\) se define como:
 
-\[
-Y(i,j) = \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v), X(i+u, j+v).
-\tag{5}
-\]
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\begin{equation}\phantomsection\label{eq-conv-discrete}{
+Y(i,j) = \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v), X(i+u, j+v)
+}\end{equation}
 
 \section{Interpretación como producto
 interno}\label{interpretaciuxf3n-como-producto-interno}
 
 Sea \(X_{(i,j)}\) la submatriz de \(X\) de tamaño \(k_h \times k_w\):
 
-\[
-X_{(i,j)} = {X(i+u, j+v)}_{u,v}.
-\tag{6}
-\]
+\begin{equation}\phantomsection\label{eq-submatrix}{
+X_{(i,j)} = {X(i+u, j+v)}_{u,v}
+}\end{equation}
 
 Entonces:
 
-\[
-Y(i,j) = \langle K, X_{(i,j)} \rangle,
-\tag{7}
-\]
+\begin{equation}\phantomsection\label{eq-inner-prod}{
+Y(i,j) = \langle K, X_{(i,j)} \rangle
+}\end{equation}
 
 donde \(\langle \cdot, \cdot \rangle\) denota el producto interno en
 \(\mathbb{R}^{k_h \times k_w}\).
@@ -377,51 +364,43 @@ donde \(\langle \cdot, \cdot \rangle\) denota el producto interno en
 Esto implica que la convolución mide la \textbf{similitud entre el
 kernel y una región local de la imagen}.
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
 \bookmarksetup{startatroot}
 
 \chapter{Convolución Multicanal}\label{convoluciuxf3n-multicanal}
 
 En el caso general, la entrada es:
 
-\[
-X \in \mathbb{R}^{H \times W \times C},
-\]
+\begin{equation}\phantomsection\label{eq-img-multi}{
+X \in \mathbb{R}^{H \times W \times C}
+}\end{equation}
 
 y el kernel:
 
-\[
-K \in \mathbb{R}^{k_h \times k_w \times C}.
-\]
+\begin{equation}\phantomsection\label{eq-kernel-multi}{
+K \in \mathbb{R}^{k_h \times k_w \times C}
+}\end{equation}
 
 La convolución se define como:
 
-\[
-Y(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v,c), X(i+u, j+v, c).
-\tag{1}
-\]
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\begin{equation}\phantomsection\label{eq-conv-multi}{
+Y(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v,c), X(i+u, j+v, c)
+}\end{equation}
 
 \section{Interpretación tensorial}\label{interpretaciuxf3n-tensorial}
 
 Si se vectoriza cada ventana:
 
-\[
-X_{(i,j)} \in \mathbb{R}^{k_h k_w C}, \quad K \in \mathbb{R}^{k_h k_w C},
-\]
+\begin{equation}\phantomsection\label{eq-vec-dims}{
+X_{(i,j)} \in \mathbb{R}^{k_h k_w C}, \quad K \in \mathbb{R}^{k_h k_w C}
+}\end{equation}
 
 entonces:
 
-\[
-Y(i,j) = K^\top X_{(i,j)}.
-\tag{8}
-\]
+\begin{equation}\phantomsection\label{eq-linear-op}{
+Y(i,j) = K^\top X_{(i,j)}
+}\end{equation}
 
 Esto muestra que la convolución es un operador lineal local.
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \bookmarksetup{startatroot}
 
@@ -430,22 +409,22 @@ Características)}\label{muxfaltiples-filtros-mapas-de-caracteruxedsticas}
 
 En una CNN no se utiliza un solo kernel, sino un conjunto de filtros:
 
-\[
-K^{(f)} \in \mathbb{R}^{k_h \times k_w \times C}, \quad f = 1,\dots,F.
-\]
+\begin{equation}\phantomsection\label{eq-filters-set}{
+K^{(f)} \in \mathbb{R}^{k_h \times k_w \times C}, \quad f = 1,\dots,F
+}\end{equation}
 
 Cada filtro produce un mapa de activación distinto:
 
-\[
+\begin{equation}\phantomsection\label{eq-activation-map}{
 Y_f(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1}
-K^{(f)}(u,v,c), X(i+u, j+v, c).
-\]
+K^{(f)}(u,v,c), X(i+u, j+v, c)
+}\end{equation}
 
 Por tanto, la salida total es un tensor:
 
-\[
-Y \in \mathbb{R}^{H' \times W' \times F},
-\]
+\begin{equation}\phantomsection\label{eq-output-tensor}{
+Y \in \mathbb{R}^{H' \times W' \times F}
+}\end{equation}
 
 donde:
 
@@ -459,8 +438,6 @@ donde:
   de salida}.
 \end{itemize}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
 \bookmarksetup{startatroot}
 
 \chapter{Interpretación de los
@@ -471,9 +448,9 @@ locales}.
 
 Formalmente:
 
-\[
-Y_f(i,j) = \langle K^{(f)}, X_{(i,j)} \rangle.
-\]
+\begin{equation}\phantomsection\label{eq-kernel-similarity}{
+Y_f(i,j) = \langle K^{(f)}, X_{(i,j)} \rangle
+}\end{equation}
 
 Por tanto:
 
@@ -486,17 +463,15 @@ Por tanto:
   Si es pequeño o negativo, no hay coincidencia significativa.
 \end{itemize}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
 \section{Propiedad de compartición de
 parámetros}\label{propiedad-de-comparticiuxf3n-de-paruxe1metros}
 
 Un aspecto fundamental es que el mismo kernel \(K^{(f)}\) se aplica en
 todas las posiciones \((i,j)\):
 
-\[
-K^{(f)}(u,v,c) \text{ es independiente de } (i,j).
-\]
+\begin{equation}\phantomsection\label{eq-param-sharing}{
+K^{(f)}(u,v,c) \text{ es independiente de } (i,j)
+}\end{equation}
 
 Esto implica:
 
@@ -509,36 +484,6 @@ Esto implica:
   (invarianza traslacional).
 \end{itemize}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\bookmarksetup{startatroot}
-
-\chapter{Resumen}\label{resumen}
-
-Una CNN puede entenderse como una función parametrizada
-
-\[
-f(x;\theta) = f^{(L)} \circ \cdots \circ f^{(1)}(x),
-\]
-
-donde:
-
-\begin{itemize}
-\tightlist
-\item
-  \(x \in \mathbb{R}^{H \times W \times C}\) es una imagen,
-\item
-  cada capa aplica operadores lineales locales (convoluciones) seguidos
-  de no linealidades,
-\item
-  los parámetros \(\theta\) están formados principalmente por kernels,
-\item
-  cada kernel actúa como un detector de patrones mediante productos
-  internos locales.
-\end{itemize}
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
 \bookmarksetup{startatroot}
 
 \chapter{Stride y Padding}\label{stride-y-padding}
@@ -548,35 +493,212 @@ donde:
 El stride \(s\) controla el desplazamiento del kernel. Las dimensiones
 de salida son:
 
-\[
+\begin{equation}\phantomsection\label{eq-output-dims}{
 H' = \left\lfloor \frac{H - k_h + 2p}{s} \right\rfloor + 1, \quad
-W' = \left\lfloor \frac{W - k_w + 2p}{s} \right\rfloor + 1.
-\]
+W' = \left\lfloor \frac{W - k_w + 2p}{s} \right\rfloor + 1
+}\end{equation}
 
 \section{Padding}\label{padding}
 
-Se define como la adición de ceros alrededor de la imagen:
+El padding es una operación que consiste en añadir valores (generalmente
+ceros) alrededor de la entrada antes de aplicar la convolución. Esto se
+hace para controlar el tamaño de la salida y preservar información en
+los bordes.
 
-\[
-X_{\text{pad}} \in \mathbb{R}^{(H+2p)\times(W+2p)\times C}.
-\]
+\begin{equation}\phantomsection\label{eq-x-pad}{
+X_{\text{pad}} \in \mathbb{R}^{(H+2p)\times(W+2p)\times C}
+}\end{equation}
+
+El padding puede interpretarse como una extensión de la función de
+entrada \(X\) fuera de su dominio original. Formalmente, se define la
+extensión \(\tilde{X}\) como:
+
+\begin{equation}\phantomsection\label{eq-padding-func}{
+\tilde{X}(i,j) =
+\begin{cases}
+X(i,j), & \text{si } (i,j) \text{ pertenece al dominio original}, \\
+0, & \text{en otro caso}
+\end{cases}
+}\end{equation}
+
+Esta extensión corresponde a una extensión por cero del dominio de la
+función.
+
+En una capa convolucional, el padding se aplica antes de la convolución.
+Por lo tanto, la operación completa de una capa convolucional con
+padding se puede expresar como:
+
+\begin{equation}\phantomsection\label{eq-conv-layer-pad}{
+Y = \sigma\big( (\text{pad}(X)) \star K + b \big)
+}\end{equation}
+
+donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(X\) es el tensor de entrada
+\item
+  \(\text{pad}(X)\) es la entrada extendida mediante padding
+\item
+  \(\star\) denota la operación de correlación cruzada
+\item
+  \(K\) es el kernel o filtro
+\item
+  \(b\) es el sesgo
+\item
+  \(\sigma\) es la función de activación
+\end{itemize}
 
 \bookmarksetup{startatroot}
 
-\chapter{Función de Activación}\label{funciuxf3n-de-activaciuxf3n}
+\chapter{Función de activación}\label{funciuxf3n-de-activaciuxf3n}
+
+Una \textbf{función de activación} es una aplicación no lineal que se
+introduce después de una transformación afín, con el objetivo de dotar
+al modelo de la capacidad de aproximar funciones no lineales.
+
+\subsection{Definición}\label{definiciuxf3n}
+
+Sea \(x \in \mathbb{R}^n\) un vector de entrada, \(w \in \mathbb{R}^n\)
+un vector de pesos y \(b \in \mathbb{R}\) un sesgo. Se define la
+preactivación como:
+
+\begin{equation}\phantomsection\label{eq-preactivation}{
+z = w^T x + b
+}\end{equation}
+
+La salida de la neurona está dada por:
+
+\begin{equation}\phantomsection\label{eq-neuron-output}{
+y = \sigma(z)
+}\end{equation}
+
+donde \(\sigma : \mathbb{R} \to \mathbb{R}\) es la función de
+activación.
+
+\subsection{No linealidad}\label{no-linealidad}
+
+Considérese una red neuronal profunda compuesta únicamente por
+transformaciones afines. En tal caso, la composición de dichas
+transformaciones satisface:
+
+\begin{equation}\phantomsection\label{eq-affine-composition}{
+f(x) = W_L W_{L-1} \cdots W_1 x + b'
+}\end{equation}
+
+lo cual sigue siendo una transformación afín. Por consiguiente, sin la
+introducción de funciones de activación no lineales, la red carece de
+capacidad expresiva para modelar relaciones no lineales.
+
+En una red neuronal convolucional (CNN), la salida de una capa se
+expresa como:
+
+\begin{equation}\phantomsection\label{eq-cnn-layer-output}{
+Y = \sigma\big( X \star K + b \big)
+}\end{equation}
+
+donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(X\) es el tensor de entrada\\
+\item
+  \(\star\) denota la operación de correlación cruzada\\
+\item
+  \(K\) es el conjunto de filtros (kernels)\\
+\item
+  \(b\) es el sesgo\\
+\item
+  \(\sigma\) se aplica elemento a elemento
+\end{itemize}
+
+\subsection{Ejemplos de funciones de
+activación}\label{ejemplos-de-funciones-de-activaciuxf3n}
+
+Algunas de las funciones de activación más utilizadas son:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{ReLU (Rectified Linear Unit)}
+\end{itemize}
+
+\begin{equation}\phantomsection\label{eq-relu}{
+\sigma(x) = \max(0, x)
+}\end{equation}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Sigmoide}
+\end{itemize}
+
+\begin{equation}\phantomsection\label{eq-sigmoid}{
+\sigma(x) = \frac{1}{1 + e^{-x}}
+}\end{equation}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tangente hiperbólica}
+\end{itemize}
+
+\begin{equation}\phantomsection\label{eq-tanh}{
+\sigma(x) = \tanh(x)
+}\end{equation}
+
+\subsection{Propiedades fundamentales}\label{propiedades-fundamentales}
+
+Las funciones de activación empleadas en redes neuronales satisfacen
+típicamente:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{No linealidad}, necesaria para incrementar la capacidad de
+  representación del modelo\\
+\item
+  \textbf{Aplicación puntual (element-wise)}, preservando la estructura
+  espacial en CNN\\
+\item
+  \textbf{Diferenciabilidad} (al menos casi en todas partes), requisito
+  esencial para métodos de optimización basados en gradiente
+\end{itemize}
+
+\subsection{Formulación funcional}\label{formulaciuxf3n-funcional}
+
+Desde una perspectiva funcional, una red neuronal profunda puede
+interpretarse como la composición de aplicaciones de la forma:
+
+\begin{equation}\phantomsection\label{eq-deep-functional}{
+f_\theta = \sigma_L \circ T_L \circ \cdots \circ \sigma_1 \circ T_1
+}\end{equation}
+
+donde cada transformación afín está dada por:
+
+\begin{equation}\phantomsection\label{eq-affine-transformation}{
+T_i(x) = W_i x + b_i
+}\end{equation}
+
+\bookmarksetup{startatroot}
+
+\chapter{Función de Activación
+(Resumen)}\label{funciuxf3n-de-activaciuxf3n-resumen}
 
 Después de la convolución se aplica una función no lineal. Un ejemplo
 común es la función ReLU:
 
-\[
-\phi(x) = \max(0,x).
-\]
+\begin{equation}\phantomsection\label{eq-relu-short}{
+\phi(x) = \max(0,x)
+}\end{equation}
 
 La salida es:
 
-\[
-Z = \phi(Y).
-\]
+\begin{equation}\phantomsection\label{eq-relu-layer}{
+Z = \phi(Y)
+}\end{equation}
 
 \bookmarksetup{startatroot}
 
@@ -586,15 +708,15 @@ El pooling reduce la dimensionalidad.
 
 \section{Max Pooling}\label{max-pooling}
 
-\[
-Y(i,j) = \max_{(u,v)\in \mathcal{R}} X(i+u, j+v).
-\]
+\begin{equation}\phantomsection\label{eq-max-pooling}{
+Y(i,j) = \max_{(u,v)\in \mathcal{R}} X(i+u, j+v)
+}\end{equation}
 
 \section{Average Pooling}\label{average-pooling}
 
-\[
-Y(i,j) = \frac{1}{|\mathcal{R}|} \sum_{(u,v)\in \mathcal{R}} X(i+u, j+v).
-\]
+\begin{equation}\phantomsection\label{eq-avg-pooling}{
+Y(i,j) = \frac{1}{|\mathcal{R}|} \sum_{(u,v)\in \mathcal{R}} X(i+u, j+v)
+}\end{equation}
 
 \bookmarksetup{startatroot}
 
@@ -602,15 +724,15 @@ Y(i,j) = \frac{1}{|\mathcal{R}|} \sum_{(u,v)\in \mathcal{R}} X(i+u, j+v).
 
 Se transforma el tensor en un vector:
 
-\[
-X \in \mathbb{R}^{H \times W \times C} \rightarrow x \in \mathbb{R}^{n}.
-\]
+\begin{equation}\phantomsection\label{eq-flattening}{
+X \in \mathbb{R}^{H \times W \times C} \rightarrow x \in \mathbb{R}^{n}
+}\end{equation}
 
 Luego:
 
-\[
-y = Wx + b,
-\]
+\begin{equation}\phantomsection\label{eq-fc-layer}{
+y = Wx + b
+}\end{equation}
 
 donde \(W \in \mathbb{R}^{m \times n}\) y \(b \in \mathbb{R}^{m}\).
 
@@ -620,15 +742,15 @@ donde \(W \in \mathbb{R}^{m \times n}\) y \(b \in \mathbb{R}^{m}\).
 
 \section{Softmax}\label{softmax}
 
-\[
-\hat{y}_i = \frac{e^{z_i}}{\sum_{j} e^{z_j}}.
-\]
+\begin{equation}\phantomsection\label{eq-softmax}{
+\hat{y}_i = \frac{e^{z_i}}{\sum_{j} e^{z_j}}
+}\end{equation}
 
 \section{Entropía Cruzada}\label{entropuxeda-cruzada}
 
-\[
-\mathcal{L} = -\sum_{i} y_i \log(\hat{y}_i).
-\]
+\begin{equation}\phantomsection\label{eq-cross-entropy}{
+\mathcal{L} = -\sum_{i} y_i \log(\hat{y}_i)
+}\end{equation}
 
 \bookmarksetup{startatroot}
 
@@ -636,19 +758,19 @@ donde \(W \in \mathbb{R}^{m \times n}\) y \(b \in \mathbb{R}^{m}\).
 
 El problema de optimización es:
 
-\[
-\min_{\theta} \mathcal{L}(f(x;\theta), y).
-\]
+\begin{equation}\phantomsection\label{eq-optimization}{
+\min_{\theta} \mathcal{L}(f(x;\theta), y)
+}\end{equation}
 
 Se utiliza descenso de gradiente:
 
-\[
-\theta \leftarrow \theta - \eta \nabla_{\theta} \mathcal{L}.
-\]
+\begin{equation}\phantomsection\label{eq-gradient-descent}{
+\theta \leftarrow \theta - \eta \nabla_{\theta} \mathcal{L}
+}\end{equation}
 
 \bookmarksetup{startatroot}
 
-\chapter{Propiedades Fundamentales}\label{propiedades-fundamentales}
+\chapter{Propiedades Fundamentales}\label{propiedades-fundamentales-1}
 
 \section{Conectividad Local}\label{conectividad-local}
 
@@ -667,9 +789,9 @@ El modelo detecta patrones independientemente de su posición.
 
 \chapter{Flujo de una CNN}\label{flujo-de-una-cnn}
 
-\[
+\begin{equation}\phantomsection\label{eq-cnn-flow}{
 \text{Imagen} \rightarrow \text{Convolución} \rightarrow \text{ReLU} \rightarrow \text{Pooling} \rightarrow \cdots \rightarrow \text{Fully Connected} \rightarrow \text{Softmax}
-\]
+}\end{equation}
 
 \bookmarksetup{startatroot}
 
@@ -678,9 +800,9 @@ Matemática}\label{interpretaciuxf3n-matemuxe1tica}
 
 Una CNN puede verse como una función:
 
-\[
-f: \mathbb{R}^{H \times W \times C} \to \mathbb{R}^{k},
-\]
+\begin{equation}\phantomsection\label{eq-final-math-interpretation}{
+f: \mathbb{R}^{H \times W \times C} \to \mathbb{R}^{k}
+}\end{equation}
 
 compuesta por operadores lineales, no lineales y de reducción.
 
@@ -689,6 +811,10 @@ para el procesamiento de imágenes debido a la combinación de
 convoluciones, no linealidades y reducción de dimensionalidad, junto con
 propiedades estructurales como la compartición de parámetros y la
 conectividad local.
+
+\bookmarksetup{startatroot}
+
+\chapter{}\label{section}
 
 
 

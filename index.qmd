@@ -238,7 +238,7 @@ $$
 X_{\text{pad}} \in \mathbb{R}^{(H+2p)\times(W+2p)\times C}
 $$ {#eq-x-pad}
 
-El padding puede interpretarse como una extensión de la función de entrada $ X $fuera de su dominio original. Formalmente, se define la extensión$ \tilde{X} $ como:
+El padding puede interpretarse como una extensión de la función de entrada $X$ fuera de su dominio original. Formalmente, se define la extensión $\tilde{X}$ como:
 
 $$
 \tilde{X}(i,j) =
