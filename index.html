@@ -6,8 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Mariana Belén Cruz Rodríguez">
-<meta name="author" content="Yofre Hernán García Gómez">
 
 <title>Tesis</title>
 <style>
@@ -32,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./capitulo1.html" rel="next">
+<link href="./LOGOunach.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -111,10 +111,12 @@ window.Quarto = {
 
 <meta property="og:title" content="Tesis">
 <meta property="og:description" content="">
+<meta property="og:image" content="LOGOunach.png">
 <meta property="og:site_name" content="Tesis">
 <meta name="twitter:title" content="Tesis">
 <meta name="twitter:description" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="LOGOunach.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
@@ -299,7 +301,11 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./LOGOunach.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./LOGOunach.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Tesis</a> 
         <div class="sidebar-tools-main tools-wide">
@@ -360,6 +366,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./capitulo1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">capitulo1.html</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -372,9 +384,10 @@ window.Quarto = {
   <ul>
   <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> Introducción</a>
   <ul class="collapse">
-  <li><a href="#representación-de-imágenes" id="toc-representación-de-imágenes" class="nav-link" data-scroll-target="#representación-de-imágenes"><span class="header-section-number">1.1</span> Representación de imágenes</a></li>
-  <li><a href="#estructura-funcional-de-la-red" id="toc-estructura-funcional-de-la-red" class="nav-link" data-scroll-target="#estructura-funcional-de-la-red"><span class="header-section-number">1.2</span> Estructura funcional de la red</a></li>
-  <li><a href="#parámetros-del-modelo" id="toc-parámetros-del-modelo" class="nav-link" data-scroll-target="#parámetros-del-modelo"><span class="header-section-number">1.3</span> Parámetros del modelo</a></li>
+  <li><a href="#cnn-adaptada-a-la-clasificación-de-glifos" id="toc-cnn-adaptada-a-la-clasificación-de-glifos" class="nav-link" data-scroll-target="#cnn-adaptada-a-la-clasificación-de-glifos"><span class="header-section-number">1.1</span> CNN adaptada a la clasificación de glifos</a></li>
+  <li><a href="#representación-de-imágenes" id="toc-representación-de-imágenes" class="nav-link" data-scroll-target="#representación-de-imágenes"><span class="header-section-number">1.2</span> Representación de imágenes</a></li>
+  <li><a href="#estructura-funcional-de-la-red" id="toc-estructura-funcional-de-la-red" class="nav-link" data-scroll-target="#estructura-funcional-de-la-red"><span class="header-section-number">1.3</span> Estructura funcional de la red</a></li>
+  <li><a href="#parámetros-del-modelo" id="toc-parámetros-del-modelo" class="nav-link" data-scroll-target="#parámetros-del-modelo"><span class="header-section-number">1.4</span> Parámetros del modelo</a></li>
   </ul></li>
   <li><a href="#operación-de-convolución" id="toc-operación-de-convolución" class="nav-link" data-scroll-target="#operación-de-convolución"><span class="header-section-number">2</span> Operación de Convolución</a>
   <ul class="collapse">
@@ -390,13 +403,20 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#propiedad-de-compartición-de-parámetros" id="toc-propiedad-de-compartición-de-parámetros" class="nav-link" data-scroll-target="#propiedad-de-compartición-de-parámetros"><span class="header-section-number">5.1</span> Propiedad de compartición de parámetros</a></li>
   </ul></li>
-  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">6</span> Resumen</a></li>
-  <li><a href="#stride-y-padding" id="toc-stride-y-padding" class="nav-link" data-scroll-target="#stride-y-padding"><span class="header-section-number">7</span> Stride y Padding</a>
+  <li><a href="#stride-y-padding" id="toc-stride-y-padding" class="nav-link" data-scroll-target="#stride-y-padding"><span class="header-section-number">6</span> Stride y Padding</a>
   <ul class="collapse">
-  <li><a href="#stride" id="toc-stride" class="nav-link" data-scroll-target="#stride"><span class="header-section-number">7.1</span> Stride</a></li>
-  <li><a href="#padding" id="toc-padding" class="nav-link" data-scroll-target="#padding"><span class="header-section-number">7.2</span> Padding</a></li>
+  <li><a href="#stride" id="toc-stride" class="nav-link" data-scroll-target="#stride"><span class="header-section-number">6.1</span> Stride</a></li>
+  <li><a href="#padding" id="toc-padding" class="nav-link" data-scroll-target="#padding"><span class="header-section-number">6.2</span> Padding</a></li>
   </ul></li>
-  <li><a href="#función-de-activación" id="toc-función-de-activación" class="nav-link" data-scroll-target="#función-de-activación"><span class="header-section-number">8</span> Función de Activación</a></li>
+  <li><a href="#función-de-activación" id="toc-función-de-activación" class="nav-link" data-scroll-target="#función-de-activación"><span class="header-section-number">7</span> Función de activación</a>
+  <ul class="collapse">
+  <li><a href="#definición" id="toc-definición" class="nav-link" data-scroll-target="#definición"><span class="header-section-number">7.0.1</span> Definición</a></li>
+  <li><a href="#no-linealidad" id="toc-no-linealidad" class="nav-link" data-scroll-target="#no-linealidad"><span class="header-section-number">7.0.2</span> No linealidad</a></li>
+  <li><a href="#ejemplos-de-funciones-de-activación" id="toc-ejemplos-de-funciones-de-activación" class="nav-link" data-scroll-target="#ejemplos-de-funciones-de-activación"><span class="header-section-number">7.0.3</span> Ejemplos de funciones de activación</a></li>
+  <li><a href="#propiedades-fundamentales" id="toc-propiedades-fundamentales" class="nav-link" data-scroll-target="#propiedades-fundamentales"><span class="header-section-number">7.0.4</span> Propiedades fundamentales</a></li>
+  <li><a href="#formulación-funcional" id="toc-formulación-funcional" class="nav-link" data-scroll-target="#formulación-funcional"><span class="header-section-number">7.0.5</span> Formulación funcional</a></li>
+  </ul></li>
+  <li><a href="#función-de-activación-resumen" id="toc-función-de-activación-resumen" class="nav-link" data-scroll-target="#función-de-activación-resumen"><span class="header-section-number">8</span> Función de Activación (Resumen)</a></li>
   <li><a href="#pooling" id="toc-pooling" class="nav-link" data-scroll-target="#pooling"><span class="header-section-number">9</span> Pooling</a>
   <ul class="collapse">
   <li><a href="#max-pooling" id="toc-max-pooling" class="nav-link" data-scroll-target="#max-pooling"><span class="header-section-number">9.1</span> Max Pooling</a></li>
@@ -409,7 +429,7 @@ window.Quarto = {
   <li><a href="#entropía-cruzada" id="toc-entropía-cruzada" class="nav-link" data-scroll-target="#entropía-cruzada"><span class="header-section-number">11.2</span> Entropía Cruzada</a></li>
   </ul></li>
   <li><a href="#entrenamiento" id="toc-entrenamiento" class="nav-link" data-scroll-target="#entrenamiento"><span class="header-section-number">12</span> Entrenamiento</a></li>
-  <li><a href="#propiedades-fundamentales" id="toc-propiedades-fundamentales" class="nav-link" data-scroll-target="#propiedades-fundamentales"><span class="header-section-number">13</span> Propiedades Fundamentales</a>
+  <li><a href="#propiedades-fundamentales-1" id="toc-propiedades-fundamentales-1" class="nav-link" data-scroll-target="#propiedades-fundamentales-1"><span class="header-section-number">13</span> Propiedades Fundamentales</a>
   <ul class="collapse">
   <li><a href="#conectividad-local" id="toc-conectividad-local" class="nav-link" data-scroll-target="#conectividad-local"><span class="header-section-number">13.1</span> Conectividad Local</a></li>
   <li><a href="#compartición-de-parámetros" id="toc-compartición-de-parámetros" class="nav-link" data-scroll-target="#compartición-de-parámetros"><span class="header-section-number">13.2</span> Compartición de Parámetros</a></li>
@@ -450,15 +470,17 @@ window.Quarto = {
 </header>
 
 
+
 <section id="introducción" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1>
+<h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1><p><img src="LOGOunach.png" title="Tesis" class="quarto-cover-image nolightbox img-fluid"></p>
 <p>En este trabajo se aborda el problema de <strong>reconocimiento automático de glifos del alfabeto náhuatl</strong> mediante el uso de redes neuronales convolucionales (<em>Convolutional Neural Networks</em>, CNN). Este problema puede formularse como una tarea de clasificación de imágenes, en la cual cada glifo es representado mediante una estructura matricial que codifica su información visual.</p>
 <p>Los glifos presentan variaciones en forma, trazo y estilo, lo que dificulta su identificación mediante métodos tradicionales. En este contexto, las CNN resultan particularmente adecuadas debido a su capacidad para extraer características espaciales relevantes directamente a partir de los datos, tales como bordes, curvas y patrones geométricos distintivos.</p>
+<section id="cnn-adaptada-a-la-clasificación-de-glifos" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="cnn-adaptada-a-la-clasificación-de-glifos"><span class="header-section-number">1.1</span> CNN adaptada a la clasificación de glifos</h2>
 <p>Desde un punto de vista formal, una CNN puede entenderse como una función parametrizada</p>
-<p><span class="math display">\[
-f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longrightarrow \mathbb{R}^{k},
-\tag{1}
-\]</span></p>
+<p><span id="eq-cnn-func"><span class="math display">\[
+f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longrightarrow \mathbb{R}^{k}
+\tag{1}\]</span></span></p>
 <p>donde:</p>
 <ul>
 <li><span class="math inline">\(\mathcal{X}\)</span> es el espacio de entrada (por ejemplo, imágenes),</li>
@@ -468,52 +490,46 @@ f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longr
 <li><span class="math inline">\(k\)</span> es la dimensión del espacio de salida (por ejemplo, número de clases en clasificación),</li>
 <li><span class="math inline">\(\theta\)</span> denota el conjunto total de parámetros entrenables del modelo.</li>
 </ul>
-<hr>
-<section id="representación-de-imágenes" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="representación-de-imágenes"><span class="header-section-number">1.1</span> Representación de imágenes</h2>
+</section>
+<section id="representación-de-imágenes" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="representación-de-imágenes"><span class="header-section-number">1.2</span> Representación de imágenes</h2>
 <p>Una imagen se modela matemáticamente como un tensor de orden 3:</p>
-<p><span class="math display">\[
-X \in \mathbb{R}^{H \times W \times C}.
-\tag{2}
-\]</span></p>
+<p><span id="eq-img-tensor"><span class="math display">\[
+X \in \mathbb{R}^{H \times W \times C}
+\tag{2}\]</span></span></p>
 <p>Esto significa que:</p>
 <ul>
 <li>Para cada posición espacial <span class="math inline">\((i,j)\)</span> con <span class="math inline">\(1 \leq i \leq H\)</span>, <span class="math inline">\(1 \leq j \leq W\)</span>,</li>
-<li>el valor <span class="math inline">\(X(i,j)\)</span> no es escalar, sino un vector en <span class="math inline">\(\mathbb{R}^{C}\)</span>:</li>
+<li>el valor <span class="math inline">\(X(i,j)\)</span> no es escalar, sino un vector en <span class="math inline">\(\mathbb{R}^{C}:\)</span></li>
 </ul>
-<p><span class="math display">\[
-X(i,j) = \big(x_1, x_2, \dots, x_C\big).
-\tag{3}
-\]</span> —</p>
+<p><span id="eq-pixel-vec"><span class="math display">\[
+X(i,j) = \big(x_1, x_2, \dots, x_C\big)
+\tag{3}\]</span></span></p>
 </section>
-<section id="estructura-funcional-de-la-red" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="estructura-funcional-de-la-red"><span class="header-section-number">1.2</span> Estructura funcional de la red</h2>
+<section id="estructura-funcional-de-la-red" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="estructura-funcional-de-la-red"><span class="header-section-number">1.3</span> Estructura funcional de la red</h2>
 <p>Una CNN se construye como una composición de funciones:</p>
-<p><span class="math display">\[
-f(x; \theta) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x),
-\tag{1}
-\]</span></p>
+<p><span id="eq-composition"><span class="math display">\[
+f(x; \theta) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x)
+\tag{4}\]</span></span></p>
 <p>donde:</p>
 <ul>
 <li><span class="math inline">\(L \in \mathbb{N}\)</span> es el número total de capas de la red,</li>
 <li>cada <span class="math inline">\(f^{(l)}\)</span> es una función asociada a la capa <span class="math inline">\(l\)</span>-ésima.</li>
 </ul>
-<hr>
 </section>
-<section id="parámetros-del-modelo" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="parámetros-del-modelo"><span class="header-section-number">1.3</span> Parámetros del modelo</h2>
+<section id="parámetros-del-modelo" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="parámetros-del-modelo"><span class="header-section-number">1.4</span> Parámetros del modelo</h2>
 <p>El conjunto de parámetros <span class="math inline">\(\theta\)</span> contiene todos los elementos ajustables del modelo:</p>
-<p><span class="math display">\[
-\theta = {\theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)}}.
-\tag{4}
-\]</span></p>
+<p><span id="eq-params"><span class="math display">\[
+\theta = {\theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)}}
+\tag{5}\]</span></span></p>
 <p>En una CNN, estos parámetros incluyen principalmente:</p>
 <ul>
 <li><strong>kernels</strong> (filtros convolucionales),</li>
 <li><strong>sesgos</strong> (bias) asociados a cada filtro.</li>
 </ul>
 <p>Estos parámetros determinan completamente la forma de la función <span class="math inline">\(f(x;\theta)\)</span> y son aprendidos a partir de los datos mediante optimización.</p>
-<hr>
 </section>
 </section>
 <section id="operación-de-convolución" class="level1" data-number="2">
@@ -522,221 +538,300 @@ f(x; \theta) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x),
 <section id="caso-unicanal" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="caso-unicanal"><span class="header-section-number">2.1</span> Caso unicanal</h2>
 <p>Sea una imagen:</p>
-<p><span class="math display">\[
+<p><span id="eq-img-single"><span class="math display">\[
 X \in \mathbb{R}^{H \times W}
-\]</span></p>
+\tag{6}\]</span></span></p>
 <p>y un kernel (o filtro):</p>
-<p><span class="math display">\[
-K \in \mathbb{R}^{k_h \times k_w},
-\]</span></p>
+<p><span id="eq-kernel-single"><span class="math display">\[
+K \in \mathbb{R}^{k_h \times k_w}
+\tag{7}\]</span></span></p>
 <p>donde:</p>
 <ul>
 <li><span class="math inline">\(k_h\)</span>: altura del kernel,</li>
 <li><span class="math inline">\(k_w\)</span>: ancho del kernel.</li>
 </ul>
 <p>La salida <span class="math inline">\(Y\)</span> se define como:</p>
-<p><span class="math display">\[
-Y(i,j) = \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v), X(i+u, j+v).
-\tag{5}
-\]</span></p>
-<hr>
+<p><span id="eq-conv-discrete"><span class="math display">\[
+Y(i,j) = \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v), X(i+u, j+v)
+\tag{8}\]</span></span></p>
 </section>
 <section id="interpretación-como-producto-interno" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="interpretación-como-producto-interno"><span class="header-section-number">2.2</span> Interpretación como producto interno</h2>
 <p>Sea <span class="math inline">\(X_{(i,j)}\)</span> la submatriz de <span class="math inline">\(X\)</span> de tamaño <span class="math inline">\(k_h \times k_w\)</span>:</p>
-<p><span class="math display">\[
-X_{(i,j)} = {X(i+u, j+v)}_{u,v}.
-\tag{6}
-\]</span></p>
+<p><span id="eq-submatrix"><span class="math display">\[
+X_{(i,j)} = {X(i+u, j+v)}_{u,v}
+\tag{9}\]</span></span></p>
 <p>Entonces:</p>
-<p><span class="math display">\[
-Y(i,j) = \langle K, X_{(i,j)} \rangle,
-\tag{7}
-\]</span></p>
+<p><span id="eq-inner-prod"><span class="math display">\[
+Y(i,j) = \langle K, X_{(i,j)} \rangle
+\tag{10}\]</span></span></p>
 <p>donde <span class="math inline">\(\langle \cdot, \cdot \rangle\)</span> denota el producto interno en <span class="math inline">\(\mathbb{R}^{k_h \times k_w}\)</span>.</p>
 <p>Esto implica que la convolución mide la <strong>similitud entre el kernel y una región local de la imagen</strong>.</p>
-<hr>
 </section>
 </section>
 <section id="convolución-multicanal" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Convolución Multicanal</h1>
 <p>En el caso general, la entrada es:</p>
-<p><span class="math display">\[
-X \in \mathbb{R}^{H \times W \times C},
-\]</span></p>
+<p><span id="eq-img-multi"><span class="math display">\[
+X \in \mathbb{R}^{H \times W \times C}
+\tag{11}\]</span></span></p>
 <p>y el kernel:</p>
-<p><span class="math display">\[
-K \in \mathbb{R}^{k_h \times k_w \times C}.
-\]</span></p>
+<p><span id="eq-kernel-multi"><span class="math display">\[
+K \in \mathbb{R}^{k_h \times k_w \times C}
+\tag{12}\]</span></span></p>
 <p>La convolución se define como:</p>
-<p><span class="math display">\[
-Y(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v,c), X(i+u, j+v, c).
-\tag{1}
-\]</span></p>
-<hr>
+<p><span id="eq-conv-multi"><span class="math display">\[
+Y(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v,c), X(i+u, j+v, c)
+\tag{13}\]</span></span></p>
 <section id="interpretación-tensorial" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="interpretación-tensorial"><span class="header-section-number">3.1</span> Interpretación tensorial</h2>
 <p>Si se vectoriza cada ventana:</p>
-<p><span class="math display">\[
-X_{(i,j)} \in \mathbb{R}^{k_h k_w C}, \quad K \in \mathbb{R}^{k_h k_w C},
-\]</span></p>
+<p><span id="eq-vec-dims"><span class="math display">\[
+X_{(i,j)} \in \mathbb{R}^{k_h k_w C}, \quad K \in \mathbb{R}^{k_h k_w C}
+\tag{14}\]</span></span></p>
 <p>entonces:</p>
-<p><span class="math display">\[
-Y(i,j) = K^\top X_{(i,j)}.
-\tag{8}
-\]</span></p>
+<p><span id="eq-linear-op"><span class="math display">\[
+Y(i,j) = K^\top X_{(i,j)}
+\tag{15}\]</span></span></p>
 <p>Esto muestra que la convolución es un operador lineal local.</p>
-<hr>
 </section>
 </section>
 <section id="múltiples-filtros-mapas-de-características" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Múltiples Filtros (Mapas de Características)</h1>
 <p>En una CNN no se utiliza un solo kernel, sino un conjunto de filtros:</p>
-<p><span class="math display">\[
-K^{(f)} \in \mathbb{R}^{k_h \times k_w \times C}, \quad f = 1,\dots,F.
-\]</span></p>
+<p><span id="eq-filters-set"><span class="math display">\[
+K^{(f)} \in \mathbb{R}^{k_h \times k_w \times C}, \quad f = 1,\dots,F
+\tag{16}\]</span></span></p>
 <p>Cada filtro produce un mapa de activación distinto:</p>
-<p><span class="math display">\[
+<p><span id="eq-activation-map"><span class="math display">\[
 Y_f(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1}
-K^{(f)}(u,v,c), X(i+u, j+v, c).
-\]</span></p>
+K^{(f)}(u,v,c), X(i+u, j+v, c)
+\tag{17}\]</span></span></p>
 <p>Por tanto, la salida total es un tensor:</p>
-<p><span class="math display">\[
-Y \in \mathbb{R}^{H' \times W' \times F},
-\]</span></p>
+<p><span id="eq-output-tensor"><span class="math display">\[
+Y \in \mathbb{R}^{H' \times W' \times F}
+\tag{18}\]</span></span></p>
 <p>donde:</p>
 <ul>
 <li><span class="math inline">\(H'\)</span> y <span class="math inline">\(W'\)</span> dependen del tamaño del kernel, el padding y el stride,</li>
 <li><span class="math inline">\(F\)</span> es el número de filtros, es decir, el número de <strong>canales de salida</strong>.</li>
 </ul>
-<hr>
 </section>
 <section id="interpretación-de-los-kernels" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Interpretación de los kernels</h1>
 <p>Cada kernel puede interpretarse como un <strong>detector de patrones locales</strong>.</p>
 <p>Formalmente:</p>
-<p><span class="math display">\[
-Y_f(i,j) = \langle K^{(f)}, X_{(i,j)} \rangle.
-\]</span></p>
+<p><span id="eq-kernel-similarity"><span class="math display">\[
+Y_f(i,j) = \langle K^{(f)}, X_{(i,j)} \rangle
+\tag{19}\]</span></span></p>
 <p>Por tanto:</p>
 <ul>
 <li>Si <span class="math inline">\(Y_f(i,j)\)</span> es grande, entonces la región <span class="math inline">\(X_{(i,j)}\)</span> es similar al patrón definido por <span class="math inline">\(K^{(f)}\)</span>.</li>
 <li>Si es pequeño o negativo, no hay coincidencia significativa.</li>
 </ul>
-<hr>
 <section id="propiedad-de-compartición-de-parámetros" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="propiedad-de-compartición-de-parámetros"><span class="header-section-number">5.1</span> Propiedad de compartición de parámetros</h2>
 <p>Un aspecto fundamental es que el mismo kernel <span class="math inline">\(K^{(f)}\)</span> se aplica en todas las posiciones <span class="math inline">\((i,j)\)</span>:</p>
-<p><span class="math display">\[
-K^{(f)}(u,v,c) \text{ es independiente de } (i,j).
-\]</span></p>
+<p><span id="eq-param-sharing"><span class="math display">\[
+K^{(f)}(u,v,c) \text{ es independiente de } (i,j)
+\tag{20}\]</span></span></p>
 <p>Esto implica:</p>
 <ul>
 <li>reducción significativa del número de parámetros,</li>
 <li>capacidad de detectar patrones independientemente de su posición (invarianza traslacional).</li>
 </ul>
-<hr>
 </section>
 </section>
-<section id="resumen" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Resumen</h1>
-<p>Una CNN puede entenderse como una función parametrizada</p>
-<p><span class="math display">\[
-f(x;\theta) = f^{(L)} \circ \cdots \circ f^{(1)}(x),
-\]</span></p>
+<section id="stride-y-padding" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Stride y Padding</h1>
+<section id="stride" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="stride"><span class="header-section-number">6.1</span> Stride</h2>
+<p>El stride <span class="math inline">\(s\)</span> controla el desplazamiento del kernel. Las dimensiones de salida son:</p>
+<p><span id="eq-output-dims"><span class="math display">\[
+H' = \left\lfloor \frac{H - k_h + 2p}{s} \right\rfloor + 1, \quad
+W' = \left\lfloor \frac{W - k_w + 2p}{s} \right\rfloor + 1
+\tag{21}\]</span></span></p>
+</section>
+<section id="padding" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="padding"><span class="header-section-number">6.2</span> Padding</h2>
+<p>El padding es una operación que consiste en añadir valores (generalmente ceros) alrededor de la entrada antes de aplicar la convolución. Esto se hace para controlar el tamaño de la salida y preservar información en los bordes.</p>
+<p><span id="eq-x-pad"><span class="math display">\[
+X_{\text{pad}} \in \mathbb{R}^{(H+2p)\times(W+2p)\times C}
+\tag{22}\]</span></span></p>
+<p>El padding puede interpretarse como una extensión de la función de entrada <span class="math inline">\(X\)</span> fuera de su dominio original. Formalmente, se define la extensión <span class="math inline">\(\tilde{X}\)</span> como:</p>
+<p><span id="eq-padding-func"><span class="math display">\[
+\tilde{X}(i,j) =
+\begin{cases}
+X(i,j), &amp; \text{si } (i,j) \text{ pertenece al dominio original}, \\
+0, &amp; \text{en otro caso}
+\end{cases}
+\tag{23}\]</span></span></p>
+<p>Esta extensión corresponde a una extensión por cero del dominio de la función.</p>
+<p>En una capa convolucional, el padding se aplica antes de la convolución. Por lo tanto, la operación completa de una capa convolucional con padding se puede expresar como:</p>
+<p><span id="eq-conv-layer-pad"><span class="math display">\[
+Y = \sigma\big( (\text{pad}(X)) \star K + b \big)
+\tag{24}\]</span></span></p>
 <p>donde:</p>
 <ul>
-<li><span class="math inline">\(x \in \mathbb{R}^{H \times W \times C}\)</span> es una imagen,</li>
-<li>cada capa aplica operadores lineales locales (convoluciones) seguidos de no linealidades,</li>
-<li>los parámetros <span class="math inline">\(\theta\)</span> están formados principalmente por kernels,</li>
-<li>cada kernel actúa como un detector de patrones mediante productos internos locales.</li>
+<li><span class="math inline">\(X\)</span> es el tensor de entrada</li>
+<li><span class="math inline">\(\text{pad}(X)\)</span> es la entrada extendida mediante padding</li>
+<li><span class="math inline">\(\star\)</span> denota la operación de correlación cruzada</li>
+<li><span class="math inline">\(K\)</span> es el kernel o filtro</li>
+<li><span class="math inline">\(b\)</span> es el sesgo</li>
+<li><span class="math inline">\(\sigma\)</span> es la función de activación</li>
 </ul>
-<hr>
-</section>
-<section id="stride-y-padding" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Stride y Padding</h1>
-<section id="stride" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="stride"><span class="header-section-number">7.1</span> Stride</h2>
-<p>El stride <span class="math inline">\(s\)</span> controla el desplazamiento del kernel. Las dimensiones de salida son:</p>
-<p><span class="math display">\[
-H' = \left\lfloor \frac{H - k_h + 2p}{s} \right\rfloor + 1, \quad
-W' = \left\lfloor \frac{W - k_w + 2p}{s} \right\rfloor + 1.
-\]</span></p>
-</section>
-<section id="padding" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="padding"><span class="header-section-number">7.2</span> Padding</h2>
-<p>Se define como la adición de ceros alrededor de la imagen:</p>
-<p><span class="math display">\[
-X_{\text{pad}} \in \mathbb{R}^{(H+2p)\times(W+2p)\times C}.
-\]</span></p>
 </section>
 </section>
-<section id="función-de-activación" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Función de Activación</h1>
+<section id="función-de-activación" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Función de activación</h1>
+<p>Una <strong>función de activación</strong> es una aplicación no lineal que se introduce después de una transformación afín, con el objetivo de dotar al modelo de la capacidad de aproximar funciones no lineales.</p>
+<section id="definición" class="level3" data-number="7.0.1">
+<h3 data-number="7.0.1" class="anchored" data-anchor-id="definición"><span class="header-section-number">7.0.1</span> Definición</h3>
+<p>Sea <span class="math inline">\(x \in \mathbb{R}^n\)</span> un vector de entrada, <span class="math inline">\(w \in \mathbb{R}^n\)</span> un vector de pesos y <span class="math inline">\(b \in \mathbb{R}\)</span> un sesgo. Se define la preactivación como:</p>
+<p><span id="eq-preactivation"><span class="math display">\[
+z = w^T x + b
+\tag{25}\]</span></span></p>
+<p>La salida de la neurona está dada por:</p>
+<p><span id="eq-neuron-output"><span class="math display">\[
+y = \sigma(z)
+\tag{26}\]</span></span></p>
+<p>donde <span class="math inline">\(\sigma : \mathbb{R} \to \mathbb{R}\)</span> es la función de activación.</p>
+</section>
+<section id="no-linealidad" class="level3" data-number="7.0.2">
+<h3 data-number="7.0.2" class="anchored" data-anchor-id="no-linealidad"><span class="header-section-number">7.0.2</span> No linealidad</h3>
+<p>Considérese una red neuronal profunda compuesta únicamente por transformaciones afines. En tal caso, la composición de dichas transformaciones satisface:</p>
+<p><span id="eq-affine-composition"><span class="math display">\[
+f(x) = W_L W_{L-1} \cdots W_1 x + b'
+\tag{27}\]</span></span></p>
+<p>lo cual sigue siendo una transformación afín. Por consiguiente, sin la introducción de funciones de activación no lineales, la red carece de capacidad expresiva para modelar relaciones no lineales.</p>
+<p>En una red neuronal convolucional (CNN), la salida de una capa se expresa como:</p>
+<p><span id="eq-cnn-layer-output"><span class="math display">\[
+Y = \sigma\big( X \star K + b \big)
+\tag{28}\]</span></span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(X\)</span> es el tensor de entrada<br>
+</li>
+<li><span class="math inline">\(\star\)</span> denota la operación de correlación cruzada<br>
+</li>
+<li><span class="math inline">\(K\)</span> es el conjunto de filtros (kernels)<br>
+</li>
+<li><span class="math inline">\(b\)</span> es el sesgo<br>
+</li>
+<li><span class="math inline">\(\sigma\)</span> se aplica elemento a elemento</li>
+</ul>
+</section>
+<section id="ejemplos-de-funciones-de-activación" class="level3" data-number="7.0.3">
+<h3 data-number="7.0.3" class="anchored" data-anchor-id="ejemplos-de-funciones-de-activación"><span class="header-section-number">7.0.3</span> Ejemplos de funciones de activación</h3>
+<p>Algunas de las funciones de activación más utilizadas son:</p>
+<ul>
+<li><strong>ReLU (Rectified Linear Unit)</strong></li>
+</ul>
+<p><span id="eq-relu"><span class="math display">\[
+\sigma(x) = \max(0, x)
+\tag{29}\]</span></span></p>
+<ul>
+<li><strong>Sigmoide</strong></li>
+</ul>
+<p><span id="eq-sigmoid"><span class="math display">\[
+\sigma(x) = \frac{1}{1 + e^{-x}}
+\tag{30}\]</span></span></p>
+<ul>
+<li><strong>Tangente hiperbólica</strong></li>
+</ul>
+<p><span id="eq-tanh"><span class="math display">\[
+\sigma(x) = \tanh(x)
+\tag{31}\]</span></span></p>
+</section>
+<section id="propiedades-fundamentales" class="level3" data-number="7.0.4">
+<h3 data-number="7.0.4" class="anchored" data-anchor-id="propiedades-fundamentales"><span class="header-section-number">7.0.4</span> Propiedades fundamentales</h3>
+<p>Las funciones de activación empleadas en redes neuronales satisfacen típicamente:</p>
+<ul>
+<li><strong>No linealidad</strong>, necesaria para incrementar la capacidad de representación del modelo<br>
+</li>
+<li><strong>Aplicación puntual (element-wise)</strong>, preservando la estructura espacial en CNN<br>
+</li>
+<li><strong>Diferenciabilidad</strong> (al menos casi en todas partes), requisito esencial para métodos de optimización basados en gradiente</li>
+</ul>
+</section>
+<section id="formulación-funcional" class="level3" data-number="7.0.5">
+<h3 data-number="7.0.5" class="anchored" data-anchor-id="formulación-funcional"><span class="header-section-number">7.0.5</span> Formulación funcional</h3>
+<p>Desde una perspectiva funcional, una red neuronal profunda puede interpretarse como la composición de aplicaciones de la forma:</p>
+<p><span id="eq-deep-functional"><span class="math display">\[
+f_\theta = \sigma_L \circ T_L \circ \cdots \circ \sigma_1 \circ T_1
+\tag{32}\]</span></span></p>
+<p>donde cada transformación afín está dada por:</p>
+<p><span id="eq-affine-transformation"><span class="math display">\[
+T_i(x) = W_i x + b_i
+\tag{33}\]</span></span></p>
+</section>
+</section>
+<section id="función-de-activación-resumen" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Función de Activación (Resumen)</h1>
 <p>Después de la convolución se aplica una función no lineal. Un ejemplo común es la función ReLU:</p>
-<p><span class="math display">\[
-\phi(x) = \max(0,x).
-\]</span></p>
+<p><span id="eq-relu-short"><span class="math display">\[
+\phi(x) = \max(0,x)
+\tag{34}\]</span></span></p>
 <p>La salida es:</p>
-<p><span class="math display">\[
-Z = \phi(Y).
-\]</span></p>
+<p><span id="eq-relu-layer"><span class="math display">\[
+Z = \phi(Y)
+\tag{35}\]</span></span></p>
 </section>
 <section id="pooling" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> Pooling</h1>
 <p>El pooling reduce la dimensionalidad.</p>
 <section id="max-pooling" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="max-pooling"><span class="header-section-number">9.1</span> Max Pooling</h2>
-<p><span class="math display">\[
-Y(i,j) = \max_{(u,v)\in \mathcal{R}} X(i+u, j+v).
-\]</span></p>
+<p><span id="eq-max-pooling"><span class="math display">\[
+Y(i,j) = \max_{(u,v)\in \mathcal{R}} X(i+u, j+v)
+\tag{36}\]</span></span></p>
 </section>
 <section id="average-pooling" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="average-pooling"><span class="header-section-number">9.2</span> Average Pooling</h2>
-<p><span class="math display">\[
-Y(i,j) = \frac{1}{|\mathcal{R}|} \sum_{(u,v)\in \mathcal{R}} X(i+u, j+v).
-\]</span></p>
+<p><span id="eq-avg-pooling"><span class="math display">\[
+Y(i,j) = \frac{1}{|\mathcal{R}|} \sum_{(u,v)\in \mathcal{R}} X(i+u, j+v)
+\tag{37}\]</span></span></p>
 </section>
 </section>
 <section id="capa-totalmente-conectada" class="level1" data-number="10">
 <h1 data-number="10"><span class="header-section-number">10</span> Capa Totalmente Conectada</h1>
 <p>Se transforma el tensor en un vector:</p>
-<p><span class="math display">\[
-X \in \mathbb{R}^{H \times W \times C} \rightarrow x \in \mathbb{R}^{n}.
-\]</span></p>
+<p><span id="eq-flattening"><span class="math display">\[
+X \in \mathbb{R}^{H \times W \times C} \rightarrow x \in \mathbb{R}^{n}
+\tag{38}\]</span></span></p>
 <p>Luego:</p>
-<p><span class="math display">\[
-y = Wx + b,
-\]</span></p>
+<p><span id="eq-fc-layer"><span class="math display">\[
+y = Wx + b
+\tag{39}\]</span></span></p>
 <p>donde <span class="math inline">\(W \in \mathbb{R}^{m \times n}\)</span> y <span class="math inline">\(b \in \mathbb{R}^{m}\)</span>.</p>
 </section>
 <section id="función-de-pérdida" class="level1" data-number="11">
 <h1 data-number="11"><span class="header-section-number">11</span> Función de Pérdida</h1>
 <section id="softmax" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="softmax"><span class="header-section-number">11.1</span> Softmax</h2>
-<p><span class="math display">\[
-\hat{y}_i = \frac{e^{z_i}}{\sum_{j} e^{z_j}}.
-\]</span></p>
+<p><span id="eq-softmax"><span class="math display">\[
+\hat{y}_i = \frac{e^{z_i}}{\sum_{j} e^{z_j}}
+\tag{40}\]</span></span></p>
 </section>
 <section id="entropía-cruzada" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="entropía-cruzada"><span class="header-section-number">11.2</span> Entropía Cruzada</h2>
-<p><span class="math display">\[
-\mathcal{L} = -\sum_{i} y_i \log(\hat{y}_i).
-\]</span></p>
+<p><span id="eq-cross-entropy"><span class="math display">\[
+\mathcal{L} = -\sum_{i} y_i \log(\hat{y}_i)
+\tag{41}\]</span></span></p>
 </section>
 </section>
 <section id="entrenamiento" class="level1" data-number="12">
 <h1 data-number="12"><span class="header-section-number">12</span> Entrenamiento</h1>
 <p>El problema de optimización es:</p>
-<p><span class="math display">\[
-\min_{\theta} \mathcal{L}(f(x;\theta), y).
-\]</span></p>
+<p><span id="eq-optimization"><span class="math display">\[
+\min_{\theta} \mathcal{L}(f(x;\theta), y)
+\tag{42}\]</span></span></p>
 <p>Se utiliza descenso de gradiente:</p>
-<p><span class="math display">\[
-\theta \leftarrow \theta - \eta \nabla_{\theta} \mathcal{L}.
-\]</span></p>
+<p><span id="eq-gradient-descent"><span class="math display">\[
+\theta \leftarrow \theta - \eta \nabla_{\theta} \mathcal{L}
+\tag{43}\]</span></span></p>
 </section>
-<section id="propiedades-fundamentales" class="level1" data-number="13">
+<section id="propiedades-fundamentales-1" class="level1" data-number="13">
 <h1 data-number="13"><span class="header-section-number">13</span> Propiedades Fundamentales</h1>
 <section id="conectividad-local" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="conectividad-local"><span class="header-section-number">13.1</span> Conectividad Local</h2>
@@ -753,16 +848,16 @@ y = Wx + b,
 </section>
 <section id="flujo-de-una-cnn" class="level1" data-number="14">
 <h1 data-number="14"><span class="header-section-number">14</span> Flujo de una CNN</h1>
-<p><span class="math display">\[
+<p><span id="eq-cnn-flow"><span class="math display">\[
 \text{Imagen} \rightarrow \text{Convolución} \rightarrow \text{ReLU} \rightarrow \text{Pooling} \rightarrow \cdots \rightarrow \text{Fully Connected} \rightarrow \text{Softmax}
-\]</span></p>
+\tag{44}\]</span></span></p>
 </section>
 <section id="interpretación-matemática" class="level1" data-number="15">
 <h1 data-number="15"><span class="header-section-number">15</span> Interpretación Matemática</h1>
 <p>Una CNN puede verse como una función:</p>
-<p><span class="math display">\[
-f: \mathbb{R}^{H \times W \times C} \to \mathbb{R}^{k},
-\]</span></p>
+<p><span id="eq-final-math-interpretation"><span class="math display">\[
+f: \mathbb{R}^{H \times W \times C} \to \mathbb{R}^{k}
+\tag{45}\]</span></span></p>
 <p>compuesta por operadores lineales, no lineales y de reducción.</p>
 <p>Las redes neuronales convolucionales son modelos altamente eficientes para el procesamiento de imágenes debido a la combinación de convoluciones, no linealidades y reducción de dimensionalidad, junto con propiedades estructurales como la compartición de parámetros y la conectividad local.</p>
 
@@ -1183,6 +1278,15 @@ f: \mathbb{R}^{H \times W \times C} \to \mathbb{R}^{k},
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./capitulo1.html" class="pagination-link" aria-label="capitulo1.html">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">capitulo1.html</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
