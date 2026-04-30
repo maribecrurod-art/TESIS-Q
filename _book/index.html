@@ -382,61 +382,107 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> Introducción</a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> Introducción</a></li>
+  <li><a href="#formulación-matemática-de-una-cnn" id="toc-formulación-matemática-de-una-cnn" class="nav-link" data-scroll-target="#formulación-matemática-de-una-cnn"><span class="header-section-number">2</span> Formulación Matemática de una CNN</a></li>
+  <li><a href="#representación-tensorial-de-imágenes" id="toc-representación-tensorial-de-imágenes" class="nav-link" data-scroll-target="#representación-tensorial-de-imágenes"><span class="header-section-number">3</span> Representación Tensorial de Imágenes</a></li>
+  <li><a href="#estructura-funcional-de-la-red" id="toc-estructura-funcional-de-la-red" class="nav-link" data-scroll-target="#estructura-funcional-de-la-red"><span class="header-section-number">4</span> Estructura Funcional de la Red</a></li>
+  <li><a href="#parámetros-del-modelo" id="toc-parámetros-del-modelo" class="nav-link" data-scroll-target="#parámetros-del-modelo"><span class="header-section-number">5</span> Parámetros del Modelo</a></li>
+  <li><a href="#kernels-convolucionales" id="toc-kernels-convolucionales" class="nav-link" data-scroll-target="#kernels-convolucionales"><span class="header-section-number">6</span> Kernels Convolucionales</a>
   <ul class="collapse">
-  <li><a href="#cnn-adaptada-a-la-clasificación-de-glifos" id="toc-cnn-adaptada-a-la-clasificación-de-glifos" class="nav-link" data-scroll-target="#cnn-adaptada-a-la-clasificación-de-glifos"><span class="header-section-number">1.1</span> CNN adaptada a la clasificación de glifos</a></li>
-  <li><a href="#representación-de-imágenes" id="toc-representación-de-imágenes" class="nav-link" data-scroll-target="#representación-de-imágenes"><span class="header-section-number">1.2</span> Representación de imágenes</a></li>
-  <li><a href="#estructura-funcional-de-la-red" id="toc-estructura-funcional-de-la-red" class="nav-link" data-scroll-target="#estructura-funcional-de-la-red"><span class="header-section-number">1.3</span> Estructura funcional de la red</a></li>
-  <li><a href="#parámetros-del-modelo" id="toc-parámetros-del-modelo" class="nav-link" data-scroll-target="#parámetros-del-modelo"><span class="header-section-number">1.4</span> Parámetros del modelo</a></li>
-  </ul></li>
-  <li><a href="#operación-de-convolución" id="toc-operación-de-convolución" class="nav-link" data-scroll-target="#operación-de-convolución"><span class="header-section-number">2</span> Operación de Convolución</a>
+  <li><a href="#definición-formal" id="toc-definición-formal" class="nav-link" data-scroll-target="#definición-formal"><span class="header-section-number">6.1</span> Definición Formal</a></li>
+  <li><a href="#interpretación-geométrica" id="toc-interpretación-geométrica" class="nav-link" data-scroll-target="#interpretación-geométrica"><span class="header-section-number">6.2</span> Interpretación Geométrica</a></li>
+  <li><a href="#compartición-de-parámetros" id="toc-compartición-de-parámetros" class="nav-link" data-scroll-target="#compartición-de-parámetros"><span class="header-section-number">6.3</span> Compartición de parámetros</a>
   <ul class="collapse">
-  <li><a href="#caso-unicanal" id="toc-caso-unicanal" class="nav-link" data-scroll-target="#caso-unicanal"><span class="header-section-number">2.1</span> Caso unicanal</a></li>
-  <li><a href="#interpretación-como-producto-interno" id="toc-interpretación-como-producto-interno" class="nav-link" data-scroll-target="#interpretación-como-producto-interno"><span class="header-section-number">2.2</span> Interpretación como producto interno</a></li>
+  <li><a href="#reducción-del-número-de-parámetros" id="toc-reducción-del-número-de-parámetros" class="nav-link" data-scroll-target="#reducción-del-número-de-parámetros"><span class="header-section-number">6.3.1</span> Reducción del número de parámetros</a></li>
+  <li><a href="#invarianza-traslacional" id="toc-invarianza-traslacional" class="nav-link" data-scroll-target="#invarianza-traslacional"><span class="header-section-number">6.3.2</span> Invarianza traslacional</a></li>
   </ul></li>
-  <li><a href="#convolución-multicanal" id="toc-convolución-multicanal" class="nav-link" data-scroll-target="#convolución-multicanal"><span class="header-section-number">3</span> Convolución Multicanal</a>
+  </ul></li>
+  <li><a href="#operación-de-convolución" id="toc-operación-de-convolución" class="nav-link" data-scroll-target="#operación-de-convolución"><span class="header-section-number">7</span> Operación de Convolución</a>
   <ul class="collapse">
-  <li><a href="#interpretación-tensorial" id="toc-interpretación-tensorial" class="nav-link" data-scroll-target="#interpretación-tensorial"><span class="header-section-number">3.1</span> Interpretación tensorial</a></li>
-  </ul></li>
-  <li><a href="#múltiples-filtros-mapas-de-características" id="toc-múltiples-filtros-mapas-de-características" class="nav-link" data-scroll-target="#múltiples-filtros-mapas-de-características"><span class="header-section-number">4</span> Múltiples Filtros (Mapas de Características)</a></li>
-  <li><a href="#interpretación-de-los-kernels" id="toc-interpretación-de-los-kernels" class="nav-link" data-scroll-target="#interpretación-de-los-kernels"><span class="header-section-number">5</span> Interpretación de los kernels</a>
+  <li><a href="#caso-unicanal" id="toc-caso-unicanal" class="nav-link" data-scroll-target="#caso-unicanal"><span class="header-section-number">7.1</span> Caso Unicanal</a>
   <ul class="collapse">
-  <li><a href="#propiedad-de-compartición-de-parámetros" id="toc-propiedad-de-compartición-de-parámetros" class="nav-link" data-scroll-target="#propiedad-de-compartición-de-parámetros"><span class="header-section-number">5.1</span> Propiedad de compartición de parámetros</a></li>
+  <li><a href="#interpretación-como-ventana-deslizante" id="toc-interpretación-como-ventana-deslizante" class="nav-link" data-scroll-target="#interpretación-como-ventana-deslizante"><span class="header-section-number">7.1.1</span> Interpretación como ventana deslizante</a></li>
+  <li><a href="#interpretación-como-producto-interno" id="toc-interpretación-como-producto-interno" class="nav-link" data-scroll-target="#interpretación-como-producto-interno"><span class="header-section-number">7.1.2</span> Interpretación como producto interno</a></li>
+  <li><a href="#interpretación-geométrica-1" id="toc-interpretación-geométrica-1" class="nav-link" data-scroll-target="#interpretación-geométrica-1"><span class="header-section-number">7.1.3</span> Interpretación geométrica</a></li>
+  <li><a href="#naturaleza-lineal-de-la-operación" id="toc-naturaleza-lineal-de-la-operación" class="nav-link" data-scroll-target="#naturaleza-lineal-de-la-operación"><span class="header-section-number">7.1.4</span> Naturaleza lineal de la operación</a></li>
+  <li><a href="#relación-con-la-correlación-cruzada" id="toc-relación-con-la-correlación-cruzada" class="nav-link" data-scroll-target="#relación-con-la-correlación-cruzada"><span class="header-section-number">7.1.5</span> Relación con la correlación cruzada</a></li>
+  <li><a href="#dependencia-local" id="toc-dependencia-local" class="nav-link" data-scroll-target="#dependencia-local"><span class="header-section-number">7.1.6</span> Dependencia local</a></li>
   </ul></li>
-  <li><a href="#stride-y-padding" id="toc-stride-y-padding" class="nav-link" data-scroll-target="#stride-y-padding"><span class="header-section-number">6</span> Stride y Padding</a>
+  <li><a href="#convolución-multicanal" id="toc-convolución-multicanal" class="nav-link" data-scroll-target="#convolución-multicanal"><span class="header-section-number">7.2</span> Convolución Multicanal</a></li>
+  <li><a href="#interpretación-como-producto-interno-en-espacio-tensorial" id="toc-interpretación-como-producto-interno-en-espacio-tensorial" class="nav-link" data-scroll-target="#interpretación-como-producto-interno-en-espacio-tensorial"><span class="header-section-number">7.3</span> Interpretación como producto interno en espacio tensorial</a></li>
+  <li><a href="#interpretación-geométrica-2" id="toc-interpretación-geométrica-2" class="nav-link" data-scroll-target="#interpretación-geométrica-2"><span class="header-section-number">7.4</span> Interpretación geométrica</a></li>
+  <li><a href="#naturaleza-lineal" id="toc-naturaleza-lineal" class="nav-link" data-scroll-target="#naturaleza-lineal"><span class="header-section-number">7.5</span> Naturaleza lineal</a></li>
+  <li><a href="#interpretación-estructural" id="toc-interpretación-estructural" class="nav-link" data-scroll-target="#interpretación-estructural"><span class="header-section-number">7.6</span> Interpretación estructural</a></li>
+  <li><a href="#forma-vectorizada" id="toc-forma-vectorizada" class="nav-link" data-scroll-target="#forma-vectorizada"><span class="header-section-number">7.7</span> Forma Vectorizada</a></li>
+  </ul></li>
+  <li><a href="#múltiples-filtros" id="toc-múltiples-filtros" class="nav-link" data-scroll-target="#múltiples-filtros"><span class="header-section-number">8</span> Múltiples Filtros</a>
   <ul class="collapse">
-  <li><a href="#stride" id="toc-stride" class="nav-link" data-scroll-target="#stride"><span class="header-section-number">6.1</span> Stride</a></li>
-  <li><a href="#padding" id="toc-padding" class="nav-link" data-scroll-target="#padding"><span class="header-section-number">6.2</span> Padding</a></li>
+  <li><a href="#definición-de-la-salida" id="toc-definición-de-la-salida" class="nav-link" data-scroll-target="#definición-de-la-salida"><span class="header-section-number">8.1</span> Definición de la salida</a></li>
+  <li><a href="#estructura-tensorial-de-la-salida" id="toc-estructura-tensorial-de-la-salida" class="nav-link" data-scroll-target="#estructura-tensorial-de-la-salida"><span class="header-section-number">8.2</span> Estructura tensorial de la salida</a></li>
+  <li><a href="#interpretación-funcional" id="toc-interpretación-funcional" class="nav-link" data-scroll-target="#interpretación-funcional"><span class="header-section-number">8.3</span> Interpretación funcional</a></li>
+  <li><a href="#interpretación-como-vector-de-características-local" id="toc-interpretación-como-vector-de-características-local" class="nav-link" data-scroll-target="#interpretación-como-vector-de-características-local"><span class="header-section-number">8.4</span> Interpretación como vector de características local</a></li>
+  <li><a href="#interpretación-geométrica-3" id="toc-interpretación-geométrica-3" class="nav-link" data-scroll-target="#interpretación-geométrica-3"><span class="header-section-number">8.5</span> Interpretación geométrica</a></li>
+  <li><a href="#ejemplos-de-filtros" id="toc-ejemplos-de-filtros" class="nav-link" data-scroll-target="#ejemplos-de-filtros"><span class="header-section-number">8.6</span> Ejemplos de filtros</a></li>
+  <li><a href="#observación-estructural" id="toc-observación-estructural" class="nav-link" data-scroll-target="#observación-estructural"><span class="header-section-number">8.7</span> Observación estructural</a></li>
   </ul></li>
-  <li><a href="#función-de-activación" id="toc-función-de-activación" class="nav-link" data-scroll-target="#función-de-activación"><span class="header-section-number">7</span> Función de activación</a>
+  <li><a href="#stride-y-padding" id="toc-stride-y-padding" class="nav-link" data-scroll-target="#stride-y-padding"><span class="header-section-number">9</span> Stride y Padding</a>
   <ul class="collapse">
-  <li><a href="#definición" id="toc-definición" class="nav-link" data-scroll-target="#definición"><span class="header-section-number">7.0.1</span> Definición</a></li>
-  <li><a href="#no-linealidad" id="toc-no-linealidad" class="nav-link" data-scroll-target="#no-linealidad"><span class="header-section-number">7.0.2</span> No linealidad</a></li>
-  <li><a href="#ejemplos-de-funciones-de-activación" id="toc-ejemplos-de-funciones-de-activación" class="nav-link" data-scroll-target="#ejemplos-de-funciones-de-activación"><span class="header-section-number">7.0.3</span> Ejemplos de funciones de activación</a></li>
-  <li><a href="#propiedades-fundamentales" id="toc-propiedades-fundamentales" class="nav-link" data-scroll-target="#propiedades-fundamentales"><span class="header-section-number">7.0.4</span> Propiedades fundamentales</a></li>
-  <li><a href="#formulación-funcional" id="toc-formulación-funcional" class="nav-link" data-scroll-target="#formulación-funcional"><span class="header-section-number">7.0.5</span> Formulación funcional</a></li>
-  </ul></li>
-  <li><a href="#función-de-activación-resumen" id="toc-función-de-activación-resumen" class="nav-link" data-scroll-target="#función-de-activación-resumen"><span class="header-section-number">8</span> Función de Activación (Resumen)</a></li>
-  <li><a href="#pooling" id="toc-pooling" class="nav-link" data-scroll-target="#pooling"><span class="header-section-number">9</span> Pooling</a>
+  <li><a href="#stride" id="toc-stride" class="nav-link" data-scroll-target="#stride"><span class="header-section-number">9.1</span> Stride</a></li>
+  <li><a href="#padding" id="toc-padding" class="nav-link" data-scroll-target="#padding"><span class="header-section-number">9.2</span> Padding</a></li>
+  <li><a href="#ejemplo-ilustrativo" id="toc-ejemplo-ilustrativo" class="nav-link" data-scroll-target="#ejemplo-ilustrativo"><span class="header-section-number">9.3</span> Ejemplo ilustrativo</a></li>
+  <li><a href="#función-de-activación" id="toc-función-de-activación" class="nav-link" data-scroll-target="#función-de-activación"><span class="header-section-number">9.4</span> Función de activación</a>
   <ul class="collapse">
-  <li><a href="#max-pooling" id="toc-max-pooling" class="nav-link" data-scroll-target="#max-pooling"><span class="header-section-number">9.1</span> Max Pooling</a></li>
-  <li><a href="#average-pooling" id="toc-average-pooling" class="nav-link" data-scroll-target="#average-pooling"><span class="header-section-number">9.2</span> Average Pooling</a></li>
+  <li><a href="#definición" id="toc-definición" class="nav-link" data-scroll-target="#definición"><span class="header-section-number">9.4.1</span> Definición</a></li>
+  <li><a href="#no-linealidad" id="toc-no-linealidad" class="nav-link" data-scroll-target="#no-linealidad"><span class="header-section-number">9.4.2</span> No linealidad</a></li>
+  <li><a href="#ejemplos-de-funciones-de-activación" id="toc-ejemplos-de-funciones-de-activación" class="nav-link" data-scroll-target="#ejemplos-de-funciones-de-activación"><span class="header-section-number">9.4.3</span> Ejemplos de funciones de activación</a></li>
+  <li><a href="#propiedades-fundamentales" id="toc-propiedades-fundamentales" class="nav-link" data-scroll-target="#propiedades-fundamentales"><span class="header-section-number">9.4.4</span> Propiedades fundamentales</a></li>
+  <li><a href="#formulación-funcional" id="toc-formulación-funcional" class="nav-link" data-scroll-target="#formulación-funcional"><span class="header-section-number">9.4.5</span> Formulación funcional</a></li>
   </ul></li>
-  <li><a href="#capa-totalmente-conectada" id="toc-capa-totalmente-conectada" class="nav-link" data-scroll-target="#capa-totalmente-conectada"><span class="header-section-number">10</span> Capa Totalmente Conectada</a></li>
-  <li><a href="#función-de-pérdida" id="toc-función-de-pérdida" class="nav-link" data-scroll-target="#función-de-pérdida"><span class="header-section-number">11</span> Función de Pérdida</a>
+  <li><a href="#pooling" id="toc-pooling" class="nav-link" data-scroll-target="#pooling"><span class="header-section-number">9.5</span> Pooling</a>
   <ul class="collapse">
-  <li><a href="#softmax" id="toc-softmax" class="nav-link" data-scroll-target="#softmax"><span class="header-section-number">11.1</span> Softmax</a></li>
-  <li><a href="#entropía-cruzada" id="toc-entropía-cruzada" class="nav-link" data-scroll-target="#entropía-cruzada"><span class="header-section-number">11.2</span> Entropía Cruzada</a></li>
+  <li><a href="#max-pooling" id="toc-max-pooling" class="nav-link" data-scroll-target="#max-pooling"><span class="header-section-number">9.5.1</span> Max Pooling</a></li>
+  <li><a href="#average-pooling" id="toc-average-pooling" class="nav-link" data-scroll-target="#average-pooling"><span class="header-section-number">9.5.2</span> Average Pooling</a></li>
+  <li><a href="#propiedades" id="toc-propiedades" class="nav-link" data-scroll-target="#propiedades"><span class="header-section-number">9.5.3</span> Propiedades</a></li>
+  <li><a href="#interpretación" id="toc-interpretación" class="nav-link" data-scroll-target="#interpretación"><span class="header-section-number">9.5.4</span> Interpretación</a></li>
   </ul></li>
-  <li><a href="#entrenamiento" id="toc-entrenamiento" class="nav-link" data-scroll-target="#entrenamiento"><span class="header-section-number">12</span> Entrenamiento</a></li>
-  <li><a href="#propiedades-fundamentales-1" id="toc-propiedades-fundamentales-1" class="nav-link" data-scroll-target="#propiedades-fundamentales-1"><span class="header-section-number">13</span> Propiedades Fundamentales</a>
+  <li><a href="#capas-completamente-conectadas" id="toc-capas-completamente-conectadas" class="nav-link" data-scroll-target="#capas-completamente-conectadas"><span class="header-section-number">9.6</span> Capas completamente conectadas</a>
   <ul class="collapse">
-  <li><a href="#conectividad-local" id="toc-conectividad-local" class="nav-link" data-scroll-target="#conectividad-local"><span class="header-section-number">13.1</span> Conectividad Local</a></li>
-  <li><a href="#compartición-de-parámetros" id="toc-compartición-de-parámetros" class="nav-link" data-scroll-target="#compartición-de-parámetros"><span class="header-section-number">13.2</span> Compartición de Parámetros</a></li>
-  <li><a href="#invarianza-traslacional" id="toc-invarianza-traslacional" class="nav-link" data-scroll-target="#invarianza-traslacional"><span class="header-section-number">13.3</span> Invarianza Traslacional</a></li>
+  <li><a href="#vectorización-de-la-entrada" id="toc-vectorización-de-la-entrada" class="nav-link" data-scroll-target="#vectorización-de-la-entrada"><span class="header-section-number">9.6.1</span> Vectorización de la entrada</a></li>
+  <li><a href="#transformación-afín" id="toc-transformación-afín" class="nav-link" data-scroll-target="#transformación-afín"><span class="header-section-number">9.6.2</span> Transformación afín</a></li>
+  <li><a href="#aplicación-de-la-función-de-activación" id="toc-aplicación-de-la-función-de-activación" class="nav-link" data-scroll-target="#aplicación-de-la-función-de-activación"><span class="header-section-number">9.6.3</span> Aplicación de la función de activación</a></li>
+  <li><a href="#interpretación-1" id="toc-interpretación-1" class="nav-link" data-scroll-target="#interpretación-1"><span class="header-section-number">9.6.4</span> Interpretación</a></li>
+  <li><a href="#clasificación" id="toc-clasificación" class="nav-link" data-scroll-target="#clasificación"><span class="header-section-number">9.6.5</span> Clasificación</a></li>
+  <li><a href="#propiedades-1" id="toc-propiedades-1" class="nav-link" data-scroll-target="#propiedades-1"><span class="header-section-number">9.6.6</span> Propiedades</a></li>
+  <li><a href="#observación" id="toc-observación" class="nav-link" data-scroll-target="#observación"><span class="header-section-number">9.6.7</span> Observación</a></li>
   </ul></li>
-  <li><a href="#flujo-de-una-cnn" id="toc-flujo-de-una-cnn" class="nav-link" data-scroll-target="#flujo-de-una-cnn"><span class="header-section-number">14</span> Flujo de una CNN</a></li>
-  <li><a href="#interpretación-matemática" id="toc-interpretación-matemática" class="nav-link" data-scroll-target="#interpretación-matemática"><span class="header-section-number">15</span> Interpretación Matemática</a></li>
+  <li><a href="#función-de-pérdida" id="toc-función-de-pérdida" class="nav-link" data-scroll-target="#función-de-pérdida"><span class="header-section-number">9.7</span> Función de pérdida</a>
+  <ul class="collapse">
+  <li><a href="#definición-general" id="toc-definición-general" class="nav-link" data-scroll-target="#definición-general"><span class="header-section-number">9.7.1</span> Definición general</a></li>
+  <li><a href="#clasificación-multiclase-entropía-cruzada" id="toc-clasificación-multiclase-entropía-cruzada" class="nav-link" data-scroll-target="#clasificación-multiclase-entropía-cruzada"><span class="header-section-number">9.7.2</span> Clasificación multiclase: Entropía cruzada</a></li>
+  <li><a href="#interpretación-probabilística" id="toc-interpretación-probabilística" class="nav-link" data-scroll-target="#interpretación-probabilística"><span class="header-section-number">9.7.3</span> Interpretación probabilística</a></li>
+  <li><a href="#caso-de-regresión-error-cuadrático-medio" id="toc-caso-de-regresión-error-cuadrático-medio" class="nav-link" data-scroll-target="#caso-de-regresión-error-cuadrático-medio"><span class="header-section-number">9.7.4</span> Caso de regresión: Error cuadrático medio</a></li>
+  <li><a href="#relación-con-el-entrenamiento" id="toc-relación-con-el-entrenamiento" class="nav-link" data-scroll-target="#relación-con-el-entrenamiento"><span class="header-section-number">9.7.5</span> Relación con el entrenamiento</a></li>
+  </ul></li>
+  <li><a href="#entrenamiento" id="toc-entrenamiento" class="nav-link" data-scroll-target="#entrenamiento"><span class="header-section-number">9.8</span> Entrenamiento</a>
+  <ul class="collapse">
+  <li><a href="#descenso-por-gradiente" id="toc-descenso-por-gradiente" class="nav-link" data-scroll-target="#descenso-por-gradiente"><span class="header-section-number">9.8.1</span> Descenso por gradiente</a></li>
+  <li><a href="#interpretación-2" id="toc-interpretación-2" class="nav-link" data-scroll-target="#interpretación-2"><span class="header-section-number">9.8.2</span> Interpretación</a></li>
+  <li><a href="#regla-de-la-cadena-y-retropropagación" id="toc-regla-de-la-cadena-y-retropropagación" class="nav-link" data-scroll-target="#regla-de-la-cadena-y-retropropagación"><span class="header-section-number">9.8.3</span> Regla de la cadena y retropropagación</a></li>
+  </ul></li>
+  <li><a href="#regularización" id="toc-regularización" class="nav-link" data-scroll-target="#regularización"><span class="header-section-number">9.9</span> Regularización</a>
+  <ul class="collapse">
+  <li><a href="#sobreajuste" id="toc-sobreajuste" class="nav-link" data-scroll-target="#sobreajuste"><span class="header-section-number">9.9.1</span> Sobreajuste</a></li>
+  <li><a href="#penalización-de-parámetros-weight-decay" id="toc-penalización-de-parámetros-weight-decay" class="nav-link" data-scroll-target="#penalización-de-parámetros-weight-decay"><span class="header-section-number">9.9.2</span> Penalización de parámetros (Weight Decay)</a></li>
+  <li><a href="#dropout" id="toc-dropout" class="nav-link" data-scroll-target="#dropout"><span class="header-section-number">9.9.3</span> Dropout</a></li>
+  </ul></li>
+  <li><a href="#optimización" id="toc-optimización" class="nav-link" data-scroll-target="#optimización"><span class="header-section-number">9.10</span> Optimización</a>
+  <ul class="collapse">
+  <li><a href="#descenso-por-gradiente-estocástico-sgd" id="toc-descenso-por-gradiente-estocástico-sgd" class="nav-link" data-scroll-target="#descenso-por-gradiente-estocástico-sgd"><span class="header-section-number">9.10.1</span> Descenso por gradiente estocástico (SGD)</a></li>
+  <li><a href="#mini-batch-gradient-descent" id="toc-mini-batch-gradient-descent" class="nav-link" data-scroll-target="#mini-batch-gradient-descent"><span class="header-section-number">9.10.2</span> Mini-batch gradient descent</a></li>
+  <li><a href="#métodos-adaptativos" id="toc-métodos-adaptativos" class="nav-link" data-scroll-target="#métodos-adaptativos"><span class="header-section-number">9.10.3</span> Métodos adaptativos</a></li>
+  <li><a href="#tasa-de-aprendizaje" id="toc-tasa-de-aprendizaje" class="nav-link" data-scroll-target="#tasa-de-aprendizaje"><span class="header-section-number">9.10.4</span> Tasa de aprendizaje</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
     </div>
@@ -475,239 +521,471 @@ window.Quarto = {
 <h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1><p><img src="LOGOunach.png" title="Tesis" class="quarto-cover-image nolightbox img-fluid"></p>
 <p>En este trabajo se aborda el problema de <strong>reconocimiento automático de glifos del alfabeto náhuatl</strong> mediante el uso de redes neuronales convolucionales (<em>Convolutional Neural Networks</em>, CNN). Este problema puede formularse como una tarea de clasificación de imágenes, en la cual cada glifo es representado mediante una estructura matricial que codifica su información visual.</p>
 <p>Los glifos presentan variaciones en forma, trazo y estilo, lo que dificulta su identificación mediante métodos tradicionales. En este contexto, las CNN resultan particularmente adecuadas debido a su capacidad para extraer características espaciales relevantes directamente a partir de los datos, tales como bordes, curvas y patrones geométricos distintivos.</p>
-<section id="cnn-adaptada-a-la-clasificación-de-glifos" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="cnn-adaptada-a-la-clasificación-de-glifos"><span class="header-section-number">1.1</span> CNN adaptada a la clasificación de glifos</h2>
-<p>Desde un punto de vista formal, una CNN puede entenderse como una función parametrizada</p>
-<p><span id="eq-cnn-func"><span class="math display">\[
+</section>
+<section id="formulación-matemática-de-una-cnn" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Formulación Matemática de una CNN</h1>
+<p>Una red neuronal convolucional puede modelarse como una aplicación parametrizada:</p>
+<p><span id="eq-cnn-formal"><span class="math display">\[
 f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longrightarrow \mathbb{R}^{k}
 \tag{1}\]</span></span></p>
 <p>donde:</p>
 <ul>
 <li><span class="math inline">\(\mathcal{X}\)</span> es el espacio de entrada (por ejemplo, imágenes),</li>
-<li><span class="math inline">\(H\)</span> representa la <strong>altura</strong> (<em>height</em>) de la imagen, es decir, el número de filas,</li>
-<li><span class="math inline">\(W\)</span> representa el <strong>ancho</strong> (<em>width</em>), es decir, el número de columnas,</li>
-<li><span class="math inline">\(C\)</span> representa el <strong>número de canales</strong> (<em>channels</em>), que corresponde a la cantidad de valores asociados a cada píxel,</li>
+<li><span class="math inline">\(H\)</span> representa la altura (height) de la imagen, es decir, el número de filas,</li>
+<li><span class="math inline">\(W\)</span> representa el ancho (width), es decir, el número de columnas,</li>
+<li><span class="math inline">\(C\)</span> representa el número de canales (channels), que corresponde a la cantidad de valores asociados a cada píxel,</li>
 <li><span class="math inline">\(k\)</span> es la dimensión del espacio de salida (por ejemplo, número de clases en clasificación),</li>
 <li><span class="math inline">\(\theta\)</span> denota el conjunto total de parámetros entrenables del modelo.</li>
 </ul>
 </section>
-<section id="representación-de-imágenes" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="representación-de-imágenes"><span class="header-section-number">1.2</span> Representación de imágenes</h2>
-<p>Una imagen se modela matemáticamente como un tensor de orden 3:</p>
-<p><span id="eq-img-tensor"><span class="math display">\[
+<section id="representación-tensorial-de-imágenes" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Representación Tensorial de Imágenes</h1>
+<p>Una imagen digital se representa como un tensor de orden tres:</p>
+<p><span id="eq-imagen-tensor"><span class="math display">\[
 X \in \mathbb{R}^{H \times W \times C}
 \tag{2}\]</span></span></p>
-<p>Esto significa que:</p>
-<ul>
-<li>Para cada posición espacial <span class="math inline">\((i,j)\)</span> con <span class="math inline">\(1 \leq i \leq H\)</span>, <span class="math inline">\(1 \leq j \leq W\)</span>,</li>
-<li>el valor <span class="math inline">\(X(i,j)\)</span> no es escalar, sino un vector en <span class="math inline">\(\mathbb{R}^{C}:\)</span></li>
-</ul>
-<p><span id="eq-pixel-vec"><span class="math display">\[
-X(i,j) = \big(x_1, x_2, \dots, x_C\big)
+<p>Esto implica que para cada posición espacial <span class="math inline">\((i,j)\)</span>:</p>
+<p><span id="eq-pixel-vector"><span class="math display">\[
+X(i,j) = \left(x_1, x_2, \dots, x_C \right) \in \mathbb{R}^C
 \tag{3}\]</span></span></p>
+<p>Por tanto, cada píxel contiene un vector que describe información en distintos canales.</p>
+<p><img src="Imagenes_tesis/img_flor_1.png" class="img-fluid"></p>
 </section>
-<section id="estructura-funcional-de-la-red" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="estructura-funcional-de-la-red"><span class="header-section-number">1.3</span> Estructura funcional de la red</h2>
-<p>Una CNN se construye como una composición de funciones:</p>
-<p><span id="eq-composition"><span class="math display">\[
-f(x; \theta) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x)
+<section id="estructura-funcional-de-la-red" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Estructura Funcional de la Red</h1>
+<p>Una CNN se construye como la composición de funciones:</p>
+<p><span id="eq-composicion-cnn"><span class="math display">\[
+f(x;\theta) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x)
 \tag{4}\]</span></span></p>
-<p>donde:</p>
-<ul>
-<li><span class="math inline">\(L \in \mathbb{N}\)</span> es el número total de capas de la red,</li>
-<li>cada <span class="math inline">\(f^{(l)}\)</span> es una función asociada a la capa <span class="math inline">\(l\)</span>-ésima.</li>
-</ul>
-</section>
-<section id="parámetros-del-modelo" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="parámetros-del-modelo"><span class="header-section-number">1.4</span> Parámetros del modelo</h2>
-<p>El conjunto de parámetros <span class="math inline">\(\theta\)</span> contiene todos los elementos ajustables del modelo:</p>
-<p><span id="eq-params"><span class="math display">\[
-\theta = {\theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)}}
+<p>donde <span class="math inline">\(L \in \mathbb{N}\)</span> es el número total de capas de la red y cada <span class="math inline">\(f^{(l)}\)</span> representa una transformación asociada a la capa <span class="math inline">\(l\)</span>-ésima.</p>
+<p>Asimismo, los parámetros globales se expresan como:</p>
+<p><span id="eq-parametros-globales"><span class="math display">\[
+\theta = \left\{ \theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)} \right\}
 \tag{5}\]</span></span></p>
-<p>En una CNN, estos parámetros incluyen principalmente:</p>
+</section>
+<section id="parámetros-del-modelo" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Parámetros del Modelo</h1>
+<p>Los parámetros de una CNN están constituidos principalmente por:</p>
 <ul>
-<li><strong>kernels</strong> (filtros convolucionales),</li>
-<li><strong>sesgos</strong> (bias) asociados a cada filtro.</li>
+<li><strong>Kernels</strong> (filtros convolucionales),</li>
+<li><strong>Sesgos</strong> asociados a cada filtro.</li>
 </ul>
-<p>Estos parámetros determinan completamente la forma de la función <span class="math inline">\(f(x;\theta)\)</span> y son aprendidos a partir de los datos mediante optimización.</p>
+<p>Estos parámetros determinan completamente la función <span class="math inline">\(f(x;\theta)\)</span> y son ajustados mediante procedimientos de optimización basados en gradiente.</p>
 </section>
-</section>
-<section id="operación-de-convolución" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Operación de Convolución</h1>
-<p>La operación fundamental en una CNN es la <strong>convolución discreta</strong> (en la práctica, correlación cruzada).</p>
-<section id="caso-unicanal" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="caso-unicanal"><span class="header-section-number">2.1</span> Caso unicanal</h2>
-<p>Sea una imagen:</p>
-<p><span id="eq-img-single"><span class="math display">\[
-X \in \mathbb{R}^{H \times W}
-\tag{6}\]</span></span></p>
-<p>y un kernel (o filtro):</p>
-<p><span id="eq-kernel-single"><span class="math display">\[
+<section id="kernels-convolucionales" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Kernels Convolucionales</h1>
+<section id="definición-formal" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="definición-formal"><span class="header-section-number">6.1</span> Definición Formal</h2>
+<p>Un kernel es un tensor de parámetros que define un operador lineal local.</p>
+<p><strong>Caso unicanal:</strong></p>
+<p><span id="eq-kernel-unicanal"><span class="math display">\[
 K \in \mathbb{R}^{k_h \times k_w}
-\tag{7}\]</span></span></p>
-<p>donde:</p>
-<ul>
-<li><span class="math inline">\(k_h\)</span>: altura del kernel,</li>
-<li><span class="math inline">\(k_w\)</span>: ancho del kernel.</li>
-</ul>
-<p>La salida <span class="math inline">\(Y\)</span> se define como:</p>
-<p><span id="eq-conv-discrete"><span class="math display">\[
-Y(i,j) = \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v), X(i+u, j+v)
-\tag{8}\]</span></span></p>
-</section>
-<section id="interpretación-como-producto-interno" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="interpretación-como-producto-interno"><span class="header-section-number">2.2</span> Interpretación como producto interno</h2>
-<p>Sea <span class="math inline">\(X_{(i,j)}\)</span> la submatriz de <span class="math inline">\(X\)</span> de tamaño <span class="math inline">\(k_h \times k_w\)</span>:</p>
-<p><span id="eq-submatrix"><span class="math display">\[
-X_{(i,j)} = {X(i+u, j+v)}_{u,v}
-\tag{9}\]</span></span></p>
-<p>Entonces:</p>
-<p><span id="eq-inner-prod"><span class="math display">\[
-Y(i,j) = \langle K, X_{(i,j)} \rangle
-\tag{10}\]</span></span></p>
-<p>donde <span class="math inline">\(\langle \cdot, \cdot \rangle\)</span> denota el producto interno en <span class="math inline">\(\mathbb{R}^{k_h \times k_w}\)</span>.</p>
-<p>Esto implica que la convolución mide la <strong>similitud entre el kernel y una región local de la imagen</strong>.</p>
-</section>
-</section>
-<section id="convolución-multicanal" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Convolución Multicanal</h1>
-<p>En el caso general, la entrada es:</p>
-<p><span id="eq-img-multi"><span class="math display">\[
-X \in \mathbb{R}^{H \times W \times C}
-\tag{11}\]</span></span></p>
-<p>y el kernel:</p>
-<p><span id="eq-kernel-multi"><span class="math display">\[
+\tag{6}\]</span></span></p>
+<p>cuyos elementos se indexan como:</p>
+<p><span class="math display">\[
+K(u,v), \quad
+u \in \{0,\dots,k_h-1\}, \;
+v \in \{0,\dots,k_w-1\}
+\]</span></p>
+<p><strong>Caso multicanal:</strong></p>
+<p><span id="eq-kernel-multicanal"><span class="math display">\[
 K \in \mathbb{R}^{k_h \times k_w \times C}
-\tag{12}\]</span></span></p>
-<p>La convolución se define como:</p>
-<p><span id="eq-conv-multi"><span class="math display">\[
-Y(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} K(u,v,c), X(i+u, j+v, c)
-\tag{13}\]</span></span></p>
-<section id="interpretación-tensorial" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="interpretación-tensorial"><span class="header-section-number">3.1</span> Interpretación tensorial</h2>
-<p>Si se vectoriza cada ventana:</p>
-<p><span id="eq-vec-dims"><span class="math display">\[
-X_{(i,j)} \in \mathbb{R}^{k_h k_w C}, \quad K \in \mathbb{R}^{k_h k_w C}
-\tag{14}\]</span></span></p>
-<p>entonces:</p>
-<p><span id="eq-linear-op"><span class="math display">\[
-Y(i,j) = K^\top X_{(i,j)}
-\tag{15}\]</span></span></p>
-<p>Esto muestra que la convolución es un operador lineal local.</p>
+\tag{7}\]</span></span></p>
+<p>con entradas:</p>
+<p><span class="math display">\[
+K(u,v,c), \quad
+u \in \{0,\dots,k_h-1\}, \;
+v \in \{0,\dots,k_w-1\}, \;
+c \in \{1,\dots,C\}
+\]</span></p>
+</section>
+<section id="interpretación-geométrica" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="interpretación-geométrica"><span class="header-section-number">6.2</span> Interpretación Geométrica</h2>
+<p>Sea <span class="math inline">\(X_{(i,j)}\)</span> una subregión de la imagen obtenida al centrar el kernel en la posición <span class="math inline">\((i,j)\)</span>, cuyos elementos están dados por:</p>
+<p><span class="math display">\[
+X(i+u, j+v, c)
+\]</span></p>
+<p>para los mismos índices <span class="math inline">\((u,v,c)\)</span> definidos anteriormente.</p>
+<p>El producto interno:</p>
+<p><span id="eq-producto-interno"><span class="math display">\[
+\langle K, X_{(i,j)} \rangle
+\tag{8}\]</span></span></p>
+<p>mide la similitud entre el patrón definido por el kernel y la región local de la imagen.</p>
+<p><img src="Imagenes_tesis/img_flor_2.png" class="img-fluid"></p>
+</section>
+<section id="compartición-de-parámetros" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="compartición-de-parámetros"><span class="header-section-number">6.3</span> Compartición de parámetros</h2>
+<p>Una propiedad fundamental de las redes neuronales convolucionales es la <strong>compartición de parámetros</strong>, la cual establece que los coeficientes del kernel no dependen de la posición espacial en la que se aplica la operación.</p>
+<p>Formalmente, si <span class="math inline">\(K\)</span> es un kernel convolucional, entonces:</p>
+<p><span class="math display">\[
+K(u,v,c) \text{ es independiente de la posición } (i,j)
+\]</span></p>
+<p>Esto implica que el mismo kernel es utilizado para procesar todas las regiones locales de la entrada.</p>
+<section id="reducción-del-número-de-parámetros" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="reducción-del-número-de-parámetros"><span class="header-section-number">6.3.1</span> Reducción del número de parámetros</h3>
+<p>En ausencia de compartición de parámetros, cada posición <span class="math inline">\((i,j)\)</span> requeriría un conjunto distinto de pesos, lo cual conduciría a un número total de parámetros del orden:</p>
+<p><span class="math display">\[
+H \cdot W \cdot k_h \cdot k_w \cdot C
+\]</span></p>
+<p>Sin embargo, al emplear un único kernel compartido, el número de parámetros se reduce a:</p>
+<p><span class="math display">\[
+k_h \cdot k_w \cdot C
+\]</span></p>
+<p>lo cual representa una reducción significativa en la complejidad del modelo.</p>
+</section>
+<section id="invarianza-traslacional" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="invarianza-traslacional"><span class="header-section-number">6.3.2</span> Invarianza traslacional</h3>
+<p>La compartición de parámetros induce una propiedad de <strong>equivarianza por traslación</strong>. Sea <span class="math inline">\(\tau_{a,b}\)</span> un operador de traslación definido sobre la entrada. Entonces, la operación de convolución satisface:</p>
+<p><span id="eq-equivarianza"><span class="math display">\[
+\mathcal{T}_K(\tau_{a,b} X) = \tau_{a,b} (\mathcal{T}_K X)
+\tag{9}\]</span></span></p>
+<p>Esto implica que si una característica aparece en diferentes posiciones espaciales, el modelo será capaz de detectarla de manera consistente.</p>
+<p>En consecuencia, la red no depende de la posición absoluta de los patrones, sino únicamente de su estructura local.</p>
 </section>
 </section>
-<section id="múltiples-filtros-mapas-de-características" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Múltiples Filtros (Mapas de Características)</h1>
-<p>En una CNN no se utiliza un solo kernel, sino un conjunto de filtros:</p>
-<p><span id="eq-filters-set"><span class="math display">\[
-K^{(f)} \in \mathbb{R}^{k_h \times k_w \times C}, \quad f = 1,\dots,F
-\tag{16}\]</span></span></p>
-<p>Cada filtro produce un mapa de activación distinto:</p>
-<p><span id="eq-activation-map"><span class="math display">\[
-Y_f(i,j) = \sum_{c=1}^{C} \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1}
-K^{(f)}(u,v,c), X(i+u, j+v, c)
-\tag{17}\]</span></span></p>
-<p>Por tanto, la salida total es un tensor:</p>
-<p><span id="eq-output-tensor"><span class="math display">\[
-Y \in \mathbb{R}^{H' \times W' \times F}
-\tag{18}\]</span></span></p>
+</section>
+<section id="operación-de-convolución" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Operación de Convolución</h1>
+<p>La operación fundamental en una red neuronal convolucional es la denominada <strong>convolución discreta</strong>. No obstante, es importante señalar que en el contexto de aprendizaje profundo, la operación implementada corresponde en realidad a la <strong>correlación cruzada</strong>, ya que no se realiza la inversión del kernel. A pesar de esta diferencia técnica, en la literatura se mantiene el término ``convolución’’ por convención.</p>
+<p>Esta operación define un mecanismo mediante el cual se evalúa la similitud entre un patrón local (kernel) y distintas regiones de la imagen de entrada.</p>
+<section id="caso-unicanal" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="caso-unicanal"><span class="header-section-number">7.1</span> Caso Unicanal</h2>
+<p>Sea una imagen unicanal representada por:</p>
+<p><span class="math display">\[
+X \in \mathbb{R}^{H \times W}
+\]</span></p>
+<p>y un kernel:</p>
+<p><span class="math display">\[
+K \in \mathbb{R}^{k_h \times k_w}
+\]</span></p>
+<p>La operación de convolución produce una salida <span class="math inline">\(Y\)</span>, definida en cada posición <span class="math inline">\((i,j)\)</span> como:</p>
+<p><span id="eq-convolucion-unicanal"><span class="math display">\[
+Y(i,j) =
+\sum_{u=0}^{k_h-1}
+\sum_{v=0}^{k_w-1}
+K(u,v)\, X(i+u, j+v)
+\tag{10}\]</span></span></p>
 <p>donde:</p>
 <ul>
-<li><span class="math inline">\(H'\)</span> y <span class="math inline">\(W'\)</span> dependen del tamaño del kernel, el padding y el stride,</li>
-<li><span class="math inline">\(F\)</span> es el número de filtros, es decir, el número de <strong>canales de salida</strong>.</li>
+<li><span class="math inline">\((i,j)\)</span> denota la posición de la ventana deslizante,</li>
+<li><span class="math inline">\((u,v)\)</span> recorre las coordenadas internas del kernel,</li>
+<li><span class="math inline">\(X(i+u, j+v)\)</span> representa la región local de la imagen.</li>
 </ul>
+<p><img src="Imagenes_tesis/img_kernel_1.png" class="img-fluid"></p>
+<section id="interpretación-como-ventana-deslizante" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="interpretación-como-ventana-deslizante"><span class="header-section-number">7.1.1</span> Interpretación como ventana deslizante</h3>
+<p>La ecuación anterior describe un proceso en el cual el kernel se desplaza sistemáticamente sobre la imagen. En cada posición, se selecciona una submatriz de <span class="math inline">\(X\)</span> de dimensiones <span class="math inline">\(k_h \times k_w\)</span>, sobre la cual se realiza una operación de agregación ponderada.</p>
+<p>Formalmente, definimos la submatriz local como:</p>
+<p><span class="math display">\[
+X_{(i,j)} = \left\{ X(i+u, j+v) \right\}_{u,v}
+\]</span></p>
+<p>Por lo tanto, la salida en <span class="math inline">\((i,j)\)</span> depende únicamente de una vecindad local de la imagen, lo cual establece la propiedad de <strong>conectividad local</strong>.</p>
 </section>
-<section id="interpretación-de-los-kernels" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Interpretación de los kernels</h1>
-<p>Cada kernel puede interpretarse como un <strong>detector de patrones locales</strong>.</p>
-<p>Formalmente:</p>
-<p><span id="eq-kernel-similarity"><span class="math display">\[
-Y_f(i,j) = \langle K^{(f)}, X_{(i,j)} \rangle
-\tag{19}\]</span></span></p>
+<section id="interpretación-como-producto-interno" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="interpretación-como-producto-interno"><span class="header-section-number">7.1.2</span> Interpretación como producto interno</h3>
+<p>La expresión de la convolución puede reescribirse como un producto interno en el espacio vectorial <span class="math inline">\(\mathbb{R}^{k_h \times k_w}\)</span>:</p>
+<p><span id="eq-producto-interno-conv"><span class="math display">\[
+Y(i,j) = \langle K, X_{(i,j)} \rangle
+\tag{11}\]</span></span></p>
+<p>donde el producto interno se define como:</p>
+<p><span class="math display">\[
+\langle A, B \rangle = \sum_{u=0}^{k_h-1} \sum_{v=0}^{k_w-1} A(u,v)\, B(u,v)
+\]</span></p>
+<p>Esta formulación pone de manifiesto que la convolución mide el grado de alineación entre el kernel y la región local.</p>
+</section>
+<section id="interpretación-geométrica-1" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="interpretación-geométrica-1"><span class="header-section-number">7.1.3</span> Interpretación geométrica</h3>
+<p>Desde un punto de vista geométrico, el valor <span class="math inline">\(Y(i,j)\)</span> representa la proyección del vector <span class="math inline">\(X_{(i,j)}\)</span> sobre el vector <span class="math inline">\(K\)</span> en el espacio euclidiano de dimensión <span class="math inline">\(k_h k_w\)</span>. En consecuencia:</p>
+<ul>
+<li>Si <span class="math inline">\(X_{(i,j)}\)</span> es similar a <span class="math inline">\(K\)</span>, entonces <span class="math inline">\(Y(i,j)\)</span> será grande.</li>
+<li>Si son ortogonales, el resultado será cercano a cero.</li>
+<li>Si son opuestos, el valor será negativo.</li>
+</ul>
+<p>Esto permite interpretar al kernel como un <strong>detector de patrones</strong>.</p>
+</section>
+<section id="naturaleza-lineal-de-la-operación" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="naturaleza-lineal-de-la-operación"><span class="header-section-number">7.1.4</span> Naturaleza lineal de la operación</h3>
+<p>La convolución es un operador lineal. Es decir, para cualesquiera tensores <span class="math inline">\(X_1, X_2\)</span> y escalares <span class="math inline">\(\alpha, \beta\)</span>, se cumple:</p>
+<p><span id="eq-linealidad"><span class="math display">\[
+\mathcal{T}_K(\alpha X_1 + \beta X_2)
+= \alpha \mathcal{T}_K(X_1) + \beta \mathcal{T}_K(X_2)
+\tag{12}\]</span></span></p>
+<p>donde <span class="math inline">\(\mathcal{T}_K\)</span> denota el operador de convolución asociado al kernel <span class="math inline">\(K\)</span>.</p>
+</section>
+<section id="relación-con-la-correlación-cruzada" class="level3" data-number="7.1.5">
+<h3 data-number="7.1.5" class="anchored" data-anchor-id="relación-con-la-correlación-cruzada"><span class="header-section-number">7.1.5</span> Relación con la correlación cruzada</h3>
+<p>Es importante destacar que la definición utilizada en redes neuronales corresponde a la correlación cruzada:</p>
+<p><span class="math display">\[
+Y(i,j) =
+\sum_{u,v} K(u,v)\, X(i+u, j+v)
+\]</span></p>
+<p>mientras que la convolución clásica implicaría una inversión del kernel:</p>
+<p><span class="math display">\[
+Y(i,j) =
+\sum_{u,v} K(u,v)\, X(i-u, j-v)
+\]</span></p>
+<p>Sin embargo, dado que los parámetros del kernel son aprendidos durante el entrenamiento, ambas formulaciones resultan equivalentes en términos de capacidad representacional.</p>
+</section>
+<section id="dependencia-local" class="level3" data-number="7.1.6">
+<h3 data-number="7.1.6" class="anchored" data-anchor-id="dependencia-local"><span class="header-section-number">7.1.6</span> Dependencia local</h3>
+<p>Finalmente, se observa que:</p>
+<p><span class="math display">\[
+Y(i,j) \text{ depende únicamente de } X_{(i,j)}
+\]</span></p>
+<p>lo cual implica que cada salida está influenciada únicamente por una región local de la entrada. Esta propiedad es clave para la eficiencia computacional y la capacidad de generalización del modelo.</p>
+</section>
+</section>
+<section id="convolución-multicanal" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="convolución-multicanal"><span class="header-section-number">7.2</span> Convolución Multicanal</h2>
+<p>En el caso general, las imágenes no son unicanal, sino que poseen múltiples canales (por ejemplo, RGB). En consecuencia, la operación de convolución debe extenderse para considerar simultáneamente la información presente en cada canal.</p>
+<p>Sea:</p>
+<p><span class="math display">\[
+X \in \mathbb{R}^{H \times W \times C}
+\]</span></p>
+<p>una imagen con <span class="math inline">\(C\)</span> canales, y sea un kernel:</p>
+<p><span class="math display">\[
+K \in \mathbb{R}^{k_h \times k_w \times C}
+\]</span></p>
+<p>donde cada canal del kernel corresponde a un canal de la entrada.</p>
+<p>La salida de la convolución en la posición <span class="math inline">\((i,j)\)</span> está dada por:</p>
+<p><span id="eq-convolucion-multicanal"><span class="math display">\[
+Y(i,j) =
+\sum_{c=1}^{C}
+\sum_{u=0}^{k_h-1}
+\sum_{v=0}^{k_w-1}
+K(u,v,c)\, X(i+u,j+v,c)
+\tag{13}\]</span></span></p>
+<p>Esta expresión indica que la contribución de cada canal se calcula de manera independiente y posteriormente se agregan (suman) todas las contribuciones.</p>
+<p>La operación anterior puede interpretarse como la suma de convoluciones unicanal:</p>
+<p><span class="math display">\[
+Y(i,j) = \sum_{c=1}^{C} Y^{(c)}(i,j)
+\]</span></p>
+<p>donde:</p>
+<p><span class="math display">\[
+Y^{(c)}(i,j) =
+\sum_{u=0}^{k_h-1}
+\sum_{v=0}^{k_w-1}
+K(u,v,c)\, X(i+u,j+v,c)
+\]</span></p>
+<p>Cada término <span class="math inline">\(Y^{(c)}(i,j)\)</span> representa la contribución del canal <span class="math inline">\(c\)</span> al valor final de la salida.</p>
+<p><img src="Imagenes_tesis/imagen_provicional.png.png" class="img-fluid"></p>
+</section>
+<section id="interpretación-como-producto-interno-en-espacio-tensorial" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="interpretación-como-producto-interno-en-espacio-tensorial"><span class="header-section-number">7.3</span> Interpretación como producto interno en espacio tensorial</h2>
+<p>Sea <span class="math inline">\(X_{(i,j)}\)</span> la subregión local de la imagen centrada en <span class="math inline">\((i,j)\)</span>. Entonces:</p>
+<p><span class="math display">\[
+X_{(i,j)} \in \mathbb{R}^{k_h \times k_w \times C}
+\]</span></p>
+<p>Al vectorizar ambos tensores:</p>
+<p><span class="math display">\[
+\mathrm{vec}(X_{(i,j)}) \in \mathbb{R}^{k_h k_w C}, \quad
+\mathrm{vec}(K) \in \mathbb{R}^{k_h k_w C}
+\]</span></p>
+<p>la convolución puede escribirse como:</p>
+<p><span id="eq-vectorizacion"><span class="math display">\[
+Y(i,j) = \mathrm{vec}(K)^\top \mathrm{vec}(X_{(i,j)})
+\tag{14}\]</span></span></p>
+<p>Esto muestra que la operación es un producto interno en un espacio euclidiano de dimensión <span class="math inline">\(k_h k_w C\)</span>.</p>
+</section>
+<section id="interpretación-geométrica-2" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="interpretación-geométrica-2"><span class="header-section-number">7.4</span> Interpretación geométrica</h2>
+<p>Desde un punto de vista geométrico, cada región local de la imagen se interpreta como un punto en el espacio <span class="math inline">\(\mathbb{R}^{k_h k_w C}\)</span>, y el kernel define una dirección en dicho espacio.</p>
 <p>Por tanto:</p>
 <ul>
-<li>Si <span class="math inline">\(Y_f(i,j)\)</span> es grande, entonces la región <span class="math inline">\(X_{(i,j)}\)</span> es similar al patrón definido por <span class="math inline">\(K^{(f)}\)</span>.</li>
-<li>Si es pequeño o negativo, no hay coincidencia significativa.</li>
+<li>valores grandes de <span class="math inline">\(Y(i,j)\)</span> indican alta alineación entre el patrón y la región,</li>
+<li>valores cercanos a cero indican baja correlación,</li>
+<li>valores negativos indican oposición estructural.</li>
 </ul>
-<section id="propiedad-de-compartición-de-parámetros" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="propiedad-de-compartición-de-parámetros"><span class="header-section-number">5.1</span> Propiedad de compartición de parámetros</h2>
-<p>Un aspecto fundamental es que el mismo kernel <span class="math inline">\(K^{(f)}\)</span> se aplica en todas las posiciones <span class="math inline">\((i,j)\)</span>:</p>
-<p><span id="eq-param-sharing"><span class="math display">\[
-K^{(f)}(u,v,c) \text{ es independiente de } (i,j)
-\tag{20}\]</span></span></p>
-<p>Esto implica:</p>
+<p>En consecuencia, el kernel actúa como un detector de patrones multicanal.</p>
+</section>
+<section id="naturaleza-lineal" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="naturaleza-lineal"><span class="header-section-number">7.5</span> Naturaleza lineal</h2>
+<p>La convolución multicanal es un operador lineal. Es decir, para cualesquiera tensores <span class="math inline">\(X_1, X_2\)</span> y escalares <span class="math inline">\(\alpha, \beta\)</span>, se cumple:</p>
+<p><span class="math display">\[
+\mathcal{T}_K(\alpha X_1 + \beta X_2)
+=
+\alpha \mathcal{T}_K(X_1) + \beta \mathcal{T}_K(X_2)
+\]</span></p>
+<p>donde <span class="math inline">\(\mathcal{T}_K\)</span> denota el operador de convolución asociado al kernel <span class="math inline">\(K\)</span>.</p>
+</section>
+<section id="interpretación-estructural" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="interpretación-estructural"><span class="header-section-number">7.6</span> Interpretación estructural</h2>
+<p>Es importante destacar que, a diferencia del caso unicanal, el kernel multicanal no detecta únicamente patrones espaciales, sino también <strong>correlaciones entre canales</strong>.</p>
+<p>Por ejemplo, en imágenes RGB, el kernel puede aprender a identificar combinaciones específicas de intensidades en los canales rojo, verde y azul, lo cual permite detectar patrones más complejos que aquellos basados únicamente en estructura espacial.</p>
+</section>
+<section id="forma-vectorizada" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="forma-vectorizada"><span class="header-section-number">7.7</span> Forma Vectorizada</h2>
+<p><span class="math display">\[
+Y(i,j) = K^\top X_{(i,j)}
+\]</span></p>
+</section>
+</section>
+<section id="múltiples-filtros" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Múltiples Filtros</h1>
+<p>En una red neuronal convolucional, no se utiliza un único kernel, sino un conjunto de filtros que permiten extraer distintas características de la entrada. Este conjunto se denota como:</p>
+<p><span id="eq-conjunto-filtros"><span class="math display">\[
+\left\{ K^{(f)} \right\}_{f=1}^{F}, \quad
+K^{(f)} \in \mathbb{R}^{k_h \times k_w \times C}
+\tag{15}\]</span></span></p>
+<p>donde <span class="math inline">\(F\)</span> representa el número total de filtros.</p>
+<section id="definición-de-la-salida" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="definición-de-la-salida"><span class="header-section-number">8.1</span> Definición de la salida</h2>
+<p>Cada filtro <span class="math inline">\(K^{(f)}\)</span> actúa de manera independiente sobre la entrada y produce un mapa de activación asociado. Para cada posición <span class="math inline">\((i,j)\)</span>, la salida correspondiente al filtro <span class="math inline">\(f\)</span> está dada por:</p>
+<p><span id="eq-salida-filtro"><span class="math display">\[
+Y_f(i,j) = \langle K^{(f)}, X_{(i,j)} \rangle
+\tag{16}\]</span></span></p>
+<p>Por lo tanto, a cada filtro le corresponde una función:</p>
+<p><span class="math display">\[
+Y_f : \{1,\dots,H'\} \times \{1,\dots,W'\} \to \mathbb{R}
+\]</span></p>
+</section>
+<section id="estructura-tensorial-de-la-salida" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="estructura-tensorial-de-la-salida"><span class="header-section-number">8.2</span> Estructura tensorial de la salida</h2>
+<p>Al considerar todos los filtros simultáneamente, la salida completa se organiza como un tensor de orden tres:</p>
+<p><span id="eq-salida-tensor"><span class="math display">\[
+Y \in \mathbb{R}^{H' \times W' \times F}
+\tag{17}\]</span></span></p>
+<p>donde:</p>
 <ul>
-<li>reducción significativa del número de parámetros,</li>
-<li>capacidad de detectar patrones independientemente de su posición (invarianza traslacional).</li>
+<li><span class="math inline">\(H'\)</span> y <span class="math inline">\(W'\)</span> son las dimensiones espaciales de la salida,</li>
+<li><span class="math inline">\(F\)</span> es el número de canales de salida, también llamados <strong>mapas de características</strong>.</li>
 </ul>
+<p>En particular, la componente <span class="math inline">\(Y(:,:,f)\)</span> corresponde al mapa de activación generado por el filtro <span class="math inline">\(K^{(f)}\)</span>.</p>
+</section>
+<section id="interpretación-funcional" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="interpretación-funcional"><span class="header-section-number">8.3</span> Interpretación funcional</h2>
+<p>Cada filtro puede interpretarse como un detector especializado en cierto tipo de patrón. En consecuencia, la colección de filtros define una familia de funciones:</p>
+<p><span class="math display">\[
+\left\{ \mathcal{T}_{K^{(f)}} \right\}_{f=1}^{F}
+\]</span></p>
+<p>donde cada operador <span class="math inline">\(\mathcal{T}_{K^{(f)}}\)</span> extrae una característica distinta de la entrada.</p>
+<p>De este modo, la salida de la capa puede interpretarse como la aplicación conjunta de múltiples detectores, produciendo una representación enriquecida de la imagen.</p>
+</section>
+<section id="interpretación-como-vector-de-características-local" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="interpretación-como-vector-de-características-local"><span class="header-section-number">8.4</span> Interpretación como vector de características local</h2>
+<p>Para cada posición <span class="math inline">\((i,j)\)</span>, la salida puede agruparse como un vector:</p>
+<p><span id="eq-vector-local"><span class="math display">\[
+Y(i,j) = \left( Y_1(i,j), Y_2(i,j), \dots, Y_F(i,j) \right) \in \mathbb{R}^{F}
+\tag{18}\]</span></span></p>
+<p>Esto implica que cada posición espacial de la imagen original es transformada en un vector de características de dimensión <span class="math inline">\(F\)</span>.</p>
+<p>Por tanto, la capa convolucional realiza una transformación:</p>
+<p><span class="math display">\[
+\mathbb{R}^{k_h \times k_w \times C}
+\longrightarrow
+\mathbb{R}^{F}
+\]</span></p>
+<p>aplicada localmente en cada vecindad de la imagen.</p>
+</section>
+<section id="interpretación-geométrica-3" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="interpretación-geométrica-3"><span class="header-section-number">8.5</span> Interpretación geométrica</h2>
+<p>Desde una perspectiva geométrica, cada filtro <span class="math inline">\(K^{(f)}\)</span> define una dirección en el espacio <span class="math inline">\(\mathbb{R}^{k_h k_w C}\)</span>. En consecuencia, el vector <span class="math inline">\(Y(i,j)\)</span> contiene las proyecciones de la región local <span class="math inline">\(X_{(i,j)}\)</span> sobre cada una de estas direcciones.</p>
+<p>Esto permite interpretar la salida como una representación de la información local en una base (no necesariamente ortogonal) definida por los filtros aprendidos.</p>
+</section>
+<section id="ejemplos-de-filtros" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="ejemplos-de-filtros"><span class="header-section-number">8.6</span> Ejemplos de filtros</h2>
+<p>Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. A continuación, se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Imagenes_tesis/imagen_provicional.png" class="img-fluid figure-img"></p>
+<figcaption>Efecto de distintos filtros convolucionales sobre una imagen</figcaption>
+</figure>
+</div>
+</section>
+<section id="observación-estructural" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="observación-estructural"><span class="header-section-number">8.7</span> Observación estructural</h2>
+<p>Es importante notar que el número de filtros <span class="math inline">\(F\)</span> determina la capacidad de representación de la capa. Un mayor número de filtros permite capturar una mayor variedad de patrones, pero también incrementa el número de parámetros y el costo computacional.</p>
+<p>En capas profundas, los filtros tienden a representar características de mayor nivel semántico, construidas a partir de combinaciones de patrones detectados en capas anteriores.</p>
 </section>
 </section>
-<section id="stride-y-padding" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Stride y Padding</h1>
-<section id="stride" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="stride"><span class="header-section-number">6.1</span> Stride</h2>
-<p>El stride <span class="math inline">\(s\)</span> controla el desplazamiento del kernel. Las dimensiones de salida son:</p>
+<section id="stride-y-padding" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Stride y Padding</h1>
+<section id="stride" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="stride"><span class="header-section-number">9.1</span> Stride</h2>
+<p>El <em>stride</em> <span class="math inline">\(s\)</span> controla el desplazamiento del kernel durante la operación de convolución. Es decir, determina cuántas posiciones se desplaza el kernel en cada paso.</p>
+<p>Las dimensiones de salida están dadas por:</p>
 <p><span id="eq-output-dims"><span class="math display">\[
 H' = \left\lfloor \frac{H - k_h + 2p}{s} \right\rfloor + 1, \quad
 W' = \left\lfloor \frac{W - k_w + 2p}{s} \right\rfloor + 1
-\tag{21}\]</span></span></p>
+\tag{19}\]</span></span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(H, W\)</span> son las dimensiones de la entrada,</li>
+<li><span class="math inline">\(k_h, k_w\)</span> son las dimensiones del kernel,</li>
+<li><span class="math inline">\(p\)</span> es el padding,</li>
+<li><span class="math inline">\(s\)</span> es el stride.</li>
+</ul>
+<p>Un valor mayor de <span class="math inline">\(s\)</span> produce una reducción en la resolución espacial de la salida.</p>
 </section>
-<section id="padding" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="padding"><span class="header-section-number">6.2</span> Padding</h2>
-<p>El padding es una operación que consiste en añadir valores (generalmente ceros) alrededor de la entrada antes de aplicar la convolución. Esto se hace para controlar el tamaño de la salida y preservar información en los bordes.</p>
-<p><span id="eq-x-pad"><span class="math display">\[
+<section id="padding" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="padding"><span class="header-section-number">9.2</span> Padding</h2>
+<p>El <em>padding</em> es una operación que consiste en añadir valores (generalmente ceros) alrededor de la entrada antes de aplicar la convolución. Esto se hace para controlar el tamaño de la salida y preservar información en los bordes.</p>
+<p><span class="math display">\[
 X_{\text{pad}} \in \mathbb{R}^{(H+2p)\times(W+2p)\times C}
-\tag{22}\]</span></span></p>
+\]</span></p>
 <p>El padding puede interpretarse como una extensión de la función de entrada <span class="math inline">\(X\)</span> fuera de su dominio original. Formalmente, se define la extensión <span class="math inline">\(\tilde{X}\)</span> como:</p>
-<p><span id="eq-padding-func"><span class="math display">\[
+<p><span class="math display">\[
 \tilde{X}(i,j) =
 \begin{cases}
 X(i,j), &amp; \text{si } (i,j) \text{ pertenece al dominio original}, \\
 0, &amp; \text{en otro caso}
 \end{cases}
-\tag{23}\]</span></span></p>
+\]</span></p>
 <p>Esta extensión corresponde a una extensión por cero del dominio de la función.</p>
 <p>En una capa convolucional, el padding se aplica antes de la convolución. Por lo tanto, la operación completa de una capa convolucional con padding se puede expresar como:</p>
-<p><span id="eq-conv-layer-pad"><span class="math display">\[
+<p><span class="math display">\[
 Y = \sigma\big( (\text{pad}(X)) \star K + b \big)
-\tag{24}\]</span></span></p>
+\]</span></p>
 <p>donde:</p>
 <ul>
-<li><span class="math inline">\(X\)</span> es el tensor de entrada</li>
-<li><span class="math inline">\(\text{pad}(X)\)</span> es la entrada extendida mediante padding</li>
-<li><span class="math inline">\(\star\)</span> denota la operación de correlación cruzada</li>
-<li><span class="math inline">\(K\)</span> es el kernel o filtro</li>
-<li><span class="math inline">\(b\)</span> es el sesgo</li>
-<li><span class="math inline">\(\sigma\)</span> es la función de activación</li>
+<li><span class="math inline">\(X\)</span> es el tensor de entrada,</li>
+<li><span class="math inline">\(\text{pad}(X)\)</span> es la entrada extendida mediante padding,</li>
+<li><span class="math inline">\(\star\)</span> denota la operación de correlación cruzada,</li>
+<li><span class="math inline">\(K\)</span> es el kernel o filtro,</li>
+<li><span class="math inline">\(b\)</span> es el sesgo,</li>
+<li><span class="math inline">\(\sigma\)</span> es la función de activación.</li>
 </ul>
 </section>
+<section id="ejemplo-ilustrativo" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="ejemplo-ilustrativo"><span class="header-section-number">9.3</span> Ejemplo ilustrativo</h2>
+<p>Para ilustrar el efecto del padding sobre las dimensiones de salida, se presenta el siguiente ejemplo:</p>
+<div id="fig-padding" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-padding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Imagenes_tesis/img_kernel_mapa.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-padding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Ejemplo de convolución con y sin padding
+</figcaption>
+</figure>
+</div>
+<p>Como se observa en <a href="#fig-padding" class="quarto-xref">Figura&nbsp;<span>9.1</span></a>, la incorporación de padding permite controlar el tamaño de la salida. En particular, cuando se utiliza padding adecuado, es posible preservar las dimensiones espaciales de la imagen original tras la aplicación de la convolución.</p>
 </section>
-<section id="función-de-activación" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Función de activación</h1>
-<p>Una <strong>función de activación</strong> es una aplicación no lineal que se introduce después de una transformación afín, con el objetivo de dotar al modelo de la capacidad de aproximar funciones no lineales.</p>
-<section id="definición" class="level3" data-number="7.0.1">
-<h3 data-number="7.0.1" class="anchored" data-anchor-id="definición"><span class="header-section-number">7.0.1</span> Definición</h3>
+<section id="función-de-activación" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="función-de-activación"><span class="header-section-number">9.4</span> Función de activación</h2>
+<p>Una función de activación es una aplicación no lineal que se introduce después de una transformación afín, con el objetivo de dotar al modelo de la capacidad de aproximar funciones no lineales.</p>
+<section id="definición" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="definición"><span class="header-section-number">9.4.1</span> Definición</h3>
 <p>Sea <span class="math inline">\(x \in \mathbb{R}^n\)</span> un vector de entrada, <span class="math inline">\(w \in \mathbb{R}^n\)</span> un vector de pesos y <span class="math inline">\(b \in \mathbb{R}\)</span> un sesgo. Se define la preactivación como:</p>
-<p><span id="eq-preactivation"><span class="math display">\[
+<p><span id="eq-preactivacion"><span class="math display">\[
 z = w^T x + b
-\tag{25}\]</span></span></p>
+\tag{20}\]</span></span></p>
 <p>La salida de la neurona está dada por:</p>
-<p><span id="eq-neuron-output"><span class="math display">\[
+<p><span id="eq-activacion"><span class="math display">\[
 y = \sigma(z)
-\tag{26}\]</span></span></p>
+\tag{21}\]</span></span></p>
 <p>donde <span class="math inline">\(\sigma : \mathbb{R} \to \mathbb{R}\)</span> es la función de activación.</p>
 </section>
-<section id="no-linealidad" class="level3" data-number="7.0.2">
-<h3 data-number="7.0.2" class="anchored" data-anchor-id="no-linealidad"><span class="header-section-number">7.0.2</span> No linealidad</h3>
+<section id="no-linealidad" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="no-linealidad"><span class="header-section-number">9.4.2</span> No linealidad</h3>
 <p>Considérese una red neuronal profunda compuesta únicamente por transformaciones afines. En tal caso, la composición de dichas transformaciones satisface:</p>
-<p><span id="eq-affine-composition"><span class="math display">\[
+<p><span class="math display">\[
 f(x) = W_L W_{L-1} \cdots W_1 x + b'
-\tag{27}\]</span></span></p>
+\]</span></p>
 <p>lo cual sigue siendo una transformación afín. Por consiguiente, sin la introducción de funciones de activación no lineales, la red carece de capacidad expresiva para modelar relaciones no lineales.</p>
 <p>En una red neuronal convolucional (CNN), la salida de una capa se expresa como:</p>
-<p><span id="eq-cnn-layer-output"><span class="math display">\[
+<p><span id="eq-cnn-activacion"><span class="math display">\[
 Y = \sigma\big( X \star K + b \big)
-\tag{28}\]</span></span></p>
+\tag{22}\]</span></span></p>
 <p>donde:</p>
 <ul>
 <li><span class="math inline">\(X\)</span> es el tensor de entrada<br>
@@ -721,147 +999,346 @@ Y = \sigma\big( X \star K + b \big)
 <li><span class="math inline">\(\sigma\)</span> se aplica elemento a elemento</li>
 </ul>
 </section>
-<section id="ejemplos-de-funciones-de-activación" class="level3" data-number="7.0.3">
-<h3 data-number="7.0.3" class="anchored" data-anchor-id="ejemplos-de-funciones-de-activación"><span class="header-section-number">7.0.3</span> Ejemplos de funciones de activación</h3>
-<p>Algunas de las funciones de activación más utilizadas son:</p>
-<ul>
-<li><strong>ReLU (Rectified Linear Unit)</strong></li>
-</ul>
+<section id="ejemplos-de-funciones-de-activación" class="level3" data-number="9.4.3">
+<h3 data-number="9.4.3" class="anchored" data-anchor-id="ejemplos-de-funciones-de-activación"><span class="header-section-number">9.4.3</span> Ejemplos de funciones de activación</h3>
+<p>Algunas de las funciones de activación más utilizadas son las siguientes: <img src="Imagenes_tesis/img_funciones_activacion.png" id="fig-activaciones" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:80.0%"></p>
+<section id="relu-rectified-linear-unit" class="level4" data-number="9.4.3.1">
+<h4 data-number="9.4.3.1" class="anchored" data-anchor-id="relu-rectified-linear-unit"><span class="header-section-number">9.4.3.1</span> ReLU (Rectified Linear Unit)</h4>
 <p><span id="eq-relu"><span class="math display">\[
 \sigma(x) = \max(0, x)
-\tag{29}\]</span></span></p>
-<ul>
-<li><strong>Sigmoide</strong></li>
-</ul>
-<p><span id="eq-sigmoid"><span class="math display">\[
+\tag{23}\]</span></span></p>
+</section>
+<section id="sigmoide" class="level4" data-number="9.4.3.2">
+<h4 data-number="9.4.3.2" class="anchored" data-anchor-id="sigmoide"><span class="header-section-number">9.4.3.2</span> Sigmoide</h4>
+<p><span id="eq-sigmoide"><span class="math display">\[
 \sigma(x) = \frac{1}{1 + e^{-x}}
-\tag{30}\]</span></span></p>
-<ul>
-<li><strong>Tangente hiperbólica</strong></li>
-</ul>
+\tag{24}\]</span></span></p>
+</section>
+<section id="tangente-hiperbólica" class="level4" data-number="9.4.3.3">
+<h4 data-number="9.4.3.3" class="anchored" data-anchor-id="tangente-hiperbólica"><span class="header-section-number">9.4.3.3</span> Tangente hiperbólica</h4>
 <p><span id="eq-tanh"><span class="math display">\[
 \sigma(x) = \tanh(x)
-\tag{31}\]</span></span></p>
+\tag{25}\]</span></span></p>
 </section>
-<section id="propiedades-fundamentales" class="level3" data-number="7.0.4">
-<h3 data-number="7.0.4" class="anchored" data-anchor-id="propiedades-fundamentales"><span class="header-section-number">7.0.4</span> Propiedades fundamentales</h3>
+</section>
+<section id="propiedades-fundamentales" class="level3" data-number="9.4.4">
+<h3 data-number="9.4.4" class="anchored" data-anchor-id="propiedades-fundamentales"><span class="header-section-number">9.4.4</span> Propiedades fundamentales</h3>
 <p>Las funciones de activación empleadas en redes neuronales satisfacen típicamente:</p>
 <ul>
-<li><strong>No linealidad</strong>, necesaria para incrementar la capacidad de representación del modelo<br>
+<li>No linealidad, necesaria para incrementar la capacidad de representación del modelo<br>
 </li>
-<li><strong>Aplicación puntual (element-wise)</strong>, preservando la estructura espacial en CNN<br>
+<li>Aplicación puntual (element-wise), preservando la estructura espacial en CNN<br>
 </li>
-<li><strong>Diferenciabilidad</strong> (al menos casi en todas partes), requisito esencial para métodos de optimización basados en gradiente</li>
+<li>Diferenciabilidad (al menos casi en todas partes), requisito esencial para métodos de optimización basados en gradiente</li>
 </ul>
 </section>
-<section id="formulación-funcional" class="level3" data-number="7.0.5">
-<h3 data-number="7.0.5" class="anchored" data-anchor-id="formulación-funcional"><span class="header-section-number">7.0.5</span> Formulación funcional</h3>
+<section id="formulación-funcional" class="level3" data-number="9.4.5">
+<h3 data-number="9.4.5" class="anchored" data-anchor-id="formulación-funcional"><span class="header-section-number">9.4.5</span> Formulación funcional</h3>
 <p>Desde una perspectiva funcional, una red neuronal profunda puede interpretarse como la composición de aplicaciones de la forma:</p>
 <p><span id="eq-deep-functional"><span class="math display">\[
 f_\theta = \sigma_L \circ T_L \circ \cdots \circ \sigma_1 \circ T_1
-\tag{32}\]</span></span></p>
+\tag{26}\]</span></span></p>
 <p>donde cada transformación afín está dada por:</p>
-<p><span id="eq-affine-transformation"><span class="math display">\[
+<p><span class="math display">\[
 T_i(x) = W_i x + b_i
+\]</span></p>
+</section>
+</section>
+<section id="pooling" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="pooling"><span class="header-section-number">9.5</span> Pooling</h2>
+<p>El <em>pooling</em> es una operación que reduce la dimensión espacial de la representación, conservando las características más relevantes. Esta operación se aplica de manera independiente en cada canal del tensor de entrada.</p>
+<p>Sea:</p>
+<p><span class="math display">\[
+X \in \mathbb{R}^{H \times W \times C}
+\]</span></p>
+<p>la entrada de la capa. El pooling produce una salida:</p>
+<p><span class="math display">\[
+Y \in \mathbb{R}^{H' \times W' \times C}
+\]</span></p>
+<p>donde las dimensiones <span class="math inline">\(H'\)</span> y <span class="math inline">\(W'\)</span> son menores que <span class="math inline">\(H\)</span> y <span class="math inline">\(W\)</span>.</p>
+<section id="max-pooling" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="max-pooling"><span class="header-section-number">9.5.1</span> Max Pooling</h3>
+<p>El <em>max pooling</em> es la forma más común de pooling. Para cada región local <span class="math inline">\(X_{(i,j)}\)</span>, se define:</p>
+<p><span id="eq-maxpool"><span class="math display">\[
+Y(i,j,c) = \max_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
+\tag{27}\]</span></span></p>
+<p>donde <span class="math inline">\(\mathcal{R}\)</span> representa la ventana de pooling (por ejemplo, de tamaño <span class="math inline">\(2 \times 2\)</span>).</p>
+</section>
+<section id="average-pooling" class="level3" data-number="9.5.2">
+<h3 data-number="9.5.2" class="anchored" data-anchor-id="average-pooling"><span class="header-section-number">9.5.2</span> Average Pooling</h3>
+<p>Otra variante es el <em>average pooling</em>, definido como:</p>
+<p><span id="eq-avgpool"><span class="math display">\[
+Y(i,j,c) = \frac{1}{|\mathcal{R}|} \sum_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
+\tag{28}\]</span></span></p>
+<div id="fig-pooling" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pooling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Imagenes_tesis/img_pooling.png" id="fig-pooling" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-pooling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="propiedades" class="level3" data-number="9.5.3">
+<h3 data-number="9.5.3" class="anchored" data-anchor-id="propiedades"><span class="header-section-number">9.5.3</span> Propiedades</h3>
+<p>El pooling presenta las siguientes propiedades:</p>
+<ul>
+<li>Reduce la dimensionalidad espacial, disminuyendo el costo computacional<br>
+</li>
+<li>Introduce una cierta invariancia a traslaciones pequeñas<br>
+</li>
+<li>Opera de forma independiente en cada canal</li>
+</ul>
+</section>
+<section id="interpretación" class="level3" data-number="9.5.4">
+<h3 data-number="9.5.4" class="anchored" data-anchor-id="interpretación"><span class="header-section-number">9.5.4</span> Interpretación</h3>
+<p>El pooling puede interpretarse como una forma de resumen local de la información. En el caso del max pooling, se selecciona la característica más prominente dentro de cada región, mientras que el average pooling produce una media de las intensidades.</p>
+<p>En arquitecturas profundas, el pooling contribuye a la construcción de representaciones más abstractas, al reducir progresivamente la resolución espacial.</p>
+</section>
+</section>
+<section id="capas-completamente-conectadas" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="capas-completamente-conectadas"><span class="header-section-number">9.6</span> Capas completamente conectadas</h2>
+<p>Las capas completamente conectadas (<em>Fully Connected</em>, FC) constituyen la etapa final de una red neuronal convolucional. Su función es combinar las características extraídas por las capas anteriores para realizar la tarea de clasificación o regresión.</p>
+<section id="vectorización-de-la-entrada" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="vectorización-de-la-entrada"><span class="header-section-number">9.6.1</span> Vectorización de la entrada</h3>
+<p>Sea:</p>
+<p><span class="math display">\[
+X \in \mathbb{R}^{H \times W \times C}
+\]</span></p>
+<p>la salida de la última capa convolucional. Esta se transforma en un vector mediante una operación de vectorización:</p>
+<p><span id="eq-vectorizacion-fc"><span class="math display">\[
+x = \mathrm{vec}(X) \in \mathbb{R}^{HWC}
+\tag{29}\]</span></span></p>
+</section>
+<section id="transformación-afín" class="level3" data-number="9.6.2">
+<h3 data-number="9.6.2" class="anchored" data-anchor-id="transformación-afín"><span class="header-section-number">9.6.2</span> Transformación afín</h3>
+<p>La capa completamente conectada aplica una transformación lineal seguida de un sesgo:</p>
+<p><span id="eq-fc-lineal"><span class="math display">\[
+z = Wx + b
+\tag{30}\]</span></span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(W \in \mathbb{R}^{k \times HWC}\)</span> es la matriz de pesos<br>
+</li>
+<li><span class="math inline">\(b \in \mathbb{R}^{k}\)</span> es el vector de sesgos<br>
+</li>
+<li><span class="math inline">\(k\)</span> es el número de neuronas en la capa</li>
+</ul>
+</section>
+<section id="aplicación-de-la-función-de-activación" class="level3" data-number="9.6.3">
+<h3 data-number="9.6.3" class="anchored" data-anchor-id="aplicación-de-la-función-de-activación"><span class="header-section-number">9.6.3</span> Aplicación de la función de activación</h3>
+<p>La salida de la capa está dada por:</p>
+<p><span id="eq-fc-activacion"><span class="math display">\[
+y = \sigma(z)
+\tag{31}\]</span></span></p>
+<p>donde <span class="math inline">\(\sigma\)</span> es una función de activación aplicada componente a componente.</p>
+</section>
+<section id="interpretación-1" class="level3" data-number="9.6.4">
+<h3 data-number="9.6.4" class="anchored" data-anchor-id="interpretación-1"><span class="header-section-number">9.6.4</span> Interpretación</h3>
+<p>Las capas completamente conectadas pueden interpretarse como clasificadores que operan sobre las características extraídas por la red convolucional. En particular, cada neurona combina toda la información disponible en la representación vectorizada.</p>
+<p>Esto contrasta con las capas convolucionales, donde la conectividad es local.</p>
+</section>
+<section id="clasificación" class="level3" data-number="9.6.5">
+<h3 data-number="9.6.5" class="anchored" data-anchor-id="clasificación"><span class="header-section-number">9.6.5</span> Clasificación</h3>
+<p>En problemas de clasificación multiclase, la última capa suele utilizar la función <em>softmax</em>, definida como:</p>
+<p><span id="eq-softmax"><span class="math display">\[
+\text{softmax}(z_i) =
+\frac{e^{z_i}}{\sum_{j=1}^{k} e^{z_j}}
+\tag{32}\]</span></span></p>
+<p>Esta función transforma el vector <span class="math inline">\(z\)</span> en una distribución de probabilidad sobre las clases.</p>
+</section>
+<section id="propiedades-1" class="level3" data-number="9.6.6">
+<h3 data-number="9.6.6" class="anchored" data-anchor-id="propiedades-1"><span class="header-section-number">9.6.6</span> Propiedades</h3>
+<p>Las capas completamente conectadas presentan las siguientes características:</p>
+<ul>
+<li>Conectividad global: cada neurona está conectada con todas las entradas<br>
+</li>
+<li>Alta capacidad de representación<br>
+</li>
+<li>Mayor número de parámetros en comparación con capas convolucionales</li>
+</ul>
+</section>
+<section id="observación" class="level3" data-number="9.6.7">
+<h3 data-number="9.6.7" class="anchored" data-anchor-id="observación"><span class="header-section-number">9.6.7</span> Observación</h3>
+<p>Debido al elevado número de parámetros, las capas completamente conectadas son más propensas al sobreajuste. Por esta razón, en arquitecturas modernas, su uso se reduce o se reemplaza parcialmente mediante técnicas como <em>global average pooling</em>.</p>
+</section>
+</section>
+<section id="función-de-pérdida" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="función-de-pérdida"><span class="header-section-number">9.7</span> Función de pérdida</h2>
+<p>La función de pérdida (<em>loss function</em>) cuantifica la discrepancia entre las predicciones del modelo y los valores reales. Constituye el criterio fundamental que guía el proceso de entrenamiento, ya que permite evaluar la calidad de las predicciones y definir un objetivo de optimización.</p>
+<section id="definición-general" class="level3" data-number="9.7.1">
+<h3 data-number="9.7.1" class="anchored" data-anchor-id="definición-general"><span class="header-section-number">9.7.1</span> Definición general</h3>
+<p>Sea <span class="math inline">\(f_\theta(x)\)</span> la salida del modelo para una entrada <span class="math inline">\(x\)</span>, y sea <span class="math inline">\(y\)</span> la etiqueta real asociada. Una función de pérdida se define como:</p>
+<p><span class="math display">\[
+\mathcal{L}(f_\theta(x), y)
+\]</span></p>
+<p>donde <span class="math inline">\(\mathcal{L} : \mathbb{R}^k \times \mathbb{R}^k \to \mathbb{R}\)</span> mide el error entre la predicción y el valor objetivo.</p>
+<p>Dado un conjunto de datos <span class="math inline">\(\{(x_i, y_i)\}_{i=1}^{N}\)</span>, la función de costo global se define como:</p>
+<p><span id="eq-risk"><span class="math display">\[
+J(\theta) = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(f_\theta(x_i), y_i)
 \tag{33}\]</span></span></p>
 </section>
-</section>
-<section id="función-de-activación-resumen" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Función de Activación (Resumen)</h1>
-<p>Después de la convolución se aplica una función no lineal. Un ejemplo común es la función ReLU:</p>
-<p><span id="eq-relu-short"><span class="math display">\[
-\phi(x) = \max(0,x)
-\tag{34}\]</span></span></p>
-<p>La salida es:</p>
-<p><span id="eq-relu-layer"><span class="math display">\[
-Z = \phi(Y)
-\tag{35}\]</span></span></p>
-</section>
-<section id="pooling" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Pooling</h1>
-<p>El pooling reduce la dimensionalidad.</p>
-<section id="max-pooling" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="max-pooling"><span class="header-section-number">9.1</span> Max Pooling</h2>
-<p><span id="eq-max-pooling"><span class="math display">\[
-Y(i,j) = \max_{(u,v)\in \mathcal{R}} X(i+u, j+v)
-\tag{36}\]</span></span></p>
-</section>
-<section id="average-pooling" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="average-pooling"><span class="header-section-number">9.2</span> Average Pooling</h2>
-<p><span id="eq-avg-pooling"><span class="math display">\[
-Y(i,j) = \frac{1}{|\mathcal{R}|} \sum_{(u,v)\in \mathcal{R}} X(i+u, j+v)
-\tag{37}\]</span></span></p>
-</section>
-</section>
-<section id="capa-totalmente-conectada" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Capa Totalmente Conectada</h1>
-<p>Se transforma el tensor en un vector:</p>
-<p><span id="eq-flattening"><span class="math display">\[
-X \in \mathbb{R}^{H \times W \times C} \rightarrow x \in \mathbb{R}^{n}
-\tag{38}\]</span></span></p>
-<p>Luego:</p>
-<p><span id="eq-fc-layer"><span class="math display">\[
-y = Wx + b
-\tag{39}\]</span></span></p>
-<p>donde <span class="math inline">\(W \in \mathbb{R}^{m \times n}\)</span> y <span class="math inline">\(b \in \mathbb{R}^{m}\)</span>.</p>
-</section>
-<section id="función-de-pérdida" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Función de Pérdida</h1>
-<section id="softmax" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="softmax"><span class="header-section-number">11.1</span> Softmax</h2>
-<p><span id="eq-softmax"><span class="math display">\[
-\hat{y}_i = \frac{e^{z_i}}{\sum_{j} e^{z_j}}
-\tag{40}\]</span></span></p>
-</section>
-<section id="entropía-cruzada" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="entropía-cruzada"><span class="header-section-number">11.2</span> Entropía Cruzada</h2>
+<section id="clasificación-multiclase-entropía-cruzada" class="level3" data-number="9.7.2">
+<h3 data-number="9.7.2" class="anchored" data-anchor-id="clasificación-multiclase-entropía-cruzada"><span class="header-section-number">9.7.2</span> Clasificación multiclase: Entropía cruzada</h3>
+<p>En problemas de clasificación multiclase, la función de pérdida más utilizada es la entropía cruzada (<em>cross-entropy</em>).</p>
+<p>Sea <span class="math inline">\(p = f_\theta(x)\)</span> la salida del modelo después de aplicar la función <em>softmax</em>, y sea <span class="math inline">\(y\)</span> un vector one-hot que representa la clase verdadera. La pérdida se define como:</p>
 <p><span id="eq-cross-entropy"><span class="math display">\[
-\mathcal{L} = -\sum_{i} y_i \log(\hat{y}_i)
-\tag{41}\]</span></span></p>
+\mathcal{L}(p, y) = - \sum_{j=1}^{k} y_j \log(p_j)
+\tag{34}\]</span></span></p>
+<p>Dado que <span class="math inline">\(y\)</span> es un vector one-hot, esta expresión se reduce a:</p>
+<p><span class="math display">\[
+\mathcal{L}(p, y) = -\log(p_{y})
+\]</span></p>
+<p>donde <span class="math inline">\(p_y\)</span> es la probabilidad asignada a la clase correcta.</p>
+</section>
+<section id="interpretación-probabilística" class="level3" data-number="9.7.3">
+<h3 data-number="9.7.3" class="anchored" data-anchor-id="interpretación-probabilística"><span class="header-section-number">9.7.3</span> Interpretación probabilística</h3>
+<p>La entropía cruzada puede interpretarse como una medida de divergencia entre la distribución verdadera <span class="math inline">\(y\)</span> y la distribución predicha <span class="math inline">\(p\)</span>. Minimizar esta función equivale a maximizar la probabilidad de observar los datos bajo el modelo.</p>
+<p>Desde un punto de vista estadístico, este enfoque corresponde al método de máxima verosimilitud.</p>
+</section>
+<section id="caso-de-regresión-error-cuadrático-medio" class="level3" data-number="9.7.4">
+<h3 data-number="9.7.4" class="anchored" data-anchor-id="caso-de-regresión-error-cuadrático-medio"><span class="header-section-number">9.7.4</span> Caso de regresión: Error cuadrático medio</h3>
+<p>En problemas de regresión, una función de pérdida común es el error cuadrático medio (<em>Mean Squared Error</em>, MSE), definido como:</p>
+<p><span id="eq-mse"><span class="math display">\[
+\mathcal{L}(f_\theta(x), y) = \| f_\theta(x) - y \|^2
+\tag{35}\]</span></span></p>
+<p>Esta función penaliza de manera más severa los errores grandes, lo que favorece ajustes más precisos.</p>
+</section>
+<section id="relación-con-el-entrenamiento" class="level3" data-number="9.7.5">
+<h3 data-number="9.7.5" class="anchored" data-anchor-id="relación-con-el-entrenamiento"><span class="header-section-number">9.7.5</span> Relación con el entrenamiento</h3>
+<p>El objetivo del entrenamiento consiste en encontrar los parámetros <span class="math inline">\(\theta\)</span> que minimizan la función de costo global:</p>
+<p><span id="eq-opt"><span class="math display">\[
+\theta^* = \arg\min_{\theta} J(\theta)
+\tag{36}\]</span></span></p>
+<p>Este problema se resuelve típicamente mediante métodos de optimización iterativos, como el descenso por gradiente y sus variantes.</p>
 </section>
 </section>
-<section id="entrenamiento" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> Entrenamiento</h1>
-<p>El problema de optimización es:</p>
-<p><span id="eq-optimization"><span class="math display">\[
-\min_{\theta} \mathcal{L}(f(x;\theta), y)
-\tag{42}\]</span></span></p>
-<p>Se utiliza descenso de gradiente:</p>
+<section id="entrenamiento" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="entrenamiento"><span class="header-section-number">9.8</span> Entrenamiento</h2>
+<p>El entrenamiento de una red neuronal convolucional consiste en ajustar los parámetros <span class="math inline">\(\theta\)</span> del modelo con el objetivo de minimizar la función de pérdida definida previamente.</p>
+<p>Dado un conjunto de datos <span class="math inline">\(\{(x_i, y_i)\}_{i=1}^{N}\)</span>, el problema de entrenamiento puede formularse como:</p>
+<p><span id="eq-entrenamiento"><span class="math display">\[
+\min_{\theta} J(\theta) = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(f_\theta(x_i), y_i)
+\tag{37}\]</span></span></p>
+<section id="descenso-por-gradiente" class="level3" data-number="9.8.1">
+<h3 data-number="9.8.1" class="anchored" data-anchor-id="descenso-por-gradiente"><span class="header-section-number">9.8.1</span> Descenso por gradiente</h3>
+<p>El método más utilizado para resolver este problema es el descenso por gradiente. Este consiste en actualizar iterativamente los parámetros en la dirección opuesta al gradiente de la función de pérdida:</p>
 <p><span id="eq-gradient-descent"><span class="math display">\[
-\theta \leftarrow \theta - \eta \nabla_{\theta} \mathcal{L}
-\tag{43}\]</span></span></p>
+\theta \leftarrow \theta - \eta \nabla_{\theta} J(\theta)
+\tag{38}\]</span></span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\eta &gt; 0\)</span> es la tasa de aprendizaje (<em>learning rate</em>),</li>
+<li><span class="math inline">\(\nabla_{\theta} J(\theta)\)</span> es el gradiente de la función de costo respecto a los parámetros.</li>
+</ul>
 </section>
-<section id="propiedades-fundamentales-1" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> Propiedades Fundamentales</h1>
-<section id="conectividad-local" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="conectividad-local"><span class="header-section-number">13.1</span> Conectividad Local</h2>
-<p>Cada neurona depende de una región pequeña de la entrada.</p>
+<section id="interpretación-2" class="level3" data-number="9.8.2">
+<h3 data-number="9.8.2" class="anchored" data-anchor-id="interpretación-2"><span class="header-section-number">9.8.2</span> Interpretación</h3>
+<p>El gradiente <span class="math inline">\(\nabla_{\theta} J(\theta)\)</span> indica la dirección de mayor crecimiento de la función de pérdida. Por lo tanto, al desplazarse en la dirección opuesta, se busca reducir el valor de la función.</p>
+<p>El proceso iterativo continúa hasta alcanzar un mínimo local de la función de costo.</p>
 </section>
-<section id="compartición-de-parámetros" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="compartición-de-parámetros"><span class="header-section-number">13.2</span> Compartición de Parámetros</h2>
-<p>El mismo kernel se aplica en toda la imagen.</p>
+<section id="regla-de-la-cadena-y-retropropagación" class="level3" data-number="9.8.3">
+<h3 data-number="9.8.3" class="anchored" data-anchor-id="regla-de-la-cadena-y-retropropagación"><span class="header-section-number">9.8.3</span> Regla de la cadena y retropropagación</h3>
+<p>El cálculo del gradiente en redes neuronales profundas se realiza mediante el algoritmo de retropropagación (<em>backpropagation</em>), el cual se basa en la aplicación sistemática de la regla de la cadena.</p>
+<p>Sea una red expresada como:</p>
+<p><span class="math display">\[
+f_\theta = f^{(L)} \circ \cdots \circ f^{(1)}
+\]</span></p>
+<p>el gradiente de la pérdida respecto a los parámetros de una capa <span class="math inline">\(l\)</span> se obtiene propagando el error desde la salida hacia las capas anteriores.</p>
+<p>Este procedimiento permite calcular eficientemente:</p>
+<p><span class="math display">\[
+\nabla_{\theta^{(l)}} J(\theta)
+\]</span></p>
+<p>para cada capa <span class="math inline">\(l\)</span> de la red.</p>
 </section>
-<section id="invarianza-traslacional" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="invarianza-traslacional"><span class="header-section-number">13.3</span> Invarianza Traslacional</h2>
-<p>El modelo detecta patrones independientemente de su posición.</p>
+</section>
+<section id="regularización" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="regularización"><span class="header-section-number">9.9</span> Regularización</h2>
+<p>En el entrenamiento de redes neuronales, es común que el modelo se ajuste excesivamente a los datos de entrenamiento, fenómeno conocido como <em>sobreajuste</em> (<em>overfitting</em>). En este caso, el modelo presenta un buen desempeño en los datos de entrenamiento, pero generaliza pobremente a datos no vistos.</p>
+<p>La regularización consiste en un conjunto de técnicas diseñadas para mejorar la capacidad de generalización del modelo.</p>
+<section id="sobreajuste" class="level3" data-number="9.9.1">
+<h3 data-number="9.9.1" class="anchored" data-anchor-id="sobreajuste"><span class="header-section-number">9.9.1</span> Sobreajuste</h3>
+<p>El sobreajuste ocurre cuando el modelo aprende no solo las características relevantes del problema, sino también el ruido presente en los datos. Esto suele suceder cuando el modelo tiene una alta capacidad de representación en relación con la cantidad de datos disponibles.</p>
+</section>
+<section id="penalización-de-parámetros-weight-decay" class="level3" data-number="9.9.2">
+<h3 data-number="9.9.2" class="anchored" data-anchor-id="penalización-de-parámetros-weight-decay"><span class="header-section-number">9.9.2</span> Penalización de parámetros (Weight Decay)</h3>
+<p>Una estrategia común consiste en añadir un término de penalización a la función de costo:</p>
+<p><span id="eq-regularizacion-l2"><span class="math display">\[
+J(\theta) = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(f_\theta(x_i), y_i) + \lambda \|\theta\|^2
+\tag{39}\]</span></span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\lambda &gt; 0\)</span> es el parámetro de regularización<br>
+</li>
+<li><span class="math inline">\(\|\theta\|^2\)</span> es la norma cuadrática de los parámetros</li>
+</ul>
+<p>Este término penaliza valores grandes de los parámetros, favoreciendo modelos más simples.</p>
+</section>
+<section id="dropout" class="level3" data-number="9.9.3">
+<h3 data-number="9.9.3" class="anchored" data-anchor-id="dropout"><span class="header-section-number">9.9.3</span> Dropout</h3>
+<p>El <em>dropout</em> es una técnica que consiste en desactivar aleatoriamente un subconjunto de neuronas durante el entrenamiento.</p>
+<p>Formalmente, puede interpretarse como la multiplicación de la salida de una capa por una máscara aleatoria <span class="math inline">\(m\)</span>, donde cada componente cumple:</p>
+<p><span class="math display">\[
+m_i \sim \text{Bernoulli}(p)
+\]</span></p>
+<p>De este modo, la salida efectiva es:</p>
+<p><span class="math display">\[
+\tilde{h} = m \odot h
+\]</span></p>
+<p>donde <span class="math inline">\(\odot\)</span> denota el producto elemento a elemento.</p>
+<p>Esta técnica reduce la dependencia entre neuronas y mejora la capacidad de generalización.</p>
 </section>
 </section>
-<section id="flujo-de-una-cnn" class="level1" data-number="14">
-<h1 data-number="14"><span class="header-section-number">14</span> Flujo de una CNN</h1>
-<p><span id="eq-cnn-flow"><span class="math display">\[
-\text{Imagen} \rightarrow \text{Convolución} \rightarrow \text{ReLU} \rightarrow \text{Pooling} \rightarrow \cdots \rightarrow \text{Fully Connected} \rightarrow \text{Softmax}
-\tag{44}\]</span></span></p>
+<section id="optimización" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="optimización"><span class="header-section-number">9.10</span> Optimización</h2>
+<p>El proceso de entrenamiento de una red neuronal implica la resolución de un problema de optimización en alta dimensión. En la práctica, este problema se aborda mediante métodos iterativos basados en gradiente.</p>
+<section id="descenso-por-gradiente-estocástico-sgd" class="level3" data-number="9.10.1">
+<h3 data-number="9.10.1" class="anchored" data-anchor-id="descenso-por-gradiente-estocástico-sgd"><span class="header-section-number">9.10.1</span> Descenso por gradiente estocástico (SGD)</h3>
+<p>En lugar de utilizar todo el conjunto de datos en cada iteración, el <em>Stochastic Gradient Descent</em> (SGD) emplea subconjuntos (mini-batches):</p>
+<p><span class="math display">\[
+\theta \leftarrow \theta - \eta \nabla_{\theta} \mathcal{L}(f_\theta(x_i), y_i)
+\]</span></p>
+<p>Este enfoque reduce el costo computacional y permite actualizaciones más frecuentes.</p>
 </section>
-<section id="interpretación-matemática" class="level1" data-number="15">
-<h1 data-number="15"><span class="header-section-number">15</span> Interpretación Matemática</h1>
-<p>Una CNN puede verse como una función:</p>
-<p><span id="eq-final-math-interpretation"><span class="math display">\[
-f: \mathbb{R}^{H \times W \times C} \to \mathbb{R}^{k}
-\tag{45}\]</span></span></p>
-<p>compuesta por operadores lineales, no lineales y de reducción.</p>
-<p>Las redes neuronales convolucionales son modelos altamente eficientes para el procesamiento de imágenes debido a la combinación de convoluciones, no linealidades y reducción de dimensionalidad, junto con propiedades estructurales como la compartición de parámetros y la conectividad local.</p>
+<section id="mini-batch-gradient-descent" class="level3" data-number="9.10.2">
+<h3 data-number="9.10.2" class="anchored" data-anchor-id="mini-batch-gradient-descent"><span class="header-section-number">9.10.2</span> Mini-batch gradient descent</h3>
+<p>Una generalización del SGD consiste en utilizar lotes de tamaño intermedio:</p>
+<p><span id="eq-minibatch"><span class="math display">\[
+\theta \leftarrow \theta - \eta \frac{1}{B} \sum_{i=1}^{B} \nabla_{\theta} \mathcal{L}(f_\theta(x_i), y_i)
+\tag{40}\]</span></span></p>
+<p>donde <span class="math inline">\(B\)</span> es el tamaño del lote.</p>
+</section>
+<section id="métodos-adaptativos" class="level3" data-number="9.10.3">
+<h3 data-number="9.10.3" class="anchored" data-anchor-id="métodos-adaptativos"><span class="header-section-number">9.10.3</span> Métodos adaptativos</h3>
+<p>Existen métodos de optimización que ajustan automáticamente la tasa de aprendizaje para cada parámetro. Uno de los más utilizados es <em>Adam</em>.</p>
+<p>El algoritmo Adam combina ideas de momento y escalamiento adaptativo del gradiente. De manera simplificada, realiza actualizaciones de la forma:</p>
+<p><span class="math display">\[
+\theta \leftarrow \theta - \eta \frac{m_t}{\sqrt{v_t} + \epsilon}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(m_t\)</span> es el promedio exponencial de los gradientes<br>
+</li>
+<li><span class="math inline">\(v_t\)</span> es el promedio exponencial de los gradientes al cuadrado<br>
+</li>
+<li><span class="math inline">\(\epsilon\)</span> es un término de estabilidad numérica</li>
+</ul>
+</section>
+<section id="tasa-de-aprendizaje" class="level3" data-number="9.10.4">
+<h3 data-number="9.10.4" class="anchored" data-anchor-id="tasa-de-aprendizaje"><span class="header-section-number">9.10.4</span> Tasa de aprendizaje</h3>
+<p>La tasa de aprendizaje <span class="math inline">\(\eta\)</span> controla la magnitud de las actualizaciones. Su elección es crucial:</p>
+<ul>
+<li>valores pequeños producen convergencia lenta<br>
+</li>
+<li>valores grandes pueden causar inestabilidad</li>
+</ul>
+<p>En la práctica, se utilizan esquemas de decaimiento de la tasa de aprendizaje.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

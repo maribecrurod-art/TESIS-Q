@@ -213,7 +213,7 @@ Desde un punto de vista formal, una CNN puede entenderse como una
 función parametrizada
 
 \begin{equation}\phantomsection\label{eq-cnn-func}{
-f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longrightarrow \mathbb{R}^{k}
+f(\cdot , \theta): \mathcal{X} \subseteq \mathbb{R}^{H \times W \times C} \longrightarrow \mathbb{R}^{k},
 }\end{equation}
 
 donde:
@@ -242,11 +242,8 @@ donde:
 \section{Representación de
 imágenes}\label{representaciuxf3n-de-imuxe1genes}
 
-Una imagen se modela matemáticamente como un tensor de orden 3:
-
-\begin{equation}\phantomsection\label{eq-img-tensor}{
-X \in \mathbb{R}^{H \times W \times C}
-}\end{equation}
+Una imagen se modela matemáticamente como un tensor de orden 3
+\(X\in \mathbb{R}^{H \times W \times C}.\)
 
 Esto significa que:
 
@@ -261,7 +258,7 @@ Esto significa que:
 \end{itemize}
 
 \begin{equation}\phantomsection\label{eq-pixel-vec}{
-X(i,j) = \big(x_1, x_2, \dots, x_C\big)
+X(i,j) = \big(x_1, x_2, \dots, x_C\big).
 }\end{equation}
 
 \section{Estructura funcional de la
@@ -558,7 +555,7 @@ Una \textbf{función de activación} es una aplicación no lineal que se
 introduce después de una transformación afín, con el objetivo de dotar
 al modelo de la capacidad de aproximar funciones no lineales.
 
-\subsection{Definición}\label{definiciuxf3n}
+\section{Definición}\label{definiciuxf3n}
 
 Sea \(x \in \mathbb{R}^n\) un vector de entrada, \(w \in \mathbb{R}^n\)
 un vector de pesos y \(b \in \mathbb{R}\) un sesgo. Se define la
@@ -577,7 +574,7 @@ y = \sigma(z)
 donde \(\sigma : \mathbb{R} \to \mathbb{R}\) es la función de
 activación.
 
-\subsection{No linealidad}\label{no-linealidad}
+\section{No linealidad}\label{no-linealidad}
 
 Considérese una red neuronal profunda compuesta únicamente por
 transformaciones afines. En tal caso, la composición de dichas
@@ -614,7 +611,7 @@ donde:
   \(\sigma\) se aplica elemento a elemento
 \end{itemize}
 
-\subsection{Ejemplos de funciones de
+\section{Ejemplos de funciones de
 activación}\label{ejemplos-de-funciones-de-activaciuxf3n}
 
 Algunas de las funciones de activación más utilizadas son:
@@ -649,7 +646,7 @@ Algunas de las funciones de activación más utilizadas son:
 \sigma(x) = \tanh(x)
 }\end{equation}
 
-\subsection{Propiedades fundamentales}\label{propiedades-fundamentales}
+\section{Propiedades fundamentales}\label{propiedades-fundamentales}
 
 Las funciones de activación empleadas en redes neuronales satisfacen
 típicamente:
@@ -667,7 +664,7 @@ típicamente:
   esencial para métodos de optimización basados en gradiente
 \end{itemize}
 
-\subsection{Formulación funcional}\label{formulaciuxf3n-funcional}
+\section{Formulación funcional}\label{formulaciuxf3n-funcional}
 
 Desde una perspectiva funcional, una red neuronal profunda puede
 interpretarse como la composición de aplicaciones de la forma:
