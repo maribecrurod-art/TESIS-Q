@@ -1006,3 +1006,4 @@ La tasa de aprendizaje $\eta$ controla la magnitud de las actualizaciones. Su el
 
 En la práctica, se utilizan esquemas de decaimiento de la tasa de aprendizaje.
 
+

@@ -884,12 +884,6 @@ Y(i,j) = \left( Y_1(i,j), Y_2(i,j), \dots, Y_F(i,j) \right) \in \mathbb{R}^{F}
 <section id="ejemplos-de-filtros" class="level2" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="ejemplos-de-filtros"><span class="header-section-number">8.6</span> Ejemplos de filtros</h2>
 <p>Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. A continuación, se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Imagenes_tesis/imagen_provicional.png" class="img-fluid figure-img"></p>
-<figcaption>Efecto de distintos filtros convolucionales sobre una imagen</figcaption>
-</figure>
-</div>
 </section>
 <section id="observación-estructural" class="level2" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="observación-estructural"><span class="header-section-number">8.7</span> Observación estructural</h2>
@@ -1070,7 +1064,7 @@ Y(i,j,c) = \max_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
 <p><span id="eq-avgpool"><span class="math display">\[
 Y(i,j,c) = \frac{1}{|\mathcal{R}|} \sum_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
 \tag{28}\]</span></span></p>
-<div id="fig-pooling" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%" data-fig-align="center">
+<div id="fig-pooling" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="80%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pooling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="Imagenes_tesis/img_pooling.png" id="fig-pooling" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:80.0%">
