@@ -340,7 +340,7 @@ $$
 
 Cada término $Y^{(c)}(i,j)$ representa la contribución del canal $c$ al valor final de la salida.
 
-![](Imagenes_tesis/imagen_provicional.png.png)
+![](Imagenes_tesis/imagen_provicional.png)
 
 ## Interpretación como producto interno en espacio tensorial
 
@@ -485,8 +485,6 @@ Esto permite interpretar la salida como una representación de la información l
 ## Ejemplos de filtros
 
 Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. A continuación, se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.
-
-![Efecto de distintos filtros convolucionales sobre una imagen](Imagenes_tesis/imagen_provicional.png)
 
 ## Observación estructural
 
