@@ -1,0 +1,106 @@
+/* =========================
+   JUSTIFICAR TEXTO
+========================= */
+
+p {
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* Justificar listas */
+li {
+    text-align: justify;
+    line-height: 1.7;
+}
+
+/* Mejor separación entre párrafos */
+p + p {
+    margin-top: 1rem;
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+/* Línea decorativa bajo h1 */
+h1.title {
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(128,128,128,0.3);
+}
+
+/* =========================
+   TABLAS
+========================= */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: 10px;
+    text-align: justify;
+    vertical-align: top;
+}
+
+/* =========================
+   CÓDIGO
+========================= */
+
+pre {
+    border-radius: 10px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.9rem;
+}
+
+code {
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+/* =========================
+   IMÁGENES
+========================= */
+
+img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Centrar captions */
+figcaption {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar nav[role="doc-toc"] {
+    font-size: 0.95rem;
+}
+
+/* =========================
+   TRANSICIONES SUAVES
+========================= */
+
+a, button {
+    transition: all 0.2s ease-in-out;
+}
