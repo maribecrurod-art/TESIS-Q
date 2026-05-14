@@ -15,7 +15,6 @@ book:
   title: "Tesis"
   reader-mode: true
   language: es
-  #date: "02/14/2024"
   output-file: "Tesis_MBCR"
   image: LOGOunach.png
   cover-image: LOGOunach.png
@@ -36,19 +35,16 @@ book:
   chapters:
     - index.qmd
     - capitulo1.qmd
-    #- objetivos.qmd
-    #- references.qmd
 
 comments:
-    hypothesis: true
-
-#bibliography: references.bib
+  hypothesis: true
 
 format:
   html:
     theme:
       dark: darkly
       light: cerulean
+    css: styles.css
     highlight-style: a11y
     lang: es
     html-math-method: mathjax
@@ -59,6 +55,7 @@ format:
       gutter-width: 1.5rem
     code-copy: true
     code-fold: true
+
   pdf:
     lang: es
     documentclass: scrreprt
@@ -67,6 +64,8 @@ format:
     institution: Benemérita Universidad Autónoma de Chiapas
     email: mariana.cruz68@unach.mx
     keep-tex: true
+
   epub:
     cover-image: LOGOunach.png
+
 editor: visual
