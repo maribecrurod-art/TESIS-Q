@@ -822,10 +822,12 @@ los filtros aprendidos.
 
 \section{Ejemplos de filtros}\label{ejemplos-de-filtros}
 
-Los distintos filtros convolucionales permiten detectar características
-específicas en la imagen de entrada. A continuación, se muestran
-ejemplos representativos del efecto de diferentes kernels sobre una
-misma imagen.
+!{[}Los distintos filtros convolucionales permiten detectar
+características específicas en la imagen de entrada. A continuación, se
+muestran ejemplos representativos del efecto de diferentes kernels sobre
+una misma imagen.
+
+{]}(Imagenes\_tesis/img\_ejemplos\_filtros.png)\{fig-align=``center''\}
 
 \section{Observación estructural}\label{observaciuxf3n-estructural}
 
@@ -937,14 +939,13 @@ presenta el siguiente ejemplo:
 
 }
 
-\caption{\label{fig-padding}Ejemplo de convolución con y sin padding}
+\caption{\label{fig-padding}Ejemplo de convolución con y sin padding. La
+incorporación de padding permite controlar el tamaño de la salida. En
+particular, cuando se utiliza padding adecuado, es posible preservar las
+dimensiones espaciales de la imagen original tras la aplicación de la
+convolución.}
 
 \end{figure}%
-
-Como se observa en Figura~\ref{fig-padding}, la incorporación de padding
-permite controlar el tamaño de la salida. En particular, cuando se
-utiliza padding adecuado, es posible preservar las dimensiones
-espaciales de la imagen original tras la aplicación de la convolución.
 
 \section{Función de activación}\label{funciuxf3n-de-activaciuxf3n}
 
@@ -1013,7 +1014,7 @@ activación}\label{ejemplos-de-funciones-de-activaciuxf3n}
 
 Algunas de las funciones de activación más utilizadas son las
 siguientes: \begin{center}
-\includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{Imagenes_tesis/img_funciones_activacion.png}
+\includegraphics[width=0.82\linewidth,height=\textheight,keepaspectratio]{Imagenes_tesis/img_funciones_activacion.png}
 \end{center}
 
 \subsubsection{ReLU (Rectified Linear
@@ -1349,35 +1350,275 @@ entrenamiento puede formularse como:
 \min_{\theta} J(\theta) = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(f_\theta(x_i), y_i)
 }\end{equation}
 
-\subsection{Descenso por gradiente}\label{descenso-por-gradiente}
+\subsection{Método del descenso del
+gradiente}\label{muxe9todo-del-descenso-del-gradiente}
 
-El método más utilizado para resolver este problema es el descenso por
-gradiente. Este consiste en actualizar iterativamente los parámetros en
-la dirección opuesta al gradiente de la función de pérdida:
+Considérese el problema de optimización irrestricta
 
-\begin{equation}\phantomsection\label{eq-gradient-descent}{
-\theta \leftarrow \theta - \eta \nabla_{\theta} J(\theta)
-}\end{equation}
+\[
+\min_{x \in \mathbb{R}^n} f(x),
+\]
 
-donde:
+donde \(f:\mathbb{R}^n \to \mathbb{R}\) es una función diferenciable. El
+objetivo consiste en construir un procedimiento iterativo que permita
+aproximarse a un punto minimizante de \(f\). Entre los métodos más
+importantes para resolver este tipo de problemas se encuentra el método
+del descenso del gradiente, también conocido como \emph{gradient
+descent} o método del máximo descenso.
 
-\begin{itemize}
-\tightlist
-\item
-  \(\eta > 0\) es la tasa de aprendizaje (\emph{learning rate}),
-\item
-  \(\nabla_{\theta} J(\theta)\) es el gradiente de la función de costo
-  respecto a los parámetros.
-\end{itemize}
+La idea fundamental del método proviene de la interpretación geométrica
+del gradiente. Para una función diferenciable \(f\), el vector gradiente
 
-\subsection{Interpretación}\label{interpretaciuxf3n-2}
+\[
+\nabla f(x)
+=
+\begin{pmatrix}
+\dfrac{\partial f}{\partial x_1}(x) \\
+\dfrac{\partial f}{\partial x_2}(x) \\
+\vdots \\
+\dfrac{\partial f}{\partial x_n}(x)
+\end{pmatrix}
+\]
 
-El gradiente \(\nabla_{\theta} J(\theta)\) indica la dirección de mayor
-crecimiento de la función de pérdida. Por lo tanto, al desplazarse en la
-dirección opuesta, se busca reducir el valor de la función.
+indica la dirección de máximo crecimiento local de la función en el
+punto \(x\). En consecuencia, el vector opuesto
 
-El proceso iterativo continúa hasta alcanzar un mínimo local de la
-función de costo.
+\[
+-\nabla f(x)
+\]
+
+corresponde a la dirección de máximo decrecimiento local. El método del
+descenso del gradiente aprovecha precisamente esta propiedad para
+generar una sucesión de iterados que produzca una disminución progresiva
+del valor de la función objetivo.
+
+Partiendo de un punto inicial \(x_0 \in \mathbb{R}^n\), el método
+construye una sucesión \(\{x_k\}\) definida mediante la iteración
+
+\[
+x_{k+1}
+=
+x_k - \alpha_k \nabla f(x_k),
+\]
+
+donde \(\alpha_k > 0\) representa el tamaño de paso asociado a la
+iteración \(k\). La elección de este parámetro resulta fundamental para
+el desempeño del algoritmo, pues determina la magnitud del
+desplazamiento realizado en la dirección de descenso.
+
+La justificación matemática del método se obtiene a partir de la noción
+de dirección de descenso. Sea
+
+\[
+d_k = -\nabla f(x_k).
+\]
+
+Entonces,
+
+\[
+\nabla f(x_k)^T d_k
+=
+\nabla f(x_k)^T(-\nabla f(x_k))
+=
+-\|\nabla f(x_k)\|^2.
+\]
+
+Si \(\nabla f(x_k)\neq 0\), se tiene que
+
+\[
+\|\nabla f(x_k)\|^2 > 0,
+\]
+
+y por tanto
+
+\[
+\nabla f(x_k)^T d_k < 0.
+\]
+
+Esto demuestra que \(d_k\) constituye una dirección estricta de descenso
+para la función \(f\). En otras palabras, existe un valor
+suficientemente pequeño de \(\alpha > 0\) tal que
+
+\[
+f(x_k+\alpha d_k) < f(x_k).
+\]
+
+Esta propiedad puede analizarse con mayor detalle mediante el desarrollo
+de Taylor de primer orden. Para \(\alpha\) pequeño se tiene
+
+\[
+f(x_k+\alpha d_k)
+=
+f(x_k)
++
+\alpha \nabla f(x_k)^T d_k
++
+o(\alpha).
+\]
+
+Sustituyendo \(d_k=-\nabla f(x_k)\), resulta
+
+\[
+f(x_k-\alpha \nabla f(x_k))
+=
+f(x_k)
+-
+\alpha \|\nabla f(x_k)\|^2
++
+o(\alpha).
+\]
+
+Debido a que el término dominante es negativo, el valor de la función
+disminuye localmente para valores suficientemente pequeños de
+\(\alpha\). Esta observación constituye la base teórica del algoritmo.
+
+La selección del tamaño de paso \(\alpha_k\) es uno de los aspectos
+centrales del método. Una posibilidad consiste en utilizar un paso
+constante,
+
+\[
+\alpha_k = \alpha,
+\]
+
+lo cual simplifica considerablemente la implementación. Sin embargo, si
+el valor de \(\alpha\) es demasiado grande, la sucesión puede divergir o
+presentar oscilaciones; por el contrario, si \(\alpha\) es demasiado
+pequeño, la convergencia puede resultar excesivamente lenta.
+
+Otra estrategia consiste en determinar el tamaño de paso mediante una
+búsqueda lineal exacta. En este caso, \(\alpha_k\) se obtiene
+resolviendo el problema unidimensional
+
+\[
+\alpha_k
+=
+\arg\min_{\alpha>0}
+f(x_k-\alpha \nabla f(x_k)).
+\]
+
+De esta manera, en cada iteración se minimiza exactamente la función
+sobre la recta definida por la dirección de descenso. Aunque este
+enfoque posee una sólida justificación teórica, en problemas de gran
+dimensión suele resultar costoso desde el punto de vista computacional.
+Por esta razón, frecuentemente se emplean búsquedas lineales inexactas
+basadas en criterios como las condiciones de Armijo o de Wolfe, las
+cuales garantizan una reducción suficiente de la función objetivo sin
+resolver completamente el subproblema unidimensional.
+
+El criterio de terminación más habitual se basa en la norma del
+gradiente. Dado que un punto minimizante diferenciable debe satisfacer
+la condición necesaria de primer orden
+
+\[
+\nabla f(x^\ast)=0,
+\]
+
+el algoritmo suele detenerse cuando
+
+\[
+\|\nabla f(x_k)\| < \varepsilon,
+\]
+
+para cierta tolerancia \(\varepsilon > 0\).
+
+Las propiedades de convergencia del método dependen de las
+características de la función objetivo. Si \(f\) es convexa y su
+gradiente es Lipschitz continuo, entonces la sucesión generada por el
+método converge hacia un mínimo global. Más aún, si \(f\) es fuertemente
+convexa, es decir, si existe \(\mu>0\) tal que
+
+\[
+f(y)
+\geq
+f(x)
++
+\nabla f(x)^T(y-x)
++
+\frac{\mu}{2}\|y-x\|^2,
+\]
+
+entonces el método presenta convergencia lineal para elecciones
+apropiadas del tamaño de paso.
+
+Para ilustrar el procedimiento, considérese la función cuadrática
+
+\[
+f(x,y)=x^2+y^2.
+\]
+
+Su gradiente está dado por
+
+\[
+\nabla f(x,y)
+=
+\begin{pmatrix}
+2x\\
+2y
+\end{pmatrix}.
+\]
+
+En consecuencia, la iteración del descenso del gradiente toma la forma
+
+\[
+\begin{pmatrix}
+x_{k+1}\\
+y_{k+1}
+\end{pmatrix}
+=
+\begin{pmatrix}
+x_k\\
+y_k
+\end{pmatrix}
+-
+\alpha
+\begin{pmatrix}
+2x_k\\
+2y_k
+\end{pmatrix},
+\]
+
+lo cual equivale a
+
+\[
+x_{k+1}=(1-2\alpha)x_k,
+\qquad
+y_{k+1}=(1-2\alpha)y_k.
+\]
+
+La convergencia hacia el origen ocurre siempre que
+
+\[
+0<\alpha<1.
+\]
+
+A pesar de su simplicidad y relevancia teórica, el método del descenso
+del gradiente posee ciertas limitaciones. En funciones mal
+condicionadas, la trayectoria de los iterados puede presentar
+oscilaciones pronunciadas y convergencia lenta, especialmente en
+regiones con geometría alargada o estrecha. Asimismo, en problemas no
+convexos el método puede converger hacia mínimos locales o puntos silla.
+
+No obstante, el descenso del gradiente constituye la base conceptual de
+numerosos algoritmos modernos de optimización y aprendizaje automático,
+entre ellos el descenso estocástico del gradiente, los métodos con
+momentum, Nesterov, AdaGrad, RMSProp y Adam. Además, mantiene una
+estrecha relación con métodos de segundo orden como Newton y los
+algoritmos quasi-Newton.
+
+Finalmente, el método admite una interpretación continua particularmente
+elegante. La iteración discreta puede verse como una aproximación
+numérica de la ecuación diferencial
+
+\[
+\frac{dx(t)}{dt}
+=
+-\nabla f(x(t)),
+\]
+
+conocida como flujo de gradiente (\emph{gradient flow}). Esta ecuación
+describe una dinámica continua en la cual el sistema evoluciona
+siguiendo la dirección de máximo decrecimiento de la función energía
+\(f\).
 
 \subsection{Regla de la cadena y
 retropropagación}\label{regla-de-la-cadena-y-retropropagaciuxf3n}
@@ -1545,6 +1786,8 @@ aprendizaje.
 \bookmarksetup{startatroot}
 
 \chapter{}\label{section}
+
+bnm
 
 
 

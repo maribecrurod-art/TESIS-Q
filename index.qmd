@@ -29,13 +29,12 @@ $$ {#eq-cnn-formal}
 
 donde:
 
-- $\mathcal{X}$ es el espacio de entrada (por ejemplo, imágenes),
-- $H$ representa la altura (height) de la imagen, es decir, el número de filas,
-- $W$ representa el ancho (width), es decir, el número de columnas,
-- $C$ representa el número de canales (channels), que corresponde a la cantidad de valores asociados a cada píxel,
-- $k$ es la dimensión del espacio de salida (por ejemplo, número de clases en clasificación),
-- $\theta$ denota el conjunto total de parámetros entrenables del modelo.
-
+-   $\mathcal{X}$ es el espacio de entrada (por ejemplo, imágenes),
+-   $H$ representa la altura (height) de la imagen, es decir, el número de filas,
+-   $W$ representa el ancho (width), es decir, el número de columnas,
+-   $C$ representa el número de canales (channels), que corresponde a la cantidad de valores asociados a cada píxel,
+-   $k$ es la dimensión del espacio de salida (por ejemplo, número de clases en clasificación),
+-   $\theta$ denota el conjunto total de parámetros entrenables del modelo.
 
 # Representación Tensorial de Imágenes
 
@@ -55,7 +54,6 @@ Por tanto, cada píxel contiene un vector que describe información en distintos
 
 ![](Imagenes_tesis/img_flor_1.png)
 
-
 # Estructura Funcional de la Red
 
 Una CNN se construye como la composición de funciones:
@@ -72,15 +70,12 @@ $$
 \theta = \left\{ \theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)} \right\}
 $$ {#eq-parametros-globales}
 
-
-
-
 # Parámetros del Modelo
 
 Los parámetros de una CNN están constituidos principalmente por:
 
-- **Kernels** (filtros convolucionales),
-- **Sesgos** asociados a cada filtro.
+-   **Kernels** (filtros convolucionales),
+-   **Sesgos** asociados a cada filtro.
 
 Estos parámetros determinan completamente la función $f(x;\theta)$ y son ajustados mediante procedimientos de optimización basados en gradiente.
 
@@ -181,7 +176,7 @@ En consecuencia, la red no depende de la posición absoluta de los patrones, sin
 
 # Operación de Convolución
 
-La operación fundamental en una red neuronal convolucional es la denominada **convolución discreta**. No obstante, es importante señalar que en el contexto de aprendizaje profundo, la operación implementada corresponde en realidad a la **correlación cruzada**, ya que no se realiza la inversión del kernel. A pesar de esta diferencia técnica, en la literatura se mantiene el término ``convolución'' por convención.
+La operación fundamental en una red neuronal convolucional es la denominada **convolución discreta**. No obstante, es importante señalar que en el contexto de aprendizaje profundo, la operación implementada corresponde en realidad a la **correlación cruzada**, ya que no se realiza la inversión del kernel. A pesar de esta diferencia técnica, en la literatura se mantiene el término \`\`convolución'' por convención.
 
 Esta operación define un mecanismo mediante el cual se evalúa la similitud entre un patrón local (kernel) y distintas regiones de la imagen de entrada.
 
@@ -210,9 +205,9 @@ $$ {#eq-convolucion-unicanal}
 
 donde:
 
-- $(i,j)$ denota la posición de la ventana deslizante,
-- $(u,v)$ recorre las coordenadas internas del kernel,
-- $X(i+u, j+v)$ representa la región local de la imagen.
+-   $(i,j)$ denota la posición de la ventana deslizante,
+-   $(u,v)$ recorre las coordenadas internas del kernel,
+-   $X(i+u, j+v)$ representa la región local de la imagen.
 
 ![](Imagenes_tesis/img_kernel_1.png)
 
@@ -248,9 +243,9 @@ Esta formulación pone de manifiesto que la convolución mide el grado de alinea
 
 Desde un punto de vista geométrico, el valor $Y(i,j)$ representa la proyección del vector $X_{(i,j)}$ sobre el vector $K$ en el espacio euclidiano de dimensión $k_h k_w$. En consecuencia:
 
-- Si $X_{(i,j)}$ es similar a $K$, entonces $Y(i,j)$ será grande.
-- Si son ortogonales, el resultado será cercano a cero.
-- Si son opuestos, el valor será negativo.
+-   Si $X_{(i,j)}$ es similar a $K$, entonces $Y(i,j)$ será grande.
+-   Si son ortogonales, el resultado será cercano a cero.
+-   Si son opuestos, el valor será negativo.
 
 Esto permite interpretar al kernel como un **detector de patrones**.
 
@@ -371,9 +366,9 @@ Desde un punto de vista geométrico, cada región local de la imagen se interpre
 
 Por tanto:
 
-- valores grandes de $Y(i,j)$ indican alta alineación entre el patrón y la región,
-- valores cercanos a cero indican baja correlación,
-- valores negativos indican oposición estructural.
+-   valores grandes de $Y(i,j)$ indican alta alineación entre el patrón y la región,
+-   valores cercanos a cero indican baja correlación,
+-   valores negativos indican oposición estructural.
 
 En consecuencia, el kernel actúa como un detector de patrones multicanal.
 
@@ -426,8 +421,6 @@ $$
 Y_f : \{1,\dots,H'\} \times \{1,\dots,W'\} \to \mathbb{R}
 $$
 
-
-
 ## Estructura tensorial de la salida
 
 Al considerar todos los filtros simultáneamente, la salida completa se organiza como un tensor de orden tres:
@@ -438,8 +431,8 @@ $$ {#eq-salida-tensor}
 
 donde:
 
-- $H'$ y $W'$ son las dimensiones espaciales de la salida,
-- $F$ es el número de canales de salida, también llamados **mapas de características**.
+-   $H'$ y $W'$ son las dimensiones espaciales de la salida,
+-   $F$ es el número de canales de salida, también llamados **mapas de características**.
 
 En particular, la componente $Y(:,:,f)$ corresponde al mapa de activación generado por el filtro $K^{(f)}$.
 
@@ -481,10 +474,11 @@ Desde una perspectiva geométrica, cada filtro $K^{(f)}$ define una dirección e
 
 Esto permite interpretar la salida como una representación de la información local en una base (no necesariamente ortogonal) definida por los filtros aprendidos.
 
-
 ## Ejemplos de filtros
 
-Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. A continuación, se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.
+![Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. A continuación, se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.
+
+](Imagenes_tesis/img_ejemplos_filtros.png){fig-align="center"}
 
 ## Observación estructural
 
@@ -507,13 +501,12 @@ $$ {#eq-output-dims}
 
 donde:
 
-- $H, W$ son las dimensiones de la entrada,
-- $k_h, k_w$ son las dimensiones del kernel,
-- $p$ es el padding,
-- $s$ es el stride.
+-   $H, W$ son las dimensiones de la entrada,
+-   $k_h, k_w$ son las dimensiones del kernel,
+-   $p$ es el padding,
+-   $s$ es el stride.
 
 Un valor mayor de $s$ produce una reducción en la resolución espacial de la salida.
-
 
 ## Padding
 
@@ -543,21 +536,18 @@ $$
 
 donde:
 
-- $X$ es el tensor de entrada,
-- $\text{pad}(X)$ es la entrada extendida mediante padding,
-- $\star$ denota la operación de correlación cruzada,
-- $K$ es el kernel o filtro,
-- $b$ es el sesgo,
-- $\sigma$ es la función de activación.
-
+-   $X$ es el tensor de entrada,
+-   $\text{pad}(X)$ es la entrada extendida mediante padding,
+-   $\star$ denota la operación de correlación cruzada,
+-   $K$ es el kernel o filtro,
+-   $b$ es el sesgo,
+-   $\sigma$ es la función de activación.
 
 ## Ejemplo ilustrativo
 
 Para ilustrar el efecto del padding sobre las dimensiones de salida, se presenta el siguiente ejemplo:
 
-![Ejemplo de convolución con y sin padding](Imagenes_tesis/img_kernel_mapa.png){#fig-padding fig-align="center" width=80%}
-
-Como se observa en @fig-padding, la incorporación de padding permite controlar el tamaño de la salida. En particular, cuando se utiliza padding adecuado, es posible preservar las dimensiones espaciales de la imagen original tras la aplicación de la convolución.
+![Ejemplo de convolución con y sin padding. La incorporación de padding permite controlar el tamaño de la salida. En particular, cuando se utiliza padding adecuado, es posible preservar las dimensiones espaciales de la imagen original tras la aplicación de la convolución.](Imagenes_tesis/img_kernel_mapa.png){#fig-padding fig-align="center" width="80%"}
 
 ## Función de activación
 
@@ -597,17 +587,18 @@ $$ {#eq-cnn-activacion}
 
 donde:
 
-- $X$ es el tensor de entrada  
-- $\star$ denota la operación de correlación cruzada  
-- $K$ es el conjunto de filtros (kernels)  
-- $b$ es el sesgo  
-- $\sigma$ se aplica elemento a elemento  
-
+-   $X$ es el tensor de entrada\
+-   $\star$ denota la operación de correlación cruzada\
+-   $K$ es el conjunto de filtros (kernels)\
+-   $b$ es el sesgo\
+-   $\sigma$ se aplica elemento a elemento
 
 ### Ejemplos de funciones de activación
 
-Algunas de las funciones de activación más utilizadas son las siguientes:
-![](Imagenes_tesis/img_funciones_activacion.png){#fig-activaciones fig-align="center" width=80%}
+Algunas de las funciones de activación más utilizadas son las siguientes: ![ReLU es eficientemente y se usa ampliamente en redes profundas.
+Sigmoide es útil en la capa de salida para clasificación binaria.
+Tanh es útil cuando se necesita una salida centrada en 0.
+Leaky ReLu evita el problema de "neuronas muertas" de ReLu.](Imagenes_tesis/img_funciones_activacion.png){#fig-activaciones fig-align="center" width="82%"}
 
 #### ReLU (Rectified Linear Unit)
 
@@ -627,15 +618,13 @@ $$
 \sigma(x) = \tanh(x)
 $$ {#eq-tanh}
 
-
 ### Propiedades fundamentales
 
 Las funciones de activación empleadas en redes neuronales satisfacen típicamente:
 
-- No linealidad, necesaria para incrementar la capacidad de representación del modelo  
-- Aplicación puntual (element-wise), preservando la estructura espacial en CNN  
-- Diferenciabilidad (al menos casi en todas partes), requisito esencial para métodos de optimización basados en gradiente  
-
+-   No linealidad, necesaria para incrementar la capacidad de representación del modelo\
+-   Aplicación puntual (element-wise), preservando la estructura espacial en CNN\
+-   Diferenciabilidad (al menos casi en todas partes), requisito esencial para métodos de optimización basados en gradiente
 
 ### Formulación funcional
 
@@ -669,7 +658,6 @@ $$
 
 donde las dimensiones $H'$ y $W'$ son menores que $H$ y $W$.
 
-
 ### Max Pooling
 
 El *max pooling* es la forma más común de pooling. Para cada región local $X_{(i,j)}$, se define:
@@ -680,7 +668,6 @@ $$ {#eq-maxpool}
 
 donde $\mathcal{R}$ representa la ventana de pooling (por ejemplo, de tamaño $2 \times 2$).
 
-
 ### Average Pooling
 
 Otra variante es el *average pooling*, definido como:
@@ -689,16 +676,15 @@ $$
 Y(i,j,c) = \frac{1}{|\mathcal{R}|} \sum_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
 $$ {#eq-avgpool}
 
-![](Imagenes_tesis/img_pooling.png){#fig-pooling fig-align="center" width=80%}
+![](Imagenes_tesis/img_pooling.png){#fig-pooling fig-align="center" width="80%"}
 
 ### Propiedades
 
 El pooling presenta las siguientes propiedades:
 
-- Reduce la dimensionalidad espacial, disminuyendo el costo computacional  
-- Introduce una cierta invariancia a traslaciones pequeñas  
-- Opera de forma independiente en cada canal  
-
+-   Reduce la dimensionalidad espacial, disminuyendo el costo computacional\
+-   Introduce una cierta invariancia a traslaciones pequeñas\
+-   Opera de forma independiente en cada canal
 
 ### Interpretación
 
@@ -709,7 +695,6 @@ En arquitecturas profundas, el pooling contribuye a la construcción de represen
 ## Capas completamente conectadas
 
 Las capas completamente conectadas (*Fully Connected*, FC) constituyen la etapa final de una red neuronal convolucional. Su función es combinar las características extraídas por las capas anteriores para realizar la tarea de clasificación o regresión.
-
 
 ### Vectorización de la entrada
 
@@ -725,7 +710,6 @@ $$
 x = \mathrm{vec}(X) \in \mathbb{R}^{HWC}
 $$ {#eq-vectorizacion-fc}
 
-
 ### Transformación afín
 
 La capa completamente conectada aplica una transformación lineal seguida de un sesgo:
@@ -736,10 +720,9 @@ $$ {#eq-fc-lineal}
 
 donde:
 
-- $W \in \mathbb{R}^{k \times HWC}$ es la matriz de pesos  
-- $b \in \mathbb{R}^{k}$ es el vector de sesgos  
-- $k$ es el número de neuronas en la capa  
-
+-   $W \in \mathbb{R}^{k \times HWC}$ es la matriz de pesos\
+-   $b \in \mathbb{R}^{k}$ es el vector de sesgos\
+-   $k$ es el número de neuronas en la capa
 
 ### Aplicación de la función de activación
 
@@ -751,13 +734,11 @@ $$ {#eq-fc-activacion}
 
 donde $\sigma$ es una función de activación aplicada componente a componente.
 
-
 ### Interpretación
 
 Las capas completamente conectadas pueden interpretarse como clasificadores que operan sobre las características extraídas por la red convolucional. En particular, cada neurona combina toda la información disponible en la representación vectorizada.
 
 Esto contrasta con las capas convolucionales, donde la conectividad es local.
-
 
 ### Clasificación
 
@@ -770,24 +751,21 @@ $$ {#eq-softmax}
 
 Esta función transforma el vector $z$ en una distribución de probabilidad sobre las clases.
 
-
 ### Propiedades
 
 Las capas completamente conectadas presentan las siguientes características:
 
-- Conectividad global: cada neurona está conectada con todas las entradas  
-- Alta capacidad de representación  
-- Mayor número de parámetros en comparación con capas convolucionales  
+-   Conectividad global: cada neurona está conectada con todas las entradas\
+-   Alta capacidad de representación\
+-   Mayor número de parámetros en comparación con capas convolucionales
 
 ### Observación
 
 Debido al elevado número de parámetros, las capas completamente conectadas son más propensas al sobreajuste. Por esta razón, en arquitecturas modernas, su uso se reduce o se reemplaza parcialmente mediante técnicas como *global average pooling*.
 
-
 ## Función de pérdida
 
 La función de pérdida (*loss function*) cuantifica la discrepancia entre las predicciones del modelo y los valores reales. Constituye el criterio fundamental que guía el proceso de entrenamiento, ya que permite evaluar la calidad de las predicciones y definir un objetivo de optimización.
-
 
 ### Definición general
 
@@ -804,7 +782,6 @@ Dado un conjunto de datos $\{(x_i, y_i)\}_{i=1}^{N}$, la función de costo globa
 $$
 J(\theta) = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(f_\theta(x_i), y_i)
 $$ {#eq-risk}
-
 
 ### Clasificación multiclase: Entropía cruzada
 
@@ -824,13 +801,11 @@ $$
 
 donde $p_y$ es la probabilidad asignada a la clase correcta.
 
-
 ### Interpretación probabilística
 
 La entropía cruzada puede interpretarse como una medida de divergencia entre la distribución verdadera $y$ y la distribución predicha $p$. Minimizar esta función equivale a maximizar la probabilidad de observar los datos bajo el modelo.
 
 Desde un punto de vista estadístico, este enfoque corresponde al método de máxima verosimilitud.
-
 
 ### Caso de regresión: Error cuadrático medio
 
@@ -842,7 +817,6 @@ $$ {#eq-mse}
 
 Esta función penaliza de manera más severa los errores grandes, lo que favorece ajustes más precisos.
 
-
 ### Relación con el entrenamiento
 
 El objetivo del entrenamiento consiste en encontrar los parámetros $\theta$ que minimizan la función de costo global:
@@ -852,7 +826,6 @@ $$
 $$ {#eq-opt}
 
 Este problema se resuelve típicamente mediante métodos de optimización iterativos, como el descenso por gradiente y sus variantes.
-
 
 ## Entrenamiento
 
@@ -864,26 +837,218 @@ $$
 \min_{\theta} J(\theta) = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(f_\theta(x_i), y_i)
 $$ {#eq-entrenamiento}
 
+### Método del descenso del gradiente
 
-### Descenso por gradiente
-
-El método más utilizado para resolver este problema es el descenso por gradiente. Este consiste en actualizar iterativamente los parámetros en la dirección opuesta al gradiente de la función de pérdida:
+Considérese el problema de optimización irrestricta
 
 $$
-\theta \leftarrow \theta - \eta \nabla_{\theta} J(\theta)
-$$ {#eq-gradient-descent}
+\min_{x \in \mathbb{R}^n} f(x),
+$$
 
-donde:
+donde $f:\mathbb{R}^n \to \mathbb{R}$ es una función diferenciable. El objetivo consiste en construir un procedimiento iterativo que permita aproximarse a un punto minimizante de $f$. Entre los métodos más importantes para resolver este tipo de problemas se encuentra el método del descenso del gradiente, también conocido como *gradient descent* o método del máximo descenso.
 
-- $\eta > 0$ es la tasa de aprendizaje (*learning rate*),
-- $\nabla_{\theta} J(\theta)$ es el gradiente de la función de costo respecto a los parámetros.
+La idea fundamental del método proviene de la interpretación geométrica del gradiente. Para una función diferenciable $f$, el vector gradiente
 
+$$
+\nabla f(x)
+=
+\begin{pmatrix}
+\dfrac{\partial f}{\partial x_1}(x) \\
+\dfrac{\partial f}{\partial x_2}(x) \\
+\vdots \\
+\dfrac{\partial f}{\partial x_n}(x)
+\end{pmatrix}
+$$
 
-### Interpretación
+indica la dirección de máximo crecimiento local de la función en el punto $x$. En consecuencia, el vector opuesto
 
-El gradiente $\nabla_{\theta} J(\theta)$ indica la dirección de mayor crecimiento de la función de pérdida. Por lo tanto, al desplazarse en la dirección opuesta, se busca reducir el valor de la función.
+$$
+-\nabla f(x)
+$$
 
-El proceso iterativo continúa hasta alcanzar un mínimo local de la función de costo.
+corresponde a la dirección de máximo decrecimiento local. El método del descenso del gradiente aprovecha precisamente esta propiedad para generar una sucesión de iterados que produzca una disminución progresiva del valor de la función objetivo.
+
+Partiendo de un punto inicial $x_0 \in \mathbb{R}^n$, el método construye una sucesión $\{x_k\}$ definida mediante la iteración
+
+$$
+x_{k+1}
+=
+x_k - \alpha_k \nabla f(x_k),
+$$
+
+donde $\alpha_k > 0$ representa el tamaño de paso asociado a la iteración $k$. La elección de este parámetro resulta fundamental para el desempeño del algoritmo, pues determina la magnitud del desplazamiento realizado en la dirección de descenso.
+
+La justificación matemática del método se obtiene a partir de la noción de dirección de descenso. Sea
+
+$$
+d_k = -\nabla f(x_k).
+$$
+
+Entonces,
+
+$$
+\nabla f(x_k)^T d_k
+=
+\nabla f(x_k)^T(-\nabla f(x_k))
+=
+-\|\nabla f(x_k)\|^2.
+$$
+
+Si $\nabla f(x_k)\neq 0$, se tiene que
+
+$$
+\|\nabla f(x_k)\|^2 > 0,
+$$
+
+y por tanto
+
+$$
+\nabla f(x_k)^T d_k < 0.
+$$
+
+Esto demuestra que $d_k$ constituye una dirección estricta de descenso para la función $f$. En otras palabras, existe un valor suficientemente pequeño de $\alpha > 0$ tal que
+
+$$
+f(x_k+\alpha d_k) < f(x_k).
+$$
+
+Esta propiedad puede analizarse con mayor detalle mediante el desarrollo de Taylor de primer orden. Para $\alpha$ pequeño se tiene
+
+$$
+f(x_k+\alpha d_k)
+=
+f(x_k)
++
+\alpha \nabla f(x_k)^T d_k
++
+o(\alpha).
+$$
+
+Sustituyendo $d_k=-\nabla f(x_k)$, resulta
+
+$$
+f(x_k-\alpha \nabla f(x_k))
+=
+f(x_k)
+-
+\alpha \|\nabla f(x_k)\|^2
++
+o(\alpha).
+$$
+
+Debido a que el término dominante es negativo, el valor de la función disminuye localmente para valores suficientemente pequeños de $\alpha$. Esta observación constituye la base teórica del algoritmo.
+
+La selección del tamaño de paso $\alpha_k$ es uno de los aspectos centrales del método. Una posibilidad consiste en utilizar un paso constante,
+
+$$
+\alpha_k = \alpha,
+$$
+
+lo cual simplifica considerablemente la implementación. Sin embargo, si el valor de $\alpha$ es demasiado grande, la sucesión puede divergir o presentar oscilaciones; por el contrario, si $\alpha$ es demasiado pequeño, la convergencia puede resultar excesivamente lenta.
+
+Otra estrategia consiste en determinar el tamaño de paso mediante una búsqueda lineal exacta. En este caso, $\alpha_k$ se obtiene resolviendo el problema unidimensional
+
+$$
+\alpha_k
+=
+\arg\min_{\alpha>0}
+f(x_k-\alpha \nabla f(x_k)).
+$$
+
+De esta manera, en cada iteración se minimiza exactamente la función sobre la recta definida por la dirección de descenso. Aunque este enfoque posee una sólida justificación teórica, en problemas de gran dimensión suele resultar costoso desde el punto de vista computacional. Por esta razón, frecuentemente se emplean búsquedas lineales inexactas basadas en criterios como las condiciones de Armijo o de Wolfe, las cuales garantizan una reducción suficiente de la función objetivo sin resolver completamente el subproblema unidimensional.
+
+El criterio de terminación más habitual se basa en la norma del gradiente. Dado que un punto minimizante diferenciable debe satisfacer la condición necesaria de primer orden
+
+$$
+\nabla f(x^\ast)=0,
+$$
+
+el algoritmo suele detenerse cuando
+
+$$
+\|\nabla f(x_k)\| < \varepsilon,
+$$
+
+para cierta tolerancia $\varepsilon > 0$.
+
+Las propiedades de convergencia del método dependen de las características de la función objetivo. Si $f$ es convexa y su gradiente es Lipschitz continuo, entonces la sucesión generada por el método converge hacia un mínimo global. Más aún, si $f$ es fuertemente convexa, es decir, si existe $\mu>0$ tal que
+
+$$
+f(y)
+\geq
+f(x)
++
+\nabla f(x)^T(y-x)
++
+\frac{\mu}{2}\|y-x\|^2,
+$$
+
+entonces el método presenta convergencia lineal para elecciones apropiadas del tamaño de paso.
+
+Para ilustrar el procedimiento, considérese la función cuadrática
+
+$$
+f(x,y)=x^2+y^2.
+$$
+
+Su gradiente está dado por
+
+$$
+\nabla f(x,y)
+=
+\begin{pmatrix}
+2x\\
+2y
+\end{pmatrix}.
+$$
+
+En consecuencia, la iteración del descenso del gradiente toma la forma
+
+$$
+\begin{pmatrix}
+x_{k+1}\\
+y_{k+1}
+\end{pmatrix}
+=
+\begin{pmatrix}
+x_k\\
+y_k
+\end{pmatrix}
+-
+\alpha
+\begin{pmatrix}
+2x_k\\
+2y_k
+\end{pmatrix},
+$$
+
+lo cual equivale a
+
+$$
+x_{k+1}=(1-2\alpha)x_k,
+\qquad
+y_{k+1}=(1-2\alpha)y_k.
+$$
+
+La convergencia hacia el origen ocurre siempre que
+
+$$
+0<\alpha<1.
+$$
+
+A pesar de su simplicidad y relevancia teórica, el método del descenso del gradiente posee ciertas limitaciones. En funciones mal condicionadas, la trayectoria de los iterados puede presentar oscilaciones pronunciadas y convergencia lenta, especialmente en regiones con geometría alargada o estrecha. Asimismo, en problemas no convexos el método puede converger hacia mínimos locales o puntos silla.
+
+No obstante, el descenso del gradiente constituye la base conceptual de numerosos algoritmos modernos de optimización y aprendizaje automático, entre ellos el descenso estocástico del gradiente, los métodos con momentum, Nesterov, AdaGrad, RMSProp y Adam. Además, mantiene una estrecha relación con métodos de segundo orden como Newton y los algoritmos quasi-Newton.
+
+Finalmente, el método admite una interpretación continua particularmente elegante. La iteración discreta puede verse como una aproximación numérica de la ecuación diferencial
+
+$$
+\frac{dx(t)}{dt}
+=
+-\nabla f(x(t)),
+$$
+
+conocida como flujo de gradiente (*gradient flow*). Esta ecuación describe una dinámica continua en la cual el sistema evoluciona siguiendo la dirección de máximo decrecimiento de la función energía $f$.
 
 ### Regla de la cadena y retropropagación
 
@@ -911,11 +1076,9 @@ En el entrenamiento de redes neuronales, es común que el modelo se ajuste exces
 
 La regularización consiste en un conjunto de técnicas diseñadas para mejorar la capacidad de generalización del modelo.
 
-
 ### Sobreajuste
 
 El sobreajuste ocurre cuando el modelo aprende no solo las características relevantes del problema, sino también el ruido presente en los datos. Esto suele suceder cuando el modelo tiene una alta capacidad de representación en relación con la cantidad de datos disponibles.
-
 
 ### Penalización de parámetros (Weight Decay)
 
@@ -927,11 +1090,10 @@ $$ {#eq-regularizacion-l2}
 
 donde:
 
-- $\lambda > 0$ es el parámetro de regularización  
-- $\|\theta\|^2$ es la norma cuadrática de los parámetros  
+-   $\lambda > 0$ es el parámetro de regularización\
+-   $\|\theta\|^2$ es la norma cuadrática de los parámetros
 
 Este término penaliza valores grandes de los parámetros, favoreciendo modelos más simples.
-
 
 ### Dropout
 
@@ -957,7 +1119,6 @@ Esta técnica reduce la dependencia entre neuronas y mejora la capacidad de gene
 
 El proceso de entrenamiento de una red neuronal implica la resolución de un problema de optimización en alta dimensión. En la práctica, este problema se aborda mediante métodos iterativos basados en gradiente.
 
-
 ### Descenso por gradiente estocástico (SGD)
 
 En lugar de utilizar todo el conjunto de datos en cada iteración, el *Stochastic Gradient Descent* (SGD) emplea subconjuntos (mini-batches):
@@ -968,7 +1129,6 @@ $$
 
 Este enfoque reduce el costo computacional y permite actualizaciones más frecuentes.
 
-
 ### Mini-batch gradient descent
 
 Una generalización del SGD consiste en utilizar lotes de tamaño intermedio:
@@ -978,7 +1138,6 @@ $$
 $$ {#eq-minibatch}
 
 donde $B$ es el tamaño del lote.
-
 
 ### Métodos adaptativos
 
@@ -992,18 +1151,15 @@ $$
 
 donde:
 
-- $m_t$ es el promedio exponencial de los gradientes  
-- $v_t$ es el promedio exponencial de los gradientes al cuadrado  
-- $\epsilon$ es un término de estabilidad numérica  
-
+-   $m_t$ es el promedio exponencial de los gradientes\
+-   $v_t$ es el promedio exponencial de los gradientes al cuadrado\
+-   $\epsilon$ es un término de estabilidad numérica
 
 ### Tasa de aprendizaje
 
 La tasa de aprendizaje $\eta$ controla la magnitud de las actualizaciones. Su elección es crucial:
 
-- valores pequeños producen convergencia lenta  
-- valores grandes pueden causar inestabilidad  
+-   valores pequeños producen convergencia lenta\
+-   valores grandes pueden causar inestabilidad
 
 En la práctica, se utilizan esquemas de decaimiento de la tasa de aprendizaje.
-
-
