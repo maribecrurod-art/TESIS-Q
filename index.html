@@ -466,9 +466,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#entrenamiento" id="toc-entrenamiento" class="nav-link" data-scroll-target="#entrenamiento"><span class="header-section-number">9.8</span> Entrenamiento</a>
   <ul class="collapse">
-  <li><a href="#descenso-por-gradiente" id="toc-descenso-por-gradiente" class="nav-link" data-scroll-target="#descenso-por-gradiente"><span class="header-section-number">9.8.1</span> Descenso por gradiente</a></li>
-  <li><a href="#interpretación-2" id="toc-interpretación-2" class="nav-link" data-scroll-target="#interpretación-2"><span class="header-section-number">9.8.2</span> Interpretación</a></li>
-  <li><a href="#regla-de-la-cadena-y-retropropagación" id="toc-regla-de-la-cadena-y-retropropagación" class="nav-link" data-scroll-target="#regla-de-la-cadena-y-retropropagación"><span class="header-section-number">9.8.3</span> Regla de la cadena y retropropagación</a></li>
+  <li><a href="#método-del-descenso-del-gradiente" id="toc-método-del-descenso-del-gradiente" class="nav-link" data-scroll-target="#método-del-descenso-del-gradiente"><span class="header-section-number">9.8.1</span> Método del descenso del gradiente</a></li>
+  <li><a href="#regla-de-la-cadena-y-retropropagación" id="toc-regla-de-la-cadena-y-retropropagación" class="nav-link" data-scroll-target="#regla-de-la-cadena-y-retropropagación"><span class="header-section-number">9.8.2</span> Regla de la cadena y retropropagación</a></li>
   </ul></li>
   <li><a href="#regularización" id="toc-regularización" class="nav-link" data-scroll-target="#regularización"><span class="header-section-number">9.9</span> Regularización</a>
   <ul class="collapse">
@@ -550,7 +549,7 @@ X \in \mathbb{R}^{H \times W \times C}
 X(i,j) = \left(x_1, x_2, \dots, x_C \right) \in \mathbb{R}^C
 \tag{3}\]</span></span></p>
 <p>Por tanto, cada píxel contiene un vector que describe información en distintos canales.</p>
-<p><img src="Imagenes_tesis/img_flor_1.png" class="img-fluid"></p>
+<p><img src="Imagenes_tesis/Imagen flor 1 corregida.png" class="img-fluid"></p>
 </section>
 <section id="estructura-funcional-de-la-red" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Estructura Funcional de la Red</h1>
@@ -612,7 +611,7 @@ X(i+u, j+v, c)
 \langle K, X_{(i,j)} \rangle
 \tag{8}\]</span></span></p>
 <p>mide la similitud entre el patrón definido por el kernel y la región local de la imagen.</p>
-<p><img src="Imagenes_tesis/img_flor_2.png" class="img-fluid"></p>
+<p><img src="images/paste-1.png" class="img-fluid"></p>
 </section>
 <section id="compartición-de-parámetros" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="compartición-de-parámetros"><span class="header-section-number">6.3</span> Compartición de parámetros</h2>
@@ -769,7 +768,7 @@ Y^{(c)}(i,j) =
 K(u,v,c)\, X(i+u,j+v,c)
 \]</span></p>
 <p>Cada término <span class="math inline">\(Y^{(c)}(i,j)\)</span> representa la contribución del canal <span class="math inline">\(c\)</span> al valor final de la salida.</p>
-<p><img src="Imagenes_tesis/imagen_provicional.png" class="img-fluid"></p>
+<p><img src="images/paste-2.png" class="img-fluid"></p>
 </section>
 <section id="interpretación-como-producto-interno-en-espacio-tensorial" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="interpretación-como-producto-interno-en-espacio-tensorial"><span class="header-section-number">7.3</span> Interpretación como producto interno en espacio tensorial</h2>
@@ -884,7 +883,12 @@ Y(i,j) = \left( Y_1(i,j), Y_2(i,j), \dots, Y_F(i,j) \right) \in \mathbb{R}^{F}
 </section>
 <section id="ejemplos-de-filtros" class="level2" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="ejemplos-de-filtros"><span class="header-section-number">8.6</span> Ejemplos de filtros</h2>
-<p>Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. A continuación, se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-4.png" class="img-fluid figure-img"></p>
+<figcaption>Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. En la imagen se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.</figcaption>
+</figure>
+</div>
 </section>
 <section id="observación-estructural" class="level2" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="observación-estructural"><span class="header-section-number">8.7</span> Observación estructural</h2>
@@ -896,7 +900,8 @@ Y(i,j) = \left( Y_1(i,j), Y_2(i,j), \dots, Y_F(i,j) \right) \in \mathbb{R}^{F}
 <h1 data-number="9"><span class="header-section-number">9</span> Stride y Padding</h1>
 <section id="stride" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="stride"><span class="header-section-number">9.1</span> Stride</h2>
-<p>El <em>stride</em> <span class="math inline">\(s\)</span> controla el desplazamiento del kernel durante la operación de convolución. Es decir, determina cuántas posiciones se desplaza el kernel en cada paso.</p>
+<p>El <em>stride</em> <span class="math inline">\(s\)</span> controla el desplazamiento del kernel durante la operación de convolución. Es decir, determina cuántas posiciones se desplaza el kernel en cada paso.<br>
+</p>
 <p>Las dimensiones de salida están dadas por:</p>
 <p><span id="eq-output-dims"><span class="math display">\[
 H' = \left\lfloor \frac{H - k_h + 2p}{s} \right\rfloor + 1, \quad
@@ -949,11 +954,10 @@ Y = \sigma\big( (\text{pad}(X)) \star K + b \big)
 <img src="Imagenes_tesis/img_kernel_mapa.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-padding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;1: Ejemplo de convolución con y sin padding
+Figura&nbsp;1: Ejemplo de convolución con y sin padding. La incorporación de padding permite controlar el tamaño de la salida. En particular, cuando se utiliza padding adecuado, es posible preservar las dimensiones espaciales de la imagen original tras la aplicación de la convolución.
 </figcaption>
 </figure>
 </div>
-<p>Como se observa en <a href="#fig-padding" class="quarto-xref">Figura&nbsp;<span>9.1</span></a>, la incorporación de padding permite controlar el tamaño de la salida. En particular, cuando se utiliza padding adecuado, es posible preservar las dimensiones espaciales de la imagen original tras la aplicación de la convolución.</p>
 </section>
 <section id="función-de-activación" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="función-de-activación"><span class="header-section-number">9.4</span> Función de activación</h2>
@@ -996,7 +1000,7 @@ Y = \sigma\big( X \star K + b \big)
 </section>
 <section id="ejemplos-de-funciones-de-activación" class="level3" data-number="9.4.3">
 <h3 data-number="9.4.3" class="anchored" data-anchor-id="ejemplos-de-funciones-de-activación"><span class="header-section-number">9.4.3</span> Ejemplos de funciones de activación</h3>
-<p>Algunas de las funciones de activación más utilizadas son las siguientes: <img src="Imagenes_tesis/img_funciones_activacion.png" id="fig-activaciones" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:80.0%"></p>
+<p>Algunas de las funciones de activación más utilizadas son las siguientes: <img src="Imagenes_tesis/img_funciones_activacion.png" id="fig-activaciones" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:82.0%" alt="ReLU es eficientemente y se usa ampliamente en redes profundas. Sigmoide es útil en la capa de salida para clasificación binaria. Tanh es útil cuando se necesita una salida centrada en 0. Leaky ReLu evita el problema de “neuronas muertas” de ReLu."></p>
 <section id="relu-rectified-linear-unit" class="level4" data-number="9.4.3.1">
 <h4 data-number="9.4.3.1" class="anchored" data-anchor-id="relu-rectified-linear-unit"><span class="header-section-number">9.4.3.1</span> ReLU (Rectified Linear Unit)</h4>
 <p><span id="eq-relu"><span class="math display">\[
@@ -1065,14 +1069,10 @@ Y(i,j,c) = \max_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
 <p><span id="eq-avgpool"><span class="math display">\[
 Y(i,j,c) = \frac{1}{|\mathcal{R}|} \sum_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
 \tag{28}\]</span></span></p>
-<div id="fig-pooling" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pooling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Imagenes_tesis/img_pooling.png" id="fig-pooling" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:80.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-pooling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2
-</figcaption>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-3.png" class="img-fluid figure-img"></p>
+<figcaption>El pooling sirve para reducir las dimensiones espaciales (ancho y alto) de un tensor, asegurando que se conserve la información más relevante. Aplicar esta técnica brinda grandes beneficios a los modelos: disminuye significativamente el costo computacional, introduce invariancia a pequeñas traslaciones en la imagen y ayuda a prevenir el sobreajuste. Además, es importante destacar que esta reducción se aplica de manera independiente a cada canal de profundidad del tensor.</figcaption>
 </figure>
 </div>
 </section>
@@ -1217,25 +1217,167 @@ J(\theta) = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(f_\theta(x_i), y_i)
 <p><span id="eq-entrenamiento"><span class="math display">\[
 \min_{\theta} J(\theta) = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(f_\theta(x_i), y_i)
 \tag{37}\]</span></span></p>
-<section id="descenso-por-gradiente" class="level3" data-number="9.8.1">
-<h3 data-number="9.8.1" class="anchored" data-anchor-id="descenso-por-gradiente"><span class="header-section-number">9.8.1</span> Descenso por gradiente</h3>
-<p>El método más utilizado para resolver este problema es el descenso por gradiente. Este consiste en actualizar iterativamente los parámetros en la dirección opuesta al gradiente de la función de pérdida:</p>
-<p><span id="eq-gradient-descent"><span class="math display">\[
-\theta \leftarrow \theta - \eta \nabla_{\theta} J(\theta)
-\tag{38}\]</span></span></p>
-<p>donde:</p>
-<ul>
-<li><span class="math inline">\(\eta &gt; 0\)</span> es la tasa de aprendizaje (<em>learning rate</em>),</li>
-<li><span class="math inline">\(\nabla_{\theta} J(\theta)\)</span> es el gradiente de la función de costo respecto a los parámetros.</li>
-</ul>
+<section id="método-del-descenso-del-gradiente" class="level3" data-number="9.8.1">
+<h3 data-number="9.8.1" class="anchored" data-anchor-id="método-del-descenso-del-gradiente"><span class="header-section-number">9.8.1</span> Método del descenso del gradiente</h3>
+<p>Considérese el problema de optimización irrestricta</p>
+<p><span class="math display">\[
+\min_{x \in \mathbb{R}^n} f(x),
+\]</span></p>
+<p>donde <span class="math inline">\(f:\mathbb{R}^n \to \mathbb{R}\)</span> es una función diferenciable. El objetivo consiste en construir un procedimiento iterativo que permita aproximarse a un punto minimizante de <span class="math inline">\(f\)</span>. Entre los métodos más importantes para resolver este tipo de problemas se encuentra el método del descenso del gradiente, también conocido como <em>gradient descent</em> o método del máximo descenso.</p>
+<p>La idea fundamental del método proviene de la interpretación geométrica del gradiente. Para una función diferenciable <span class="math inline">\(f\)</span>, el vector gradiente</p>
+<p><span class="math display">\[
+\nabla f(x)
+=
+\begin{pmatrix}
+\dfrac{\partial f}{\partial x_1}(x) \\
+\dfrac{\partial f}{\partial x_2}(x) \\
+\vdots \\
+\dfrac{\partial f}{\partial x_n}(x)
+\end{pmatrix}
+\]</span></p>
+<p>indica la dirección de máximo crecimiento local de la función en el punto <span class="math inline">\(x\)</span>. En consecuencia, el vector opuesto</p>
+<p><span class="math display">\[
+-\nabla f(x)
+\]</span></p>
+<p>corresponde a la dirección de máximo decrecimiento local. El método del descenso del gradiente aprovecha precisamente esta propiedad para generar una sucesión de iterados que produzca una disminución progresiva del valor de la función objetivo.</p>
+<p>Partiendo de un punto inicial <span class="math inline">\(x_0 \in \mathbb{R}^n\)</span>, el método construye una sucesión <span class="math inline">\(\{x_k\}\)</span> definida mediante la iteración</p>
+<p><span class="math display">\[
+x_{k+1}
+=
+x_k - \alpha_k \nabla f(x_k),
+\]</span></p>
+<p>donde <span class="math inline">\(\alpha_k &gt; 0\)</span> representa el tamaño de paso asociado a la iteración <span class="math inline">\(k\)</span>. La elección de este parámetro resulta fundamental para el desempeño del algoritmo, pues determina la magnitud del desplazamiento realizado en la dirección de descenso.</p>
+<p>La justificación matemática del método se obtiene a partir de la noción de dirección de descenso. Sea</p>
+<p><span class="math display">\[
+d_k = -\nabla f(x_k).
+\]</span></p>
+<p>Entonces,</p>
+<p><span class="math display">\[
+\nabla f(x_k)^T d_k
+=
+\nabla f(x_k)^T(-\nabla f(x_k))
+=
+-\|\nabla f(x_k)\|^2.
+\]</span></p>
+<p>Si <span class="math inline">\(\nabla f(x_k)\neq 0\)</span>, se tiene que</p>
+<p><span class="math display">\[
+\|\nabla f(x_k)\|^2 &gt; 0,
+\]</span></p>
+<p>y por tanto</p>
+<p><span class="math display">\[
+\nabla f(x_k)^T d_k &lt; 0.
+\]</span></p>
+<p>Esto demuestra que <span class="math inline">\(d_k\)</span> constituye una dirección estricta de descenso para la función <span class="math inline">\(f\)</span>. En otras palabras, existe un valor suficientemente pequeño de <span class="math inline">\(\alpha &gt; 0\)</span> tal que</p>
+<p><span class="math display">\[
+f(x_k+\alpha d_k) &lt; f(x_k).
+\]</span></p>
+<p>Esta propiedad puede analizarse con mayor detalle mediante el desarrollo de Taylor de primer orden. Para <span class="math inline">\(\alpha\)</span> pequeño se tiene</p>
+<p><span class="math display">\[
+f(x_k+\alpha d_k)
+=
+f(x_k)
++
+\alpha \nabla f(x_k)^T d_k
++
+o(\alpha).
+\]</span></p>
+<p>Sustituyendo <span class="math inline">\(d_k=-\nabla f(x_k)\)</span>, resulta</p>
+<p><span class="math display">\[
+f(x_k-\alpha \nabla f(x_k))
+=
+f(x_k)
+-
+\alpha \|\nabla f(x_k)\|^2
++
+o(\alpha).
+\]</span></p>
+<p>Debido a que el término dominante es negativo, el valor de la función disminuye localmente para valores suficientemente pequeños de <span class="math inline">\(\alpha\)</span>. Esta observación constituye la base teórica del algoritmo.</p>
+<p>La selección del tamaño de paso <span class="math inline">\(\alpha_k\)</span> es uno de los aspectos centrales del método. Una posibilidad consiste en utilizar un paso constante,</p>
+<p><span class="math display">\[
+\alpha_k = \alpha,
+\]</span></p>
+<p>lo cual simplifica considerablemente la implementación. Sin embargo, si el valor de <span class="math inline">\(\alpha\)</span> es demasiado grande, la sucesión puede divergir o presentar oscilaciones; por el contrario, si <span class="math inline">\(\alpha\)</span> es demasiado pequeño, la convergencia puede resultar excesivamente lenta.</p>
+<p>Otra estrategia consiste en determinar el tamaño de paso mediante una búsqueda lineal exacta. En este caso, <span class="math inline">\(\alpha_k\)</span> se obtiene resolviendo el problema unidimensional</p>
+<p><span class="math display">\[
+\alpha_k
+=
+\arg\min_{\alpha&gt;0}
+f(x_k-\alpha \nabla f(x_k)).
+\]</span></p>
+<p>De esta manera, en cada iteración se minimiza exactamente la función sobre la recta definida por la dirección de descenso. Aunque este enfoque posee una sólida justificación teórica, en problemas de gran dimensión suele resultar costoso desde el punto de vista computacional. Por esta razón, frecuentemente se emplean búsquedas lineales inexactas basadas en criterios como las condiciones de Armijo o de Wolfe, las cuales garantizan una reducción suficiente de la función objetivo sin resolver completamente el subproblema unidimensional.</p>
+<p>El criterio de terminación más habitual se basa en la norma del gradiente. Dado que un punto minimizante diferenciable debe satisfacer la condición necesaria de primer orden</p>
+<p><span class="math display">\[
+\nabla f(x^\ast)=0,
+\]</span></p>
+<p>el algoritmo suele detenerse cuando</p>
+<p><span class="math display">\[
+\|\nabla f(x_k)\| &lt; \varepsilon,
+\]</span></p>
+<p>para cierta tolerancia <span class="math inline">\(\varepsilon &gt; 0\)</span>.</p>
+<p>Las propiedades de convergencia del método dependen de las características de la función objetivo. Si <span class="math inline">\(f\)</span> es convexa y su gradiente es Lipschitz continuo, entonces la sucesión generada por el método converge hacia un mínimo global. Más aún, si <span class="math inline">\(f\)</span> es fuertemente convexa, es decir, si existe <span class="math inline">\(\mu&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+f(y)
+\geq
+f(x)
++
+\nabla f(x)^T(y-x)
++
+\frac{\mu}{2}\|y-x\|^2,
+\]</span></p>
+<p>entonces el método presenta convergencia lineal para elecciones apropiadas del tamaño de paso.</p>
+<p>Para ilustrar el procedimiento, considérese la función cuadrática</p>
+<p><span class="math display">\[
+f(x,y)=x^2+y^2.
+\]</span></p>
+<p>Su gradiente está dado por</p>
+<p><span class="math display">\[
+\nabla f(x,y)
+=
+\begin{pmatrix}
+2x\\
+2y
+\end{pmatrix}.
+\]</span></p>
+<p>En consecuencia, la iteración del descenso del gradiente toma la forma</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+x_{k+1}\\
+y_{k+1}
+\end{pmatrix}
+=
+\begin{pmatrix}
+x_k\\
+y_k
+\end{pmatrix}
+-
+\alpha
+\begin{pmatrix}
+2x_k\\
+2y_k
+\end{pmatrix},
+\]</span></p>
+<p>lo cual equivale a</p>
+<p><span class="math display">\[
+x_{k+1}=(1-2\alpha)x_k,
+\qquad
+y_{k+1}=(1-2\alpha)y_k.
+\]</span></p>
+<p>La convergencia hacia el origen ocurre siempre que</p>
+<p><span class="math display">\[
+0&lt;\alpha&lt;1.
+\]</span></p>
+<p>A pesar de su simplicidad y relevancia teórica, el método del descenso del gradiente posee ciertas limitaciones. En funciones mal condicionadas, la trayectoria de los iterados puede presentar oscilaciones pronunciadas y convergencia lenta, especialmente en regiones con geometría alargada o estrecha. Asimismo, en problemas no convexos el método puede converger hacia mínimos locales o puntos silla.</p>
+<p>No obstante, el descenso del gradiente constituye la base conceptual de numerosos algoritmos modernos de optimización y aprendizaje automático, entre ellos el descenso estocástico del gradiente, los métodos con momentum, Nesterov, AdaGrad, RMSProp y Adam. Además, mantiene una estrecha relación con métodos de segundo orden como Newton y los algoritmos quasi-Newton.</p>
+<p>Finalmente, el método admite una interpretación continua particularmente elegante. La iteración discreta puede verse como una aproximación numérica de la ecuación diferencial</p>
+<p><span class="math display">\[
+\frac{dx(t)}{dt}
+=
+-\nabla f(x(t)),
+\]</span></p>
+<p>conocida como flujo de gradiente (<em>gradient flow</em>). Esta ecuación describe una dinámica continua en la cual el sistema evoluciona siguiendo la dirección de máximo decrecimiento de la función energía <span class="math inline">\(f\)</span>.</p>
 </section>
-<section id="interpretación-2" class="level3" data-number="9.8.2">
-<h3 data-number="9.8.2" class="anchored" data-anchor-id="interpretación-2"><span class="header-section-number">9.8.2</span> Interpretación</h3>
-<p>El gradiente <span class="math inline">\(\nabla_{\theta} J(\theta)\)</span> indica la dirección de mayor crecimiento de la función de pérdida. Por lo tanto, al desplazarse en la dirección opuesta, se busca reducir el valor de la función.</p>
-<p>El proceso iterativo continúa hasta alcanzar un mínimo local de la función de costo.</p>
-</section>
-<section id="regla-de-la-cadena-y-retropropagación" class="level3" data-number="9.8.3">
-<h3 data-number="9.8.3" class="anchored" data-anchor-id="regla-de-la-cadena-y-retropropagación"><span class="header-section-number">9.8.3</span> Regla de la cadena y retropropagación</h3>
+<section id="regla-de-la-cadena-y-retropropagación" class="level3" data-number="9.8.2">
+<h3 data-number="9.8.2" class="anchored" data-anchor-id="regla-de-la-cadena-y-retropropagación"><span class="header-section-number">9.8.2</span> Regla de la cadena y retropropagación</h3>
 <p>El cálculo del gradiente en redes neuronales profundas se realiza mediante el algoritmo de retropropagación (<em>backpropagation</em>), el cual se basa en la aplicación sistemática de la regla de la cadena.</p>
 <p>Sea una red expresada como:</p>
 <p><span class="math display">\[
@@ -1262,7 +1404,7 @@ f_\theta = f^{(L)} \circ \cdots \circ f^{(1)}
 <p>Una estrategia común consiste en añadir un término de penalización a la función de costo:</p>
 <p><span id="eq-regularizacion-l2"><span class="math display">\[
 J(\theta) = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(f_\theta(x_i), y_i) + \lambda \|\theta\|^2
-\tag{39}\]</span></span></p>
+\tag{38}\]</span></span></p>
 <p>donde:</p>
 <ul>
 <li><span class="math inline">\(\lambda &gt; 0\)</span> es el parámetro de regularización<br>
@@ -1273,17 +1415,95 @@ J(\theta) = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(f_\theta(x_i), y_i) + \lambda
 </section>
 <section id="dropout" class="level3" data-number="9.9.3">
 <h3 data-number="9.9.3" class="anchored" data-anchor-id="dropout"><span class="header-section-number">9.9.3</span> Dropout</h3>
-<p>El <em>dropout</em> es una técnica que consiste en desactivar aleatoriamente un subconjunto de neuronas durante el entrenamiento.</p>
-<p>Formalmente, puede interpretarse como la multiplicación de la salida de una capa por una máscara aleatoria <span class="math inline">\(m\)</span>, donde cada componente cumple:</p>
+<p>El <em>dropout</em> es una técnica de regularización utilizada en redes neuronales profundas cuyo objetivo principal es reducir el sobreajuste y mejorar la capacidad de generalización del modelo. La idea esencial consiste en introducir aleatoriedad durante el entrenamiento mediante la desactivación temporal de neuronas. Como consecuencia, en cada iteración se entrena efectivamente una subred distinta de la arquitectura original.</p>
+<p>Consideremos una capa neuronal cuya entrada es un vector</p>
 <p><span class="math display">\[
-m_i \sim \text{Bernoulli}(p)
+x \in \mathbb{R}^{H\times W\times C},
 \]</span></p>
-<p>De este modo, la salida efectiva es:</p>
+<p>con matriz de pesos</p>
 <p><span class="math display">\[
-\tilde{h} = m \odot h
+W \in \mathbb{R}^{m\times d}
 \]</span></p>
-<p>donde <span class="math inline">\(\odot\)</span> denota el producto elemento a elemento.</p>
-<p>Esta técnica reduce la dependencia entre neuronas y mejora la capacidad de generalización.</p>
+<p>donde hay <span class="math inline">\(m\)</span> neuronas. Y vector de sesgos</p>
+<p><span class="math display">\[
+b\in\mathbb{R}^m.
+\]</span></p>
+<p>La salida usual de la capa está dada por</p>
+<p><span class="math display">\[
+h=\phi(Wx+b).
+\]</span></p>
+<p>El mecanismo de dropout introduce un vector aleatorio</p>
+<p><span class="math display">\[
+r=(r_1,\dots,r_m),
+\]</span></p>
+<p>cuyas componentes son independientes y satisfacen</p>
+<p><span class="math display">\[
+r_i\sim\operatorname{Bernoulli}(p).
+\]</span> Aquí, el parámetro <span class="math inline">\(p\in(0,1]\)</span> representa la probabilidad de conservar activa una neurona durante el entrenamiento. En consecuencia, cada neurona tiene probabilidad <span class="math inline">\(1-p\)</span> de ser anulada temporalmente.</p>
+<p>La nueva activación de la capa se define entonces por</p>
+<p><span class="math display">\[
+\tilde h=r\odot h,
+\]</span></p>
+<p>donde <span class="math inline">\(\odot\)</span> denota el producto componente a componente. De esta forma, si <span class="math inline">\(r_i=0\)</span>, la activación correspondiente desaparece completamente en esa iteración; si <span class="math inline">\(r_i=1\)</span>, la neurona permanece activa.</p>
+<p>En implementaciones modernas suele utilizarse la variante denominada <em>inverted dropout</em>, en la cual las activaciones se reescalan durante el entrenamiento:</p>
+<p><span class="math display">\[
+\tilde h=\frac{r}{p}\odot h.
+\]</span></p>
+<p>La razón matemática de este reescalamiento es preservar el valor esperado de las activaciones. En efecto, puesto que</p>
+<p><span class="math display">\[
+\mathbb{E}[r_i]=p,
+\]</span></p>
+<p>se obtiene</p>
+<p><span class="math display">\[
+\mathbb{E}\left[\frac{r_i}{p}h_i\right]
+=
+\frac{1}{p}\mathbb{E}[r_i]h_i
+=
+h_i.
+\]</span></p>
+<p>Por tanto, el valor esperado de las activaciones permanece invariante:</p>
+<p><span class="math display">\[
+\mathbb{E}[\tilde h]=h.
+\]</span></p>
+<p>Gracias a esta propiedad, durante la etapa de inferencia no es necesario realizar ajustes adicionales: simplemente se utiliza la red completa sin eliminar neuronas.</p>
+<p>Desde un punto de vista probabilístico, el dropout puede interpretarse como un procedimiento que entrena simultáneamente un gran conjunto de subredes. Si una red posee <span class="math inline">\(n\)</span> neuronas susceptibles de ser desactivadas, entonces existen potencialmente</p>
+<p><span class="math display">\[
+2^n
+\]</span></p>
+<p>subredes distintas. El entrenamiento explícito de todas ellas sería computacionalmente inviable; sin embargo, el dropout proporciona una aproximación eficiente a un promedio implícito sobre dicho ensamble de modelos.</p>
+<p>La relevancia de esta idea se encuentra en que las redes neuronales poseen una enorme capacidad de representación y, por ello, pueden memorizar patrones específicos del conjunto de entrenamiento. Cuando ciertas neuronas dependen excesivamente de otras, aparecen fenómenos de <em>co-adaptación</em>. El dropout rompe estas dependencias debido a que cualquier neurona puede desaparecer aleatoriamente durante el entrenamiento. Como consecuencia, cada unidad debe aprender representaciones más independientes y robustas.</p>
+<p>Formalmente, el entrenamiento ya no minimiza una función de pérdida determinista, sino una pérdida esperada respecto de la aleatoriedad introducida por las máscaras de dropout. Si <span class="math inline">\(m\)</span> representa una realización particular de la máscara aleatoria y <span class="math inline">\(\theta\)</span> denota el conjunto de parámetros de la red, entonces el problema de optimización puede escribirse como</p>
+<p><span class="math display">\[
+\min_\theta
+\;
+\mathbb{E}_m
+\left[
+\mathcal{L}(f(x;m,\theta),y)
+\right].
+\]</span></p>
+<p>Aquí, <span class="math inline">\(f(x;m,\theta)\)</span> representa la subred inducida por la máscara <span class="math inline">\(m\)</span>. Así, cada actualización del descenso del gradiente se realiza sobre una arquitectura ligeramente distinta.</p>
+<p>Si el descenso del gradiente estándar actualiza parámetros mediante</p>
+<p><span class="math display">\[
+\theta_{t+1}
+=
+\theta_t
+-
+\eta\nabla_\theta\mathcal{L}(\theta_t),
+\]</span></p>
+<p>entonces bajo dropout la actualización toma la forma</p>
+<p><span class="math display">\[
+\theta_{t+1}
+=
+\theta_t
+-
+\eta
+\nabla_\theta
+\mathcal{L}(f(x;m_t,\theta_t),y),
+\]</span></p>
+<p>donde <span class="math inline">\(m_t\)</span> es una máscara aleatoria distinta en cada iteración. Este ruido adicional actúa como un mecanismo regularizador que dificulta el ajuste excesivamente preciso a los datos de entrenamiento.</p>
+<p>En ciertos modelos simples, particularmente lineales, puede demostrarse que el dropout induce aproximadamente un efecto regularizador semejante a una penalización cuadrática sobre los pesos. En este sentido, su comportamiento se relaciona parcialmente con métodos de regularización tipo <span class="math inline">\(L^2\)</span>, aunque el mecanismo subyacente es distinto, ya que aquí la regularización surge a partir de una perturbación aleatoria multiplicativa.</p>
+<p>Desde una perspectiva geométrica, el dropout favorece representaciones distribuidas y estables frente a perturbaciones. Una neurona no puede depender de la presencia permanente de otras unidades, de modo que la información relevante termina siendo compartida entre múltiples componentes de la red. Esto produce modelos menos frágiles y con mejor capacidad de generalización.</p>
+<p>Aunque arquitecturas modernas incorporan otros mecanismos de regularización, como <em>Batch Normalization</em> y conexiones residuales, el dropout continúa siendo una herramienta fundamental, especialmente en redes densas tradicionales y en problemas donde la cantidad de datos disponibles es limitada.</p>
 </section>
 </section>
 <section id="optimización" class="level2" data-number="9.10">
@@ -1302,7 +1522,7 @@ m_i \sim \text{Bernoulli}(p)
 <p>Una generalización del SGD consiste en utilizar lotes de tamaño intermedio:</p>
 <p><span id="eq-minibatch"><span class="math display">\[
 \theta \leftarrow \theta - \eta \frac{1}{B} \sum_{i=1}^{B} \nabla_{\theta} \mathcal{L}(f_\theta(x_i), y_i)
-\tag{40}\]</span></span></p>
+\tag{39}\]</span></span></p>
 <p>donde <span class="math inline">\(B\)</span> es el tamaño del lote.</p>
 </section>
 <section id="métodos-adaptativos" class="level3" data-number="9.10.3">
