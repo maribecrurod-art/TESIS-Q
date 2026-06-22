@@ -260,7 +260,7 @@ X(i,j) = \left(x_1, x_2, \dots, x_C \right) \in \mathbb{R}^C
 Por tanto, cada píxel contiene un vector que describe información en
 distintos canales.
 
-\pandocbounded{\includegraphics[keepaspectratio]{Imagenes_tesis/img_flor_1.png}}
+\pandocbounded{\includegraphics[keepaspectratio]{Imagenes_tesis/Imagen flor 1 corregida.png}}
 
 \bookmarksetup{startatroot}
 
@@ -360,7 +360,7 @@ El producto interno:
 mide la similitud entre el patrón definido por el kernel y la región
 local de la imagen.
 
-\pandocbounded{\includegraphics[keepaspectratio]{Imagenes_tesis/img_flor_2.png}}
+\pandocbounded{\includegraphics[keepaspectratio]{images/paste-1.png}}
 
 \section{Compartición de
 parámetros}\label{comparticiuxf3n-de-paruxe1metros}
@@ -630,7 +630,7 @@ K(u,v,c)\, X(i+u,j+v,c)
 Cada término \(Y^{(c)}(i,j)\) representa la contribución del canal \(c\)
 al valor final de la salida.
 
-\pandocbounded{\includegraphics[keepaspectratio]{Imagenes_tesis/imagen_provicional.png}}
+\pandocbounded{\includegraphics[keepaspectratio]{images/paste-2.png}}
 
 \section{Interpretación como producto interno en espacio
 tensorial}\label{interpretaciuxf3n-como-producto-interno-en-espacio-tensorial}
@@ -822,12 +822,18 @@ los filtros aprendidos.
 
 \section{Ejemplos de filtros}\label{ejemplos-de-filtros}
 
-!{[}Los distintos filtros convolucionales permiten detectar
-características específicas en la imagen de entrada. A continuación, se
-muestran ejemplos representativos del efecto de diferentes kernels sobre
-una misma imagen.
+\begin{figure}[H]
 
-{]}(Imagenes\_tesis/img\_ejemplos\_filtros.png)\{fig-align=``center''\}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/paste-4.png}}
+
+}
+
+\caption{Los distintos filtros convolucionales permiten detectar
+características específicas en la imagen de entrada. En la imagen se
+muestran ejemplos representativos del efecto de diferentes kernels sobre
+una misma imagen.}
+
+\end{figure}%
 
 \section{Observación estructural}\label{observaciuxf3n-estructural}
 
@@ -848,7 +854,7 @@ detectados en capas anteriores.
 
 El \emph{stride} \(s\) controla el desplazamiento del kernel durante la
 operación de convolución. Es decir, determina cuántas posiciones se
-desplaza el kernel en cada paso.
+desplaza el kernel en cada paso.\\
 
 Las dimensiones de salida están dadas por:
 
@@ -943,7 +949,11 @@ presenta el siguiente ejemplo:
 incorporación de padding permite controlar el tamaño de la salida. En
 particular, cuando se utiliza padding adecuado, es posible preservar las
 dimensiones espaciales de la imagen original tras la aplicación de la
-convolución.}
+convolución. El color rosa identifica la imagen de entrada y la salida
+de la convolución, mientras que el verde representa el filtro empleado.
+En el caso del ejemplo con padding, las celdas correspondientes al
+relleno se distinguen al estar por fuera del cuadro rojo, para resaltar
+que no forman parte de la imagen original.}
 
 \end{figure}%
 
@@ -1108,17 +1118,36 @@ Otra variante es el \emph{average pooling}, definido como:
 
 \begin{equation}\phantomsection\label{eq-avgpool}{
 Y(i,j,c) = \frac{1}{|\mathcal{R}|} \sum_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
-}\end{equation}
+}\end{equation} El pooling sirve para reducir las dimensiones espaciales
+(ancho y alto) de un tensor, asegurando que se conserve la información
+más relevante. Aplicar esta técnica brinda grandes beneficios a los
+modelos: disminuye significativamente el costo computacional, introduce
+invariancia a pequeñas traslaciones en la imagen y ayuda a prevenir el
+sobreajuste. Además, es importante destacar que esta reducción se aplica
+de manera independiente a cada canal de profundidad del tensor
 
-\begin{figure}
+\begin{figure}[H]
 
-\centering{
-
-\includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{Imagenes_tesis/img_pooling.png}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/paste-3.png}}
 
 }
 
-\caption{\label{fig-pooling}}
+\caption{En la parte superior de la figura se ilustra el funcionamiento
+del Max Pooling utilizando una ventana de tamaño 2×2 y un stride de 2.
+La imagen de entrada se divide en cuatro regiones no superpuestas,
+identificadas mediante diferentes colores. Para cada región, el operador
+selecciona únicamente el valor máximo: en la región superior izquierda
+se obtiene 6, en la superior derecha 4, en la inferior izquierda 8 y en
+la inferior derecha 3. Estos valores conforman el mapa de salida de
+tamaño 2×2, preservando las características más destacadas de cada zona
+mientras se reduce la dimensionalidad espacial. De manera similar, en la
+parte inferior de la figura se muestra el proceso de Average Pooling con
+la misma ventana 2×2 y el mismo stride. En lugar de conservar el valor
+máximo, se calcula el promedio de los elementos contenidos en cada
+región. Así, las cuatro ventanas generan los valores 3.75, 2.25, 4.50 y
+1, que constituyen la salida reducida. Este método produce una
+representación más suavizada de la información, manteniendo la tendencia
+general de los datos presentes en cada región de la imagen.}
 
 \end{figure}%
 
@@ -1689,26 +1718,187 @@ modelos más simples.
 
 \subsection{Dropout}\label{dropout}
 
-El \emph{dropout} es una técnica que consiste en desactivar
-aleatoriamente un subconjunto de neuronas durante el entrenamiento.
+El \emph{dropout} es una técnica de regularización utilizada en redes
+neuronales profundas cuyo objetivo principal es reducir el sobreajuste y
+mejorar la capacidad de generalización del modelo. La idea esencial
+consiste en introducir aleatoriedad durante el entrenamiento mediante la
+desactivación temporal de neuronas. Como consecuencia, en cada iteración
+se entrena efectivamente una subred distinta de la arquitectura
+original.
 
-Formalmente, puede interpretarse como la multiplicación de la salida de
-una capa por una máscara aleatoria \(m\), donde cada componente cumple:
-
-\[
-m_i \sim \text{Bernoulli}(p)
-\]
-
-De este modo, la salida efectiva es:
+Consideremos una capa neuronal cuya entrada es un vector
 
 \[
-\tilde{h} = m \odot h
+x \in \mathbb{R}^{H\times W\times C},
 \]
 
-donde \(\odot\) denota el producto elemento a elemento.
+con matriz de pesos
 
-Esta técnica reduce la dependencia entre neuronas y mejora la capacidad
-de generalización.
+\[
+W \in \mathbb{R}^{m\times d}
+\]
+
+donde hay \(m\) neuronas. Y vector de sesgos
+
+\[
+b\in\mathbb{R}^m.
+\]
+
+La salida usual de la capa está dada por
+
+\[
+h=\phi(Wx+b).
+\]
+
+El mecanismo de dropout introduce un vector aleatorio
+
+\[
+r=(r_1,\dots,r_m),
+\]
+
+cuyas componentes son independientes y satisfacen
+
+\[
+r_i\sim\operatorname{Bernoulli}(p).
+\] Aquí, el parámetro \(p\in(0,1]\) representa la probabilidad de
+conservar activa una neurona durante el entrenamiento. En consecuencia,
+cada neurona tiene probabilidad \(1-p\) de ser anulada temporalmente.
+
+La nueva activación de la capa se define entonces por
+
+\[
+\tilde h=r\odot h,
+\]
+
+donde \(\odot\) denota el producto componente a componente. De esta
+forma, si \(r_i=0\), la activación correspondiente desaparece
+completamente en esa iteración; si \(r_i=1\), la neurona permanece
+activa.
+
+En implementaciones modernas suele utilizarse la variante denominada
+\emph{inverted dropout}, en la cual las activaciones se reescalan
+durante el entrenamiento:
+
+\[
+\tilde h=\frac{r}{p}\odot h.
+\]
+
+La razón matemática de este reescalamiento es preservar el valor
+esperado de las activaciones. En efecto, puesto que
+
+\[
+\mathbb{E}[r_i]=p,
+\]
+
+se obtiene
+
+\[
+\mathbb{E}\left[\frac{r_i}{p}h_i\right]
+=
+\frac{1}{p}\mathbb{E}[r_i]h_i
+=
+h_i.
+\]
+
+Por tanto, el valor esperado de las activaciones permanece invariante:
+
+\[
+\mathbb{E}[\tilde h]=h.
+\]
+
+Gracias a esta propiedad, durante la etapa de inferencia no es necesario
+realizar ajustes adicionales: simplemente se utiliza la red completa sin
+eliminar neuronas.
+
+Desde un punto de vista probabilístico, el dropout puede interpretarse
+como un procedimiento que entrena simultáneamente un gran conjunto de
+subredes. Si una red posee \(n\) neuronas susceptibles de ser
+desactivadas, entonces existen potencialmente
+
+\[
+2^n
+\]
+
+subredes distintas. El entrenamiento explícito de todas ellas sería
+computacionalmente inviable; sin embargo, el dropout proporciona una
+aproximación eficiente a un promedio implícito sobre dicho ensamble de
+modelos.
+
+La relevancia de esta idea se encuentra en que las redes neuronales
+poseen una enorme capacidad de representación y, por ello, pueden
+memorizar patrones específicos del conjunto de entrenamiento. Cuando
+ciertas neuronas dependen excesivamente de otras, aparecen fenómenos de
+\emph{co-adaptación}. El dropout rompe estas dependencias debido a que
+cualquier neurona puede desaparecer aleatoriamente durante el
+entrenamiento. Como consecuencia, cada unidad debe aprender
+representaciones más independientes y robustas.
+
+Formalmente, el entrenamiento ya no minimiza una función de pérdida
+determinista, sino una pérdida esperada respecto de la aleatoriedad
+introducida por las máscaras de dropout. Si \(m\) representa una
+realización particular de la máscara aleatoria y \(\theta\) denota el
+conjunto de parámetros de la red, entonces el problema de optimización
+puede escribirse como
+
+\[
+\min_\theta
+\;
+\mathbb{E}_m
+\left[
+\mathcal{L}(f(x;m,\theta),y)
+\right].
+\]
+
+Aquí, \(f(x;m,\theta)\) representa la subred inducida por la máscara
+\(m\). Así, cada actualización del descenso del gradiente se realiza
+sobre una arquitectura ligeramente distinta.
+
+Si el descenso del gradiente estándar actualiza parámetros mediante
+
+\[
+\theta_{t+1}
+=
+\theta_t
+-
+\eta\nabla_\theta\mathcal{L}(\theta_t),
+\]
+
+entonces bajo dropout la actualización toma la forma
+
+\[
+\theta_{t+1}
+=
+\theta_t
+-
+\eta
+\nabla_\theta
+\mathcal{L}(f(x;m_t,\theta_t),y),
+\]
+
+donde \(m_t\) es una máscara aleatoria distinta en cada iteración. Este
+ruido adicional actúa como un mecanismo regularizador que dificulta el
+ajuste excesivamente preciso a los datos de entrenamiento.
+
+En ciertos modelos simples, particularmente lineales, puede demostrarse
+que el dropout induce aproximadamente un efecto regularizador semejante
+a una penalización cuadrática sobre los pesos. En este sentido, su
+comportamiento se relaciona parcialmente con métodos de regularización
+tipo \(L^2\), aunque el mecanismo subyacente es distinto, ya que aquí la
+regularización surge a partir de una perturbación aleatoria
+multiplicativa.
+
+Desde una perspectiva geométrica, el dropout favorece representaciones
+distribuidas y estables frente a perturbaciones. Una neurona no puede
+depender de la presencia permanente de otras unidades, de modo que la
+información relevante termina siendo compartida entre múltiples
+componentes de la red. Esto produce modelos menos frágiles y con mejor
+capacidad de generalización.
+
+Aunque arquitecturas modernas incorporan otros mecanismos de
+regularización, como \emph{Batch Normalization} y conexiones residuales,
+el dropout continúa siendo una herramienta fundamental, especialmente en
+redes densas tradicionales y en problemas donde la cantidad de datos
+disponibles es limitada.
 
 \section{Optimización}\label{optimizaciuxf3n}
 
