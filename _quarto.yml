@@ -35,7 +35,6 @@ book:
   chapters:
     - index.qmd
     - capitulo1.qmd
-    - Caso de estudio.qmd
     - Conclusiones.qmd
     - Referencias.qmd
 
