@@ -312,21 +312,21 @@
   {
     "objectID": "capituloHMM.html",
     "href": "capituloHMM.html",
-    "title": "3  Fundamentos CNN",
+    "title": "3  Fundamentos HMM",
     "section": "",
     "text": "4 Espacio Probabilístico y Procesos Estocásticos Subyacentes\nPara establecer formalmente una Cadena de Markov a Tiempo Continuo (CTMC), es necesario partir de los axiomas fundamentales de la teoría de la medida, para más detalle consultar el libro de @Rudin1987.\nPara esto, se asumirá que el lector tiene conocimientos previos sobre teoría de la medida como lo son las \\(\\sigma\\)-álgebras, espacio muestral y medida de probabilidad, entre otros.\nEn el contexto de nuestro proyecto, \\(S\\) representa el conjunto de posibles colores o intensidades de un pixel (por ejemplo, el espacio RGB donde \\(|S| = 256^3\\), o una escala de grises finita).\nInterpretamos \\(X(t)\\) como el “color verdadero” del pixel en el instante (o parámetro continuo) \\(t\\).",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentos CNN</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentos HMM</span>"
     ]
   },
   {
     "objectID": "capituloHMM.html#ejemplo-ilustrativo-del-algoritmo-forwardbackward",
     "href": "capituloHMM.html#ejemplo-ilustrativo-del-algoritmo-forwardbackward",
-    "title": "3  Fundamentos CNN",
+    "title": "3  Fundamentos HMM",
     "section": "8.1 Ejemplo ilustrativo del algoritmo Forward–Backward",
     "text": "8.1 Ejemplo ilustrativo del algoritmo Forward–Backward\nPara ilustrar el funcionamiento de los algoritmos Forward y Backward en el contexto del reconocimiento de imágenes, consideremos un píxel cuyo color verdadero puede encontrarse en uno de dos estados ocultos:\n\\[\nS=\\{B,N\\},\n\\]\ndonde:\n\n\\(B\\): píxel verdaderamente blanco.\n\\(N\\): píxel verdaderamente negro.\n\nDebido al ruido en el proceso de adquisición de la imagen, el color observado puede diferir del color real.\nSupongamos que la dinámica del píxel está descrita por la matriz de transición\n\\[\nP=\n\\begin{pmatrix}\n0.8 & 0.2\\\\\n0.3 & 0.7\n\\end{pmatrix},\n\\]\ndonde, por ejemplo,\n\\[\np_{BN}=0.2\n\\]\nrepresenta la probabilidad de que un píxel blanco pase al estado negro en el siguiente instante.\nAsimismo, consideremos la siguiente matriz de emisión:\n\\[\nE=\n\\begin{pmatrix}\n0.9 & 0.1\\\\\n0.2 & 0.8\n\\end{pmatrix},\n\\]\ncuyas columnas corresponden a las observaciones\n\\[\n(O_B,O_N),\n\\]\nes decir, observar blanco u observar negro. Por ejemplo,\n\\[\nP(O_B \\mid B)=0.9,\n\\qquad\nP(O_B \\mid N)=0.2.\n\\]\nFinalmente, asumimos una distribución inicial\n\\[\n\\pi=(0.6,0.4),\n\\]\ny que la secuencia observada es\n\\[\nY=(O_B,O_N).\n\\]\nEsto significa que el sensor registra blanco en el primer instante y negro en el segundo.\n\n8.1.1 Cálculo Forward\nLa variable Forward se define como\n\\[\n\\alpha_k(i)\n=\nP(y_1,\\ldots,y_k,X_k=i).\n\\]\n\n8.1.1.1 Paso 1\nPara la primera observación \\(O_B\\):\n\\[\n\\alpha_1(B)\n=\nP(X_1=B)\\,P(O_B\\mid B)\n=\n0.6(0.9)\n=\n0.54,\n\\]\n\\[\n\\alpha_1(N)\n=\nP(X_1=N)\\,P(O_B\\mid N)\n=\n0.4(0.2)\n=\n0.08.\n\\]\n\n\n8.1.1.2 Paso 2\nCalculamos primero la probabilidad de alcanzar el estado blanco:\n\\[\n\\sum_{i\\in S}\n\\alpha_1(i)p_{iB}\n=\n0.54(0.8)+0.08(0.3)\n=\n0.456.\n\\]\nMultiplicando por la probabilidad de emisión correspondiente,\n\\[\n\\alpha_2(B)\n=\n0.456(0.1)\n=\n0.0456.\n\\]\nAnálogamente, para el estado negro:\n\\[\n\\sum_{i\\in S}\n\\alpha_1(i)p_{iN}\n=\n0.54(0.2)+0.08(0.7)\n=\n0.164,\n\\]\ny por tanto,\n\\[\n\\alpha_2(N)\n=\n0.164(0.8)\n=\n0.1312.\n\\]\n\n\n8.1.1.3 Verosimilitud de la secuencia observada\nLa probabilidad total de observar la secuencia \\(Y\\) es\n\\[\nP(Y)\n=\n\\alpha_2(B)+\\alpha_2(N),\n\\]\nes decir,\n\\[\nP(Y)\n=\n0.0456+0.1312\n=\n0.1768.\n\\]\n\n\n\n8.1.2 Cálculo Backward\nLa variable Backward se define mediante\n\\[\n\\beta_k(i)\n=\nP(y_{k+1},\\ldots,y_T\\mid X_k=i).\n\\]\nComo la secuencia contiene únicamente dos observaciones,\n\\[\n\\beta_2(B)=\\beta_2(N)=1.\n\\]\nRetrocediendo un paso:\n\\[\n\\beta_1(B)\n=\n0.8(0.1)(1)\n+\n0.2(0.8)(1)\n=\n0.24,\n\\]\ny\n\\[\n\\beta_1(N)\n=\n0.3(0.1)(1)\n+\n0.7(0.8)(1)\n=\n0.59.\n\\]\n\n\n8.1.3 Inferencia del estado oculto\nUna de las principales ventajas del algoritmo Forward–Backward es que permite calcular la probabilidad posterior de cada estado oculto.\nPara el estado blanco en el primer instante,\n\\[\n\\gamma_1(B)\n=\nP(X_1=B\\mid Y)\n=\n\\frac{\\alpha_1(B)\\beta_1(B)}\n{P(Y)},\n\\]\npor lo que\n\\[\n\\gamma_1(B)\n=\n\\frac{0.54(0.24)}\n{0.1768}\n=\n0.733.\n\\]\nDe forma análoga,\n\\[\n\\gamma_1(N)\n=\n\\frac{\\alpha_1(N)\\beta_1(N)}\n{P(Y)}\n=\n\\frac{0.08(0.59)}\n{0.1768}\n=\n0.267.\n\\]\nEn consecuencia,\n\\[\nP(X_1=B\\mid Y)\\approx 73.3\\%,\n\\]\nmientras que\n\\[\nP(X_1=N\\mid Y)\\approx 26.7\\%.\n\\]\nInterpretación\nA pesar de que el sensor observa un píxel blanco en el primer instante y negro en el segundo, el algoritmo Forward–Backward determina que existe aproximadamente un \\(73\\%\\) de probabilidad de que el color verdadero inicial haya sido blanco. Este resultado muestra cómo un Modelo Oculto de Markov combina la información proporcionada por las observaciones ruidosas con la dinámica de transición del sistema para inferir el estado real subyacente del píxel.\n\n\n\n\n\n\nFigura 8.1: Modelo Oculto de Markov para un píxel con dos estados ocultos y dos observaciones.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentos CNN</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentos HMM</span>"
     ]
   },
   {
@@ -334,7 +334,7 @@
     "href": "silla.html",
     "title": "4  Base de datos",
     "section": "",
-    "text": "4.1 Construcción del conjunto de datos\nEl reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto Náhuatl Figura 5.1, presenta una limitación inicial importante: no existe un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de otros alfabetos, para los cuales existen repositorios ampliamente documentados, el alfabeto Náhuatl carece de recursos computacionales que puedan emplearse directamente en tareas de clasificación automática.\nAnte esta situación, fue necesario construir un conjunto de datos propio. La decisión de generar un dataset sintético se tomó por dos razones principales:",
+    "text": "4.1 Construcción del conjunto de datos\nEl reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto Náhuatl Figura 4.1, presenta una limitación inicial importante: no existe un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de otros alfabetos, para los cuales existen repositorios ampliamente documentados, el alfabeto Náhuatl carece de recursos computacionales que puedan emplearse directamente en tareas de clasificación automática.\nAnte esta situación, fue necesario construir un conjunto de datos propio. La decisión de generar un dataset sintético se tomó por dos razones principales:",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Base de datos</span>"
     ]
@@ -344,7 +344,7 @@
     "href": "silla.html#construcción-del-conjunto-de-datos",
     "title": "4  Base de datos",
     "section": "",
-    "text": "Figura 4.1: Glifos del alfabeto nahuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean letras del alfabeto latino para su manipulación.\n\n\n\n\n\nProporcionar un número suficiente de ejemplos para el entrenamiento de la red neuronal.\nIntroducir variaciones geométricas que permitan al modelo generalizar ante deformaciones presentes en documentos reales.\n\n\n4.1.1 Generación de las muestras\nInicialmente se diseñaron de forma manual 25 ejemplos base para cada carácter del alfabeto. Posteriormente, a cada muestra se le aplicaron transformaciones geométricas y perturbaciones aleatorias para incrementar la variabilidad del conjunto de datos.\nLa Figura Figura 5.2 muestra algunos ejemplos de las imágenes generadas.\n\n\n\n\n\n\nFigura 4.2: Se observa el proceso por el que pasa cada una de las 25 imagenes por letra para generar 90 variantes obtenidas a partir de rotación, traslación, distorción elástica, cambio de escala y ruido, de este modo se consigue un dataset más completo.",
+    "text": "Figura 4.1: Glifos del alfabeto nahuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean letras del alfabeto latino para su manipulación.\n\n\n\n\n\nProporcionar un número suficiente de ejemplos para el entrenamiento de la red neuronal.\nIntroducir variaciones geométricas que permitan al modelo generalizar ante deformaciones presentes en documentos reales.\n\n\n4.1.1 Generación de las muestras\nInicialmente se diseñaron de forma manual 25 ejemplos base para cada carácter del alfabeto. Posteriormente, a cada muestra se le aplicaron transformaciones geométricas y perturbaciones aleatorias para incrementar la variabilidad del conjunto de datos.\nLa Figura Figura 4.2 muestra algunos ejemplos de las imágenes generadas.\n\n\n\n\n\n\nFigura 4.2: Se observa el proceso por el que pasa cada una de las 25 imagenes por letra para generar 90 variantes obtenidas a partir de rotación, traslación, distorción elástica, cambio de escala y ruido, de este modo se consigue un dataset más completo.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Base de datos</span>"
     ]
@@ -374,37 +374,17 @@
     "href": "Caso de estudio.html",
     "title": "5  Caso de estudio",
     "section": "",
-    "text": "5.1 Construcción del conjunto de datos\nEl reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto Náhuatl Figura 5.1, presenta una limitación inicial importante: no existe un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de otros alfabetos, para los cuales existen repositorios ampliamente documentados, el alfabeto Náhuatl carece de recursos computacionales que puedan emplearse directamente en tareas de clasificación automática.\nAnte esta situación, fue necesario construir un conjunto de datos propio. La decisión de generar un dataset sintético se tomó por dos razones principales:",
+    "text": "6 CASO CNN",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Caso de estudio</span>"
     ]
   },
   {
-    "objectID": "Caso de estudio.html#construcción-del-conjunto-de-datos",
-    "href": "Caso de estudio.html#construcción-del-conjunto-de-datos",
+    "objectID": "Caso de estudio.html#arquitectura-de-la-red-neuronal-convolucional",
+    "href": "Caso de estudio.html#arquitectura-de-la-red-neuronal-convolucional",
     "title": "5  Caso de estudio",
-    "section": "",
-    "text": "Figura 5.1: Glifos del alfabeto nahuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean letras del alfabeto latino para su manipulación.\n\n\n\n\n\nProporcionar un número suficiente de ejemplos para el entrenamiento de la red neuronal.\nIntroducir variaciones geométricas que permitan al modelo generalizar ante deformaciones presentes en documentos reales.\n\n\n5.1.1 Generación de las muestras\nInicialmente se diseñaron de forma manual 25 ejemplos base para cada carácter del alfabeto. Posteriormente, a cada muestra se le aplicaron transformaciones geométricas y perturbaciones aleatorias para incrementar la variabilidad del conjunto de datos.\nLa Figura Figura 5.2 muestra algunos ejemplos de las imágenes generadas.\n\n\n\n\n\n\nFigura 5.2: Se observa el proceso por el que pasa cada una de las 25 imagenes por letra para generar 90 variantes obtenidas a partir de rotación, traslación, distorción elástica, cambio de escala y ruido, de este modo se consigue un dataset más completo.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Caso de estudio</span>"
-    ]
-  },
-  {
-    "objectID": "Caso de estudio.html#carga-y-organización-de-los-datos",
-    "href": "Caso de estudio.html#carga-y-organización-de-los-datos",
-    "title": "5  Caso de estudio",
-    "section": "5.2 Carga y organización de los datos",
-    "text": "5.2 Carga y organización de los datos\nUna vez construido el conjunto de datos, las imágenes se almacenaron siguiendo una estructura jerárquica de directorios, donde cada carpeta representa una clase distinta del alfabeto.\nEl cargado de las imágenes se realizó mediante la función image_dataset_from_directory de TensorFlow:\ntrain_ds = tf.keras.utils.image_dataset_from_directory(\n    data_dir,\n    validation_split=0.2,\n    subset=\"training\",\n    seed=123,\n    image_size=(28,28),\n    batch_size=32,\n    color_mode=\"grayscale\"\n)\n\nval_ds = tf.keras.utils.image_dataset_from_directory(\n    data_dir,\n    validation_split=0.2,\n    subset=\"validation\",\n    seed=123,\n    image_size=(28,28),\n    batch_size=32,\n    color_mode=\"grayscale\"\n)\nLa elección de una partición de entrenamiento-validación de 80%-20% constituye una práctica común en aprendizaje automático, ya que permite disponer de un número suficiente de ejemplos para el ajuste de los parámetros del modelo y, al mismo tiempo, reservar un conjunto independiente para evaluar la capacidad de generalización.\nAsimismo, las imágenes se convirtieron a escala de grises. Dado que los glifos del alfabeto Náhuatl se distinguen principalmente por su geometría y no por información cromática, el uso de un solo canal reduce el costo computacional sin sacrificar información relevante.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Caso de estudio</span>"
-    ]
-  },
-  {
-    "objectID": "Caso de estudio.html#normalización-y-aumentación-de-datos",
-    "href": "Caso de estudio.html#normalización-y-aumentación-de-datos",
-    "title": "5  Caso de estudio",
-    "section": "5.3 Normalización y aumentación de datos",
-    "text": "5.3 Normalización y aumentación de datos\nAntes de alimentar las imágenes a la red neuronal, se realizó un proceso de normalización:\nnormalization_layer = tf.keras.layers.Rescaling(1./255)\nEsta transformación reescala los valores de intensidad al intervalo \\([0,1]\\), lo cual mejora la estabilidad numérica del proceso de entrenamiento y facilita la convergencia del algoritmo de optimización.\nAdicionalmente, se implementó un mecanismo de aumentación de datos en línea:\ndata_augmentation = tf.keras.Sequential([\n    tf.keras.layers.RandomRotation(0.05),\n    tf.keras.layers.RandomZoom(0.1),\n    tf.keras.layers.RandomTranslation(0.05, 0.05)\n])\nLa introducción de pequeñas rotaciones, cambios de escala y traslaciones tiene como objetivo simular las variaciones presentes en documentos escaneados o en la escritura manual. De esta manera, el modelo aprende representaciones más robustas y reduce su tendencia al sobreajuste.\nFinalmente, los datos fueron almacenados temporalmente en memoria y preparados para alimentar la GPU:\ntrain_ds = train_ds.cache().shuffle(5000).prefetch(AUTOTUNE)\nval_ds = val_ds.cache().prefetch(AUTOTUNE)\nEl uso de cache() evita que las imágenes sean leídas repetidamente desde el disco, mientras que prefetch() permite superponer las operaciones de lectura de datos con el entrenamiento de la red, disminuyendo el tiempo total de ejecución.",
+    "section": "6.1 Arquitectura de la red neuronal convolucional",
+    "text": "6.1 Arquitectura de la red neuronal convolucional\nLa arquitectura propuesta recibe imágenes de tamaño \\(28\\times28\\times1\\) y está compuesta por tres bloques convolucionales seguidos de un clasificador denso.\nmodel = tf.keras.Sequential([\n    tf.keras.layers.Input(shape=(28,28,1)),\n\n    tf.keras.layers.Conv2D(32,3,activation='relu'),\n    tf.keras.layers.BatchNormalization(),\n    tf.keras.layers.MaxPooling2D(),\n    tf.keras.layers.SpatialDropout2D(0.25),\n\n    tf.keras.layers.Conv2D(64,3,activation='relu'),\n    tf.keras.layers.BatchNormalization(),\n    tf.keras.layers.MaxPooling2D(),\n    tf.keras.layers.SpatialDropout2D(0.25),\n\n    tf.keras.layers.Conv2D(128,3,activation='relu'),\n    tf.keras.layers.MaxPooling2D(),\n    tf.keras.layers.SpatialDropout2D(0.25),\n\n    tf.keras.layers.Flatten(),\n    tf.keras.layers.Dense(256, activation='relu'),\n    tf.keras.layers.Dropout(0.5),\n    tf.keras.layers.Dense(num_classes, activation='softmax')\n])",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Caso de estudio</span>"
     ]
@@ -413,8 +393,8 @@
     "objectID": "Caso de estudio.html#primer-bloque-convolucional",
     "href": "Caso de estudio.html#primer-bloque-convolucional",
     "title": "5  Caso de estudio",
-    "section": "6.1 Primer bloque convolucional",
-    "text": "6.1 Primer bloque convolucional\nLa primera capa convolucional emplea 32 filtros de tamaño \\(3\\times3\\):\ntf.keras.layers.Conv2D(32,3,activation='relu')\nEste bloque se encarga de detectar características de bajo nivel, tales como bordes, esquinas y pequeños segmentos de los trazos.\nLa incorporación de una capa de normalización por lotes:\ntf.keras.layers.BatchNormalization()\npermite estabilizar la distribución de las activaciones internas, acelerando el proceso de convergencia.\nPosteriormente, la operación de max pooling\ntf.keras.layers.MaxPooling2D()\nreduce la dimensionalidad espacial de las representaciones, disminuyendo el número de parámetros y haciendo al modelo menos sensible a pequeñas traslaciones.\nFinalmente, se incorpora un mecanismo de regularización:\ntf.keras.layers.SpatialDropout2D(0.25)\nque desactiva mapas de características completos de manera aleatoria, obligando a la red a aprender representaciones más robustas.",
+    "section": "6.2 Primer bloque convolucional",
+    "text": "6.2 Primer bloque convolucional\nLa primera capa convolucional emplea 32 filtros de tamaño \\(3\\times3\\):\ntf.keras.layers.Conv2D(32,3,activation='relu')\nEste bloque se encarga de detectar características de bajo nivel, tales como bordes, esquinas y pequeños segmentos de los trazos.\nLa incorporación de una capa de normalización por lotes:\ntf.keras.layers.BatchNormalization()\npermite estabilizar la distribución de las activaciones internas, acelerando el proceso de convergencia.\nPosteriormente, la operación de max pooling\ntf.keras.layers.MaxPooling2D()\nreduce la dimensionalidad espacial de las representaciones, disminuyendo el número de parámetros y haciendo al modelo menos sensible a pequeñas traslaciones.\nFinalmente, se incorpora un mecanismo de regularización:\ntf.keras.layers.SpatialDropout2D(0.25)\nque desactiva mapas de características completos de manera aleatoria, obligando a la red a aprender representaciones más robustas.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Caso de estudio</span>"
     ]
@@ -423,8 +403,8 @@
     "objectID": "Caso de estudio.html#segundo-y-tercer-bloque-convolucional",
     "href": "Caso de estudio.html#segundo-y-tercer-bloque-convolucional",
     "title": "5  Caso de estudio",
-    "section": "6.2 Segundo y tercer bloque convolucional",
-    "text": "6.2 Segundo y tercer bloque convolucional\nLos bloques posteriores incrementan progresivamente el número de filtros hasta 64 y 128, respectivamente. El aumento en la profundidad de la red permite capturar patrones cada vez más complejos, tales como combinaciones de curvas, intersecciones y configuraciones geométricas características de cada glifo.",
+    "section": "6.3 Segundo y tercer bloque convolucional",
+    "text": "6.3 Segundo y tercer bloque convolucional\nLos bloques posteriores incrementan progresivamente el número de filtros hasta 64 y 128, respectivamente. El aumento en la profundidad de la red permite capturar patrones cada vez más complejos, tales como combinaciones de curvas, intersecciones y configuraciones geométricas características de cada glifo.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Caso de estudio</span>"
     ]
@@ -433,8 +413,8 @@
     "objectID": "Caso de estudio.html#clasificador",
     "href": "Caso de estudio.html#clasificador",
     "title": "5  Caso de estudio",
-    "section": "6.3 Clasificador",
-    "text": "6.3 Clasificador\nLas características extraídas se transforman en un vector unidimensional:\ntf.keras.layers.Flatten()\ny posteriormente se procesan mediante una capa densa:\ntf.keras.layers.Dense(256, activation='relu')\nLa capa de salida utiliza la función Softmax:\ntf.keras.layers.Dense(num_classes, activation='softmax')\nla cual produce una distribución de probabilidad sobre todas las clases del alfabeto.",
+    "section": "6.4 Clasificador",
+    "text": "6.4 Clasificador\nLas características extraídas se transforman en un vector unidimensional:\ntf.keras.layers.Flatten()\ny posteriormente se procesan mediante una capa densa:\ntf.keras.layers.Dense(256, activation='relu')\nLa capa de salida utiliza la función Softmax:\ntf.keras.layers.Dense(num_classes, activation='softmax')\nla cual produce una distribución de probabilidad sobre todas las clases del alfabeto.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Caso de estudio</span>"
     ]
