@@ -1,4 +1,159 @@
 ---
 title: "Caso de estudio"
-format: html
+execute:
+  freeze: false
 ---
+# CASO CNN
+
+## Arquitectura de la red neuronal convolucional
+
+La arquitectura propuesta recibe imágenes de tamaño $28\times28\times1$ y está compuesta por tres bloques convolucionales seguidos de un clasificador denso.
+
+``` python
+model = tf.keras.Sequential([
+    tf.keras.layers.Input(shape=(28,28,1)),
+
+    tf.keras.layers.Conv2D(32,3,activation='relu'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.SpatialDropout2D(0.25),
+
+    tf.keras.layers.Conv2D(64,3,activation='relu'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.SpatialDropout2D(0.25),
+
+    tf.keras.layers.Conv2D(128,3,activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.SpatialDropout2D(0.25),
+
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(256, activation='relu'),
+    tf.keras.layers.Dropout(0.5),
+    tf.keras.layers.Dense(num_classes, activation='softmax')
+])
+```
+
+## Primer bloque convolucional
+
+La primera capa convolucional emplea 32 filtros de tamaño $3\times3$:
+
+``` python
+tf.keras.layers.Conv2D(32,3,activation='relu')
+```
+
+Este bloque se encarga de detectar características de bajo nivel, tales como bordes, esquinas y pequeños segmentos de los trazos.
+
+La incorporación de una capa de normalización por lotes:
+
+``` python
+tf.keras.layers.BatchNormalization()
+```
+
+permite estabilizar la distribución de las activaciones internas, acelerando el proceso de convergencia.
+
+Posteriormente, la operación de *max pooling*
+
+``` python
+tf.keras.layers.MaxPooling2D()
+```
+
+reduce la dimensionalidad espacial de las representaciones, disminuyendo el número de parámetros y haciendo al modelo menos sensible a pequeñas traslaciones.
+
+Finalmente, se incorpora un mecanismo de regularización:
+
+``` python
+tf.keras.layers.SpatialDropout2D(0.25)
+```
+
+que desactiva mapas de características completos de manera aleatoria, obligando a la red a aprender representaciones más robustas.
+
+## Segundo y tercer bloque convolucional
+
+Los bloques posteriores incrementan progresivamente el número de filtros hasta 64 y 128, respectivamente. El aumento en la profundidad de la red permite capturar patrones cada vez más complejos, tales como combinaciones de curvas, intersecciones y configuraciones geométricas características de cada glifo.
+
+## Clasificador
+
+Las características extraídas se transforman en un vector unidimensional:
+
+``` python
+tf.keras.layers.Flatten()
+```
+
+y posteriormente se procesan mediante una capa densa:
+
+``` python
+tf.keras.layers.Dense(256, activation='relu')
+```
+
+La capa de salida utiliza la función Softmax:
+
+``` python
+tf.keras.layers.Dense(num_classes, activation='softmax')
+```
+
+la cual produce una distribución de probabilidad sobre todas las clases del alfabeto.
+
+# Entrenamiento
+
+El modelo se compiló utilizando el optimizador Adam:
+
+``` python
+model.compile(
+    optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)
+```
+
+La función de pérdida de entropía cruzada dispersa se seleccionó debido a que las etiquetas de las imágenes se encuentran codificadas como enteros y no mediante vectores *one-hot*.
+
+Para evitar el sobreajuste se implementó un mecanismo de detención temprana:
+
+``` python
+early_stop = EarlyStopping(
+    monitor='val_loss',
+    patience=7,
+    restore_best_weights=True
+)
+```
+
+La elección de siete épocas de paciencia permite al modelo continuar el aprendizaje ante pequeñas oscilaciones de la pérdida de validación, evitando finalizar el entrenamiento de forma prematura.
+
+Asimismo, el mejor modelo obtenido se almacenó automáticamente:
+
+``` python
+checkpoint = ModelCheckpoint(
+    ruta_modelo,
+    monitor='val_loss',
+    save_best_only=True
+)
+```
+
+# Sistema de inferencia interactivo
+
+Finalmente, se desarrolló una interfaz interactiva en Google Colab que permite dibujar caracteres del alfabeto Náhuatl y obtener predicciones en tiempo real.
+
+La imagen generada por el usuario se redimensiona a $28\times28$ píxeles:
+
+``` python
+img_resized = cv2.resize(img, (28,28))
+img_normalized = img_resized / 255.0
+img_input = np.expand_dims(img_normalized, axis=(0,-1))
+```
+
+Posteriormente, el modelo produce un vector de probabilidades:
+
+``` python
+predicciones = model.predict(img_input)
+```
+
+y se determina la clase más probable mediante:
+
+``` python
+idx_ganador = np.argmax(predicciones)
+```
+
+Además de la predicción principal, la interfaz presenta las tres clases con mayor probabilidad, proporcionando información adicional sobre la confianza y las posibles ambigüedades del modelo.
+
+# CASO HMM

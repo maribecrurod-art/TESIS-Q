@@ -66,6 +66,46 @@
 \fi
 \makeatother
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
@@ -117,6 +157,22 @@
 
 \KOMAoption{captions}{tableheading}
 \makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
 \makeatother
 \makeatletter
@@ -160,6 +216,10 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
+\newcounter{quartocalloutnteno}
+\newcommand{\quartocalloutnte}[1]{\refstepcounter{quartocalloutnteno}\label{#1}}
+\newcounter{quartocalloutimpno}
+\newcommand{\quartocalloutimp}[1]{\refstepcounter{quartocalloutimpno}\label{#1}}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -190,7 +250,373 @@
 
 \bookmarksetup{startatroot}
 
-\chapter{Introducción}\label{introducciuxf3n}
+\chapter{Contexto y Planteamiento del
+Problema}\label{contexto-y-planteamiento-del-problema}
+
+\section{El alfabeto náhuatl y la preservación del patrimonio
+documental}\label{el-alfabeto-nuxe1huatl-y-la-preservaciuxf3n-del-patrimonio-documental}
+
+El náhuatl es una de las lenguas más importantes de Mesoamérica, con una
+historia escrita que se remonta a siglos antes de la llegada de los
+españoles. Originalmes nahuas (llamados \emph{tlacuilos}) utilizaban un
+sistema de glifos y pictogramas para registrar información histórica,
+tributaria y ceremonial en códices. Tras la conquista, se desarrolló una
+adaptación del alfabeto latino que incorporaba convenciones ortográficas
+específicas para representar los sonidos propios del náhuatl.
+
+En la actualidad, han surgido propuestas de \textbf{sistemas de
+escritura intermedios} que buscan establecer un puente entre la
+tradición glífica ancestral y la escritura alfabética moderna. Un
+ejemplo es el siguiente abecedario provisional Náhuatl (ver @abcnauatl
+), el cual asigna símbolos geométricos simplificados a los fonemas de la
+lengua, manteniendo cierta estética visual mesoamericana mientras
+facilita la transición hacia la lectoescritura.
+
+\begin{figure}
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/02ebf77bcfe068987b8a9bcc02498d49.png}}
+
+}
+
+\caption{Construcción de un ``alfabeto'' fónico para el náuatl.}
+
+\end{figure}%
+
+\pandocbounded{\includegraphics[keepaspectratio]{images/Alfabeto nahuatl.png}}
+
+La preservación de estos documentos y sistemas de escritura no solo
+implica su conservación física, sino también su digitalización y
+análisis computacional para garantizar su accesibilidad a futuras
+generaciones. Sin embargo, este proceso enfrenta un desafío importante:
+la transcripción manual por parte de especialistas es un proceso lento,
+costoso y propenso a errores. En este contexto, el desarrollo de
+herramientas automatizadas de reconocimiento se vuelve crucial.
+
+No obstante, a diferencia de los textos alfabéticos modernos, la
+naturaleza particular de estos sistemas de escritura representa un
+desafío de modelado matemático y computacional que requiere técnicas
+avanzadas de reconocimiento de patrones.
+
+\subsection{El reto del reconocimiento óptico de caracteres en lenguas
+indígenas}\label{el-reto-del-reconocimiento-uxf3ptico-de-caracteres-en-lenguas-induxedgenas}
+
+El Reconocimiento Óptico de Caracteres (OCR, por sus siglas en inglés)
+ha alcanzado niveles de madurez notables para la digitalización de
+textos en lenguas mayoritarias con alfabetos estandarizados, como el
+español o el inglés. Sin embargo, su aplicación a sistemas de escritura
+indígenas, y particularmente a propuestas como el Abecedario Provisional
+Náhuatl, enfrenta desafíos que trascienden la ingeniería de software y
+se adentran en el aprendizaje automático.Algunos de estos desafíos son:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Variabilidad en la representación fonética:} A diferencia de
+  un alfabeto estandarizado donde cada sonido tiene una representación
+  única, en el náhuatl existe cierta flexibilidad en la elección del
+  glifo para representar un fonema. Por ejemplo, para el sonido /e/,
+  teóricamente se podría elegir entre el glifo de \emph{etl} (frijol) o
+  \emph{elotl} (elote). Esta ambigüedad en el diseño ortográfico
+  representa un desafío para la estandarización.
+\item
+  \textbf{Falta de estandarización tipográfica:} No existe un ``tipo de
+  letra'' único para estos sistemas. Cada material educativo, comunidad
+  o institución puede emplear ligeras variantes de los símbolos, lo que
+  genera una alta variabilidad en las formas geométricas que un sistema
+  de reconocimiento debe procesar.
+\item
+  \textbf{Ausencia de conjuntos de datos públicos:} A diferencia de
+  alfabetos como el latino, para los cuales existen repositorios masivos
+  y estandarizados (como EMNIST o MNIST), no existen bases de datos
+  públicas de glifos náhuatl etiquetados. Esto limita severamente la
+  aplicación directa de técnicas modernas de aprendizaje profundo que
+  requieren grandes volúmenes de datos.
+\item
+  \textbf{Variabilidad morfológica en el trazo:} Una vez establecida la
+  elección del glifo para un fonema (por ejemplo, decidir que /e/ se
+  representa con el glifo de ``frijol''), el sistema debe ser capaz de
+  reconocer dicho glifo independientemente de las variaciones en el
+  trazo, la escala, la rotación o pequeñas deformaciones que introduzca
+  el usuario al dibujarlo.
+\end{enumerate}
+
+\textbf{Delimitación del problema de investigación:}
+
+Para abordar este problema desde las matemáticas aplicadas, es necesario
+realizar una delimitación clara del alcance. Si bien la variabilidad en
+la elección del pictograma (frijol vs.~elote) es un problema lingüístico
+relevante, su resolución excede el ámbito de esta tesis.
+
+Por lo tanto, \textbf{este trabajo asume un sistema ortográfico fijo y
+estandarizado}: el Abecedario Provisional Náhuatl mostrado en la Figura
+@abcnauatl, donde se ha establecido de manera definitiva qué glifo
+representa a cada fonema. Bajo esta suposición, el problema se traslada
+al terreno del \textbf{reconocimiento de patrones}, el cual presenta
+desafíos matemáticos propios que justifican la comparación de dos
+enfoques fundamentales:
+
+\begin{itemize}
+\item
+  \textbf{Modelos Ocultos de Markov (HMM):} Que modelan la secuencia
+  estocástica de los rasgos geométricos extraídos del trazo mediante
+  procesos probabilísticos.
+\item
+  \textbf{Redes Neuronales Convolucionales (CNN):} Que aprenden las
+  invariantes espaciales y topológicas directamente de la matriz de
+  píxeles mediante optimización en espacios tensoriales.
+\end{itemize}
+
+La comparación sistemática de estos dos enfoques permitirá determinar
+qué arquitectura matemática es más robusta para reconocer los glifos de
+este sistema provisional, sentando las bases para futuras herramientas
+de digitalización del patrimonio lingüístico náhuatl.
+
+\section{Planteamiento del Problema}\label{planteamiento-del-problema}
+
+El reconocimiento automático de patrones en sistemas de escritura no
+estandarizados presenta desafíos que exceden las capacidades de los
+algoritmos de reconocimiento óptico de caracteres (OCR) convencionales.
+Al centrar el estudio en el ``alfabeto Náhuatl'', el problema de
+investigación se formula desde la perspectiva de la modelación
+matemática y el aprendizaje automático, identificando dos grandes áreas
+de complejidad: la naturaleza morfológica de los glifos y la dicotomía
+entre los paradigmas de modelado estocástico y tensorial.
+
+\subsection{Limitaciones de los enfoques tradicionales en glifos con
+alta variabilidad
+morfológica}\label{limitaciones-de-los-enfoques-tradicionales-en-glifos-con-alta-variabilidad-morfoluxf3gica}
+
+Los sistemas de OCR tradicionales y los modelos de clasificación de
+imágenes estándar asumen la existencia de una tipografía subyacente o,
+al menos, una geometría rígida y estandarizada para cada clase
+(carácter). En el caso del alfabeto latino, la varianza entre distintas
+instancias de la misma letra es relativamente baja y puede ser modelada
+mediante transformaciones afines simples.
+
+Sin embargo, los glifos del sistema provisional náhuatl poseen una
+naturaleza geométrica y pictográfica que rompe estos supuestos. Al no
+existir una fuente tipográfica digital oficial, cada instancia de un
+glifo (por ejemplo, el símbolo correspondiente a la sílaba ``Tl'')
+presenta variaciones significativas en la curvatura, la proporción de
+sus componentes y la continuidad de sus trazos.
+
+Matemáticamente, esto se traduce en distribuciones de probabilidad de
+las características de la imagen con una varianza intra-clase
+extremadamente alta y, en muchos casos, no gaussiana. Los enfoques
+tradicionales, que dependen de la correlación de plantillas (template
+matching) o de la extracción manual de características geométricas
+rígidas, fallan al no poder generalizar sobre esta alta dispersión
+morfológica. Además, la degradación natural de los documentos físicos
+(ruido de alta frecuencia, manchas, pérdida de contraste) introduce
+incertidumbre en los bordes y contornos de los glifos, lo que exige
+modelos matemáticos intrínsecamente robustos al ruido y a las
+deformaciones locales.
+
+\subsection{La dicotomía matemática: Modelos Generativos Secuenciales
+(HMM) vs.~Modelos Discriminativos Tensoriales
+(CNN)}\label{la-dicotomuxeda-matemuxe1tica-modelos-generativos-secuenciales-hmm-vs.-modelos-discriminativos-tensoriales-cnn}
+
+Para abordar la alta variabilidad morfológica descrita anteriormente, la
+literatura de visión por computadora y reconocimiento de patrones ofrece
+dos paradigmas matemáticos fundamentalmente distintos, cada uno con
+fortalezas y limitaciones teóricas particulares:
+
+\textbf{1. El enfoque estocástico y secuencial (Modelos Ocultos de
+Markov - HMM):} Los HMM modelan el glifo no como una imagen estática,
+sino como la realización observable de un proceso estocástico
+secuencial. Al proyectar la imagen 2D en una secuencia 1D de
+características estructurales (como la distribución de ``tinta'', el
+centro de gravedad o las transiciones de bordes), el HMM utiliza
+matrices de transición y de emisión para capturar la probabilidad de
+evolución del trazo. * \emph{Ventaja matemática:} Poseen una sólida
+fundamentación en la teoría de la probabilidad, permiten cuantificar la
+incertidumbre y son altamente interpretables (es posible analizar las
+probabilidades de transición entre estados). * \emph{Limitación:}
+Dependen críticamente de la \emph{ingeniería manual de características}.
+La proyección de 2D a 1D conlleva una pérdida irreversible de
+información topológica y espacial, y la matriz de emisión sufre la
+``maldición de la dimensionalidad'' si el alfabeto de símbolos
+observables es demasiado grande.
+
+\textbf{2. El enfoque de optimización en espacios tensoriales (Redes
+Neuronales Convolucionales - CNN):} Las CNN abordan el problema desde el
+análisis funcional y el álgebra lineal en espacios de alta dimensión. Al
+tratar la imagen como un tensor en \(\mathbb{R}^{H \times W \times C}\),
+aplican operadores de convolución (productos internos locales) que
+aprenden de manera endógena (automática) filtros detectores de
+características jerárquicas. * \emph{Ventaja matemática:} Gracias a la
+compartición de parámetros y las operaciones de \emph{pooling}, son
+naturalmente equivariantes a traslaciones y robustas a pequeñas
+deformaciones geométricas, eliminando la necesidad de diseñar
+características manuales. * \emph{Limitación:} Funcionan como modelos
+``caja negra'' (baja interpretabilidad matemática de sus decisiones
+internas) y requieren una gran cantidad de datos para ajustar sus miles
+de parámetros mediante descenso de gradiente, evitando el sobreajuste.
+
+\textbf{Formulación del problema de investigación:} Dada la escasez de
+datos etiquetados para lenguas indígenas (lo que penaliza a las CNN) y
+la complejidad geométrica de los glifos (lo que penaliza a los HMM por
+la pérdida de información espacial en la extracción de rasgos), no
+existe un consenso teórico sobre qué paradigma es óptimo para este
+dominio específico.
+
+Por lo tanto, el problema central de esta tesis es determinar, mediante
+un protocolo experimental riguroso, \textbf{cuál de estos dos marcos
+matemáticos ---la inferencia probabilística secuencial (HMM) o la
+optimización de funciones no lineales en tensores (CNN)--- ofrece un
+mejor equilibrio entre precisión de clasificación, eficiencia
+computacional e interpretabilidad} para el reconocimiento de los glifos
+del alfabeto náhuatl, y bajo qué condiciones morfológicas cada modelo
+demuestra su superioridad.
+
+\subsection{Justificación desde las Matemáticas
+Aplicadas}\label{justificaciuxf3n-desde-las-matemuxe1ticas-aplicadas}
+
+La elección de comparar Modelos Ocultos de Markov (HMM) y Redes
+Neuronales Convolucionales (CNN) para el reconocimiento de los glifos
+del alfabeto náhuatl no responde únicamente a tendencias tecnológicas,
+sino a la necesidad de evaluar dos paradigmas matemáticos
+fundamentalmente distintos para abordar un problema de clasificación de
+patrones con alta variabilidad morfológica. Desde la perspectiva de las
+matemáticas aplicadas, esta investigación se justifica a través de tres
+ejes teóricos principales:
+
+\subsubsection{Inferencia estocástica vs.~Optimización en espacios
+tensoriales}\label{inferencia-estocuxe1stica-vs.-optimizaciuxf3n-en-espacios-tensoriales}
+
+El primer paradigma, representado por los HMM, aborda el reconocimiento
+de patrones desde la \textbf{teoría de la probabilidad y los procesos
+estocásticos}. En este enfoque, el glifo no se trata como un objeto
+geométrico estático, sino como la realización observable de un proceso
+secuencial. La inferencia del carácter se formula como un problema de
+máxima verosimilitud, donde el algoritmo de
+\emph{Expectation-Maximization} (Baum-Welch) estima los parámetros de
+transición y emisión en un espacio de estados discretos. La fortaleza
+matemática de este modelo radica en su rigor probabilístico y su
+capacidad para cuantificar la incertidumbre inherente a los trazos
+degradados o ambiguos.
+
+El segundo paradigma, representado por las CNN, se fundamenta en el
+\textbf{análisis funcional y la optimización no lineal en espacios de
+alta dimensión}. Aquí, la imagen se modela como un tensor en
+\(\mathbb{R}^{H \times W \times C}\), y el reconocimiento se formula
+como la minimización de una función de pérdida (como la entropía
+cruzada) mediante el flujo de gradiente (descenso de gradiente
+estocástico). La justificación de este enfoque reside en su capacidad
+para aproximar funciones no lineales complejas y aprender operadores de
+convolución que actúan como detectores de características locales, sin
+requerir una modelación explícita de la dinámica subyacente del trazo.
+
+Comparar ambos enfoques permite determinar si, para un sistema de
+escritura con alta varianza intra-clase, es más eficiente modelar la
+\textbf{dependencia secuencial de los rasgos} (HMM) o aprender la
+\textbf{invarianza topológica mediante composiciones de funciones no
+lineales} (CNN).
+
+\subsubsection{El tratamiento de la dimensionalidad y la invarianza
+geométrica}\label{el-tratamiento-de-la-dimensionalidad-y-la-invarianza-geomuxe9trica}
+
+Un aspecto crucial en el reconocimiento de los glifos náhuatl es cómo
+cada modelo matemático gestiona la dimensionalidad de la entrada y las
+transformaciones geométricas.
+
+Los HMM requieren una proyección del espacio bidimensional de la imagen
+(\(\mathbb{R}^{28 \times 28}\)) a una secuencia unidimensional de
+características discretas (\(\mathbb{R}^T\)). Matemáticamente, esta
+reducción de dimensionalidad conlleva una pérdida irreversible de
+información espacial y topológica, obligando al modelo a depender
+críticamente de la ingeniería manual de características (como el cálculo
+de momentos, perfiles y transiciones).
+
+Por el contrario, las CNN operan directamente sobre el tensor de la
+imagen, preservando la estructura espacial local. Gracias a la propiedad
+de equivarianza por traslación inducida por la compartición de
+parámetros en los kernels convolucionales, y a la invarianza aproximada
+proporcionada por las operaciones de \emph{pooling}, las CNN manejan las
+deformaciones geométricas (rotaciones, traslaciones y escalados) de
+manera endógena. Evaluar el impacto de estas dos estrategias de manejo
+de la dimensionalidad es esencial para entender los límites de cada
+modelo frente a la falta de estandarización tipográfica de los glifos.
+
+\subsubsection{Interpretabilidad matemática y escasez de
+datos}\label{interpretabilidad-matemuxe1tica-y-escasez-de-datos}
+
+Finalmente, la investigación se justifica por la naturaleza del conjunto
+de datos. Al tratarse de un sistema de escritura indígena, no existen
+repositorios masivos de datos etiquetados, lo que impone un escenario de
+\textbf{aprendizaje con datos limitados}.
+
+Los modelos probabilísticos como los HMM, al tener un espacio de
+parámetros mucho más restringido (matrices de transición y emisión) y
+estar guiados por supuestos estructurales fuertes (como la topología de
+Bakis para secuencias unidireccionales), suelen ser más robustos ante la
+escasez de datos y ofrecen una \textbf{interpretabilidad matemática
+directa}: es posible analizar las probabilidades de transición entre
+estados para entender cómo el modelo ``decide'' la clase.
+
+En contraste, las CNN poseen miles de parámetros ajustables, lo que las
+hace propensas al sobreajuste en escenarios de pocos datos, requiriendo
+técnicas de regularización (como \emph{Dropout} o \emph{Weight Decay}) y
+aumentación de datos sintéticos. Además, su naturaleza de ``caja negra''
+dificulta la interpretación de las decisiones internas.
+
+Por lo tanto, esta tesis aporta valor a las matemáticas aplicadas al
+cuantificar formalmente el equilibrio entre \textbf{precisión, costo
+computacional, robustez ante datos limitados e interpretabilidad},
+estableciendo un precedente metodológico para el procesamiento
+computacional de lenguas originarias y sistemas de escritura no
+estandarizados. \#\# 1.4 Objetivos
+
+\subsection{Objetivo General}\label{objetivo-general}
+
+Comparar el desempeño de los Modelos Ocultos de Markov (HMM) con esquema
+de remuestreo \emph{bootstrap} y las Redes Neuronales Convolucionales
+(CNN) en la clasificación de imágenes monocromáticas de glifos del
+alfabeto náhuatl. Dicha comparación se realizará mediante la
+implementación de ambos algoritmos bajo un protocolo experimental
+estandarizado, con el fin de determinar cuál enfoque ofrece el mejor
+equilibrio entre precisión de clasificación, costo computacional e
+interpretabilidad matemática para el reconocimiento automático de
+patrones.
+
+\subsection{Objetivos Particulares}\label{objetivos-particulares}
+
+Para alcanzar el objetivo general, se plantean los siguientes objetivos
+particulares:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Preprocesar y caracterizar el conjunto de datos} de imágenes
+  monocromáticas de glifos del alfabeto náhuatl, aplicando técnicas de
+  normalización, aumentación geométrica y generación de ruido
+  controlado, para establecer una base de evaluación estandarizada y
+  robusta que permita la comparación equitativa de ambos modelos.
+\item
+  \textbf{Implementar y ajustar un modelo de clasificación basado en
+  Modelos Ocultos de Markov (HMM)} categóricos, integrado con un esquema
+  de remuestreo \emph{bootstrap}. El propósito es modelar la secuencia
+  de características estructurales extraídas de los glifos y cuantificar
+  la incertidumbre estadística en su identificación.
+\item
+  \textbf{Diseñar y entrenar una arquitectura de Red Neuronal
+  Convolucional (CNN)} optimizada para imágenes de baja resolución,
+  formulando adecuadamente la función de pérdida y el proceso de
+  optimización (ej. Adam), para extraer características espaciales
+  jerárquicas y maximizar la precisión en la clasificación de las
+  distintas clases de glifos.
+\item
+  \textbf{Evaluar y comparar el rendimiento de ambos enfoques} (HMM y
+  CNN) mediante métricas de desempeño (exactitud, precisión,
+  exhaustividad y función de pérdida), tiempos de convergencia y
+  requerimientos de recursos computacionales, para identificar las
+  ventajas, limitaciones y el ámbito de aplicabilidad de cada método en
+  el contexto del reconocimiento de patrones glíficos.
+\end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\chapter{Fundamentos CNN}\label{fundamentos-cnn}
 
 En este trabajo se aborda el problema de \textbf{reconocimiento
 automático de glifos del alfabeto náhuatl} mediante el uso de redes
@@ -1975,17 +2401,1352 @@ aprendizaje.
 
 \bookmarksetup{startatroot}
 
-\chapter{}\label{section}
-
-bnm
-
-\bookmarksetup{startatroot}
-
-\chapter{}\label{section-1}
+\chapter{Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y
+Modelos
+Ocultos}\label{fundamentos-teuxf3ricos-cadenas-de-markov-a-tiempo-continuo-y-modelos-ocultos}
 
 \bookmarksetup{startatroot}
 
-\chapter{}\label{section-2}
+\chapter{Espacio Probabilístico y Procesos Estocásticos
+Subyacentes}\label{espacio-probabiluxedstico-y-procesos-estocuxe1sticos-subyacentes}
+
+Para establecer formalmente una Cadena de Markov a Tiempo Continuo
+(CTMC), es necesario partir de los axiomas fundamentales de la teoría de
+la medida, para más detalle consultar el libro de @Rudin1987.
+
+Para esto, se asumirá que el lector tiene conocimientos previos sobre
+teoría de la medida como lo son las \(\sigma\)-álgebras, espacio
+muestral y medida de probabilidad, entre otros.
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-espacio-filtrado}: Definición (Espacio de Probabilidad Filtrado)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-espacio-filtrado} 
+
+Sea \((\Omega, \mathcal{F}, \mathbb{P})\) un espacio de probabilidad,
+donde \(\Omega\) es el espacio muestral, \(\mathcal{F}\) es una
+\(\sigma\)-álgebra sobre \(\Omega\), y \(\mathbb{P}\) es una medida de
+probabilidad. Sea \(\mathbb{F} = \{\mathcal{F}_t\}_{t \ge 0}\) una
+filtración, es decir, una familia no decreciente de
+sub-\(\sigma\)-álgebras de \(\mathcal{F}\) tal que
+\(\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}\) para
+todo \(0 \le s < t\). El conjunto
+\((\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})\) se denomina espacio de
+probabilidad filtrado.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-espacio-estados-discreto}: Definición (Espacio de Estados Discreto)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-espacio-estados-discreto} 
+
+Definimos el espacio de estados \(S\) como un conjunto discreto y finito
+(o numerable).
+
+La topología en \(S\) es discreta y su \(\sigma\)-álgebra asociada es el
+conjunto potencia \(\mathcal{P}(S)\).
+
+\end{tcolorbox}
+
+En el contexto de nuestro proyecto, \(S\) representa el conjunto de
+posibles colores o intensidades de un pixel (por ejemplo, el espacio RGB
+donde \(|S| = 256^3\), o una escala de grises finita).
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-proceso-estocastico}: Definición (Proceso Estocástico a Tiempo Continuo)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-proceso-estocastico} 
+
+Un proceso estocástico en tiempo continuo con espacio de estados
+discreto \(S\) es una familia de variables aleatorias
+
+\[
+X = \{X(t) : t \in \mathbb{R}_{\ge 0}\},
+\]
+
+donde cada \(X(t): \Omega \to S\) es una función medible respecto a
+\(\mathcal{F}_t\).
+
+\end{tcolorbox}
+
+Interpretamos \(X(t)\) como el ``color verdadero'' del pixel en el
+instante (o parámetro continuo) \(t\).
+
+\bookmarksetup{startatroot}
+
+\chapter{Cadenas de Markov a Tiempo Continuo
+(CTMC)}\label{cadenas-de-markov-a-tiempo-continuo-ctmc}
+
+La transición del concepto general de proceso estocástico al de proceso
+de Markov requiere la propiedad de amnesia (pérdida de memoria).
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-propiedad-markov}: Definición (Propiedad de Markov)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-propiedad-markov} 
+
+El proceso adaptado \(X = \{X(t)\}_{t \ge 0}\) es una Cadena de Markov a
+Tiempo Continuo si satisface la condición de Markov relativa a la
+filtración \(\mathbb{F}\): para cualquier conjunto discreto de tiempos
+
+\[
+0 \le t_1 < t_2 < \dots < t_n < t
+\]
+
+y cualquier secuencia de estados
+
+\[
+i_1, i_2, \dots, i_n, i, j \in S,
+\]
+
+se cumple que
+
+\[
+\mathbb{P}(X(t) = j \mid X(t_1) = i_1, \dots, X(t_n) = i, X(s) = i)
+=
+\mathbb{P}(X(t) = j \mid X(s) = i).
+\]
+
+De manera equivalente y más elegante mediante la esperanza condicional:
+
+\[
+\mathbb{P}(X(t) = j \mid \mathcal{F}_s)
+=
+\mathbb{P}(X(t) = j \mid X(s))
+\quad
+\text{c.s. (casi seguramente)}
+\]
+
+para todo \(0 \le s \le t\).
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-probabilidades-transicion}: Definición (Probabilidades de Transición y Homogeneidad)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-probabilidades-transicion} 
+
+Definimos la probabilidad de transición del estado \(i\) al estado \(j\)
+en el intervalo \([s,t]\) como
+
+\[
+p_{ij}(s,t)
+=
+\mathbb{P}(X(t)=j \mid X(s)=i).
+\]
+
+Se dice que la CTMC es \textbf{homogénea en el tiempo} si
+\(p_{ij}(s,t)\) depende únicamente de la longitud del intervalo temporal
+
+\[
+\tau=t-s.
+\]
+
+En tal caso, denotamos la probabilidad de transición como
+
+\[
+p_{ij}(\tau)
+=
+\mathbb{P}(X(s+\tau)=j \mid X(s)=i).
+\]
+
+Sean estas probabilidades las entradas de una matriz estocástica
+
+\[
+P(\tau)
+=
+[p_{ij}(\tau)]_{i,j\in S}.
+\]
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-important-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante \ref*{imp-chapman-kolmogorov}: Propiedad (Ecuaciones de Chapman-Kolmogorov)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-important-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutimp{imp-chapman-kolmogorov} 
+
+Para cualquier \(s,t \ge 0\), la familia de matrices de transición
+\(\{P(t)\}_{t\ge0}\) forma un semigrupo de operadores estocásticos,
+satisfaciendo\[
+P(t+s)=P(t)P(s)
+\]
+
+lo que equivale a
+
+\[
+p_{ij}(t+s)
+=
+\sum_{k\in S}
+p_{ik}(t)p_{kj}(s).
+\]
+
+\end{tcolorbox}
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=5.72917in,height=\textheight,keepaspectratio]{Imagenes_tesis/chapman-k.png}
+
+}
+
+\caption{\label{fig-chapman}La probabilidad de transición
+\(p_{ij}(t+s)\) se obtiene sumando las contribuciones de todos los
+posibles estados intermedios \(k\).}
+
+\end{figure}%
+
+Por otro lado, también se tiene la existencia de los HMM categóricos.
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-hmm-categorico-1}: Definición (Modelo Oculto de Markov Categórico)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-hmm-categorico-1} 
+
+Un Modelo Oculto de Márkov Categórico (Categorical HMM, a menudo también
+llamado HMM Discreto o Multinomial) es una variante de los modelos HMM
+donde las observaciones emitidas por los estados ocultos son valores
+discretos y finitos que pertenecen a categorías específicas, en lugar de
+ser valores numéricos continuos.
+
+En cualquier HMM, el sistema modela un proceso estocástico con estados
+que no son directamente visibles, y cada estado genera (emite) una
+observación que sí podemos medir.
+
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{Dinámica Infinitesimal y Generador de la
+Cadena}\label{dinuxe1mica-infinitesimal-y-generador-de-la-cadena}
+
+La evolución continua del color del pixel requiere una descripción
+mediante probabilidades de transición, lo cual nos lleva a la
+representación matricial de la derivada de \(P(t)\).
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-matriz-generadora}: Definición (Matriz Generadora Infinitesimal)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-matriz-generadora} 
+
+Asumiendo que \(p_{ij}(t)\) es diferenciable por la derecha en \(t=0\),
+definimos la probabilidad de transición \(q_{ij}\) del estado \(i\) al
+estado \(j\) (donde \(i \neq j\)) como:
+
+\[
+q_{ij}
+=
+\lim_{h \to 0^+}
+\frac{p_{ij}(h)}{h}
+\ge 0.
+\]
+
+Y para el caso \(i=j\), definimos la probabilidad de salida del estado
+\(i\) como \(v_i=-q_{ii}\), dada por
+
+\[
+q_{ii}
+=
+\lim_{h\to0^+}
+\frac{p_{ii}(h)-1}{h}
+=
+-\sum_{j\neq i} q_{ij}
+\le 0.
+\]
+
+La matriz
+
+\[
+Q=[q_{ij}]_{i,j\in S}
+\]
+
+se denomina matriz generadora (o matriz \(Q\)) de la cadena. Sus filas
+suman cero:
+
+\[
+\sum_{j\in S} q_{ij}=0.
+\]
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-important-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante \ref*{imp-ecuaciones-dif-kolmogorov}: Propiedad (Ecuaciones Diferenciales de Kolmogorov)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-important-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutimp{imp-ecuaciones-dif-kolmogorov} 
+
+Bajo condiciones de regularidad (que se cumplen trivialmente si el
+espacio de estados del color \(S\) es finito), la matriz de transición
+\(P(t)\) es la solución única a las ecuaciones diferenciales matriciales
+de Kolmogorov Hacia Adelante (Forward) y Hacia Atrás (Backward)
+@Norris1998 :
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Forward:}
+\end{itemize}
+
+\[
+\frac{d}{dt}P(t)=P(t)Q
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Backward:}
+\end{itemize}
+
+\[
+\frac{d}{dt}P(t)=QP(t)
+\]
+
+Cuya solución formal, bajo la condición inicial \(P(0)=I\) (matriz
+identidad), es la matriz exponencial
+
+\[
+P(t)
+=
+e^{Qt}
+=
+\sum_{n=0}^{\infty}
+\frac{(Qt)^n}{n!}.
+\]
+
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{Utilidad hacia Cadenas de Márkov Ocultas
+(HMM)}\label{utilidad-hacia-cadenas-de-muxe1rkov-ocultas-hmm}
+
+La fundamentación teórica precedente modela la dinámica subyacente
+determinista de la matriz de transición y la evolución estocástica de
+las trayectorias del sistema. Para extender esta arquitectura a un
+Modelo Oculto de Márkov (HMM) en el contexto de la inferencia y análisis
+de píxeles en imágenes que contienen letras del alfabeto latino, se
+formaliza la siguiente estructura bivariada:
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-proceso-latente}: Definición (Proceso Latente e Inobservable)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-proceso-latente} 
+
+El proceso de Markov a tiempo continuo
+
+\[
+X = \{X(t)\}_{t \ge 0}
+\]
+
+sobre el espacio de estados \(S\), caracterizado por su matriz
+generadora infinitesimal \(Q\), constituye el \emph{proceso latente}.
+Las alteraciones estocásticas inducidas por \(Q\) a lo largo del
+parámetro \(t\) (representando una métrica de degradación física o
+divergencia espacial) rigen las transiciones hacia estados degradados,
+manteniéndose inaccesibles a la medición directa.
+
+\end{tcolorbox}
+
+La variable \(X(t)\) describe el estado ideal o ``verdadero'' del pixel.
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-proceso-observacion}: Definición (Proceso de Observación Empírica)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-proceso-observacion} 
+
+Sea
+
+\[
+(O,\mathcal{P}(O))
+\]
+
+el espacio medible de las posibles mediciones obtenidas por
+instrumentos.
+
+Se postula un \emph{proceso de observación} acoplado
+
+\[
+Y=\{Y(t)\}_{t\ge0},
+\]
+
+compuesto por variables aleatorias
+
+\[
+Y(t):\Omega\to O
+\]
+
+que representan la lectura empírica o ruidosa en el parámetro \(t\).
+
+\end{tcolorbox}
+
+En este caso \(O\) denota el conjunto finito de colores o intensidades
+registrables por un sensor óptico y \(Y\) es la lectura ruidosa del
+pixel en el tiempo \(t\).
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-matriz-emision}: Definición (Matriz de Emisión e Independencia Condicional)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-matriz-emision} 
+
+La dependencia estocástica entre ambos procesos queda unívocamente
+determinada por la condición de independencia local.
+
+Para cualquier instante \(t\ge0\), la observación \(Y(t)\) es
+condicionalmente independiente de toda la historia previa del sistema
+dado el estado concurrente \(X(t)\).
+
+Formalmente, para cualquier \(y\in O\) y \(x\in S\):
+
+\[
+\mathbb{P}(Y(t)=y \mid \mathcal{F}_t^X,\mathcal{F}_{t^-}^Y)
+=
+\mathbb{P}(Y(t)=y \mid X(t)=x)
+\quad
+\text{c.s.}
+\]
+
+donde \(\mathcal{F}_t^X\) y \(\mathcal{F}_{t^-}^Y\) denotan las
+filtraciones Note~\ref{nte-espacio-filtrado} del historial latente y
+observable, respectivamente.
+
+Estas probabilidades definen las entradas de la matriz de emisión
+estocástica
+
+\[
+E=[e_{xy}],
+\]
+
+donde \[
+e_{xy}
+=
+\mathbb{P}(Y(t)=y \mid X(t)=x).
+\]
+
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{Inferencia y Filtrado en el Modelo
+Oculto}\label{inferencia-y-filtrado-en-el-modelo-oculto}
+
+Una vez establecida la dinámica del sistema, es necesario desarrollar la
+maquinaria analítica para inferir el estado latente del pixel a partir
+de las observaciones empíricas.
+
+Supongamos que disponemos de una secuencia de observaciones
+
+\[
+Y=(y_1,y_2,\dots,y_K)
+\]
+
+en instantes discretos de tiempo (o espacio)
+
+\[
+0 \le t_1 < t_2 < \dots < t_K \le T.
+\]
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-filtro-forward}: Definición (Filtro Hacia Adelante (Forward) y Verosimilitud)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-filtro-forward} 
+
+Definimos la variable de avance \(\alpha_k(i)\) como la probabilidad
+conjunta de observar la secuencia parcial hasta el \(k\)-ésimo instante
+y que el estado oculto en dicho instante sea \(i\in S\):
+
+\[
+\alpha_k(i)
+=
+\mathbb{P}
+\bigl(
+Y(t_1)=y_1,\dots,Y(t_k)=y_k,
+X(t_k)=i
+\bigr).
+\]
+
+Esta cantidad se calcula recursivamente mediante la ecuación de
+Chapman-Kolmogorov Important~\ref{imp-chapman-kolmogorov} y la matriz de
+emisión \(E\) Note~\ref{nte-matriz-emision}:
+
+\[
+\alpha_k(j)
+=
+\left(
+\sum_{i\in S}
+\alpha_{k-1}(i)\,
+p_{ij}(\Delta t_k)
+\right)
+\mathbb{P}
+\bigl(
+Y(t_k)=y_k
+\mid
+X(t_k)=j
+\bigr)
+\]
+
+donde
+
+\[
+\Delta t_k=t_k-t_{k-1}
+\]
+
+y
+
+\[
+p_{ij}(\Delta t_k)
+\]
+
+es la entrada correspondiente de la matriz de transición
+
+\[
+P(\Delta t_k)
+=
+e^{Q\Delta t_k}.
+\]
+
+La verosimilitud total de la secuencia de observaciones es simplemente
+
+\[
+\mathbb{P}(Y)
+=
+\sum_{i\in S}
+\alpha_K(i).
+\]
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-decodificacion-optima}: Definición (Decodificación Óptima Global)}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-decodificacion-optima} 
+
+Para reconstruir la trayectoria más probable, buscamos la secuencia de
+estados latentes
+
+\[
+\hat{X}
+=
+(\hat{x}_1,\dots,\hat{x}_K)
+\]
+
+que maximice la probabilidad condicional conjunta
+
+\[
+\hat{X}
+=
+\arg\max_{x_1,\dots,x_K}
+\mathbb{P}
+\Bigl(
+X(t_1)=x_1,\dots,X(t_K)=x_K
+\mid
+Y(t_1)=y_1,\dots,Y(t_K)=y_K
+\Bigr).
+\]
+
+A diferencia de la función \(\max\), que devuelve el \textbf{valor
+numérico} de la probabilidad más alta alcanzada, el operador
+\(\arg\max\) (argumento del máximo) devuelve el \textbf{conjunto de
+entradas} que producen ese valor máximo. En este contexto, no nos
+interesa saber cuál es el porcentaje exacto de la probabilidad máxima,
+sino descubrir específicamente \textbf{cuál es la secuencia exacta de
+estados latentes} \(\hat{X}\) que hace que esa probabilidad sea máxima
+
+La solución sistemática a este problema de programación dinámica
+espacial/temporal se obtiene mediante la adaptación del Algoritmo de
+Viterbi @rabiner1989tutorial para cadenas a tiempo continuo, evaluando
+las transiciones máximas sobre
+
+\[
+P(\Delta t_k).
+\]
+
+\end{tcolorbox}
+
+Para los pixeles es la trayectoria más probable de los colores
+verdaderos del pixel (el problema de decodificación).
+
+\section{Ejemplo ilustrativo del algoritmo
+Forward--Backward}\label{ejemplo-ilustrativo-del-algoritmo-forwardbackward}
+
+Para ilustrar el funcionamiento de los algoritmos Forward y Backward en
+el contexto del reconocimiento de imágenes, consideremos un píxel cuyo
+color verdadero puede encontrarse en uno de dos estados ocultos:
+
+\[
+S=\{B,N\},
+\]
+
+donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(B\): píxel verdaderamente blanco.
+\item
+  \(N\): píxel verdaderamente negro.
+\end{itemize}
+
+Debido al ruido en el proceso de adquisición de la imagen, el color
+observado puede diferir del color real.
+
+Supongamos que la dinámica del píxel está descrita por la matriz de
+transición
+
+\[
+P=
+\begin{pmatrix}
+0.8 & 0.2\\
+0.3 & 0.7
+\end{pmatrix},
+\]
+
+donde, por ejemplo,
+
+\[
+p_{BN}=0.2
+\]
+
+representa la probabilidad de que un píxel blanco pase al estado negro
+en el siguiente instante.
+
+Asimismo, consideremos la siguiente matriz de emisión:
+
+\[
+E=
+\begin{pmatrix}
+0.9 & 0.1\\
+0.2 & 0.8
+\end{pmatrix},
+\]
+
+cuyas columnas corresponden a las observaciones
+
+\[
+(O_B,O_N),
+\]
+
+es decir, observar blanco u observar negro. Por ejemplo,
+
+\[
+P(O_B \mid B)=0.9,
+\qquad
+P(O_B \mid N)=0.2.
+\]
+
+Finalmente, asumimos una distribución inicial
+
+\[
+\pi=(0.6,0.4),
+\]
+
+y que la secuencia observada es
+
+\[
+Y=(O_B,O_N).
+\]
+
+Esto significa que el sensor registra blanco en el primer instante y
+negro en el segundo.
+
+\subsection{Cálculo Forward}\label{cuxe1lculo-forward}
+
+La variable Forward se define como
+
+\[
+\alpha_k(i)
+=
+P(y_1,\ldots,y_k,X_k=i).
+\]
+
+\subsubsection{Paso 1}\label{paso-1}
+
+Para la primera observación \(O_B\):
+
+\[
+\alpha_1(B)
+=
+P(X_1=B)\,P(O_B\mid B)
+=
+0.6(0.9)
+=
+0.54,
+\]
+
+\[
+\alpha_1(N)
+=
+P(X_1=N)\,P(O_B\mid N)
+=
+0.4(0.2)
+=
+0.08.
+\]
+
+\subsubsection{Paso 2}\label{paso-2}
+
+Calculamos primero la probabilidad de alcanzar el estado blanco:
+
+\[
+\sum_{i\in S}
+\alpha_1(i)p_{iB}
+=
+0.54(0.8)+0.08(0.3)
+=
+0.456.
+\]
+
+Multiplicando por la probabilidad de emisión correspondiente,
+
+\[
+\alpha_2(B)
+=
+0.456(0.1)
+=
+0.0456.
+\]
+
+Análogamente, para el estado negro:
+
+\[
+\sum_{i\in S}
+\alpha_1(i)p_{iN}
+=
+0.54(0.2)+0.08(0.7)
+=
+0.164,
+\]
+
+y por tanto,
+
+\[
+\alpha_2(N)
+=
+0.164(0.8)
+=
+0.1312.
+\]
+
+\subsubsection{Verosimilitud de la secuencia
+observada}\label{verosimilitud-de-la-secuencia-observada}
+
+La probabilidad total de observar la secuencia \(Y\) es
+
+\[
+P(Y)
+=
+\alpha_2(B)+\alpha_2(N),
+\]
+
+es decir,
+
+\[
+P(Y)
+=
+0.0456+0.1312
+=
+0.1768.
+\]
+
+\subsection{Cálculo Backward}\label{cuxe1lculo-backward}
+
+La variable Backward se define mediante
+
+\[
+\beta_k(i)
+=
+P(y_{k+1},\ldots,y_T\mid X_k=i).
+\]
+
+Como la secuencia contiene únicamente dos observaciones,
+
+\[
+\beta_2(B)=\beta_2(N)=1.
+\]
+
+Retrocediendo un paso:
+
+\[
+\beta_1(B)
+=
+0.8(0.1)(1)
++
+0.2(0.8)(1)
+=
+0.24,
+\]
+
+y
+
+\[
+\beta_1(N)
+=
+0.3(0.1)(1)
++
+0.7(0.8)(1)
+=
+0.59.
+\]
+
+\subsection{Inferencia del estado
+oculto}\label{inferencia-del-estado-oculto}
+
+Una de las principales ventajas del algoritmo Forward--Backward es que
+permite calcular la probabilidad posterior de cada estado oculto.
+
+Para el estado blanco en el primer instante,
+
+\[
+\gamma_1(B)
+=
+P(X_1=B\mid Y)
+=
+\frac{\alpha_1(B)\beta_1(B)}
+{P(Y)},
+\]
+
+por lo que
+
+\[
+\gamma_1(B)
+=
+\frac{0.54(0.24)}
+{0.1768}
+=
+0.733.
+\]
+
+De forma análoga,
+
+\[
+\gamma_1(N)
+=
+\frac{\alpha_1(N)\beta_1(N)}
+{P(Y)}
+=
+\frac{0.08(0.59)}
+{0.1768}
+=
+0.267.
+\]
+
+En consecuencia,
+
+\[
+P(X_1=B\mid Y)\approx 73.3\%,
+\]
+
+mientras que
+
+\[
+P(X_1=N\mid Y)\approx 26.7\%.
+\]
+
+\textbf{Interpretación}
+
+A pesar de que el sensor observa un píxel blanco en el primer instante y
+negro en el segundo, el algoritmo Forward--Backward determina que existe
+aproximadamente un \(73\%\) de probabilidad de que el color verdadero
+inicial haya sido blanco. Este resultado muestra cómo un Modelo Oculto
+de Markov combina la información proporcionada por las observaciones
+ruidosas con la dinámica de transición del sistema para inferir el
+estado real subyacente del píxel.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=4.6875in,height=\textheight,keepaspectratio]{images/imagenesHMM/pixelblanconegrodibujo.png}
+
+}
+
+\caption{\label{fig-pixelbn}Modelo Oculto de Markov para un píxel con
+dos estados ocultos y dos observaciones.}
+
+\end{figure}%
+
+\bookmarksetup{startatroot}
+
+\chapter{Estimación de Parámetros y Calibración del
+Modelo}\label{estimaciuxf3n-de-paruxe1metros-y-calibraciuxf3n-del-modelo}
+
+En la práctica, la matriz generadora infinitesimal \(Q\) (que dicta la
+probabilidad de degradación del color para el caso de estudio) y las
+probabilidades de emisión empírica rara vez son conocidas a priori y
+deben ser estimadas a partir de un dataset de imágenes (el alfabeto
+latino modificado).
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, colback=white, arc=.35mm, coltitle=black, bottomtitle=1mm, colbacktitle=quarto-callout-important-color!10!white, toprule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante \ref*{nte-baum-welch}: Propiedad (Algoritmo de Expectation-Maximization (Baum-Welch))}, opacityback=0, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-important-color-frame, bottomrule=.15mm, breakable, opacitybacktitle=0.6]
+
+\quartocalloutnte{nte-baum-welch} 
+
+La estimación por máxima verosimilitud del conjunto de parámetros del
+modelo
+
+\[
+\Theta=\{Q,E\}
+\]
+
+dado un conjunto de secuencias observadas se realiza mediante un proceso
+iterativo.
+
+\begin{itemize}
+\item
+  \textbf{Paso} \(E\) (\textbf{Expectation):} Se calculan las
+  estadísticas suficientes esperadas del sistema latente (tiempo
+  esperado de permanencia en cada estado de color y número esperado de
+  transiciones) condicionado a las observaciones y a la estimación
+  actual de los parámetros en el paso \(m\) \(\Theta^{(m)}\), utilizando
+  las variables recursivas Forward y Backward.
+\item
+  \textbf{Paso} \(M\) \textbf{(Maximization):} Se actualizan los
+  parámetros \(\Theta^{(m+1)}\) para maximizar la función \(Q\) de
+  verosimilitud esperada. En particular, la estimación de las
+  probabilidades de transición empíricas se formula restringiendo las
+  soluciones para garantizar que las filas de \(Q^{(m+1)}\) sigan
+  sumando cero y \(q_{ij}\ge0\) para \(i\neq j\).
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=5.20833in,height=\textheight,keepaspectratio]{images/imagenesHMM/ME_HMM.png}
+
+}
+
+\caption{\label{fig-ME}Esquema general del algoritmo
+Expectation--Maximization (Baum--Welch) para un Modelo Oculto de Markov.
+En el Paso E se estiman las probabilidades posteriores de los estados
+ocultos y las transiciones esperadas mediante los algoritmos
+Forward--Backward. En el Paso M se actualizan iterativamente la matriz
+generadora y la matriz de emisión para maximizar la verosimilitud de las
+observaciones.}
+
+\end{figure}%
+
+\bookmarksetup{startatroot}
+
+\chapter{Base de datos}\label{base-de-datos}
+
+\section{Construcción del conjunto de
+datos}\label{construcciuxf3n-del-conjunto-de-datos}
+
+El reconocimiento óptico de caracteres para sistemas de escritura
+indígenas, particularmente para el alfabeto Náhuatl
+Figura~\ref{fig-alfabeto-nahuatl}, presenta una limitación inicial
+importante: no existe un conjunto de datos público, estandarizado y
+etiquetado que permita entrenar modelos de aprendizaje profundo. A
+diferencia de otros alfabetos, para los cuales existen repositorios
+ampliamente documentados, el alfabeto Náhuatl carece de recursos
+computacionales que puedan emplearse directamente en tareas de
+clasificación automática.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=8.33333in,height=\textheight,keepaspectratio]{images/Alfabeto nahuatl.png}
+
+}
+
+\caption{\label{fig-alfabeto-nahuatl}Glifos del alfabeto nahuatl. Este
+alfabeto consta de 18 caracteres, para los cuales se emplean letras del
+alfabeto latino para su manipulación.}
+
+\end{figure}%
+
+Ante esta situación, fue necesario construir un conjunto de datos
+propio. La decisión de generar un dataset sintético se tomó por dos
+razones principales:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Proporcionar un número suficiente de ejemplos para el entrenamiento de
+  la red neuronal.
+\item
+  Introducir variaciones geométricas que permitan al modelo generalizar
+  ante deformaciones presentes en documentos reales.
+\end{enumerate}
+
+\subsection{Generación de las
+muestras}\label{generaciuxf3n-de-las-muestras}
+
+Inicialmente se diseñaron de forma manual 25 ejemplos base para cada
+carácter del alfabeto. Posteriormente, a cada muestra se le aplicaron
+transformaciones geométricas y perturbaciones aleatorias para
+incrementar la variabilidad del conjunto de datos.
+
+La Figura Figura~\ref{fig-dataset-augmentation} muestra algunos ejemplos
+de las imágenes generadas.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=8.33333in,height=\textheight,keepaspectratio]{images/dataset aumentado.png}
+
+}
+
+\caption{\label{fig-dataset-augmentation}Se observa el proceso por el
+que pasa cada una de las 25 imagenes por letra para generar 90 variantes
+obtenidas a partir de rotación, traslación, distorción elástica, cambio
+de escala y ruido, de este modo se consigue un dataset más completo.}
+
+\end{figure}%
+
+\section{Carga y organización de los
+datos}\label{carga-y-organizaciuxf3n-de-los-datos}
+
+Una vez construido el conjunto de datos, las imágenes se almacenaron
+siguiendo una estructura jerárquica de directorios, donde cada carpeta
+representa una clase distinta del alfabeto.
+
+El cargado de las imágenes se realizó mediante la función
+\texttt{image\_dataset\_from\_directory} de TensorFlow:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{train\_ds }\OperatorTok{=}\NormalTok{ tf.keras.utils.image\_dataset\_from\_directory(}
+\NormalTok{    data\_dir,}
+\NormalTok{    validation\_split}\OperatorTok{=}\FloatTok{0.2}\NormalTok{,}
+\NormalTok{    subset}\OperatorTok{=}\StringTok{"training"}\NormalTok{,}
+\NormalTok{    seed}\OperatorTok{=}\DecValTok{123}\NormalTok{,}
+\NormalTok{    image\_size}\OperatorTok{=}\NormalTok{(}\DecValTok{28}\NormalTok{,}\DecValTok{28}\NormalTok{),}
+\NormalTok{    batch\_size}\OperatorTok{=}\DecValTok{32}\NormalTok{,}
+\NormalTok{    color\_mode}\OperatorTok{=}\StringTok{"grayscale"}
+\NormalTok{)}
+
+\NormalTok{val\_ds }\OperatorTok{=}\NormalTok{ tf.keras.utils.image\_dataset\_from\_directory(}
+\NormalTok{    data\_dir,}
+\NormalTok{    validation\_split}\OperatorTok{=}\FloatTok{0.2}\NormalTok{,}
+\NormalTok{    subset}\OperatorTok{=}\StringTok{"validation"}\NormalTok{,}
+\NormalTok{    seed}\OperatorTok{=}\DecValTok{123}\NormalTok{,}
+\NormalTok{    image\_size}\OperatorTok{=}\NormalTok{(}\DecValTok{28}\NormalTok{,}\DecValTok{28}\NormalTok{),}
+\NormalTok{    batch\_size}\OperatorTok{=}\DecValTok{32}\NormalTok{,}
+\NormalTok{    color\_mode}\OperatorTok{=}\StringTok{"grayscale"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+La elección de una partición de entrenamiento-validación de 80\%-20\%
+constituye una práctica común en aprendizaje automático, ya que permite
+disponer de un número suficiente de ejemplos para el ajuste de los
+parámetros del modelo y, al mismo tiempo, reservar un conjunto
+independiente para evaluar la capacidad de generalización.
+
+Asimismo, las imágenes se convirtieron a escala de grises. Dado que los
+glifos del alfabeto Náhuatl se distinguen principalmente por su
+geometría y no por información cromática, el uso de un solo canal reduce
+el costo computacional sin sacrificar información relevante.
+
+\section{Normalización y aumentación de
+datos}\label{normalizaciuxf3n-y-aumentaciuxf3n-de-datos}
+
+Antes de alimentar las imágenes a la red neuronal, se realizó un proceso
+de normalización:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{normalization\_layer }\OperatorTok{=}\NormalTok{ tf.keras.layers.Rescaling(}\FloatTok{1.}\OperatorTok{/}\DecValTok{255}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Esta transformación reescala los valores de intensidad al intervalo
+\([0,1]\), lo cual mejora la estabilidad numérica del proceso de
+entrenamiento y facilita la convergencia del algoritmo de optimización.
+
+Adicionalmente, se implementó un mecanismo de aumentación de datos en
+línea:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_augmentation }\OperatorTok{=}\NormalTok{ tf.keras.Sequential([}
+\NormalTok{    tf.keras.layers.RandomRotation(}\FloatTok{0.05}\NormalTok{),}
+\NormalTok{    tf.keras.layers.RandomZoom(}\FloatTok{0.1}\NormalTok{),}
+\NormalTok{    tf.keras.layers.RandomTranslation(}\FloatTok{0.05}\NormalTok{, }\FloatTok{0.05}\NormalTok{)}
+\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+La introducción de pequeñas rotaciones, cambios de escala y traslaciones
+tiene como objetivo simular las variaciones presentes en documentos
+escaneados o en la escritura manual. De esta manera, el modelo aprende
+representaciones más robustas y reduce su tendencia al sobreajuste.
+
+Finalmente, los datos fueron almacenados temporalmente en memoria y
+preparados para alimentar la GPU:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{train\_ds }\OperatorTok{=}\NormalTok{ train\_ds.cache().shuffle(}\DecValTok{5000}\NormalTok{).prefetch(AUTOTUNE)}
+\NormalTok{val\_ds }\OperatorTok{=}\NormalTok{ val\_ds.cache().prefetch(AUTOTUNE)}
+\end{Highlighting}
+\end{Shaded}
+
+El uso de \texttt{cache()} evita que las imágenes sean leídas
+repetidamente desde el disco, mientras que \texttt{prefetch()} permite
+superponer las operaciones de lectura de datos con el entrenamiento de
+la red, disminuyendo el tiempo total de ejecución.
+
+\bookmarksetup{startatroot}
+
+\chapter{Caso de estudio}\label{caso-de-estudio}
+
+\bookmarksetup{startatroot}
+
+\chapter{CASO CNN}\label{caso-cnn}
+
+\section{Arquitectura de la red neuronal
+convolucional}\label{arquitectura-de-la-red-neuronal-convolucional}
+
+La arquitectura propuesta recibe imágenes de tamaño
+\(28\times28\times1\) y está compuesta por tres bloques convolucionales
+seguidos de un clasificador denso.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model }\OperatorTok{=}\NormalTok{ tf.keras.Sequential([}
+\NormalTok{    tf.keras.layers.Input(shape}\OperatorTok{=}\NormalTok{(}\DecValTok{28}\NormalTok{,}\DecValTok{28}\NormalTok{,}\DecValTok{1}\NormalTok{)),}
+
+\NormalTok{    tf.keras.layers.Conv2D(}\DecValTok{32}\NormalTok{,}\DecValTok{3}\NormalTok{,activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
+\NormalTok{    tf.keras.layers.BatchNormalization(),}
+\NormalTok{    tf.keras.layers.MaxPooling2D(),}
+\NormalTok{    tf.keras.layers.SpatialDropout2D(}\FloatTok{0.25}\NormalTok{),}
+
+\NormalTok{    tf.keras.layers.Conv2D(}\DecValTok{64}\NormalTok{,}\DecValTok{3}\NormalTok{,activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
+\NormalTok{    tf.keras.layers.BatchNormalization(),}
+\NormalTok{    tf.keras.layers.MaxPooling2D(),}
+\NormalTok{    tf.keras.layers.SpatialDropout2D(}\FloatTok{0.25}\NormalTok{),}
+
+\NormalTok{    tf.keras.layers.Conv2D(}\DecValTok{128}\NormalTok{,}\DecValTok{3}\NormalTok{,activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
+\NormalTok{    tf.keras.layers.MaxPooling2D(),}
+\NormalTok{    tf.keras.layers.SpatialDropout2D(}\FloatTok{0.25}\NormalTok{),}
+
+\NormalTok{    tf.keras.layers.Flatten(),}
+\NormalTok{    tf.keras.layers.Dense(}\DecValTok{256}\NormalTok{, activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
+\NormalTok{    tf.keras.layers.Dropout(}\FloatTok{0.5}\NormalTok{),}
+\NormalTok{    tf.keras.layers.Dense(num\_classes, activation}\OperatorTok{=}\StringTok{\textquotesingle{}softmax\textquotesingle{}}\NormalTok{)}
+\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Primer bloque convolucional}\label{primer-bloque-convolucional}
+
+La primera capa convolucional emplea 32 filtros de tamaño \(3\times3\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.Conv2D(}\DecValTok{32}\NormalTok{,}\DecValTok{3}\NormalTok{,activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Este bloque se encarga de detectar características de bajo nivel, tales
+como bordes, esquinas y pequeños segmentos de los trazos.
+
+La incorporación de una capa de normalización por lotes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.BatchNormalization()}
+\end{Highlighting}
+\end{Shaded}
+
+permite estabilizar la distribución de las activaciones internas,
+acelerando el proceso de convergencia.
+
+Posteriormente, la operación de \emph{max pooling}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.MaxPooling2D()}
+\end{Highlighting}
+\end{Shaded}
+
+reduce la dimensionalidad espacial de las representaciones, disminuyendo
+el número de parámetros y haciendo al modelo menos sensible a pequeñas
+traslaciones.
+
+Finalmente, se incorpora un mecanismo de regularización:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.SpatialDropout2D(}\FloatTok{0.25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+que desactiva mapas de características completos de manera aleatoria,
+obligando a la red a aprender representaciones más robustas.
+
+\section{Segundo y tercer bloque
+convolucional}\label{segundo-y-tercer-bloque-convolucional}
+
+Los bloques posteriores incrementan progresivamente el número de filtros
+hasta 64 y 128, respectivamente. El aumento en la profundidad de la red
+permite capturar patrones cada vez más complejos, tales como
+combinaciones de curvas, intersecciones y configuraciones geométricas
+características de cada glifo.
+
+\section{Clasificador}\label{clasificador}
+
+Las características extraídas se transforman en un vector
+unidimensional:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.Flatten()}
+\end{Highlighting}
+\end{Shaded}
+
+y posteriormente se procesan mediante una capa densa:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.Dense(}\DecValTok{256}\NormalTok{, activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+La capa de salida utiliza la función Softmax:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.Dense(num\_classes, activation}\OperatorTok{=}\StringTok{\textquotesingle{}softmax\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+la cual produce una distribución de probabilidad sobre todas las clases
+del alfabeto.
+
+\bookmarksetup{startatroot}
+
+\chapter{Entrenamiento}\label{entrenamiento-1}
+
+El modelo se compiló utilizando el optimizador Adam:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model.}\BuiltInTok{compile}\NormalTok{(}
+\NormalTok{    optimizer}\OperatorTok{=}\StringTok{\textquotesingle{}adam\textquotesingle{}}\NormalTok{,}
+\NormalTok{    loss}\OperatorTok{=}\StringTok{\textquotesingle{}sparse\_categorical\_crossentropy\textquotesingle{}}\NormalTok{,}
+\NormalTok{    metrics}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{]}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+La función de pérdida de entropía cruzada dispersa se seleccionó debido
+a que las etiquetas de las imágenes se encuentran codificadas como
+enteros y no mediante vectores \emph{one-hot}.
+
+Para evitar el sobreajuste se implementó un mecanismo de detención
+temprana:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{early\_stop }\OperatorTok{=}\NormalTok{ EarlyStopping(}
+\NormalTok{    monitor}\OperatorTok{=}\StringTok{\textquotesingle{}val\_loss\textquotesingle{}}\NormalTok{,}
+\NormalTok{    patience}\OperatorTok{=}\DecValTok{7}\NormalTok{,}
+\NormalTok{    restore\_best\_weights}\OperatorTok{=}\VariableTok{True}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+La elección de siete épocas de paciencia permite al modelo continuar el
+aprendizaje ante pequeñas oscilaciones de la pérdida de validación,
+evitando finalizar el entrenamiento de forma prematura.
+
+Asimismo, el mejor modelo obtenido se almacenó automáticamente:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{checkpoint }\OperatorTok{=}\NormalTok{ ModelCheckpoint(}
+\NormalTok{    ruta\_modelo,}
+\NormalTok{    monitor}\OperatorTok{=}\StringTok{\textquotesingle{}val\_loss\textquotesingle{}}\NormalTok{,}
+\NormalTok{    save\_best\_only}\OperatorTok{=}\VariableTok{True}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\bookmarksetup{startatroot}
+
+\chapter{Sistema de inferencia
+interactivo}\label{sistema-de-inferencia-interactivo}
+
+Finalmente, se desarrolló una interfaz interactiva en Google Colab que
+permite dibujar caracteres del alfabeto Náhuatl y obtener predicciones
+en tiempo real.
+
+La imagen generada por el usuario se redimensiona a \(28\times28\)
+píxeles:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{img\_resized }\OperatorTok{=}\NormalTok{ cv2.resize(img, (}\DecValTok{28}\NormalTok{,}\DecValTok{28}\NormalTok{))}
+\NormalTok{img\_normalized }\OperatorTok{=}\NormalTok{ img\_resized }\OperatorTok{/} \FloatTok{255.0}
+\NormalTok{img\_input }\OperatorTok{=}\NormalTok{ np.expand\_dims(img\_normalized, axis}\OperatorTok{=}\NormalTok{(}\DecValTok{0}\NormalTok{,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Posteriormente, el modelo produce un vector de probabilidades:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predicciones }\OperatorTok{=}\NormalTok{ model.predict(img\_input)}
+\end{Highlighting}
+\end{Shaded}
+
+y se determina la clase más probable mediante:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{idx\_ganador }\OperatorTok{=}\NormalTok{ np.argmax(predicciones)}
+\end{Highlighting}
+\end{Shaded}
+
+Además de la predicción principal, la interfaz presenta las tres clases
+con mayor probabilidad, proporcionando información adicional sobre la
+confianza y las posibles ambigüedades del modelo.
+
+\bookmarksetup{startatroot}
+
+\chapter{CASO HMM}\label{caso-hmm}
+
+\bookmarksetup{startatroot}
+
+\chapter{Conclusiones: Comparación entre HMM y CNN en Reconocimiento de
+Caracteres}\label{conclusiones-comparaciuxf3n-entre-hmm-y-cnn-en-reconocimiento-de-caracteres}
+
+\section{Conclusiones}\label{conclusiones}
+
+La comparación entre los modelos ocultos de Markov (HMM) y las redes
+neuronales convolucionales (CNN) en el reconocimiento de caracteres
+evidencia un cambio de paradigma fundamental en el procesamiento de
+imágenes. La diferencia más significativa radica en el proceso de
+extracción de características. Mientras que los HMM dependen de un
+diseño manual y heurístico de los rasgos geométricos o estructurales, lo
+que limita su capacidad de adaptación, las CNN operan bajo un enfoque de
+extremo a extremo. Esto les permite aprender de manera automática y
+jerárquica las representaciones espaciales directamente desde los
+píxeles, eliminando el sesgo humano y capturando patrones visuales mucho
+más complejos.
+
+Esta distinción arquitectónica se traduce directamente en un rendimiento
+superior de las redes convolucionales en términos de precisión y
+robustez. Las CNN manejan con mucha mayor eficacia la variabilidad
+inherente a los caracteres, como las diferencias tipográficas, el ruido
+en la imagen o las deformaciones en la escritura a mano alzada. Aunque
+los HMM poseen una ventaja teórica natural para el modelado de datos
+secuenciales, su desempeño en caracteres aislados o en entornos con alta
+variabilidad espacial se estanca rápidamente. Por el contrario, la
+capacidad de las CNN para procesar estructuras bidimensionales las
+consolida como la arquitectura dominante para la extracción de rasgos
+visuales precisos.
+
+No obstante, esta superioridad en precisión conlleva un mayor costo
+computacional y una dependencia crítica de grandes volúmenes de datos
+etiquetados para evitar el sobreajuste. Los HMM, al ser modelos
+paramétricos más simples, siguen siendo una alternativa viable en
+escenarios donde los recursos de hardware son limitados o los conjuntos
+de datos de entrenamiento son reducidos. En conclusión, aunque los
+modelos ocultos de Markov sentaron las bases estadísticas para el
+reconocimiento óptico, las redes neuronales convolucionales representan
+el estándar actual e insustituible. La elección entre ambas metodologías
+ya no responde a una preferencia teórica, sino a la disponibilidad de
+datos y capacidad de cómputo, siendo las CNN la opción definitiva para
+cualquier aplicación moderna que requiera alta precisión y
+escalabilidad.
+
+\bookmarksetup{startatroot}
+
+\chapter{Referencias}\label{referencias}
 
 
 

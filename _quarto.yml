@@ -33,8 +33,12 @@ book:
   repo-actions: [edit, issue, source]
   page-navigation: true
   chapters:
+  
     - index.qmd
+    - capituloHMM.qmd
     - capitulo1.qmd
+    - silla.qmd
+    - Caso de estudio.qmd
     - Conclusiones.qmd
     - Referencias.qmd
 

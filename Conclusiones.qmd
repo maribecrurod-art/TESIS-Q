@@ -1,4 +1,13 @@
 ---
-title: "Conclusiones"
-format: html
+title: "Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres"
+execute:
+  freeze: false
 ---
+
+## Conclusiones
+
+La comparación entre los modelos ocultos de Markov (HMM) y las redes neuronales convolucionales (CNN) en el reconocimiento de caracteres evidencia un cambio de paradigma fundamental en el procesamiento de imágenes. La diferencia más significativa radica en el proceso de extracción de características. Mientras que los HMM dependen de un diseño manual y heurístico de los rasgos geométricos o estructurales, lo que limita su capacidad de adaptación, las CNN operan bajo un enfoque de extremo a extremo. Esto les permite aprender de manera automática y jerárquica las representaciones espaciales directamente desde los píxeles, eliminando el sesgo humano y capturando patrones visuales mucho más complejos.
+
+Esta distinción arquitectónica se traduce directamente en un rendimiento superior de las redes convolucionales en términos de precisión y robustez. Las CNN manejan con mucha mayor eficacia la variabilidad inherente a los caracteres, como las diferencias tipográficas, el ruido en la imagen o las deformaciones en la escritura a mano alzada. Aunque los HMM poseen una ventaja teórica natural para el modelado de datos secuenciales, su desempeño en caracteres aislados o en entornos con alta variabilidad espacial se estanca rápidamente. Por el contrario, la capacidad de las CNN para procesar estructuras bidimensionales las consolida como la arquitectura dominante para la extracción de rasgos visuales precisos.
+
+No obstante, esta superioridad en precisión conlleva un mayor costo computacional y una dependencia crítica de grandes volúmenes de datos etiquetados para evitar el sobreajuste. Los HMM, al ser modelos paramétricos más simples, siguen siendo una alternativa viable en escenarios donde los recursos de hardware son limitados o los conjuntos de datos de entrenamiento son reducidos. En conclusión, aunque los modelos ocultos de Markov sentaron las bases estadísticas para el reconocimiento óptico, las redes neuronales convolucionales representan el estándar actual e insustituible. La elección entre ambas metodologías ya no responde a una preferencia teórica, sino a la disponibilidad de datos y capacidad de cómputo, siendo las CNN la opción definitiva para cualquier aplicación moderna que requiera alta precisión y escalabilidad.
