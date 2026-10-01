@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis</title>
+<title>2&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./silla.html" rel="next">
-<link href="./capitulo1.html" rel="prev">
+<link href="./capitulo1.html" rel="next">
+<link href="./index.html" rel="prev">
 <link href="./LOGOunach.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -111,11 +111,11 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="3&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis">
+<meta property="og:title" content="2&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis">
 <meta property="og:description" content="">
 <meta property="og:image" content="Imagenes_tesis\chapman-k.png">
 <meta property="og:site_name" content="Tesis">
-<meta name="twitter:title" content="3&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis">
+<meta name="twitter:title" content="2&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="Imagenes_tesis\chapman-k.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -290,7 +290,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./capituloHMM.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./capituloHMM.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -370,14 +370,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulo1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos CNN</span></span></a>
+  <a href="./capituloHMM.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capituloHMM.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span></a>
+  <a href="./capitulo1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos CNN</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -414,20 +414,20 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#espacio-probabilístico-y-procesos-estocásticos-subyacentes" id="toc-espacio-probabilístico-y-procesos-estocásticos-subyacentes" class="nav-link active" data-scroll-target="#espacio-probabilístico-y-procesos-estocásticos-subyacentes"><span class="header-section-number">4</span> Espacio Probabilístico y Procesos Estocásticos Subyacentes</a></li>
-  <li><a href="#cadenas-de-markov-a-tiempo-continuo-ctmc" id="toc-cadenas-de-markov-a-tiempo-continuo-ctmc" class="nav-link" data-scroll-target="#cadenas-de-markov-a-tiempo-continuo-ctmc"><span class="header-section-number">5</span> Cadenas de Markov a Tiempo Continuo (CTMC)</a></li>
-  <li><a href="#dinámica-infinitesimal-y-generador-de-la-cadena" id="toc-dinámica-infinitesimal-y-generador-de-la-cadena" class="nav-link" data-scroll-target="#dinámica-infinitesimal-y-generador-de-la-cadena"><span class="header-section-number">6</span> Dinámica Infinitesimal y Generador de la Cadena</a></li>
-  <li><a href="#utilidad-hacia-cadenas-de-márkov-ocultas-hmm" id="toc-utilidad-hacia-cadenas-de-márkov-ocultas-hmm" class="nav-link" data-scroll-target="#utilidad-hacia-cadenas-de-márkov-ocultas-hmm"><span class="header-section-number">7</span> Utilidad hacia Cadenas de Márkov Ocultas (HMM)</a></li>
-  <li><a href="#inferencia-y-filtrado-en-el-modelo-oculto" id="toc-inferencia-y-filtrado-en-el-modelo-oculto" class="nav-link" data-scroll-target="#inferencia-y-filtrado-en-el-modelo-oculto"><span class="header-section-number">8</span> Inferencia y Filtrado en el Modelo Oculto</a>
+  <li><a href="#espacio-probabilístico-y-procesos-estocásticos-subyacentes" id="toc-espacio-probabilístico-y-procesos-estocásticos-subyacentes" class="nav-link active" data-scroll-target="#espacio-probabilístico-y-procesos-estocásticos-subyacentes"><span class="header-section-number">3</span> Espacio Probabilístico y Procesos Estocásticos Subyacentes</a></li>
+  <li><a href="#cadenas-de-markov-a-tiempo-continuo-ctmc" id="toc-cadenas-de-markov-a-tiempo-continuo-ctmc" class="nav-link" data-scroll-target="#cadenas-de-markov-a-tiempo-continuo-ctmc"><span class="header-section-number">4</span> Cadenas de Markov a Tiempo Continuo (CTMC)</a></li>
+  <li><a href="#dinámica-infinitesimal-y-generador-de-la-cadena" id="toc-dinámica-infinitesimal-y-generador-de-la-cadena" class="nav-link" data-scroll-target="#dinámica-infinitesimal-y-generador-de-la-cadena"><span class="header-section-number">5</span> Dinámica Infinitesimal y Generador de la Cadena</a></li>
+  <li><a href="#utilidad-hacia-cadenas-de-márkov-ocultas-hmm" id="toc-utilidad-hacia-cadenas-de-márkov-ocultas-hmm" class="nav-link" data-scroll-target="#utilidad-hacia-cadenas-de-márkov-ocultas-hmm"><span class="header-section-number">6</span> Utilidad hacia Cadenas de Márkov Ocultas (HMM)</a></li>
+  <li><a href="#inferencia-y-filtrado-en-el-modelo-oculto" id="toc-inferencia-y-filtrado-en-el-modelo-oculto" class="nav-link" data-scroll-target="#inferencia-y-filtrado-en-el-modelo-oculto"><span class="header-section-number">7</span> Inferencia y Filtrado en el Modelo Oculto</a>
   <ul class="collapse">
-  <li><a href="#ejemplo-ilustrativo-del-algoritmo-forwardbackward" id="toc-ejemplo-ilustrativo-del-algoritmo-forwardbackward" class="nav-link" data-scroll-target="#ejemplo-ilustrativo-del-algoritmo-forwardbackward"><span class="header-section-number">8.1</span> Ejemplo ilustrativo del algoritmo Forward–Backward</a>
+  <li><a href="#ejemplo-ilustrativo-del-algoritmo-forwardbackward" id="toc-ejemplo-ilustrativo-del-algoritmo-forwardbackward" class="nav-link" data-scroll-target="#ejemplo-ilustrativo-del-algoritmo-forwardbackward"><span class="header-section-number">7.1</span> Ejemplo ilustrativo del algoritmo Forward–Backward</a>
   <ul class="collapse">
-  <li><a href="#cálculo-forward" id="toc-cálculo-forward" class="nav-link" data-scroll-target="#cálculo-forward"><span class="header-section-number">8.1.1</span> Cálculo Forward</a></li>
-  <li><a href="#cálculo-backward" id="toc-cálculo-backward" class="nav-link" data-scroll-target="#cálculo-backward"><span class="header-section-number">8.1.2</span> Cálculo Backward</a></li>
-  <li><a href="#inferencia-del-estado-oculto" id="toc-inferencia-del-estado-oculto" class="nav-link" data-scroll-target="#inferencia-del-estado-oculto"><span class="header-section-number">8.1.3</span> Inferencia del estado oculto</a></li>
+  <li><a href="#cálculo-forward" id="toc-cálculo-forward" class="nav-link" data-scroll-target="#cálculo-forward"><span class="header-section-number">7.1.1</span> Cálculo Forward</a></li>
+  <li><a href="#cálculo-backward" id="toc-cálculo-backward" class="nav-link" data-scroll-target="#cálculo-backward"><span class="header-section-number">7.1.2</span> Cálculo Backward</a></li>
+  <li><a href="#inferencia-del-estado-oculto" id="toc-inferencia-del-estado-oculto" class="nav-link" data-scroll-target="#inferencia-del-estado-oculto"><span class="header-section-number">7.1.3</span> Inferencia del estado oculto</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#estimación-de-parámetros-y-calibración-del-modelo" id="toc-estimación-de-parámetros-y-calibración-del-modelo" class="nav-link" data-scroll-target="#estimación-de-parámetros-y-calibración-del-modelo"><span class="header-section-number">9</span> Estimación de Parámetros y Calibración del Modelo</a></li>
+  <li><a href="#estimación-de-parámetros-y-calibración-del-modelo" id="toc-estimación-de-parámetros-y-calibración-del-modelo" class="nav-link" data-scroll-target="#estimación-de-parámetros-y-calibración-del-modelo"><span class="header-section-number">8</span> Estimación de Parámetros y Calibración del Modelo</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/capituloHMM.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/capituloHMM.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
     </div>
@@ -437,7 +437,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></h1>
 </div>
 
 
@@ -454,8 +454,8 @@ window.Quarto = {
 </header>
 
 
-<section id="espacio-probabilístico-y-procesos-estocásticos-subyacentes" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Espacio Probabilístico y Procesos Estocásticos Subyacentes</h1>
+<section id="espacio-probabilístico-y-procesos-estocásticos-subyacentes" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Espacio Probabilístico y Procesos Estocásticos Subyacentes</h1>
 <p>Para establecer formalmente una Cadena de Markov a Tiempo Continuo (CTMC), es necesario partir de los axiomas fundamentales de la teoría de la medida, para más detalle consultar el libro de <span class="citation" data-cites="Rudin1987">@Rudin1987</span>.</p>
 <p>Para esto, se asumirá que el lector tiene conocimientos previos sobre teoría de la medida como lo son las <span class="math inline">\(\sigma\)</span>-álgebras, espacio muestral y medida de probabilidad, entre otros.</p>
 <div id="nte-espacio-filtrado" class="callout callout-style-default callout-note callout-titled" title="Definición (Espacio de Probabilidad Filtrado)">
@@ -464,7 +464,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.1: Definición (Espacio de Probabilidad Filtrado)
+Definición&nbsp;3.1: Definición (Espacio de Probabilidad Filtrado)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -477,7 +477,7 @@ Definición&nbsp;4.1: Definición (Espacio de Probabilidad Filtrado)
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.2: Definición (Espacio de Estados Discreto)
+Definición&nbsp;3.2: Definición (Espacio de Estados Discreto)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -492,7 +492,7 @@ Definición&nbsp;4.2: Definición (Espacio de Estados Discreto)
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.3: Definición (Proceso Estocástico a Tiempo Continuo)
+Definición&nbsp;3.3: Definición (Proceso Estocástico a Tiempo Continuo)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -505,8 +505,8 @@ X = \{X(t) : t \in \mathbb{R}_{\ge 0}\},
 </div>
 <p>Interpretamos <span class="math inline">\(X(t)\)</span> como el “color verdadero” del pixel en el instante (o parámetro continuo) <span class="math inline">\(t\)</span>.</p>
 </section>
-<section id="cadenas-de-markov-a-tiempo-continuo-ctmc" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Cadenas de Markov a Tiempo Continuo (CTMC)</h1>
+<section id="cadenas-de-markov-a-tiempo-continuo-ctmc" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Cadenas de Markov a Tiempo Continuo (CTMC)</h1>
 <p>La transición del concepto general de proceso estocástico al de proceso de Markov requiere la propiedad de amnesia (pérdida de memoria).</p>
 <div id="nte-propiedad-markov" class="callout callout-style-default callout-note callout-titled" title="Definición (Propiedad de Markov)">
 <div class="callout-header d-flex align-content-center">
@@ -514,7 +514,7 @@ X = \{X(t) : t \in \mathbb{R}_{\ge 0}\},
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;5.1: Definición (Propiedad de Markov)
+Definición&nbsp;4.1: Definición (Propiedad de Markov)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -549,7 +549,7 @@ i_1, i_2, \dots, i_n, i, j \in S,
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;5.2: Definición (Probabilidades de Transición y Homogeneidad)
+Definición&nbsp;4.2: Definición (Probabilidades de Transición y Homogeneidad)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -583,7 +583,7 @@ P(\tau)
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Propiedad&nbsp;5.1: Propiedad (Ecuaciones de Chapman-Kolmogorov)
+Propiedad&nbsp;4.1: Propiedad (Ecuaciones de Chapman-Kolmogorov)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -605,7 +605,7 @@ p_{ik}(t)p_{kj}(s).
 <img src="Imagenes_tesis\chapman-k.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="550">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chapman-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5.1: La probabilidad de transición <span class="math inline">\(p_{ij}(t+s)\)</span> se obtiene sumando las contribuciones de todos los posibles estados intermedios <span class="math inline">\(k\)</span>.
+Figura&nbsp;4.1: La probabilidad de transición <span class="math inline">\(p_{ij}(t+s)\)</span> se obtiene sumando las contribuciones de todos los posibles estados intermedios <span class="math inline">\(k\)</span>.
 </figcaption>
 </figure>
 </div>
@@ -616,7 +616,7 @@ Figura&nbsp;5.1: La probabilidad de transición <span class="math inline">\(p_{i
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;5.3: Definición (Modelo Oculto de Markov Categórico)
+Definición&nbsp;4.3: Definición (Modelo Oculto de Markov Categórico)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -625,8 +625,8 @@ Definición&nbsp;5.3: Definición (Modelo Oculto de Markov Categórico)
 </div>
 </div>
 </section>
-<section id="dinámica-infinitesimal-y-generador-de-la-cadena" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Dinámica Infinitesimal y Generador de la Cadena</h1>
+<section id="dinámica-infinitesimal-y-generador-de-la-cadena" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Dinámica Infinitesimal y Generador de la Cadena</h1>
 <p>La evolución continua del color del pixel requiere una descripción mediante probabilidades de transición, lo cual nos lleva a la representación matricial de la derivada de <span class="math inline">\(P(t)\)</span>.</p>
 <div id="nte-matriz-generadora" class="callout callout-style-default callout-note callout-titled" title="Definición (Matriz Generadora Infinitesimal)">
 <div class="callout-header d-flex align-content-center">
@@ -634,7 +634,7 @@ Definición&nbsp;5.3: Definición (Modelo Oculto de Markov Categórico)
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;6.1: Definición (Matriz Generadora Infinitesimal)
+Definición&nbsp;5.1: Definición (Matriz Generadora Infinitesimal)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -672,7 +672,7 @@ Q=[q_{ij}]_{i,j\in S}
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Propiedad&nbsp;6.1: Propiedad (Ecuaciones Diferenciales de Kolmogorov)
+Propiedad&nbsp;5.1: Propiedad (Ecuaciones Diferenciales de Kolmogorov)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -701,8 +701,8 @@ e^{Qt}
 </div>
 </div>
 </section>
-<section id="utilidad-hacia-cadenas-de-márkov-ocultas-hmm" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Utilidad hacia Cadenas de Márkov Ocultas (HMM)</h1>
+<section id="utilidad-hacia-cadenas-de-márkov-ocultas-hmm" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Utilidad hacia Cadenas de Márkov Ocultas (HMM)</h1>
 <p>La fundamentación teórica precedente modela la dinámica subyacente determinista de la matriz de transición y la evolución estocástica de las trayectorias del sistema. Para extender esta arquitectura a un Modelo Oculto de Márkov (HMM) en el contexto de la inferencia y análisis de píxeles en imágenes que contienen letras del alfabeto latino, se formaliza la siguiente estructura bivariada:</p>
 <div id="nte-proceso-latente" class="callout callout-style-default callout-note callout-titled" title="Definición (Proceso Latente e Inobservable)">
 <div class="callout-header d-flex align-content-center">
@@ -710,7 +710,7 @@ e^{Qt}
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;7.1: Definición (Proceso Latente e Inobservable)
+Definición&nbsp;6.1: Definición (Proceso Latente e Inobservable)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -728,7 +728,7 @@ X = \{X(t)\}_{t \ge 0}
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;7.2: Definición (Proceso de Observación Empírica)
+Definición&nbsp;6.2: Definición (Proceso de Observación Empírica)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -755,7 +755,7 @@ Y(t):\Omega\to O
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;7.3: Definición (Matriz de Emisión e Independencia Condicional)
+Definición&nbsp;6.3: Definición (Matriz de Emisión e Independencia Condicional)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -769,7 +769,7 @@ Definición&nbsp;7.3: Definición (Matriz de Emisión e Independencia Condiciona
 \quad
 \text{c.s.}
 \]</span></p>
-<p>donde <span class="math inline">\(\mathcal{F}_t^X\)</span> y <span class="math inline">\(\mathcal{F}_{t^-}^Y\)</span> denotan las filtraciones <a href="#nte-espacio-filtrado" class="quarto-xref">Definición&nbsp;<span>4.1</span></a> del historial latente y observable, respectivamente.</p>
+<p>donde <span class="math inline">\(\mathcal{F}_t^X\)</span> y <span class="math inline">\(\mathcal{F}_{t^-}^Y\)</span> denotan las filtraciones <a href="#nte-espacio-filtrado" class="quarto-xref">Definición&nbsp;<span>3.1</span></a> del historial latente y observable, respectivamente.</p>
 <p>Estas probabilidades definen las entradas de la matriz de emisión estocástica</p>
 <p><span class="math display">\[
 E=[e_{xy}],
@@ -782,8 +782,8 @@ e_{xy}
 </div>
 </div>
 </section>
-<section id="inferencia-y-filtrado-en-el-modelo-oculto" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Inferencia y Filtrado en el Modelo Oculto</h1>
+<section id="inferencia-y-filtrado-en-el-modelo-oculto" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Inferencia y Filtrado en el Modelo Oculto</h1>
 <p>Una vez establecida la dinámica del sistema, es necesario desarrollar la maquinaria analítica para inferir el estado latente del pixel a partir de las observaciones empíricas.</p>
 <p>Supongamos que disponemos de una secuencia de observaciones</p>
 <p><span class="math display">\[
@@ -799,7 +799,7 @@ Y=(y_1,y_2,\dots,y_K)
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;8.1: Definición (Filtro Hacia Adelante (Forward) y Verosimilitud)
+Definición&nbsp;7.1: Definición (Filtro Hacia Adelante (Forward) y Verosimilitud)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -813,7 +813,7 @@ Y(t_1)=y_1,\dots,Y(t_k)=y_k,
 X(t_k)=i
 \bigr).
 \]</span></p>
-<p>Esta cantidad se calcula recursivamente mediante la ecuación de Chapman-Kolmogorov <a href="#imp-chapman-kolmogorov" class="quarto-xref">Propiedad&nbsp;<span>5.1</span></a> y la matriz de emisión <span class="math inline">\(E\)</span> <a href="#nte-matriz-emision" class="quarto-xref">Definición&nbsp;<span>7.3</span></a>:</p>
+<p>Esta cantidad se calcula recursivamente mediante la ecuación de Chapman-Kolmogorov <a href="#imp-chapman-kolmogorov" class="quarto-xref">Propiedad&nbsp;<span>4.1</span></a> y la matriz de emisión <span class="math inline">\(E\)</span> <a href="#nte-matriz-emision" class="quarto-xref">Definición&nbsp;<span>6.3</span></a>:</p>
 <p><span class="math display">\[
 \alpha_k(j)
 =
@@ -858,7 +858,7 @@ e^{Q\Delta t_k}.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;8.2: Definición (Decodificación Óptima Global)
+Definición&nbsp;7.2: Definición (Decodificación Óptima Global)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -870,15 +870,7 @@ Definición&nbsp;8.2: Definición (Decodificación Óptima Global)
 \]</span></p>
 <p>que maximice la probabilidad condicional conjunta</p>
 <p><span class="math display">\[
-\hat{X}
-=
-\arg\max_{x_1,\dots,x_K}
-\mathbb{P}
-\Bigl(
-X(t_1)=x_1,\dots,X(t_K)=x_K
-\mid
-Y(t_1)=y_1,\dots,Y(t_K)=y_K
-\Bigr).
+\hat{X} = \arg\max_{x_1,\dots,x_K} \mathbb{P}\left(X(t_1)=x_1,\dots,X(t_K)=x_K \mid Y(t_1)=y_1,\dots,Y(t_K)=y_K\right).
 \]</span></p>
 <p>A diferencia de la función <span class="math inline">\(\max\)</span>, que devuelve el <strong>valor numérico</strong> de la probabilidad más alta alcanzada, el operador <span class="math inline">\(\arg\max\)</span> (argumento del máximo) devuelve el <strong>conjunto de entradas</strong> que producen ese valor máximo. En este contexto, no nos interesa saber cuál es el porcentaje exacto de la probabilidad máxima, sino descubrir específicamente <strong>cuál es la secuencia exacta de estados latentes</strong> <span class="math inline">\(\hat{X}\)</span> que hace que esa probabilidad sea máxima</p>
 <p>La solución sistemática a este problema de programación dinámica espacial/temporal se obtiene mediante la adaptación del Algoritmo de Viterbi <span class="citation" data-cites="rabiner1989tutorial">@rabiner1989tutorial</span> para cadenas a tiempo continuo, evaluando las transiciones máximas sobre</p>
@@ -888,8 +880,8 @@ P(\Delta t_k).
 </div>
 </div>
 <p>Para los pixeles es la trayectoria más probable de los colores verdaderos del pixel (el problema de decodificación).</p>
-<section id="ejemplo-ilustrativo-del-algoritmo-forwardbackward" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="ejemplo-ilustrativo-del-algoritmo-forwardbackward"><span class="header-section-number">8.1</span> Ejemplo ilustrativo del algoritmo Forward–Backward</h2>
+<section id="ejemplo-ilustrativo-del-algoritmo-forwardbackward" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="ejemplo-ilustrativo-del-algoritmo-forwardbackward"><span class="header-section-number">7.1</span> Ejemplo ilustrativo del algoritmo Forward–Backward</h2>
 <p>Para ilustrar el funcionamiento de los algoritmos Forward y Backward en el contexto del reconocimiento de imágenes, consideremos un píxel cuyo color verdadero puede encontrarse en uno de dos estados ocultos:</p>
 <p><span class="math display">\[
 S=\{B,N\},
@@ -940,16 +932,16 @@ P(O_B \mid N)=0.2.
 Y=(O_B,O_N).
 \]</span></p>
 <p>Esto significa que el sensor registra blanco en el primer instante y negro en el segundo.</p>
-<section id="cálculo-forward" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="cálculo-forward"><span class="header-section-number">8.1.1</span> Cálculo Forward</h3>
+<section id="cálculo-forward" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="cálculo-forward"><span class="header-section-number">7.1.1</span> Cálculo Forward</h3>
 <p>La variable Forward se define como</p>
 <p><span class="math display">\[
 \alpha_k(i)
 =
 P(y_1,\ldots,y_k,X_k=i).
 \]</span></p>
-<section id="paso-1" class="level4" data-number="8.1.1.1">
-<h4 data-number="8.1.1.1" class="anchored" data-anchor-id="paso-1"><span class="header-section-number">8.1.1.1</span> Paso 1</h4>
+<section id="paso-1" class="level4" data-number="7.1.1.1">
+<h4 data-number="7.1.1.1" class="anchored" data-anchor-id="paso-1"><span class="header-section-number">7.1.1.1</span> Paso 1</h4>
 <p>Para la primera observación <span class="math inline">\(O_B\)</span>:</p>
 <p><span class="math display">\[
 \alpha_1(B)
@@ -970,8 +962,8 @@ P(X_1=N)\,P(O_B\mid N)
 0.08.
 \]</span></p>
 </section>
-<section id="paso-2" class="level4" data-number="8.1.1.2">
-<h4 data-number="8.1.1.2" class="anchored" data-anchor-id="paso-2"><span class="header-section-number">8.1.1.2</span> Paso 2</h4>
+<section id="paso-2" class="level4" data-number="7.1.1.2">
+<h4 data-number="7.1.1.2" class="anchored" data-anchor-id="paso-2"><span class="header-section-number">7.1.1.2</span> Paso 2</h4>
 <p>Calculamos primero la probabilidad de alcanzar el estado blanco:</p>
 <p><span class="math display">\[
 \sum_{i\in S}
@@ -1007,8 +999,8 @@ P(X_1=N)\,P(O_B\mid N)
 0.1312.
 \]</span></p>
 </section>
-<section id="verosimilitud-de-la-secuencia-observada" class="level4" data-number="8.1.1.3">
-<h4 data-number="8.1.1.3" class="anchored" data-anchor-id="verosimilitud-de-la-secuencia-observada"><span class="header-section-number">8.1.1.3</span> Verosimilitud de la secuencia observada</h4>
+<section id="verosimilitud-de-la-secuencia-observada" class="level4" data-number="7.1.1.3">
+<h4 data-number="7.1.1.3" class="anchored" data-anchor-id="verosimilitud-de-la-secuencia-observada"><span class="header-section-number">7.1.1.3</span> Verosimilitud de la secuencia observada</h4>
 <p>La probabilidad total de observar la secuencia <span class="math inline">\(Y\)</span> es</p>
 <p><span class="math display">\[
 P(Y)
@@ -1025,8 +1017,8 @@ P(Y)
 \]</span></p>
 </section>
 </section>
-<section id="cálculo-backward" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="cálculo-backward"><span class="header-section-number">8.1.2</span> Cálculo Backward</h3>
+<section id="cálculo-backward" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="cálculo-backward"><span class="header-section-number">7.1.2</span> Cálculo Backward</h3>
 <p>La variable Backward se define mediante</p>
 <p><span class="math display">\[
 \beta_k(i)
@@ -1058,8 +1050,8 @@ P(y_{k+1},\ldots,y_T\mid X_k=i).
 0.59.
 \]</span></p>
 </section>
-<section id="inferencia-del-estado-oculto" class="level3" data-number="8.1.3">
-<h3 data-number="8.1.3" class="anchored" data-anchor-id="inferencia-del-estado-oculto"><span class="header-section-number">8.1.3</span> Inferencia del estado oculto</h3>
+<section id="inferencia-del-estado-oculto" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="inferencia-del-estado-oculto"><span class="header-section-number">7.1.3</span> Inferencia del estado oculto</h3>
 <p>Una de las principales ventajas del algoritmo Forward–Backward es que permite calcular la probabilidad posterior de cada estado oculto.</p>
 <p>Para el estado blanco en el primer instante,</p>
 <p><span class="math display">\[
@@ -1107,15 +1099,15 @@ P(X_1=N\mid Y)\approx 26.7\%.
 <img src="images/imagenesHMM/pixelblanconegrodibujo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="450">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pixelbn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;8.1: Modelo Oculto de Markov para un píxel con dos estados ocultos y dos observaciones.
+Figura&nbsp;7.1: Modelo Oculto de Markov para un píxel con dos estados ocultos y dos observaciones.
 </figcaption>
 </figure>
 </div>
 </section>
 </section>
 </section>
-<section id="estimación-de-parámetros-y-calibración-del-modelo" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Estimación de Parámetros y Calibración del Modelo</h1>
+<section id="estimación-de-parámetros-y-calibración-del-modelo" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Estimación de Parámetros y Calibración del Modelo</h1>
 <p>En la práctica, la matriz generadora infinitesimal <span class="math inline">\(Q\)</span> (que dicta la probabilidad de degradación del color para el caso de estudio) y las probabilidades de emisión empírica rara vez son conocidas a priori y deben ser estimadas a partir de un dataset de imágenes (el alfabeto latino modificado).</p>
 <div id="nte-baum-welch" class="callout callout-style-default callout-important callout-titled" title="Propiedad (Algoritmo de Expectation-Maximization (Baum-Welch))">
 <div class="callout-header d-flex align-content-center">
@@ -1123,7 +1115,7 @@ Figura&nbsp;8.1: Modelo Oculto de Markov para un píxel con dos estados ocultos 
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;9.1: Propiedad (Algoritmo de Expectation-Maximization (Baum-Welch))
+Definición&nbsp;8.1: Propiedad (Algoritmo de Expectation-Maximization (Baum-Welch))
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1144,7 +1136,7 @@ Definición&nbsp;9.1: Propiedad (Algoritmo de Expectation-Maximization (Baum-Wel
 <img src="images/imagenesHMM/ME_HMM.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ME-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;9.1: Esquema general del algoritmo Expectation–Maximization (Baum–Welch) para un Modelo Oculto de Markov. En el Paso E se estiman las probabilidades posteriores de los estados ocultos y las transiciones esperadas mediante los algoritmos Forward–Backward. En el Paso M se actualizan iterativamente la matriz generadora y la matriz de emisión para maximizar la verosimilitud de las observaciones.
+Figura&nbsp;8.1: Esquema general del algoritmo Expectation–Maximization (Baum–Welch) para un Modelo Oculto de Markov. En el Paso E se estiman las probabilidades posteriores de los estados ocultos y las transiciones esperadas mediante los algoritmos Forward–Backward. En el Paso M se actualizan iterativamente la matriz generadora y la matriz de emisión para maximizar la verosimilitud de las observaciones.
 </figcaption>
 </figure>
 </div>
@@ -1568,13 +1560,13 @@ Figura&nbsp;9.1: Esquema general del algoritmo Expectation–Maximization (Baum�
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./capitulo1.html" class="pagination-link" aria-label="Fundamentos CNN">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos CNN</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Contexto y Planteamiento del Problema">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Contexto y Planteamiento del Problema</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./silla.html" class="pagination-link" aria-label="Base de datos">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Base de datos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./capitulo1.html" class="pagination-link" aria-label="Fundamentos CNN">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos CNN</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
