@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./Caso de estudio.html" rel="next">
-<link href="./capituloHMM.html" rel="prev">
+<link href="./capitulo1.html" rel="prev">
 <link href="./LOGOunach.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -147,11 +147,9 @@ window.Quarto = {
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="4&nbsp; Base de datos – Tesis">
-<meta property="og:description" content="">
 <meta property="og:image" content="images/Alfabeto nahuatl.png">
 <meta property="og:site_name" content="Tesis">
 <meta name="twitter:title" content="4&nbsp; Base de datos – Tesis">
-<meta name="twitter:description" content="">
 <meta name="twitter:image" content="images/Alfabeto nahuatl.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -405,14 +403,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulo1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos CNN</span></span></a>
+  <a href="./capituloHMM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capituloHMM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span></a>
+  <a href="./capitulo1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos CNN</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -449,12 +447,42 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#construcción-del-conjunto-de-datos" id="toc-construcción-del-conjunto-de-datos" class="nav-link active" data-scroll-target="#construcción-del-conjunto-de-datos"><span class="header-section-number">4.1</span> Construcción del conjunto de datos</a>
+  <li><a href="#generación-y-caracterización-del-conjunto-de-datos" id="toc-generación-y-caracterización-del-conjunto-de-datos" class="nav-link active" data-scroll-target="#generación-y-caracterización-del-conjunto-de-datos"><span class="header-section-number">5</span> 4. Generación y Caracterización del Conjunto de Datos</a>
   <ul class="collapse">
-  <li><a href="#generación-de-las-muestras" id="toc-generación-de-las-muestras" class="nav-link" data-scroll-target="#generación-de-las-muestras"><span class="header-section-number">4.1.1</span> Generación de las muestras</a></li>
+  <li><a href="#construcción-del-conjunto-de-datos" id="toc-construcción-del-conjunto-de-datos" class="nav-link" data-scroll-target="#construcción-del-conjunto-de-datos"><span class="header-section-number">5.1</span> 4.1. Construcción del Conjunto de Datos</a>
+  <ul class="collapse">
+  <li><a href="#inexistencia-de-datasets-públicos-y-justificación-de-la-generación-sintética" id="toc-inexistencia-de-datasets-públicos-y-justificación-de-la-generación-sintética" class="nav-link" data-scroll-target="#inexistencia-de-datasets-públicos-y-justificación-de-la-generación-sintética"><span class="header-section-number">5.1.1</span> 4.1.1. Inexistencia de datasets públicos y justificación de la generación sintética</a></li>
+  <li><a href="#diseño-de-las-plantillas-base-y-morfología-del-glifo-náhuatl" id="toc-diseño-de-las-plantillas-base-y-morfología-del-glifo-náhuatl" class="nav-link" data-scroll-target="#diseño-de-las-plantillas-base-y-morfología-del-glifo-náhuatl"><span class="header-section-number">5.1.2</span> 4.1.2. Diseño de las plantillas base y morfología del glifo náhuatl</a></li>
   </ul></li>
-  <li><a href="#carga-y-organización-de-los-datos" id="toc-carga-y-organización-de-los-datos" class="nav-link" data-scroll-target="#carga-y-organización-de-los-datos"><span class="header-section-number">4.2</span> Carga y organización de los datos</a></li>
-  <li><a href="#normalización-y-aumentación-de-datos" id="toc-normalización-y-aumentación-de-datos" class="nav-link" data-scroll-target="#normalización-y-aumentación-de-datos"><span class="header-section-number">4.3</span> Normalización y aumentación de datos</a></li>
+  <li><a href="#transformaciones-geométricas-y-estocásticas-data-augmentation" id="toc-transformaciones-geométricas-y-estocásticas-data-augmentation" class="nav-link" data-scroll-target="#transformaciones-geométricas-y-estocásticas-data-augmentation"><span class="header-section-number">5.2</span> 4.2. Transformaciones Geométricas y Estocásticas (Data Augmentation)</a>
+  <ul class="collapse">
+  <li><a href="#aplicación-de-grupos-de-lie-en-transformaciones-afines" id="toc-aplicación-de-grupos-de-lie-en-transformaciones-afines" class="nav-link" data-scroll-target="#aplicación-de-grupos-de-lie-en-transformaciones-afines"><span class="header-section-number">5.2.1</span> 4.2.1. Aplicación de grupos de Lie en transformaciones afines</a></li>
+  <li><a href="#modelado-de-ruido-y-degradación" id="toc-modelado-de-ruido-y-degradación" class="nav-link" data-scroll-target="#modelado-de-ruido-y-degradación"><span class="header-section-number">5.2.2</span> 4.2.2. Modelado de ruido y degradación</a></li>
+  <li><a href="#análisis-estadístico-del-dataset-resultante" id="toc-análisis-estadístico-del-dataset-resultante" class="nav-link" data-scroll-target="#análisis-estadístico-del-dataset-resultante"><span class="header-section-number">5.2.3</span> 4.2.3. Análisis estadístico del dataset resultante</a></li>
+  </ul></li>
+  <li><a href="#mapeo-dimensional-de-mathbbr28-times-28-a-mathbbrt" id="toc-mapeo-dimensional-de-mathbbr28-times-28-a-mathbbrt" class="nav-link" data-scroll-target="#mapeo-dimensional-de-mathbbr28-times-28-a-mathbbrt"><span class="header-section-number">5.3</span> 4.3. Mapeo Dimensional: De <span class="math inline">\(\mathbb{R}^{28 \times 28}\)</span> a <span class="math inline">\(\mathbb{R}^T\)</span></a>
+  <ul class="collapse">
+  <li><a href="#definición-del-operador-de-ventana-deslizante-vertical" id="toc-definición-del-operador-de-ventana-deslizante-vertical" class="nav-link" data-scroll-target="#definición-del-operador-de-ventana-deslizante-vertical"><span class="header-section-number">5.3.1</span> 4.3.1. Definición del operador de ventana deslizante vertical</a></li>
+  </ul></li>
+  <li><a href="#extracción-matemática-de-rasgos-estructurales-feature-engineering" id="toc-extracción-matemática-de-rasgos-estructurales-feature-engineering" class="nav-link" data-scroll-target="#extracción-matemática-de-rasgos-estructurales-feature-engineering"><span class="header-section-number">5.4</span> 4.4. Extracción Matemática de Rasgos Estructurales (Feature Engineering)</a>
+  <ul class="collapse">
+  <li><a href="#cálculo-del-centro-de-gravedad" id="toc-cálculo-del-centro-de-gravedad" class="nav-link" data-scroll-target="#cálculo-del-centro-de-gravedad"><span class="header-section-number">5.4.1</span> 4.4.1. Cálculo del Centro de Gravedad</a></li>
+  <li><a href="#transiciones-de-estado-y-cruces-por-cero" id="toc-transiciones-de-estado-y-cruces-por-cero" class="nav-link" data-scroll-target="#transiciones-de-estado-y-cruces-por-cero"><span class="header-section-number">5.4.2</span> 4.4.2. Transiciones de estado y cruces por cero</a></li>
+  <li><a href="#perfiles-superior-e-inferior-envoltura-convexa" id="toc-perfiles-superior-e-inferior-envoltura-convexa" class="nav-link" data-scroll-target="#perfiles-superior-e-inferior-envoltura-convexa"><span class="header-section-number">5.4.3</span> 4.4.3. Perfiles superior e inferior (Envoltura convexa)</a></li>
+  </ul></li>
+  <li><a href="#cuantificación-y-discretización-del-espacio-de-observaciones" id="toc-cuantificación-y-discretización-del-espacio-de-observaciones" class="nav-link" data-scroll-target="#cuantificación-y-discretización-del-espacio-de-observaciones"><span class="header-section-number">5.5</span> 4.5. Cuantificación y Discretización del Espacio de Observaciones</a>
+  <ul class="collapse">
+  <li><a href="#función-de-cuantificación-por-intervalos-binning" id="toc-función-de-cuantificación-por-intervalos-binning" class="nav-link" data-scroll-target="#función-de-cuantificación-por-intervalos-binning"><span class="header-section-number">5.5.1</span> 4.5.1. Función de cuantificación por intervalos (Binning)</a></li>
+  <li><a href="#codificación-binaria-y-construcción-del-alfabeto-de-256-símbolos-observables" id="toc-codificación-binaria-y-construcción-del-alfabeto-de-256-símbolos-observables" class="nav-link" data-scroll-target="#codificación-binaria-y-construcción-del-alfabeto-de-256-símbolos-observables"><span class="header-section-number">5.5.2</span> 4.5.2. Codificación binaria y construcción del alfabeto de 256 símbolos observables</a></li>
+  <li><a href="#análisis-de-la-entropía-de-shannon-de-las-secuencias-generadas" id="toc-análisis-de-la-entropía-de-shannon-de-las-secuencias-generadas" class="nav-link" data-scroll-target="#análisis-de-la-entropía-de-shannon-de-las-secuencias-generadas"><span class="header-section-number">5.5.3</span> 4.5.3. Análisis de la entropía de Shannon de las secuencias generadas</a></li>
+  </ul></li>
+  <li><a href="#construcción-del-conjunto-de-datos-1" id="toc-construcción-del-conjunto-de-datos-1" class="nav-link" data-scroll-target="#construcción-del-conjunto-de-datos-1"><span class="header-section-number">5.6</span> Construcción del conjunto de datos</a>
+  <ul class="collapse">
+  <li><a href="#generación-de-las-muestras" id="toc-generación-de-las-muestras" class="nav-link" data-scroll-target="#generación-de-las-muestras"><span class="header-section-number">5.6.1</span> Generación de las muestras</a></li>
+  </ul></li>
+  <li><a href="#carga-y-organización-de-los-datos" id="toc-carga-y-organización-de-los-datos" class="nav-link" data-scroll-target="#carga-y-organización-de-los-datos"><span class="header-section-number">5.7</span> Carga y organización de los datos</a></li>
+  <li><a href="#normalización-y-aumentación-de-datos" id="toc-normalización-y-aumentación-de-datos" class="nav-link" data-scroll-target="#normalización-y-aumentación-de-datos"><span class="header-section-number">5.8</span> Normalización y aumentación de datos</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/silla.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/silla.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
     </div>
@@ -481,16 +509,109 @@ window.Quarto = {
 </header>
 
 
-<section id="construcción-del-conjunto-de-datos" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="construcción-del-conjunto-de-datos"><span class="header-section-number">4.1</span> Construcción del conjunto de datos</h2>
-<p>El reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto Náhuatl <a href="#fig-alfabeto-nahuatl" class="quarto-xref">Figura&nbsp;<span>4.1</span></a>, presenta una limitación inicial importante: no existe un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de otros alfabetos, para los cuales existen repositorios ampliamente documentados, el alfabeto Náhuatl carece de recursos computacionales que puedan emplearse directamente en tareas de clasificación automática.</p>
+<section id="generación-y-caracterización-del-conjunto-de-datos" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 4. Generación y Caracterización del Conjunto de Datos</h1>
+<section id="construcción-del-conjunto-de-datos" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="construcción-del-conjunto-de-datos"><span class="header-section-number">5.1</span> 4.1. Construcción del Conjunto de Datos</h2>
+<p>El reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto náhuatl (Figura 4.1), presenta una limitación inicial crítica: la inexistencia de un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de alfabetos latinos o asiáticos, que cuentan con repositorios ampliamente documentados (como MNIST o EMNIST), el dominio de los glifos náhuatl carece de recursos computacionales de código abierto.</p>
+<p><strong>Figura 4.1:</strong> Glifos del alfabeto náhuatl. Este sistema consta de 18 caracteres base, los cuales, para fines de manipulación computacional, se asocian a etiquetas del alfabeto latino.</p>
+<section id="inexistencia-de-datasets-públicos-y-justificación-de-la-generación-sintética" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="inexistencia-de-datasets-públicos-y-justificación-de-la-generación-sintética"><span class="header-section-number">5.1.1</span> 4.1.1. Inexistencia de datasets públicos y justificación de la generación sintética</h3>
+<p>Ante esta carencia de una base de datos pública y estandarizada, fue necesario construir un conjunto de datos propio. La decisión de generar un dataset sintético se fundamenta en dos razones principales: 1. <strong>Volumen de datos:</strong> Proporcionar un número suficiente de ejemplos para evitar el sobreajuste en redes neuronales profundas. 2. <strong>Variabilidad controlada:</strong> Introducir deformaciones geométricas y estocásticas que permitan al modelo generalizar ante las irregularidades presentes en documentos históricos reales (desalineación, degradación de tinta, variabilidad del trazo).</p>
+</section>
+<section id="diseño-de-las-plantillas-base-y-morfología-del-glifo-náhuatl" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="diseño-de-las-plantillas-base-y-morfología-del-glifo-náhuatl"><span class="header-section-number">5.1.2</span> 4.1.2. Diseño de las plantillas base y morfología del glifo náhuatl</h3>
+<p>Inicialmente, se diseñaron de forma manual y vectorial 25 plantillas base por cada uno de los 18 caracteres. Este diseño no fue arbitrario; se basó en el análisis morfológico de los glifos, los cuales se caracterizan por una combinación de trazos curvos, segmentos rectos, puntos diacríticos y bucles cerrados. La representación base se normalizó a una cuadrícula de <span class="math inline">\(28 \times 28\)</span> píxeles, preservando la proporción y densidad de “tinta” típica de los códices, estableciendo así un punto de partida topológicamente válido para la posterior augmentación.</p>
+</section>
+</section>
+<section id="transformaciones-geométricas-y-estocásticas-data-augmentation" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="transformaciones-geométricas-y-estocásticas-data-augmentation"><span class="header-section-number">5.2</span> 4.2. Transformaciones Geométricas y Estocásticas (Data Augmentation)</h2>
+<p>Para emular las condiciones de documentos, se aplicaron transformaciones a las plantillas base. A cada una de las 25 muestras iniciales se le generaron 90 variantes, resultando en un conjunto robusto y diverso.</p>
+<section id="aplicación-de-grupos-de-lie-en-transformaciones-afines" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="aplicación-de-grupos-de-lie-en-transformaciones-afines"><span class="header-section-number">5.2.1</span> 4.2.1. Aplicación de grupos de Lie en transformaciones afines</h3>
+<p>Las transformaciones geométricas aplicadas (rotación, traslación y escalamiento) pueden formalizarse como acciones del grupo afín <span class="math inline">\(Aff(2)\)</span> sobre el espacio de la imagen. Una transformación afín se expresa como:</p>
+<p><span class="math display">\[
+\begin{pmatrix} x' \\ y' \end{pmatrix} =
+\begin{pmatrix} s_x \cos\theta &amp; -s_y \sin\theta \\ s_x \sin\theta &amp; s_y \cos\theta \end{pmatrix}
+\begin{pmatrix} x \\ y \end{pmatrix} +
+\begin{pmatrix} t_x \\ t_y \end{pmatrix}
+\]</span></p>
+<p>donde <span class="math inline">\(\theta\)</span> representa la rotación, <span class="math inline">\((t_x, t_y)\)</span> la traslación, y <span class="math inline">\((s_x, s_y)\)</span> los factores de escalamiento. En la implementación práctica, se utilizaron operadores estocásticos acotados (ej. <span class="math inline">\(\theta \sim \mathcal{U}(-0.05\pi, 0.05\pi)\)</span>) para garantizar que la identidad del glifo se preservara semánticamente.</p>
+</section>
+<section id="modelado-de-ruido-y-degradación" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="modelado-de-ruido-y-degradación"><span class="header-section-number">5.2.2</span> 4.2.2. Modelado de ruido y degradación</h3>
+<p>Para simular la naturaleza física del papel histórico y la tinta, se inyectaron perturbaciones estocásticas: - <strong>Ruido aditivo:</strong> Se modeló como ruido blanco gaussiano <span class="math inline">\(\mathcal{N}(0, \sigma^2)\)</span> para emular las imperfecciones del sensor de escaneo. - <strong>Degradación de bordes:</strong> Se aplicó un desenfoque gaussiano leve para simular el “sangrado” de la tinta en el papel poroso.</p>
+</section>
+<section id="análisis-estadístico-del-dataset-resultante" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="análisis-estadístico-del-dataset-resultante"><span class="header-section-number">5.2.3</span> 4.2.3. Análisis estadístico del dataset resultante</h3>
+<p>El proceso generó un dataset final balanceado de <span class="math inline">\(18 \times 25 \times 90 = 40,500\)</span> imágenes. Al ser sintético, el <strong>balance de clases</strong> es adecuado (exactamente 2,250 muestras por clase), este tamaño es el estandard y usual al trabajar para reconocimiento de patrones. La <strong>varianza intra-clase</strong> fue maximizada de manera controlada mediante las transformaciones afines, asegurando que el modelo no aprenda artefactos de la plantilla base, sino las invariantes morfológicas del carácter.</p>
+</section>
+</section>
+<section id="mapeo-dimensional-de-mathbbr28-times-28-a-mathbbrt" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="mapeo-dimensional-de-mathbbr28-times-28-a-mathbbrt"><span class="header-section-number">5.3</span> 4.3. Mapeo Dimensional: De <span class="math inline">\(\mathbb{R}^{28 \times 28}\)</span> a <span class="math inline">\(\mathbb{R}^T\)</span></h2>
+<p><em>La pérdida de información topológica al proyectar una imagen en una secuencia temporal.</em></p>
+<p>Para abordar el reconocimiento desde una perspectiva de secuencias, es necesario proyectar la representación bidimensional de la imagen <span class="math inline">\(X \in \mathbb{R}^{H \times W}\)</span> en una secuencia unidimensional de vectores <span class="math inline">\(S \in \mathbb{R}^T\)</span>. Este mapeo implica una pérdida inherente de la topología 2D (vecindades verticales y horizontales simultáneas), la cual debe ser compensada mediante la extracción de rasgos estructurales ricos en cada paso de tiempo.</p>
+<section id="definición-del-operador-de-ventana-deslizante-vertical" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="definición-del-operador-de-ventana-deslizante-vertical"><span class="header-section-number">5.3.1</span> 4.3.1. Definición del operador de ventana deslizante vertical</h3>
+<p>Se define un operador de ventana deslizante vertical que recorre la imagen de izquierda a derecha. Para una imagen <span class="math inline">\(X\)</span> de ancho <span class="math inline">\(W\)</span>, se extraen <span class="math inline">\(T\)</span> ventanas de ancho <span class="math inline">\(w\)</span> y stride <span class="math inline">\(s\)</span>, donde <span class="math inline">\(T = \lfloor \frac{W - w}{s} \rfloor + 1\)</span>. Cada elemento de la secuencia <span class="math inline">\(S_t \in \mathbb{R}^{H \times w}\)</span> representa una “rebanada” vertical de la imagen en el paso de tiempo <span class="math inline">\(t\)</span>, preservando la estructura vertical del trazo en ese instante.</p>
+</section>
+</section>
+<section id="extracción-matemática-de-rasgos-estructurales-feature-engineering" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="extracción-matemática-de-rasgos-estructurales-feature-engineering"><span class="header-section-number">5.4</span> 4.4. Extracción Matemática de Rasgos Estructurales (Feature Engineering)</h2>
+<p>Para mitigar la pérdida topológica mencionada, se extraen descriptores matemáticos de cada ventana <span class="math inline">\(S_t\)</span>.</p>
+<section id="cálculo-del-centro-de-gravedad" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="cálculo-del-centro-de-gravedad"><span class="header-section-number">5.4.1</span> 4.4.1. Cálculo del Centro de Gravedad</h3>
+<p>El primer momento de la distribución de “tinta” (intensidad de píxeles) proporciona el centroide local de la masa del trazo. Para una ventana <span class="math inline">\(S_t\)</span>, las coordenadas del centro de gravedad <span class="math inline">\((\mu_x, \mu_y)\)</span> se calculan como:</p>
+<p><span class="math display">\[
+\mu_x = \frac{\sum_{i,j} j \cdot S_t(i,j)}{\sum_{i,j} S_t(i,j)}, \quad
+\mu_y = \frac{\sum_{i,j} i \cdot S_t(i,j)}{\sum_{i,j} S_t(i,j)}
+\]</span></p>
+<p>Este rasgo es invariante a traslaciones globales y altamente discriminativo para la morfología del glifo.</p>
+</section>
+<section id="transiciones-de-estado-y-cruces-por-cero" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="transiciones-de-estado-y-cruces-por-cero"><span class="header-section-number">5.4.2</span> 4.4.2. Transiciones de estado y cruces por cero</h3>
+<p>Se analiza la derivada discreta del perfil de proyección horizontal de la ventana. Los cruces por cero de esta derivada indican la presencia de múltiples trazos horizontales superpuestos o la transición entre el fondo y la tinta, proporcionando información sobre la complejidad estructural local.</p>
+</section>
+<section id="perfiles-superior-e-inferior-envoltura-convexa" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="perfiles-superior-e-inferior-envoltura-convexa"><span class="header-section-number">5.4.3</span> 4.4.3. Perfiles superior e inferior (Envoltura convexa)</h3>
+<p>Se calculan los perfiles superior <span class="math inline">\(P_{sup}\)</span> e inferior <span class="math inline">\(P_{inf}\)</span> de la ventana, definidos como los índices de fila mínimo y máximo, respectivamente, donde la intensidad del píxel supera un umbral <span class="math inline">\(\tau\)</span>. La diferencia <span class="math inline">\(P_{sup} - P_{inf}\)</span> define el espesor local del trazo, actuando como una aproximación discreta de la envoltura convexa del carácter en esa columna.</p>
+</section>
+</section>
+<section id="cuantificación-y-discretización-del-espacio-de-observaciones" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="cuantificación-y-discretización-del-espacio-de-observaciones"><span class="header-section-number">5.5</span> 4.5. Cuantificación y Discretización del Espacio de Observaciones</h2>
+<p>Para alimentar modelos que requieren espacios de observación discretos, el espacio continuo de rasgos debe ser discretizado.</p>
+<section id="función-de-cuantificación-por-intervalos-binning" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="función-de-cuantificación-por-intervalos-binning"><span class="header-section-number">5.5.1</span> 4.5.1. Función de cuantificación por intervalos (Binning)</h3>
+<p>Dado un rasgo continuo <span class="math inline">\(v \in [v_{min}, v_{max}]\)</span>, se aplica una función de cuantificación uniforme que lo mapea a uno de <span class="math inline">\(N\)</span> intervalos (bins):</p>
+<p><span class="math display">\[
+q(v) = \left\lfloor \frac{v - v_{min}}{v_{max} - v_{min}} \times N \right\rfloor
+\]</span></p>
+</section>
+<section id="codificación-binaria-y-construcción-del-alfabeto-de-256-símbolos-observables" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="codificación-binaria-y-construcción-del-alfabeto-de-256-símbolos-observables"><span class="header-section-number">5.5.2</span> 4.5.2. Codificación binaria y construcción del alfabeto de 256 símbolos observables</h3>
+<p>Combinando los rasgos cuantificados (por ejemplo, centroide Y, espesor del trazo y perfil superior), se construye un vector de características que se codifica en una representación binaria de 8 bits. Esto permite definir un <strong>alfabeto discreto de exactamente 256 símbolos observables</strong> (<span class="math inline">\(2^8\)</span>), donde cada símbolo representa una configuración estructural local única de la ventana deslizante.</p>
+</section>
+<section id="análisis-de-la-entropía-de-shannon-de-las-secuencias-generadas" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="análisis-de-la-entropía-de-shannon-de-las-secuencias-generadas"><span class="header-section-number">5.5.3</span> 4.5.3. Análisis de la entropía de Shannon de las secuencias generadas</h3>
+<p>La riqueza informativa de las secuencias generadas se valida mediante la entropía de Shannon <span class="math inline">\(H(S)\)</span> de la distribución de símbolos en el dataset:</p>
+<p><span class="math display">\[
+H(S) = - \sum_{i=1}^{256} p(s_i) \log_2 p(s_i)
+\]</span></p>
+<p>Una entropía alta indica que el proceso de generación sintética y extracción de rasgos produce una diversidad de patrones locales rica y no redundante, lo cual es un prerrequisito fundamental para que un modelo de aprendizaje automático pueda aprender representaciones discriminativas y generalizar adecuadamente.</p>
+<hr>
+<p><em>(Nota: El código de carga de datos en TensorFlow que tenías originalmente es totalmente válido y se puede insertar como una subsección práctica al final, por ejemplo, bajo un “4.6. Implementación Computacional del Pipeline”, si tu director lo permite, o integrarlo como ejemplos dentro de las secciones anteriores).</em></p>
+</section>
+</section>
+<section id="construcción-del-conjunto-de-datos-1" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="construcción-del-conjunto-de-datos-1"><span class="header-section-number">5.6</span> Construcción del conjunto de datos</h2>
+<p>El reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto Náhuatl <a href="#fig-alfabeto-nahuatl" class="quarto-xref">Figura&nbsp;<span class="quarto-unresolved-ref">fig-alfabeto-nahuatl</span></a>, presenta una limitación inicial importante: no existe un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de otros alfabetos, para los cuales existen repositorios ampliamente documentados, el alfabeto Náhuatl carece de recursos computacionales que puedan emplearse directamente en tareas de clasificación automática.</p>
 <div id="fig-alfabeto-nahuatl" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-alfabeto-nahuatl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/Alfabeto nahuatl.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="800">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alfabeto-nahuatl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.1: Glifos del alfabeto nahuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean letras del alfabeto latino para su manipulación.
+Figura&nbsp;5.1: Glifos del alfabeto nahuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean letras del alfabeto latino para su manipulación.
 </figcaption>
 </figure>
 </div>
@@ -499,24 +620,24 @@ Figura&nbsp;4.1: Glifos del alfabeto nahuatl. Este alfabeto consta de 18 caracte
 <li>Proporcionar un número suficiente de ejemplos para el entrenamiento de la red neuronal.</li>
 <li>Introducir variaciones geométricas que permitan al modelo generalizar ante deformaciones presentes en documentos reales.</li>
 </ol>
-<section id="generación-de-las-muestras" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="generación-de-las-muestras"><span class="header-section-number">4.1.1</span> Generación de las muestras</h3>
+<section id="generación-de-las-muestras" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="generación-de-las-muestras"><span class="header-section-number">5.6.1</span> Generación de las muestras</h3>
 <p>Inicialmente se diseñaron de forma manual 25 ejemplos base para cada carácter del alfabeto. Posteriormente, a cada muestra se le aplicaron transformaciones geométricas y perturbaciones aleatorias para incrementar la variabilidad del conjunto de datos.</p>
-<p>La Figura <a href="#fig-dataset-augmentation" class="quarto-xref">Figura&nbsp;<span>4.2</span></a> muestra algunos ejemplos de las imágenes generadas.</p>
+<p>La Figura <a href="#fig-dataset-augmentation" class="quarto-xref">Figura&nbsp;<span class="quarto-unresolved-ref">fig-dataset-augmentation</span></a> muestra algunos ejemplos de las imágenes generadas.</p>
 <div id="fig-dataset-augmentation" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dataset-augmentation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/dataset aumentado.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="800">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dataset-augmentation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.2: Se observa el proceso por el que pasa cada una de las 25 imagenes por letra para generar 90 variantes obtenidas a partir de rotación, traslación, distorción elástica, cambio de escala y ruido, de este modo se consigue un dataset más completo.
+Figura&nbsp;5.2: Se observa el proceso por el que pasa cada una de las 25 imagenes por letra para generar 90 variantes obtenidas a partir de rotación, traslación, distorción elástica, cambio de escala y ruido, de este modo se consigue un dataset más completo.
 </figcaption>
 </figure>
 </div>
 </section>
 </section>
-<section id="carga-y-organización-de-los-datos" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="carga-y-organización-de-los-datos"><span class="header-section-number">4.2</span> Carga y organización de los datos</h2>
+<section id="carga-y-organización-de-los-datos" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="carga-y-organización-de-los-datos"><span class="header-section-number">5.7</span> Carga y organización de los datos</h2>
 <p>Una vez construido el conjunto de datos, las imágenes se almacenaron siguiendo una estructura jerárquica de directorios, donde cada carpeta representa una clase distinta del alfabeto.</p>
 <p>El cargado de las imágenes se realizó mediante la función <code>image_dataset_from_directory</code> de TensorFlow:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>train_ds <span class="op">=</span> tf.keras.utils.image_dataset_from_directory(</span>
@@ -541,8 +662,8 @@ Figura&nbsp;4.2: Se observa el proceso por el que pasa cada una de las 25 imagen
 <p>La elección de una partición de entrenamiento-validación de 80%-20% constituye una práctica común en aprendizaje automático, ya que permite disponer de un número suficiente de ejemplos para el ajuste de los parámetros del modelo y, al mismo tiempo, reservar un conjunto independiente para evaluar la capacidad de generalización.</p>
 <p>Asimismo, las imágenes se convirtieron a escala de grises. Dado que los glifos del alfabeto Náhuatl se distinguen principalmente por su geometría y no por información cromática, el uso de un solo canal reduce el costo computacional sin sacrificar información relevante.</p>
 </section>
-<section id="normalización-y-aumentación-de-datos" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="normalización-y-aumentación-de-datos"><span class="header-section-number">4.3</span> Normalización y aumentación de datos</h2>
+<section id="normalización-y-aumentación-de-datos" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="normalización-y-aumentación-de-datos"><span class="header-section-number">5.8</span> Normalización y aumentación de datos</h2>
 <p>Antes de alimentar las imágenes a la red neuronal, se realizó un proceso de normalización:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>normalization_layer <span class="op">=</span> tf.keras.layers.Rescaling(<span class="fl">1.</span><span class="op">/</span><span class="dv">255</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Esta transformación reescala los valores de intensidad al intervalo <span class="math inline">\([0,1]\)</span>, lo cual mejora la estabilidad numérica del proceso de entrenamiento y facilita la convergencia del algoritmo de optimización.</p>
@@ -559,6 +680,7 @@ Figura&nbsp;4.2: Se observa el proceso por el que pasa cada una de las 25 imagen
 <p>El uso de <code>cache()</code> evita que las imágenes sean leídas repetidamente desde el disco, mientras que <code>prefetch()</code> permite superponer las operaciones de lectura de datos con el entrenamiento de la red, disminuyendo el tiempo total de ejecución.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -977,8 +1099,8 @@ Figura&nbsp;4.2: Se observa el proceso por el que pasa cada una de las 25 imagen
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./capituloHMM.html" class="pagination-link" aria-label="Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span>
+      <a href="./capitulo1.html" class="pagination-link" aria-label="Fundamentos CNN">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos CNN</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

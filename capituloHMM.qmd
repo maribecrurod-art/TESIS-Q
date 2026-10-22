@@ -362,15 +362,7 @@ $$
 que maximice la probabilidad condicional conjunta
 
 $$
-\hat{X}
-=
-\arg\max_{x_1,\dots,x_K}
-\mathbb{P}
-\Bigl(
-X(t_1)=x_1,\dots,X(t_K)=x_K
-\mid
-Y(t_1)=y_1,\dots,Y(t_K)=y_K
-\Bigr).
+\hat{X} = \arg\max_{x_1,\dots,x_K} \mathbb{P}\left(X(t_1)=x_1,\dots,X(t_K)=x_K \mid Y(t_1)=y_1,\dots,Y(t_K)=y_K\right).
 $$
 
 A diferencia de la función $\max$, que devuelve el **valor numérico** de la probabilidad más alta alcanzada, el operador $\arg\max$ (argumento del máximo) devuelve el **conjunto de entradas** que producen ese valor máximo. En este contexto, no nos interesa saber cuál es el porcentaje exacto de la probabilidad máxima, sino descubrir específicamente **cuál es la secuencia exacta de estados latentes** $\hat{X}$ que hace que esa probabilidad sea máxima
