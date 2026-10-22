@@ -3,6 +3,7 @@ title: "Caso de estudio"
 execute:
   freeze: false
 ---
+
 # CASO CNN
 
 ## Arquitectura de la red neuronal convolucional

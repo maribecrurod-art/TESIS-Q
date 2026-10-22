@@ -35,12 +35,14 @@ book:
   chapters:
   
     - index.qmd
-    - capituloHMM.qmd
+    - objetivos.qmd
     - capitulo1.qmd
-    - silla.qmd
-    - Caso de estudio.qmd
-    - Conclusiones.qmd
-    - Referencias.qmd
+    - capitulo2.qmd
+    - capitulo3.qmd
+    - capitulo4.qmd
+    - capitulo5.qmd
+    - conclusiones.qmd
+    - referencias.qmd
 
 comments:
   hypothesis: true
