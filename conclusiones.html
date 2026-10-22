@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Base de datos – Tesis</title>
+<title>6&nbsp; Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres – Tesis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Caso de estudio.html" rel="next">
-<link href="./capitulo1.html" rel="prev">
+<link href="./referencias.html" rel="next">
+<link href="./capitulo4.html" rel="prev">
 <link href="./LOGOunach.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -115,44 +80,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="4&nbsp; Base de datos – Tesis">
+<meta property="og:title" content="6&nbsp; Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres – Tesis">
 <meta property="og:description" content="">
-<meta property="og:image" content="images/Alfabeto nahuatl.png">
+<meta property="og:image" content="LOGOunach.png">
 <meta property="og:site_name" content="Tesis">
-<meta name="twitter:title" content="4&nbsp; Base de datos – Tesis">
+<meta name="twitter:title" content="6&nbsp; Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres – Tesis">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="images/Alfabeto nahuatl.png">
+<meta name="twitter:image" content="LOGOunach.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -325,7 +261,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./silla.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Base de datos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./conclusiones.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -400,42 +336,42 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Contexto y Planteamiento del Problema</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./capituloHMM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./capitulo1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./capitulo2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos CNN</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./silla.html" class="sidebar-item-text sidebar-link active">
+  <a href="./capitulo3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Base de datos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Caso de estudio.html" class="sidebar-item-text sidebar-link">
+  <a href="./capitulo4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Caso de estudio</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Conclusiones.html" class="sidebar-item-text sidebar-link">
+  <a href="./conclusiones.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Referencias.html" class="sidebar-item-text sidebar-link">
+  <a href="./referencias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
   </div>
 </li>
@@ -449,14 +385,9 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#construcción-del-conjunto-de-datos" id="toc-construcción-del-conjunto-de-datos" class="nav-link active" data-scroll-target="#construcción-del-conjunto-de-datos"><span class="header-section-number">4.1</span> Construcción del conjunto de datos</a>
-  <ul class="collapse">
-  <li><a href="#generación-de-las-muestras" id="toc-generación-de-las-muestras" class="nav-link" data-scroll-target="#generación-de-las-muestras"><span class="header-section-number">4.1.1</span> Generación de las muestras</a></li>
-  </ul></li>
-  <li><a href="#carga-y-organización-de-los-datos" id="toc-carga-y-organización-de-los-datos" class="nav-link" data-scroll-target="#carga-y-organización-de-los-datos"><span class="header-section-number">4.2</span> Carga y organización de los datos</a></li>
-  <li><a href="#normalización-y-aumentación-de-datos" id="toc-normalización-y-aumentación-de-datos" class="nav-link" data-scroll-target="#normalización-y-aumentación-de-datos"><span class="header-section-number">4.3</span> Normalización y aumentación de datos</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link active" data-scroll-target="#conclusiones"><span class="header-section-number">6.1</span> Conclusiones</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/silla.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/silla.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/conclusiones.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/conclusiones.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -464,7 +395,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Base de datos</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span></h1>
 </div>
 
 
@@ -481,82 +412,11 @@ window.Quarto = {
 </header>
 
 
-<section id="construcción-del-conjunto-de-datos" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="construcción-del-conjunto-de-datos"><span class="header-section-number">4.1</span> Construcción del conjunto de datos</h2>
-<p>El reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto Náhuatl <a href="#fig-alfabeto-nahuatl" class="quarto-xref">Figura&nbsp;<span>4.1</span></a>, presenta una limitación inicial importante: no existe un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de otros alfabetos, para los cuales existen repositorios ampliamente documentados, el alfabeto Náhuatl carece de recursos computacionales que puedan emplearse directamente en tareas de clasificación automática.</p>
-<div id="fig-alfabeto-nahuatl" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-alfabeto-nahuatl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/Alfabeto nahuatl.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="800">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alfabeto-nahuatl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.1: Glifos del alfabeto nahuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean letras del alfabeto latino para su manipulación.
-</figcaption>
-</figure>
-</div>
-<p>Ante esta situación, fue necesario construir un conjunto de datos propio. La decisión de generar un dataset sintético se tomó por dos razones principales:</p>
-<ol type="1">
-<li>Proporcionar un número suficiente de ejemplos para el entrenamiento de la red neuronal.</li>
-<li>Introducir variaciones geométricas que permitan al modelo generalizar ante deformaciones presentes en documentos reales.</li>
-</ol>
-<section id="generación-de-las-muestras" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="generación-de-las-muestras"><span class="header-section-number">4.1.1</span> Generación de las muestras</h3>
-<p>Inicialmente se diseñaron de forma manual 25 ejemplos base para cada carácter del alfabeto. Posteriormente, a cada muestra se le aplicaron transformaciones geométricas y perturbaciones aleatorias para incrementar la variabilidad del conjunto de datos.</p>
-<p>La Figura <a href="#fig-dataset-augmentation" class="quarto-xref">Figura&nbsp;<span>4.2</span></a> muestra algunos ejemplos de las imágenes generadas.</p>
-<div id="fig-dataset-augmentation" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-dataset-augmentation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/dataset aumentado.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="800">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dataset-augmentation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.2: Se observa el proceso por el que pasa cada una de las 25 imagenes por letra para generar 90 variantes obtenidas a partir de rotación, traslación, distorción elástica, cambio de escala y ruido, de este modo se consigue un dataset más completo.
-</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="carga-y-organización-de-los-datos" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="carga-y-organización-de-los-datos"><span class="header-section-number">4.2</span> Carga y organización de los datos</h2>
-<p>Una vez construido el conjunto de datos, las imágenes se almacenaron siguiendo una estructura jerárquica de directorios, donde cada carpeta representa una clase distinta del alfabeto.</p>
-<p>El cargado de las imágenes se realizó mediante la función <code>image_dataset_from_directory</code> de TensorFlow:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>train_ds <span class="op">=</span> tf.keras.utils.image_dataset_from_directory(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    data_dir,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    validation_split<span class="op">=</span><span class="fl">0.2</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    subset<span class="op">=</span><span class="st">"training"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    seed<span class="op">=</span><span class="dv">123</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    image_size<span class="op">=</span>(<span class="dv">28</span>,<span class="dv">28</span>),</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    batch_size<span class="op">=</span><span class="dv">32</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    color_mode<span class="op">=</span><span class="st">"grayscale"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>val_ds <span class="op">=</span> tf.keras.utils.image_dataset_from_directory(</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    data_dir,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    validation_split<span class="op">=</span><span class="fl">0.2</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    subset<span class="op">=</span><span class="st">"validation"</span>,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    seed<span class="op">=</span><span class="dv">123</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    image_size<span class="op">=</span>(<span class="dv">28</span>,<span class="dv">28</span>),</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    batch_size<span class="op">=</span><span class="dv">32</span>,</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    color_mode<span class="op">=</span><span class="st">"grayscale"</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>La elección de una partición de entrenamiento-validación de 80%-20% constituye una práctica común en aprendizaje automático, ya que permite disponer de un número suficiente de ejemplos para el ajuste de los parámetros del modelo y, al mismo tiempo, reservar un conjunto independiente para evaluar la capacidad de generalización.</p>
-<p>Asimismo, las imágenes se convirtieron a escala de grises. Dado que los glifos del alfabeto Náhuatl se distinguen principalmente por su geometría y no por información cromática, el uso de un solo canal reduce el costo computacional sin sacrificar información relevante.</p>
-</section>
-<section id="normalización-y-aumentación-de-datos" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="normalización-y-aumentación-de-datos"><span class="header-section-number">4.3</span> Normalización y aumentación de datos</h2>
-<p>Antes de alimentar las imágenes a la red neuronal, se realizó un proceso de normalización:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>normalization_layer <span class="op">=</span> tf.keras.layers.Rescaling(<span class="fl">1.</span><span class="op">/</span><span class="dv">255</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Esta transformación reescala los valores de intensidad al intervalo <span class="math inline">\([0,1]\)</span>, lo cual mejora la estabilidad numérica del proceso de entrenamiento y facilita la convergencia del algoritmo de optimización.</p>
-<p>Adicionalmente, se implementó un mecanismo de aumentación de datos en línea:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_augmentation <span class="op">=</span> tf.keras.Sequential([</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.RandomRotation(<span class="fl">0.05</span>),</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.RandomZoom(<span class="fl">0.1</span>),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.RandomTranslation(<span class="fl">0.05</span>, <span class="fl">0.05</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>La introducción de pequeñas rotaciones, cambios de escala y traslaciones tiene como objetivo simular las variaciones presentes en documentos escaneados o en la escritura manual. De esta manera, el modelo aprende representaciones más robustas y reduce su tendencia al sobreajuste.</p>
-<p>Finalmente, los datos fueron almacenados temporalmente en memoria y preparados para alimentar la GPU:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>train_ds <span class="op">=</span> train_ds.cache().shuffle(<span class="dv">5000</span>).prefetch(AUTOTUNE)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>val_ds <span class="op">=</span> val_ds.cache().prefetch(AUTOTUNE)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>El uso de <code>cache()</code> evita que las imágenes sean leídas repetidamente desde el disco, mientras que <code>prefetch()</code> permite superponer las operaciones de lectura de datos con el entrenamiento de la red, disminuyendo el tiempo total de ejecución.</p>
+<section id="conclusiones" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="conclusiones"><span class="header-section-number">6.1</span> Conclusiones</h2>
+<p>La comparación entre los modelos ocultos de Markov (HMM) y las redes neuronales convolucionales (CNN) en el reconocimiento de caracteres evidencia un cambio de paradigma fundamental en el procesamiento de imágenes. La diferencia más significativa radica en el proceso de extracción de características. Mientras que los HMM dependen de un diseño manual y heurístico de los rasgos geométricos o estructurales, lo que limita su capacidad de adaptación, las CNN operan bajo un enfoque de extremo a extremo. Esto les permite aprender de manera automática y jerárquica las representaciones espaciales directamente desde los píxeles, eliminando el sesgo humano y capturando patrones visuales mucho más complejos.</p>
+<p>Esta distinción arquitectónica se traduce directamente en un rendimiento superior de las redes convolucionales en términos de precisión y robustez. Las CNN manejan con mucha mayor eficacia la variabilidad inherente a los caracteres, como las diferencias tipográficas, el ruido en la imagen o las deformaciones en la escritura a mano alzada. Aunque los HMM poseen una ventaja teórica natural para el modelado de datos secuenciales, su desempeño en caracteres aislados o en entornos con alta variabilidad espacial se estanca rápidamente. Por el contrario, la capacidad de las CNN para procesar estructuras bidimensionales las consolida como la arquitectura dominante para la extracción de rasgos visuales precisos.</p>
+<p>No obstante, esta superioridad en precisión conlleva un mayor costo computacional y una dependencia crítica de grandes volúmenes de datos etiquetados para evitar el sobreajuste. Los HMM, al ser modelos paramétricos más simples, siguen siendo una alternativa viable en escenarios donde los recursos de hardware son limitados o los conjuntos de datos de entrenamiento son reducidos. En conclusión, aunque los modelos ocultos de Markov sentaron las bases estadísticas para el reconocimiento óptico, las redes neuronales convolucionales representan el estándar actual e insustituible. La elección entre ambas metodologías ya no responde a una preferencia teórica, sino a la disponibilidad de datos y capacidad de cómputo, siendo las CNN la opción definitiva para cualquier aplicación moderna que requiera alta precisión y escalabilidad.</p>
 
 
 </section>
@@ -977,13 +837,13 @@ Figura&nbsp;4.2: Se observa el proceso por el que pasa cada una de las 25 imagen
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./capitulo1.html" class="pagination-link" aria-label="Fundamentos CNN">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos CNN</span></span>
+      <a href="./capitulo4.html" class="pagination-link" aria-label="Caso de estudio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Caso de estudio</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Caso de estudio.html" class="pagination-link" aria-label="Caso de estudio">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Caso de estudio</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./referencias.html" class="pagination-link" aria-label="Referencias">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Referencias</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -992,4 +852,4 @@ Figura&nbsp;4.2: Se observa el proceso por el que pasa cada una de las 25 imagen
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/silla.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/silla.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/conclusiones.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/conclusiones.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></div></div></footer></body></html>

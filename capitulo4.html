@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres – Tesis</title>
+<title>5&nbsp; Caso de estudio – Tesis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Referencias.html" rel="next">
-<link href="./Caso de estudio.html" rel="prev">
+<link href="./conclusiones.html" rel="next">
+<link href="./capitulo3.html" rel="prev">
 <link href="./LOGOunach.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -80,13 +115,42 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="6&nbsp; Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres – Tesis">
+<meta property="og:title" content="5&nbsp; Caso de estudio – Tesis">
 <meta property="og:description" content="">
 <meta property="og:image" content="LOGOunach.png">
 <meta property="og:site_name" content="Tesis">
-<meta name="twitter:title" content="6&nbsp; Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres – Tesis">
+<meta name="twitter:title" content="5&nbsp; Caso de estudio – Tesis">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="LOGOunach.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -261,7 +325,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Conclusiones.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./capitulo4.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Caso de estudio</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -336,42 +400,42 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Contexto y Planteamiento del Problema</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./capituloHMM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./capitulo1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./capitulo2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos CNN</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./silla.html" class="sidebar-item-text sidebar-link">
+  <a href="./capitulo3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Base de datos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Caso de estudio.html" class="sidebar-item-text sidebar-link">
+  <a href="./capitulo4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Caso de estudio</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Conclusiones.html" class="sidebar-item-text sidebar-link active">
+  <a href="./conclusiones.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Referencias.html" class="sidebar-item-text sidebar-link">
+  <a href="./referencias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
   </div>
 </li>
@@ -385,9 +449,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link active" data-scroll-target="#conclusiones"><span class="header-section-number">6.1</span> Conclusiones</a></li>
+  <li><a href="#caso-cnn" id="toc-caso-cnn" class="nav-link active" data-scroll-target="#caso-cnn"><span class="header-section-number">6</span> CASO CNN</a>
+  <ul class="collapse">
+  <li><a href="#arquitectura-de-la-red-neuronal-convolucional" id="toc-arquitectura-de-la-red-neuronal-convolucional" class="nav-link" data-scroll-target="#arquitectura-de-la-red-neuronal-convolucional"><span class="header-section-number">6.1</span> Arquitectura de la red neuronal convolucional</a></li>
+  <li><a href="#primer-bloque-convolucional" id="toc-primer-bloque-convolucional" class="nav-link" data-scroll-target="#primer-bloque-convolucional"><span class="header-section-number">6.2</span> Primer bloque convolucional</a></li>
+  <li><a href="#segundo-y-tercer-bloque-convolucional" id="toc-segundo-y-tercer-bloque-convolucional" class="nav-link" data-scroll-target="#segundo-y-tercer-bloque-convolucional"><span class="header-section-number">6.3</span> Segundo y tercer bloque convolucional</a></li>
+  <li><a href="#clasificador" id="toc-clasificador" class="nav-link" data-scroll-target="#clasificador"><span class="header-section-number">6.4</span> Clasificador</a></li>
+  </ul></li>
+  <li><a href="#entrenamiento" id="toc-entrenamiento" class="nav-link" data-scroll-target="#entrenamiento"><span class="header-section-number">7</span> Entrenamiento</a></li>
+  <li><a href="#sistema-de-inferencia-interactivo" id="toc-sistema-de-inferencia-interactivo" class="nav-link" data-scroll-target="#sistema-de-inferencia-interactivo"><span class="header-section-number">8</span> Sistema de inferencia interactivo</a></li>
+  <li><a href="#caso-hmm" id="toc-caso-hmm" class="nav-link" data-scroll-target="#caso-hmm"><span class="header-section-number">9</span> CASO HMM</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/Conclusiones.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/Conclusiones.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/capitulo4.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/capitulo4.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -395,7 +468,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Caso de estudio</span></h1>
 </div>
 
 
@@ -412,11 +485,102 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="conclusiones" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="conclusiones"><span class="header-section-number">6.1</span> Conclusiones</h2>
-<p>La comparación entre los modelos ocultos de Markov (HMM) y las redes neuronales convolucionales (CNN) en el reconocimiento de caracteres evidencia un cambio de paradigma fundamental en el procesamiento de imágenes. La diferencia más significativa radica en el proceso de extracción de características. Mientras que los HMM dependen de un diseño manual y heurístico de los rasgos geométricos o estructurales, lo que limita su capacidad de adaptación, las CNN operan bajo un enfoque de extremo a extremo. Esto les permite aprender de manera automática y jerárquica las representaciones espaciales directamente desde los píxeles, eliminando el sesgo humano y capturando patrones visuales mucho más complejos.</p>
-<p>Esta distinción arquitectónica se traduce directamente en un rendimiento superior de las redes convolucionales en términos de precisión y robustez. Las CNN manejan con mucha mayor eficacia la variabilidad inherente a los caracteres, como las diferencias tipográficas, el ruido en la imagen o las deformaciones en la escritura a mano alzada. Aunque los HMM poseen una ventaja teórica natural para el modelado de datos secuenciales, su desempeño en caracteres aislados o en entornos con alta variabilidad espacial se estanca rápidamente. Por el contrario, la capacidad de las CNN para procesar estructuras bidimensionales las consolida como la arquitectura dominante para la extracción de rasgos visuales precisos.</p>
-<p>No obstante, esta superioridad en precisión conlleva un mayor costo computacional y una dependencia crítica de grandes volúmenes de datos etiquetados para evitar el sobreajuste. Los HMM, al ser modelos paramétricos más simples, siguen siendo una alternativa viable en escenarios donde los recursos de hardware son limitados o los conjuntos de datos de entrenamiento son reducidos. En conclusión, aunque los modelos ocultos de Markov sentaron las bases estadísticas para el reconocimiento óptico, las redes neuronales convolucionales representan el estándar actual e insustituible. La elección entre ambas metodologías ya no responde a una preferencia teórica, sino a la disponibilidad de datos y capacidad de cómputo, siendo las CNN la opción definitiva para cualquier aplicación moderna que requiera alta precisión y escalabilidad.</p>
+<section id="caso-cnn" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> CASO CNN</h1>
+<section id="arquitectura-de-la-red-neuronal-convolucional" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="arquitectura-de-la-red-neuronal-convolucional"><span class="header-section-number">6.1</span> Arquitectura de la red neuronal convolucional</h2>
+<p>La arquitectura propuesta recibe imágenes de tamaño <span class="math inline">\(28\times28\times1\)</span> y está compuesta por tres bloques convolucionales seguidos de un clasificador denso.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> tf.keras.Sequential([</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Input(shape<span class="op">=</span>(<span class="dv">28</span>,<span class="dv">28</span>,<span class="dv">1</span>)),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Conv2D(<span class="dv">32</span>,<span class="dv">3</span>,activation<span class="op">=</span><span class="st">'relu'</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.BatchNormalization(),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.MaxPooling2D(),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.SpatialDropout2D(<span class="fl">0.25</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Conv2D(<span class="dv">64</span>,<span class="dv">3</span>,activation<span class="op">=</span><span class="st">'relu'</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.BatchNormalization(),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.MaxPooling2D(),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.SpatialDropout2D(<span class="fl">0.25</span>),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Conv2D(<span class="dv">128</span>,<span class="dv">3</span>,activation<span class="op">=</span><span class="st">'relu'</span>),</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.MaxPooling2D(),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.SpatialDropout2D(<span class="fl">0.25</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Flatten(),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Dense(<span class="dv">256</span>, activation<span class="op">=</span><span class="st">'relu'</span>),</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Dropout(<span class="fl">0.5</span>),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Dense(num_classes, activation<span class="op">=</span><span class="st">'softmax'</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="primer-bloque-convolucional" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="primer-bloque-convolucional"><span class="header-section-number">6.2</span> Primer bloque convolucional</h2>
+<p>La primera capa convolucional emplea 32 filtros de tamaño <span class="math inline">\(3\times3\)</span>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.Conv2D(<span class="dv">32</span>,<span class="dv">3</span>,activation<span class="op">=</span><span class="st">'relu'</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Este bloque se encarga de detectar características de bajo nivel, tales como bordes, esquinas y pequeños segmentos de los trazos.</p>
+<p>La incorporación de una capa de normalización por lotes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.BatchNormalization()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>permite estabilizar la distribución de las activaciones internas, acelerando el proceso de convergencia.</p>
+<p>Posteriormente, la operación de <em>max pooling</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.MaxPooling2D()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>reduce la dimensionalidad espacial de las representaciones, disminuyendo el número de parámetros y haciendo al modelo menos sensible a pequeñas traslaciones.</p>
+<p>Finalmente, se incorpora un mecanismo de regularización:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.SpatialDropout2D(<span class="fl">0.25</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>que desactiva mapas de características completos de manera aleatoria, obligando a la red a aprender representaciones más robustas.</p>
+</section>
+<section id="segundo-y-tercer-bloque-convolucional" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="segundo-y-tercer-bloque-convolucional"><span class="header-section-number">6.3</span> Segundo y tercer bloque convolucional</h2>
+<p>Los bloques posteriores incrementan progresivamente el número de filtros hasta 64 y 128, respectivamente. El aumento en la profundidad de la red permite capturar patrones cada vez más complejos, tales como combinaciones de curvas, intersecciones y configuraciones geométricas características de cada glifo.</p>
+</section>
+<section id="clasificador" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="clasificador"><span class="header-section-number">6.4</span> Clasificador</h2>
+<p>Las características extraídas se transforman en un vector unidimensional:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.Flatten()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>y posteriormente se procesan mediante una capa densa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.Dense(<span class="dv">256</span>, activation<span class="op">=</span><span class="st">'relu'</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>La capa de salida utiliza la función Softmax:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.Dense(num_classes, activation<span class="op">=</span><span class="st">'softmax'</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>la cual produce una distribución de probabilidad sobre todas las clases del alfabeto.</p>
+</section>
+</section>
+<section id="entrenamiento" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Entrenamiento</h1>
+<p>El modelo se compiló utilizando el optimizador Adam:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span><span class="st">'adam'</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    loss<span class="op">=</span><span class="st">'sparse_categorical_crossentropy'</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    metrics<span class="op">=</span>[<span class="st">'accuracy'</span>]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>La función de pérdida de entropía cruzada dispersa se seleccionó debido a que las etiquetas de las imágenes se encuentran codificadas como enteros y no mediante vectores <em>one-hot</em>.</p>
+<p>Para evitar el sobreajuste se implementó un mecanismo de detención temprana:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>early_stop <span class="op">=</span> EarlyStopping(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">'val_loss'</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    patience<span class="op">=</span><span class="dv">7</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    restore_best_weights<span class="op">=</span><span class="va">True</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>La elección de siete épocas de paciencia permite al modelo continuar el aprendizaje ante pequeñas oscilaciones de la pérdida de validación, evitando finalizar el entrenamiento de forma prematura.</p>
+<p>Asimismo, el mejor modelo obtenido se almacenó automáticamente:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>checkpoint <span class="op">=</span> ModelCheckpoint(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    ruta_modelo,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">'val_loss'</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    save_best_only<span class="op">=</span><span class="va">True</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="sistema-de-inferencia-interactivo" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Sistema de inferencia interactivo</h1>
+<p>Finalmente, se desarrolló una interfaz interactiva en Google Colab que permite dibujar caracteres del alfabeto Náhuatl y obtener predicciones en tiempo real.</p>
+<p>La imagen generada por el usuario se redimensiona a <span class="math inline">\(28\times28\)</span> píxeles:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>img_resized <span class="op">=</span> cv2.resize(img, (<span class="dv">28</span>,<span class="dv">28</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>img_normalized <span class="op">=</span> img_resized <span class="op">/</span> <span class="fl">255.0</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>img_input <span class="op">=</span> np.expand_dims(img_normalized, axis<span class="op">=</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Posteriormente, el modelo produce un vector de probabilidades:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>predicciones <span class="op">=</span> model.predict(img_input)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>y se determina la clase más probable mediante:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>idx_ganador <span class="op">=</span> np.argmax(predicciones)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Además de la predicción principal, la interfaz presenta las tres clases con mayor probabilidad, proporcionando información adicional sobre la confianza y las posibles ambigüedades del modelo.</p>
+</section>
+<section id="caso-hmm" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> CASO HMM</h1>
 
 
 </section>
@@ -837,13 +1001,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Caso de estudio.html" class="pagination-link" aria-label="Caso de estudio">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Caso de estudio</span></span>
+      <a href="./capitulo3.html" class="pagination-link" aria-label="Base de datos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Base de datos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Referencias.html" class="pagination-link" aria-label="Referencias">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Referencias</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./conclusiones.html" class="pagination-link" aria-label="Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -852,4 +1016,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/Conclusiones.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/Conclusiones.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/edit/main/capitulo4.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/CNN_HMM_tesis/blob/main/capitulo4.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></div></div></footer></body></html>
