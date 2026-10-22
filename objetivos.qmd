@@ -9,7 +9,7 @@ language:
   crossref-imp-prefix: "Propiedad"
 ---
 
-# Objetivo General
+## Objetivo General
 
 Comparar el desempeño de los Modelos Ocultos de Markov (HMM) con esquema de remuestreo *bootstrap* y las Redes Neuronales Convolucionales (CNN) en la clasificación de imágenes monocromáticas de glifos del alfabeto náhuatl. Dicha comparación se realizará mediante la implementación de ambos algoritmos bajo un protocolo experimental estandarizado, con el fin de determinar cuál enfoque ofrece el mejor equilibrio entre precisión de clasificación, costo computacional e interpretabilidad matemática para el reconocimiento automático de patrones.
 
