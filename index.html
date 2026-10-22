@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./capitulo1.html" rel="next">
+<link href="./objetivos.html" rel="next">
 <link href="./LOGOunach.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -367,38 +367,44 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulo1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span></a>
+  <a href="./objetivos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Objetivos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./capitulo2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos CNN</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./capitulo3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Base de datos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fundamentos CNN</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./capitulo4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Caso de estudio</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Base de datos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./capitulo5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Caso de estudio</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./conclusiones.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./referencias.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
   </div>
 </li>
     </ul>
@@ -413,17 +419,20 @@ window.Quarto = {
   <ul>
   <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> Introducción</a>
   <ul class="collapse">
-  <li><a href="#el-alfabeto-náhuatl-y-la-preservación-del-patrimonio-documental" id="toc-el-alfabeto-náhuatl-y-la-preservación-del-patrimonio-documental" class="nav-link" data-scroll-target="#el-alfabeto-náhuatl-y-la-preservación-del-patrimonio-documental"><span class="header-section-number">1.1</span> El alfabeto náhuatl y la preservación del patrimonio documental</a>
+  <li><a href="#contexto-histórico-y-tecnológico" id="toc-contexto-histórico-y-tecnológico" class="nav-link" data-scroll-target="#contexto-histórico-y-tecnológico"><span class="header-section-number">1.1</span> Contexto histórico y tecnológico</a>
   <ul class="collapse">
-  <li><a href="#el-reto-del-reconocimiento-óptico-de-caracteres-en-lenguas-indígenas" id="toc-el-reto-del-reconocimiento-óptico-de-caracteres-en-lenguas-indígenas" class="nav-link" data-scroll-target="#el-reto-del-reconocimiento-óptico-de-caracteres-en-lenguas-indígenas"><span class="header-section-number">1.1.1</span> El reto del reconocimiento óptico de caracteres en lenguas indígenas</a></li>
+  <li><a href="#el-alfabeto-náhuatl-y-la-preservación-del-patrimonio-documental" id="toc-el-alfabeto-náhuatl-y-la-preservación-del-patrimonio-documental" class="nav-link" data-scroll-target="#el-alfabeto-náhuatl-y-la-preservación-del-patrimonio-documental"><span class="header-section-number">1.1.1</span> El alfabeto náhuatl y la preservación del patrimonio documental</a></li>
+  <li><a href="#el-reto-del-reconocimiento-óptico-de-caracteres-en-lenguas-indígenas" id="toc-el-reto-del-reconocimiento-óptico-de-caracteres-en-lenguas-indígenas" class="nav-link" data-scroll-target="#el-reto-del-reconocimiento-óptico-de-caracteres-en-lenguas-indígenas"><span class="header-section-number">1.1.2</span> El reto del reconocimiento óptico de caracteres en lenguas indígenas</a></li>
   </ul></li>
   <li><a href="#planteamiento-del-problema" id="toc-planteamiento-del-problema" class="nav-link" data-scroll-target="#planteamiento-del-problema"><span class="header-section-number">1.2</span> Planteamiento del Problema</a>
   <ul class="collapse">
   <li><a href="#limitaciones-de-los-enfoques-tradicionales-en-glifos-con-alta-variabilidad-morfológica" id="toc-limitaciones-de-los-enfoques-tradicionales-en-glifos-con-alta-variabilidad-morfológica" class="nav-link" data-scroll-target="#limitaciones-de-los-enfoques-tradicionales-en-glifos-con-alta-variabilidad-morfológica"><span class="header-section-number">1.2.1</span> Limitaciones de los enfoques tradicionales en glifos con alta variabilidad morfológica</a></li>
   <li><a href="#la-dicotomía-matemática-modelos-generativos-secuenciales-hmm-vs.-modelos-discriminativos-tensoriales-cnn" id="toc-la-dicotomía-matemática-modelos-generativos-secuenciales-hmm-vs.-modelos-discriminativos-tensoriales-cnn" class="nav-link" data-scroll-target="#la-dicotomía-matemática-modelos-generativos-secuenciales-hmm-vs.-modelos-discriminativos-tensoriales-cnn"><span class="header-section-number">1.2.2</span> La dicotomía matemática: Modelos Generativos Secuenciales (HMM) vs.&nbsp;Modelos Discriminativos Tensoriales (CNN)</a></li>
-  <li><a href="#justificación-desde-las-matemáticas-aplicadas" id="toc-justificación-desde-las-matemáticas-aplicadas" class="nav-link" data-scroll-target="#justificación-desde-las-matemáticas-aplicadas"><span class="header-section-number">1.2.3</span> Justificación desde las Matemáticas Aplicadas</a></li>
-  <li><a href="#objetivo-general" id="toc-objetivo-general" class="nav-link" data-scroll-target="#objetivo-general"><span class="header-section-number">1.2.4</span> Objetivo General</a></li>
-  <li><a href="#objetivos-particulares" id="toc-objetivos-particulares" class="nav-link" data-scroll-target="#objetivos-particulares"><span class="header-section-number">1.2.5</span> Objetivos Particulares</a></li>
+  </ul></li>
+  <li><a href="#justificación-desde-las-matemáticas-aplicadas" id="toc-justificación-desde-las-matemáticas-aplicadas" class="nav-link" data-scroll-target="#justificación-desde-las-matemáticas-aplicadas"><span class="header-section-number">1.3</span> Justificación desde las Matemáticas Aplicadas</a>
+  <ul class="collapse">
+  <li><a href="#objetivo-general" id="toc-objetivo-general" class="nav-link" data-scroll-target="#objetivo-general"><span class="header-section-number">1.3.1</span> Objetivo General</a></li>
+  <li><a href="#objetivos-particulares" id="toc-objetivos-particulares" class="nav-link" data-scroll-target="#objetivos-particulares"><span class="header-section-number">1.3.2</span> Objetivos Particulares</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -462,8 +471,10 @@ window.Quarto = {
 
 <section id="introducción" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1><p><img src="LOGOunach.png" title="Tesis" class="quarto-cover-image nolightbox img-fluid"></p>
-<section id="el-alfabeto-náhuatl-y-la-preservación-del-patrimonio-documental" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="el-alfabeto-náhuatl-y-la-preservación-del-patrimonio-documental"><span class="header-section-number">1.1</span> El alfabeto náhuatl y la preservación del patrimonio documental</h2>
+<section id="contexto-histórico-y-tecnológico" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="contexto-histórico-y-tecnológico"><span class="header-section-number">1.1</span> Contexto histórico y tecnológico</h2>
+<section id="el-alfabeto-náhuatl-y-la-preservación-del-patrimonio-documental" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="el-alfabeto-náhuatl-y-la-preservación-del-patrimonio-documental"><span class="header-section-number">1.1.1</span> El alfabeto náhuatl y la preservación del patrimonio documental</h3>
 <p>El náhuatl es una de las lenguas más importantes de Mesoamérica, con una historia escrita que se remonta a siglos antes de la llegada de los españoles. Originalmes nahuas (llamados <em>tlacuilos</em>) utilizaban un sistema de glifos y pictogramas para registrar información histórica, tributaria y ceremonial en códices. Tras la conquista, se desarrolló una adaptación del alfabeto latino que incorporaba convenciones ortográficas específicas para representar los sonidos propios del náhuatl.</p>
 <p>En la actualidad, han surgido propuestas de <strong>sistemas de escritura intermedios</strong> que buscan establecer un puente entre la tradición glífica ancestral y la escritura alfabética moderna. Un ejemplo es el siguiente abecedario provisional Náhuatl (ver <span class="citation" data-cites="abcnauatl">@abcnauatl</span> ), el cual asigna símbolos geométricos simplificados a los fonemas de la lengua, manteniendo cierta estética visual mesoamericana mientras facilita la transición hacia la lectoescritura.</p>
 <div id="abcnauatl" class="quarto-figure quarto-figure-center anchored">
@@ -475,8 +486,9 @@ window.Quarto = {
 <p><img src="images\Alfabeto nahuatl.png" class="img-fluid"></p>
 <p>La preservación de estos documentos y sistemas de escritura no solo implica su conservación física, sino también su digitalización y análisis computacional para garantizar su accesibilidad a futuras generaciones. Sin embargo, este proceso enfrenta un desafío importante: la transcripción manual por parte de especialistas es un proceso lento, costoso y propenso a errores. En este contexto, el desarrollo de herramientas automatizadas de reconocimiento se vuelve crucial.</p>
 <p>No obstante, a diferencia de los textos alfabéticos modernos, la naturaleza particular de estos sistemas de escritura representa un desafío de modelado matemático y computacional que requiere técnicas avanzadas de reconocimiento de patrones.</p>
-<section id="el-reto-del-reconocimiento-óptico-de-caracteres-en-lenguas-indígenas" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="el-reto-del-reconocimiento-óptico-de-caracteres-en-lenguas-indígenas"><span class="header-section-number">1.1.1</span> El reto del reconocimiento óptico de caracteres en lenguas indígenas</h3>
+</section>
+<section id="el-reto-del-reconocimiento-óptico-de-caracteres-en-lenguas-indígenas" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="el-reto-del-reconocimiento-óptico-de-caracteres-en-lenguas-indígenas"><span class="header-section-number">1.1.2</span> El reto del reconocimiento óptico de caracteres en lenguas indígenas</h3>
 <p>El Reconocimiento Óptico de Caracteres (OCR, por sus siglas en inglés) ha alcanzado niveles de madurez notables para la digitalización de textos en lenguas mayoritarias con alfabetos estandarizados, como el español o el inglés. Sin embargo, su aplicación a sistemas de escritura indígenas, y particularmente a propuestas como el Abecedario Provisional Náhuatl, enfrenta desafíos que trascienden la ingeniería de software y se adentran en el aprendizaje automático.Algunos de estos desafíos son:</p>
 <ol type="1">
 <li><p><strong>Variabilidad en la representación fonética:</strong> A diferencia de un alfabeto estandarizado donde cada sonido tiene una representación única, en el náhuatl existe cierta flexibilidad en la elección del glifo para representar un fonema. Por ejemplo, para el sonido /e/, teóricamente se podría elegir entre el glifo de <em>etl</em> (frijol) o <em>elotl</em> (elote). Esta ambigüedad en el diseño ortográfico representa un desafío para la estandarización.</p></li>
@@ -511,35 +523,35 @@ window.Quarto = {
 <p><strong>Formulación del problema de investigación:</strong> Dada la escasez de datos etiquetados para lenguas indígenas (lo que penaliza a las CNN) y la complejidad geométrica de los glifos (lo que penaliza a los HMM por la pérdida de información espacial en la extracción de rasgos), no existe un consenso teórico sobre qué paradigma es óptimo para este dominio específico.</p>
 <p>Por lo tanto, el problema central de esta tesis es determinar, mediante un protocolo experimental riguroso, <strong>cuál de estos dos marcos matemáticos —la inferencia probabilística secuencial (HMM) o la optimización de funciones no lineales en tensores (CNN)— ofrece un mejor equilibrio entre precisión de clasificación, eficiencia computacional e interpretabilidad</strong> para el reconocimiento de los glifos del alfabeto náhuatl, y bajo qué condiciones morfológicas cada modelo demuestra su superioridad.</p>
 </section>
-<section id="justificación-desde-las-matemáticas-aplicadas" class="level3" data-number="1.2.3">
-<h3 data-number="1.2.3" class="anchored" data-anchor-id="justificación-desde-las-matemáticas-aplicadas"><span class="header-section-number">1.2.3</span> Justificación desde las Matemáticas Aplicadas</h3>
+</section>
+<section id="justificación-desde-las-matemáticas-aplicadas" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="justificación-desde-las-matemáticas-aplicadas"><span class="header-section-number">1.3</span> Justificación desde las Matemáticas Aplicadas</h2>
 <p>La elección de comparar Modelos Ocultos de Markov (HMM) y Redes Neuronales Convolucionales (CNN) para el reconocimiento de los glifos del alfabeto náhuatl no responde únicamente a tendencias tecnológicas, sino a la necesidad de evaluar dos paradigmas matemáticos fundamentalmente distintos para abordar un problema de clasificación de patrones con alta variabilidad morfológica. Desde la perspectiva de las matemáticas aplicadas, esta investigación se justifica a través de tres ejes teóricos principales:</p>
-<section id="inferencia-estocástica-vs.-optimización-en-espacios-tensoriales" class="level4" data-number="1.2.3.1">
-<h4 data-number="1.2.3.1" class="anchored" data-anchor-id="inferencia-estocástica-vs.-optimización-en-espacios-tensoriales"><span class="header-section-number">1.2.3.1</span> Inferencia estocástica vs.&nbsp;Optimización en espacios tensoriales</h4>
+<section id="inferencia-estocástica-vs.-optimización-en-espacios-tensoriales" class="level4" data-number="1.3.0.1">
+<h4 data-number="1.3.0.1" class="anchored" data-anchor-id="inferencia-estocástica-vs.-optimización-en-espacios-tensoriales"><span class="header-section-number">1.3.0.1</span> Inferencia estocástica vs.&nbsp;Optimización en espacios tensoriales</h4>
 <p>El primer paradigma, representado por los HMM, aborda el reconocimiento de patrones desde la <strong>teoría de la probabilidad y los procesos estocásticos</strong>. En este enfoque, el glifo no se trata como un objeto geométrico estático, sino como la realización observable de un proceso secuencial. La inferencia del carácter se formula como un problema de máxima verosimilitud, donde el algoritmo de <em>Expectation-Maximization</em> (Baum-Welch) estima los parámetros de transición y emisión en un espacio de estados discretos. La fortaleza matemática de este modelo radica en su rigor probabilístico y su capacidad para cuantificar la incertidumbre inherente a los trazos degradados o ambiguos.</p>
 <p>El segundo paradigma, representado por las CNN, se fundamenta en el <strong>análisis funcional y la optimización no lineal en espacios de alta dimensión</strong>. Aquí, la imagen se modela como un tensor en <span class="math inline">\(\mathbb{R}^{H \times W \times C}\)</span>, y el reconocimiento se formula como la minimización de una función de pérdida (como la entropía cruzada) mediante el flujo de gradiente (descenso de gradiente estocástico). La justificación de este enfoque reside en su capacidad para aproximar funciones no lineales complejas y aprender operadores de convolución que actúan como detectores de características locales, sin requerir una modelación explícita de la dinámica subyacente del trazo.</p>
 <p>Comparar ambos enfoques permite determinar si, para un sistema de escritura con alta varianza intra-clase, es más eficiente modelar la <strong>dependencia secuencial de los rasgos</strong> (HMM) o aprender la <strong>invarianza topológica mediante composiciones de funciones no lineales</strong> (CNN).</p>
 </section>
-<section id="el-tratamiento-de-la-dimensionalidad-y-la-invarianza-geométrica" class="level4" data-number="1.2.3.2">
-<h4 data-number="1.2.3.2" class="anchored" data-anchor-id="el-tratamiento-de-la-dimensionalidad-y-la-invarianza-geométrica"><span class="header-section-number">1.2.3.2</span> El tratamiento de la dimensionalidad y la invarianza geométrica</h4>
+<section id="el-tratamiento-de-la-dimensionalidad-y-la-invarianza-geométrica" class="level4" data-number="1.3.0.2">
+<h4 data-number="1.3.0.2" class="anchored" data-anchor-id="el-tratamiento-de-la-dimensionalidad-y-la-invarianza-geométrica"><span class="header-section-number">1.3.0.2</span> El tratamiento de la dimensionalidad y la invarianza geométrica</h4>
 <p>Un aspecto crucial en el reconocimiento de los glifos náhuatl es cómo cada modelo matemático gestiona la dimensionalidad de la entrada y las transformaciones geométricas.</p>
 <p>Los HMM requieren una proyección del espacio bidimensional de la imagen (<span class="math inline">\(\mathbb{R}^{28 \times 28}\)</span>) a una secuencia unidimensional de características discretas (<span class="math inline">\(\mathbb{R}^T\)</span>). Matemáticamente, esta reducción de dimensionalidad conlleva una pérdida irreversible de información espacial y topológica, obligando al modelo a depender críticamente de la ingeniería manual de características (como el cálculo de momentos, perfiles y transiciones).</p>
 <p>Por el contrario, las CNN operan directamente sobre el tensor de la imagen, preservando la estructura espacial local. Gracias a la propiedad de equivarianza por traslación inducida por la compartición de parámetros en los kernels convolucionales, y a la invarianza aproximada proporcionada por las operaciones de <em>pooling</em>, las CNN manejan las deformaciones geométricas (rotaciones, traslaciones y escalados) de manera endógena. Evaluar el impacto de estas dos estrategias de manejo de la dimensionalidad es esencial para entender los límites de cada modelo frente a la falta de estandarización tipográfica de los glifos.</p>
 </section>
-<section id="interpretabilidad-matemática-y-escasez-de-datos" class="level4" data-number="1.2.3.3">
-<h4 data-number="1.2.3.3" class="anchored" data-anchor-id="interpretabilidad-matemática-y-escasez-de-datos"><span class="header-section-number">1.2.3.3</span> Interpretabilidad matemática y escasez de datos</h4>
+<section id="interpretabilidad-matemática-y-escasez-de-datos" class="level4" data-number="1.3.0.3">
+<h4 data-number="1.3.0.3" class="anchored" data-anchor-id="interpretabilidad-matemática-y-escasez-de-datos"><span class="header-section-number">1.3.0.3</span> Interpretabilidad matemática y escasez de datos</h4>
 <p>Finalmente, la investigación se justifica por la naturaleza del conjunto de datos. Al tratarse de un sistema de escritura indígena, no existen repositorios masivos de datos etiquetados, lo que impone un escenario de <strong>aprendizaje con datos limitados</strong>.</p>
 <p>Los modelos probabilísticos como los HMM, al tener un espacio de parámetros mucho más restringido (matrices de transición y emisión) y estar guiados por supuestos estructurales fuertes (como la topología de Bakis para secuencias unidireccionales), suelen ser más robustos ante la escasez de datos y ofrecen una <strong>interpretabilidad matemática directa</strong>: es posible analizar las probabilidades de transición entre estados para entender cómo el modelo “decide” la clase.</p>
 <p>En contraste, las CNN poseen miles de parámetros ajustables, lo que las hace propensas al sobreajuste en escenarios de pocos datos, requiriendo técnicas de regularización (como <em>Dropout</em> o <em>Weight Decay</em>) y aumentación de datos sintéticos. Además, su naturaleza de “caja negra” dificulta la interpretación de las decisiones internas.</p>
 <p>Por lo tanto, esta tesis aporta valor a las matemáticas aplicadas al cuantificar formalmente el equilibrio entre <strong>precisión, costo computacional, robustez ante datos limitados e interpretabilidad</strong>, estableciendo un precedente metodológico para el procesamiento computacional de lenguas originarias y sistemas de escritura no estandarizados. ## 1.4 Objetivos</p>
 </section>
-</section>
-<section id="objetivo-general" class="level3" data-number="1.2.4">
-<h3 data-number="1.2.4" class="anchored" data-anchor-id="objetivo-general"><span class="header-section-number">1.2.4</span> Objetivo General</h3>
+<section id="objetivo-general" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="objetivo-general"><span class="header-section-number">1.3.1</span> Objetivo General</h3>
 <p>Comparar el desempeño de los Modelos Ocultos de Markov (HMM) con esquema de remuestreo <em>bootstrap</em> y las Redes Neuronales Convolucionales (CNN) en la clasificación de imágenes monocromáticas de glifos del alfabeto náhuatl. Dicha comparación se realizará mediante la implementación de ambos algoritmos bajo un protocolo experimental estandarizado, con el fin de determinar cuál enfoque ofrece el mejor equilibrio entre precisión de clasificación, costo computacional e interpretabilidad matemática para el reconocimiento automático de patrones.</p>
 </section>
-<section id="objetivos-particulares" class="level3" data-number="1.2.5">
-<h3 data-number="1.2.5" class="anchored" data-anchor-id="objetivos-particulares"><span class="header-section-number">1.2.5</span> Objetivos Particulares</h3>
+<section id="objetivos-particulares" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="objetivos-particulares"><span class="header-section-number">1.3.2</span> Objetivos Particulares</h3>
 <p>Para alcanzar el objetivo general, se plantean los siguientes objetivos particulares:</p>
 <ol type="1">
 <li><p><strong>Preprocesar y caracterizar el conjunto de datos</strong> de imágenes monocromáticas de glifos del alfabeto náhuatl, aplicando técnicas de normalización, aumentación geométrica y generación de ruido controlado, para establecer una base de evaluación estandarizada y robusta que permita la comparación equitativa de ambos modelos.</p></li>
@@ -971,8 +983,8 @@ window.Quarto = {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./capitulo1.html" class="pagination-link" aria-label="Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./objetivos.html" class="pagination-link" aria-label="Objetivos">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Objetivos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
