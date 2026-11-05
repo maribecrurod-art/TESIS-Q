@@ -77,7 +77,7 @@ Por lo tanto, el problema central de esta tesis es determinar, mediante un proto
 
 La elección de comparar Modelos Ocultos de Markov (HMM) y Redes Neuronales Convolucionales (CNN) para el reconocimiento de los glifos del alfabeto náhuatl no responde únicamente a tendencias tecnológicas, sino a la necesidad de evaluar dos paradigmas matemáticos fundamentalmente distintos para abordar un problema de clasificación de patrones con alta variabilidad morfológica. Desde la perspectiva de las matemáticas aplicadas, esta investigación se justifica a través de tres ejes teóricos principales:
 
-#### Inferencia estocástica vs. Optimización en espacios tensoriales
+### Inferencia estocástica vs. Optimización en espacios tensoriales
 
 El primer paradigma, representado por los HMM, aborda el reconocimiento de patrones desde la **teoría de la probabilidad y los procesos estocásticos**. En este enfoque, el glifo no se trata como un objeto geométrico estático, sino como la realización observable de un proceso secuencial. La inferencia del carácter se formula como un problema de máxima verosimilitud, donde el algoritmo de *Expectation-Maximization* (Baum-Welch) estima los parámetros de transición y emisión en un espacio de estados discretos. La fortaleza matemática de este modelo radica en su rigor probabilístico y su capacidad para cuantificar la incertidumbre inherente a los trazos degradados o ambiguos.
 
@@ -85,7 +85,7 @@ El segundo paradigma, representado por las CNN, se fundamenta en el **análisis 
 
 Comparar ambos enfoques permite determinar si, para un sistema de escritura con alta varianza intra-clase, es más eficiente modelar la **dependencia secuencial de los rasgos** (HMM) o aprender la **invarianza topológica mediante composiciones de funciones no lineales** (CNN).
 
-#### El tratamiento de la dimensionalidad y la invarianza geométrica
+### El tratamiento de la dimensionalidad y la invarianza geométrica
 
 Un aspecto crucial en el reconocimiento de los glifos náhuatl es cómo cada modelo matemático gestiona la dimensionalidad de la entrada y las transformaciones geométricas.
 
@@ -93,7 +93,7 @@ Los HMM requieren una proyección del espacio bidimensional de la imagen ($\math
 
 Por el contrario, las CNN operan directamente sobre el tensor de la imagen, preservando la estructura espacial local. Gracias a la propiedad de equivarianza por traslación inducida por la compartición de parámetros en los kernels convolucionales, y a la invarianza aproximada proporcionada por las operaciones de *pooling*, las CNN manejan las deformaciones geométricas (rotaciones, traslaciones y escalados) de manera endógena. Evaluar el impacto de estas dos estrategias de manejo de la dimensionalidad es esencial para entender los límites de cada modelo frente a la falta de estandarización tipográfica de los glifos.
 
-#### Interpretabilidad matemática y escasez de datos
+### Interpretabilidad matemática y escasez de datos
 
 Finalmente, la investigación se justifica por la naturaleza del conjunto de datos. Al tratarse de un sistema de escritura indígena, no existen repositorios masivos de datos etiquetados, lo que impone un escenario de **aprendizaje con datos limitados**.
 
@@ -101,4 +101,4 @@ Los modelos probabilísticos como los HMM, al tener un espacio de parámetros mu
 
 En contraste, las CNN poseen miles de parámetros ajustables, lo que las hace propensas al sobreajuste en escenarios de pocos datos, requiriendo técnicas de regularización (como *Dropout* o *Weight Decay*) y aumentación de datos sintéticos. Además, su naturaleza de "caja negra" dificulta la interpretación de las decisiones internas.
 
-Por lo tanto, esta tesis aporta valor a las matemáticas aplicadas al cuantificar formalmente el equilibrio entre **precisión, costo computacional, robustez ante datos limitados e interpretabilidad**, estableciendo un precedente metodológico para el procesamiento computacional de lenguas originarias y sistemas de escritura no estandarizados. 
+Por lo tanto, esta tesis aporta valor a las matemáticas aplicadas al cuantificar formalmente el equilibrio entre **precisión, costo computacional, robustez ante datos limitados e interpretabilidad**, estableciendo un precedente metodológico para el procesamiento computacional de lenguas originarias y sistemas de escritura no estandarizados.

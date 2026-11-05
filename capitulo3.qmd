@@ -1,25 +1,21 @@
 ---
-author:
-  - name: Mariana Belén Cruz Rodríguez
-    email: mariana.cruz68@unach.mx
-    corresponding: true
-  - name: Yofre Hernán García Gómez
-    degrees: PhD
-    email: yofre.garcia@unach.mx
-    roles: supervisor
-    corresponding: true
-number-sections: true
-crossref:
-  eq-prefix: "Ecuación"
+title: "Fundamentos matemáticos de las Redes Neuronales Convolucionales"
+format: html
+lang: es
+language:
+  crossref-nte-title: "Definición"
+  crossref-nte-prefix: "Definición"
+  crossref-imp-title: "Propiedad"
+  crossref-imp-prefix: "Propiedad"
 ---
 
-# Fundamentos CNN
+## Fundamentos CNN
 
 En este trabajo se aborda el problema de **reconocimiento automático de glifos del alfabeto náhuatl** mediante el uso de redes neuronales convolucionales (*Convolutional Neural Networks*, CNN). Este problema puede formularse como una tarea de clasificación de imágenes, en la cual cada glifo es representado mediante una estructura matricial que codifica su información visual.
 
 Los glifos presentan variaciones en forma, trazo y estilo, lo que dificulta su identificación mediante métodos tradicionales. En este contexto, las CNN resultan particularmente adecuadas debido a su capacidad para extraer características espaciales relevantes directamente a partir de los datos, tales como bordes, curvas y patrones geométricos distintivos.
 
-# Formulación Matemática de una CNN
+## Formulación Matemática de una CNN
 
 Una red neuronal convolucional puede modelarse como una aplicación parametrizada:
 
@@ -36,7 +32,7 @@ donde:
 -   $k$ es la dimensión del espacio de salida (por ejemplo, número de clases en clasificación),
 -   $\theta$ denota el conjunto total de parámetros entrenables del modelo.
 
-# Representación Tensorial de Imágenes
+## Representación Tensorial de Imágenes
 
 Una imagen digital se representa como un tensor de orden tres:
 
@@ -52,9 +48,9 @@ $$ {#eq-pixel-vector}
 
 Por tanto, cada píxel contiene un vector que describe información en distintos canales.
 
-![](Imagenes_tesis/Imagen%20flor%201%20corregida.png)
+![En la imágen se observa que cada píxel está formado en realidad por la combinación de valores de los tres canales.](Imagenes_tesis/Imagen%20flor%201%20corregida.png)
 
-# Estructura Funcional de la Red
+### Estructura Funcional de la Red
 
 Una CNN se construye como la composición de funciones:
 
@@ -70,7 +66,7 @@ $$
 \theta = \left\{ \theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)} \right\}
 $$ {#eq-parametros-globales}
 
-# Parámetros del Modelo
+### Parámetros del Modelo
 
 Los parámetros de una CNN están constituidos principalmente por:
 
@@ -79,9 +75,9 @@ Los parámetros de una CNN están constituidos principalmente por:
 
 Estos parámetros determinan completamente la función $f(x;\theta)$ y son ajustados mediante procedimientos de optimización basados en gradiente.
 
-# Kernels Convolucionales
+### Kernels Convolucionales
 
-## Definición Formal
+ **Definición Formal**
 
 Un kernel es un tensor de parámetros que define un operador lineal local.
 
@@ -114,7 +110,7 @@ v \in \{0,\dots,k_w-1\}, \;
 c \in \{1,\dots,C\}
 $$
 
-## Interpretación Geométrica
+**Interpretación Geométrica**
 
 Sea $X_{(i,j)}$ una subregión de la imagen obtenida al centrar el kernel en la posición $(i,j)$, cuyos elementos están dados por:
 
@@ -134,7 +130,7 @@ mide la similitud entre el patrón definido por el kernel y la región local de 
 
 ![](images/paste-1.png)
 
-## Compartición de parámetros
+**Compartición de parámetros**
 
 Una propiedad fundamental de las redes neuronales convolucionales es la **compartición de parámetros**, la cual establece que los coeficientes del kernel no dependen de la posición espacial en la que se aplica la operación.
 
@@ -146,7 +142,7 @@ $$
 
 Esto implica que el mismo kernel es utilizado para procesar todas las regiones locales de la entrada.
 
-### Reducción del número de parámetros
+**Reducción del número de parámetros**
 
 En ausencia de compartición de parámetros, cada posición $(i,j)$ requeriría un conjunto distinto de pesos, lo cual conduciría a un número total de parámetros del orden:
 
@@ -162,7 +158,7 @@ $$
 
 lo cual representa una reducción significativa en la complejidad del modelo.
 
-### Invarianza traslacional
+**Invarianza traslacional**
 
 La compartición de parámetros induce una propiedad de **equivarianza por traslación**. Sea $\tau_{a,b}$ un operador de traslación definido sobre la entrada. Entonces, la operación de convolución satisface:
 
@@ -174,13 +170,13 @@ Esto implica que si una característica aparece en diferentes posiciones espacia
 
 En consecuencia, la red no depende de la posición absoluta de los patrones, sino únicamente de su estructura local.
 
-# Operación de Convolución
+## Operación de Convolución
 
 La operación fundamental en una red neuronal convolucional es la denominada **convolución discreta**. No obstante, es importante señalar que en el contexto de aprendizaje profundo, la operación implementada corresponde en realidad a la **correlación cruzada**, ya que no se realiza la inversión del kernel. A pesar de esta diferencia técnica, en la literatura se mantiene el término \`\`convolución'' por convención.
 
 Esta operación define un mecanismo mediante el cual se evalúa la similitud entre un patrón local (kernel) y distintas regiones de la imagen de entrada.
 
-## Caso Unicanal
+### Caso Unicanal
 
 Sea una imagen unicanal representada por:
 
@@ -211,7 +207,7 @@ donde:
 
 ![](Imagenes_tesis/img_kernel_1.png)
 
-### Interpretación como ventana deslizante
+**Interpretación como ventana deslizante**
 
 La ecuación anterior describe un proceso en el cual el kernel se desplaza sistemáticamente sobre la imagen. En cada posición, se selecciona una submatriz de $X$ de dimensiones $k_h \times k_w$, sobre la cual se realiza una operación de agregación ponderada.
 
@@ -223,7 +219,7 @@ $$
 
 Por lo tanto, la salida en $(i,j)$ depende únicamente de una vecindad local de la imagen, lo cual establece la propiedad de **conectividad local**.
 
-### Interpretación como producto interno
+**Interpretación como producto interno**
 
 La expresión de la convolución puede reescribirse como un producto interno en el espacio vectorial $\mathbb{R}^{k_h \times k_w}$:
 
@@ -239,7 +235,7 @@ $$
 
 Esta formulación pone de manifiesto que la convolución mide el grado de alineación entre el kernel y la región local.
 
-### Interpretación geométrica
+**Interpretación geométrica**
 
 Desde un punto de vista geométrico, el valor $Y(i,j)$ representa la proyección del vector $X_{(i,j)}$ sobre el vector $K$ en el espacio euclidiano de dimensión $k_h k_w$. En consecuencia:
 
@@ -249,7 +245,7 @@ Desde un punto de vista geométrico, el valor $Y(i,j)$ representa la proyección
 
 Esto permite interpretar al kernel como un **detector de patrones**.
 
-### Naturaleza lineal de la operación
+**Naturaleza lineal de la operación**
 
 La convolución es un operador lineal. Es decir, para cualesquiera tensores $X_1, X_2$ y escalares $\alpha, \beta$, se cumple:
 
@@ -260,7 +256,7 @@ $$ {#eq-linealidad}
 
 donde $\mathcal{T}_K$ denota el operador de convolución asociado al kernel $K$.
 
-### Relación con la correlación cruzada
+**Relación con la correlación cruzada**
 
 Es importante destacar que la definición utilizada en redes neuronales corresponde a la correlación cruzada:
 
@@ -278,7 +274,7 @@ $$
 
 Sin embargo, dado que los parámetros del kernel son aprendidos durante el entrenamiento, ambas formulaciones resultan equivalentes en términos de capacidad representacional.
 
-### Dependencia local
+**Dependencia local**
 
 Finalmente, se observa que:
 
@@ -288,7 +284,7 @@ $$
 
 lo cual implica que cada salida está influenciada únicamente por una región local de la entrada. Esta propiedad es clave para la eficiencia computacional y la capacidad de generalización del modelo.
 
-## Convolución Multicanal
+### Convolución Multicanal
 
 En el caso general, las imágenes no son unicanal, sino que poseen múltiples canales (por ejemplo, RGB). En consecuencia, la operación de convolución debe extenderse para considerar simultáneamente la información presente en cada canal.
 
@@ -337,7 +333,7 @@ Cada término $Y^{(c)}(i,j)$ representa la contribución del canal $c$ al valor 
 
 ![](images/paste-2.png)
 
-## Interpretación como producto interno en espacio tensorial
+**Interpretación como producto interno en espacio tensorial**
 
 Sea $X_{(i,j)}$ la subregión local de la imagen centrada en $(i,j)$. Entonces:
 
@@ -360,7 +356,7 @@ $$ {#eq-vectorizacion}
 
 Esto muestra que la operación es un producto interno en un espacio euclidiano de dimensión $k_h k_w C$.
 
-## Interpretación geométrica
+**Interpretación geométrica**
 
 Desde un punto de vista geométrico, cada región local de la imagen se interpreta como un punto en el espacio $\mathbb{R}^{k_h k_w C}$, y el kernel define una dirección en dicho espacio.
 
@@ -372,7 +368,7 @@ Por tanto:
 
 En consecuencia, el kernel actúa como un detector de patrones multicanal.
 
-## Naturaleza lineal
+**Naturaleza lineal**
 
 La convolución multicanal es un operador lineal. Es decir, para cualesquiera tensores $X_1, X_2$ y escalares $\alpha, \beta$, se cumple:
 
@@ -384,19 +380,19 @@ $$
 
 donde $\mathcal{T}_K$ denota el operador de convolución asociado al kernel $K$.
 
-## Interpretación estructural
+**Interpretación estructural**
 
 Es importante destacar que, a diferencia del caso unicanal, el kernel multicanal no detecta únicamente patrones espaciales, sino también **correlaciones entre canales**.
 
 Por ejemplo, en imágenes RGB, el kernel puede aprender a identificar combinaciones específicas de intensidades en los canales rojo, verde y azul, lo cual permite detectar patrones más complejos que aquellos basados únicamente en estructura espacial.
 
-## Forma Vectorizada
+**Forma Vectorizada**
 
 $$
 Y(i,j) = K^\top X_{(i,j)}
 $$
 
-# Múltiples Filtros
+**Múltiples Filtros**
 
 En una red neuronal convolucional, no se utiliza un único kernel, sino un conjunto de filtros que permiten extraer distintas características de la entrada. Este conjunto se denota como:
 
@@ -407,7 +403,7 @@ $$ {#eq-conjunto-filtros}
 
 donde $F$ representa el número total de filtros.
 
-## Definición de la salida
+**Definición de la salida**
 
 Cada filtro $K^{(f)}$ actúa de manera independiente sobre la entrada y produce un mapa de activación asociado. Para cada posición $(i,j)$, la salida correspondiente al filtro $f$ está dada por:
 
@@ -421,7 +417,7 @@ $$
 Y_f : \{1,\dots,H'\} \times \{1,\dots,W'\} \to \mathbb{R}
 $$
 
-## Estructura tensorial de la salida
+**Estructura tensorial de la salida**
 
 Al considerar todos los filtros simultáneamente, la salida completa se organiza como un tensor de orden tres:
 
@@ -436,7 +432,7 @@ donde:
 
 En particular, la componente $Y(:,:,f)$ corresponde al mapa de activación generado por el filtro $K^{(f)}$.
 
-## Interpretación funcional
+**Interpretación funcional**
 
 Cada filtro puede interpretarse como un detector especializado en cierto tipo de patrón. En consecuencia, la colección de filtros define una familia de funciones:
 
@@ -448,7 +444,7 @@ donde cada operador $\mathcal{T}_{K^{(f)}}$ extrae una característica distinta 
 
 De este modo, la salida de la capa puede interpretarse como la aplicación conjunta de múltiples detectores, produciendo una representación enriquecida de la imagen.
 
-## Interpretación como vector de características local
+**Interpretación como vector de características local**
 
 Para cada posición $(i,j)$, la salida puede agruparse como un vector:
 
@@ -468,25 +464,25 @@ $$
 
 aplicada localmente en cada vecindad de la imagen.
 
-## Interpretación geométrica
+**Interpretación geométrica**
 
 Desde una perspectiva geométrica, cada filtro $K^{(f)}$ define una dirección en el espacio $\mathbb{R}^{k_h k_w C}$. En consecuencia, el vector $Y(i,j)$ contiene las proyecciones de la región local $X_{(i,j)}$ sobre cada una de estas direcciones.
 
 Esto permite interpretar la salida como una representación de la información local en una base (no necesariamente ortogonal) definida por los filtros aprendidos.
 
-## Ejemplos de filtros
+###Ejemplos de filtros
 
 ![Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. En la imagen se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.](images/paste-4.png)
 
-## Observación estructural
+### Observación estructural
 
 Es importante notar que el número de filtros $F$ determina la capacidad de representación de la capa. Un mayor número de filtros permite capturar una mayor variedad de patrones, pero también incrementa el número de parámetros y el costo computacional.
 
 En capas profundas, los filtros tienden a representar características de mayor nivel semántico, construidas a partir de combinaciones de patrones detectados en capas anteriores.
 
-# Stride y Padding
+## Stride y Padding
 
-## Stride
+### Stride
 
 El *stride* $s$ controla el desplazamiento del kernel durante la operación de convolución. Es decir, determina cuántas posiciones se desplaza el kernel en cada paso.\
 
@@ -506,7 +502,7 @@ donde:
 
 Un valor mayor de $s$ produce una reducción en la resolución espacial de la salida.
 
-## Padding
+### Padding
 
 El *padding* es una operación que consiste en añadir valores (generalmente ceros) alrededor de la entrada antes de aplicar la convolución. Esto se hace para controlar el tamaño de la salida y preservar información en los bordes.
 
@@ -541,17 +537,17 @@ donde:
 -   $b$ es el sesgo,
 -   $\sigma$ es la función de activación.
 
-## Ejemplo ilustrativo
+**Ejemplo ilustrativo**
 
 Para ilustrar el efecto del padding sobre las dimensiones de salida, se presenta el siguiente ejemplo:
 
 ![Ejemplo de convolución con y sin padding. La incorporación de padding permite controlar el tamaño de la salida. En particular, cuando se utiliza padding adecuado, es posible preservar las dimensiones espaciales de la imagen original tras la aplicación de la convolución. El color rosa identifica la imagen de entrada y la salida de la convolución, mientras que el verde representa el filtro empleado. En el caso del ejemplo con padding, las celdas correspondientes al relleno se distinguen al estar por fuera del cuadro rojo, para resaltar que no forman parte de la imagen original.](Imagenes_tesis/img_kernel_mapa.png){#fig-padding fig-align="center" width="80%"}
 
-## Función de activación
+### Función de activación
 
 Una función de activación es una aplicación no lineal que se introduce después de una transformación afín, con el objetivo de dotar al modelo de la capacidad de aproximar funciones no lineales.
 
-### Definición
+**Definición**
 
 Sea $x \in \mathbb{R}^n$ un vector de entrada, $w \in \mathbb{R}^n$ un vector de pesos y $b \in \mathbb{R}$ un sesgo. Se define la preactivación como:
 
@@ -567,7 +563,7 @@ $$ {#eq-activacion}
 
 donde $\sigma : \mathbb{R} \to \mathbb{R}$ es la función de activación.
 
-### No linealidad
+**No linealidad**
 
 Considérese una red neuronal profunda compuesta únicamente por transformaciones afines. En tal caso, la composición de dichas transformaciones satisface:
 
@@ -591,29 +587,29 @@ donde:
 -   $b$ es el sesgo\
 -   $\sigma$ se aplica elemento a elemento
 
-### Ejemplos de funciones de activación
+**Ejemplos de funciones de activación**
 
 Algunas de las funciones de activación más utilizadas son las siguientes: ![ReLU es eficientemente y se usa ampliamente en redes profundas. Sigmoide es útil en la capa de salida para clasificación binaria. Tanh es útil cuando se necesita una salida centrada en 0. Leaky ReLu evita el problema de "neuronas muertas" de ReLu.](Imagenes_tesis/img_funciones_activacion.png){#fig-activaciones fig-align="center" width="82%"}
 
-#### ReLU (Rectified Linear Unit)
+*ReLU (Rectified Linear Unit)*
 
 $$
 \sigma(x) = \max(0, x)
 $$ {#eq-relu}
 
-#### Sigmoide
+*Sigmoide*
 
 $$
 \sigma(x) = \frac{1}{1 + e^{-x}}
 $$ {#eq-sigmoide}
 
-#### Tangente hiperbólica
+*Tangente hiperbólica*
 
 $$
 \sigma(x) = \tanh(x)
 $$ {#eq-tanh}
 
-### Propiedades fundamentales
+**Propiedades fundamentales**
 
 Las funciones de activación empleadas en redes neuronales satisfacen típicamente:
 
@@ -621,7 +617,7 @@ Las funciones de activación empleadas en redes neuronales satisfacen típicamen
 -   Aplicación puntual (element-wise), preservando la estructura espacial en CNN\
 -   Diferenciabilidad (al menos casi en todas partes), requisito esencial para métodos de optimización basados en gradiente
 
-### Formulación funcional
+**Formulación funcional**
 
 Desde una perspectiva funcional, una red neuronal profunda puede interpretarse como la composición de aplicaciones de la forma:
 
@@ -635,7 +631,7 @@ $$
 T_i(x) = W_i x + b_i
 $$
 
-## Pooling
+### Pooling
 
 El *pooling* es una operación que reduce la dimensión espacial de la representación, conservando las características más relevantes. Esta operación se aplica de manera independiente en cada canal del tensor de entrada.
 
@@ -653,7 +649,7 @@ $$
 
 donde las dimensiones $H'$ y $W'$ son menores que $H$ y $W$.
 
-### Max Pooling
+**Max Pooling**
 
 El *max pooling* es la forma más común de pooling. Para cada región local $X_{(i,j)}$, se define:
 
@@ -663,7 +659,7 @@ $$ {#eq-maxpool}
 
 donde $\mathcal{R}$ representa la ventana de pooling (por ejemplo, de tamaño $2 \times 2$).
 
-### Average Pooling
+**Average Pooling**
 
 Otra variante es el *average pooling*, definido como:
 
@@ -673,7 +669,7 @@ $$ {#eq-avgpool} El pooling sirve para reducir las dimensiones espaciales (ancho
 
 ![En la parte superior de la figura se ilustra el funcionamiento del Max Pooling utilizando una ventana de tamaño 2×2 y un stride de 2. La imagen de entrada se divide en cuatro regiones no superpuestas, identificadas mediante diferentes colores. Para cada región, el operador selecciona únicamente el valor máximo: en la región superior izquierda se obtiene 6, en la superior derecha 4, en la inferior izquierda 8 y en la inferior derecha 3. Estos valores conforman el mapa de salida de tamaño 2×2, preservando las características más destacadas de cada zona mientras se reduce la dimensionalidad espacial. De manera similar, en la parte inferior de la figura se muestra el proceso de Average Pooling con la misma ventana 2×2 y el mismo stride. En lugar de conservar el valor máximo, se calcula el promedio de los elementos contenidos en cada región. Así, las cuatro ventanas generan los valores 3.75, 2.25, 4.50 y 1, que constituyen la salida reducida. Este método produce una representación más suavizada de la información, manteniendo la tendencia general de los datos presentes en cada región de la imagen.](images/paste-3.png)
 
-### Propiedades
+**Propiedades**
 
 El pooling presenta las siguientes propiedades:
 
@@ -681,17 +677,17 @@ El pooling presenta las siguientes propiedades:
 -   Introduce una cierta invariancia a traslaciones pequeñas\
 -   Opera de forma independiente en cada canal
 
-### Interpretación
+**Interpretación**
 
 El pooling puede interpretarse como una forma de resumen local de la información. En el caso del max pooling, se selecciona la característica más prominente dentro de cada región, mientras que el average pooling produce una media de las intensidades.
 
 En arquitecturas profundas, el pooling contribuye a la construcción de representaciones más abstractas, al reducir progresivamente la resolución espacial.
 
-## Capas completamente conectadas
+### Capas completamente conectadas
 
 Las capas completamente conectadas (*Fully Connected*, FC) constituyen la etapa final de una red neuronal convolucional. Su función es combinar las características extraídas por las capas anteriores para realizar la tarea de clasificación o regresión.
 
-### Vectorización de la entrada
+**Vectorización de la entrada**
 
 Sea:
 
@@ -705,7 +701,7 @@ $$
 x = \mathrm{vec}(X) \in \mathbb{R}^{HWC}
 $$ {#eq-vectorizacion-fc}
 
-### Transformación afín
+**Transformación afín**
 
 La capa completamente conectada aplica una transformación lineal seguida de un sesgo:
 
@@ -729,13 +725,13 @@ $$ {#eq-fc-activacion}
 
 donde $\sigma$ es una función de activación aplicada componente a componente.
 
-### Interpretación
+**Interpretación**
 
 Las capas completamente conectadas pueden interpretarse como clasificadores que operan sobre las características extraídas por la red convolucional. En particular, cada neurona combina toda la información disponible en la representación vectorizada.
 
 Esto contrasta con las capas convolucionales, donde la conectividad es local.
 
-### Clasificación
+**Clasificación**
 
 En problemas de clasificación multiclase, la última capa suele utilizar la función *softmax*, definida como:
 
@@ -746,7 +742,7 @@ $$ {#eq-softmax}
 
 Esta función transforma el vector $z$ en una distribución de probabilidad sobre las clases.
 
-### Propiedades
+**Propiedades**
 
 Las capas completamente conectadas presentan las siguientes características:
 
@@ -754,15 +750,15 @@ Las capas completamente conectadas presentan las siguientes características:
 -   Alta capacidad de representación\
 -   Mayor número de parámetros en comparación con capas convolucionales
 
-### Observación
+**Observación**
 
 Debido al elevado número de parámetros, las capas completamente conectadas son más propensas al sobreajuste. Por esta razón, en arquitecturas modernas, su uso se reduce o se reemplaza parcialmente mediante técnicas como *global average pooling*.
 
-## Función de pérdida
+### Función de pérdida
 
 La función de pérdida (*loss function*) cuantifica la discrepancia entre las predicciones del modelo y los valores reales. Constituye el criterio fundamental que guía el proceso de entrenamiento, ya que permite evaluar la calidad de las predicciones y definir un objetivo de optimización.
 
-### Definición general
+**Definición general**
 
 Sea $f_\theta(x)$ la salida del modelo para una entrada $x$, y sea $y$ la etiqueta real asociada. Una función de pérdida se define como:
 
@@ -778,7 +774,7 @@ $$
 J(\theta) = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(f_\theta(x_i), y_i)
 $$ {#eq-risk}
 
-### Clasificación multiclase: Entropía cruzada
+**Clasificación multiclase: Entropía cruzada**
 
 En problemas de clasificación multiclase, la función de pérdida más utilizada es la entropía cruzada (*cross-entropy*).
 
@@ -796,13 +792,13 @@ $$
 
 donde $p_y$ es la probabilidad asignada a la clase correcta.
 
-### Interpretación probabilística
+**Interpretación probabilística**
 
 La entropía cruzada puede interpretarse como una medida de divergencia entre la distribución verdadera $y$ y la distribución predicha $p$. Minimizar esta función equivale a maximizar la probabilidad de observar los datos bajo el modelo.
 
 Desde un punto de vista estadístico, este enfoque corresponde al método de máxima verosimilitud.
 
-### Caso de regresión: Error cuadrático medio
+**Caso de regresión: Error cuadrático medio**
 
 En problemas de regresión, una función de pérdida común es el error cuadrático medio (*Mean Squared Error*, MSE), definido como:
 
@@ -812,7 +808,7 @@ $$ {#eq-mse}
 
 Esta función penaliza de manera más severa los errores grandes, lo que favorece ajustes más precisos.
 
-### Relación con el entrenamiento
+**Relación con el entrenamiento**
 
 El objetivo del entrenamiento consiste en encontrar los parámetros $\theta$ que minimizan la función de costo global:
 
@@ -822,7 +818,7 @@ $$ {#eq-opt}
 
 Este problema se resuelve típicamente mediante métodos de optimización iterativos, como el descenso por gradiente y sus variantes.
 
-## Entrenamiento
+### Entrenamiento
 
 El entrenamiento de una red neuronal convolucional consiste en ajustar los parámetros $\theta$ del modelo con el objetivo de minimizar la función de pérdida definida previamente.
 
@@ -1045,7 +1041,7 @@ $$
 
 conocida como flujo de gradiente (*gradient flow*). Esta ecuación describe una dinámica continua en la cual el sistema evoluciona siguiendo la dirección de máximo decrecimiento de la función energía $f$.
 
-### Regla de la cadena y retropropagación
+**Regla de la cadena y retropropagación**
 
 El cálculo del gradiente en redes neuronales profundas se realiza mediante el algoritmo de retropropagación (*backpropagation*), el cual se basa en la aplicación sistemática de la regla de la cadena.
 
@@ -1065,17 +1061,17 @@ $$
 
 para cada capa $l$ de la red.
 
-## Regularización
+**Regularización**
 
 En el entrenamiento de redes neuronales, es común que el modelo se ajuste excesivamente a los datos de entrenamiento, fenómeno conocido como *sobreajuste* (*overfitting*). En este caso, el modelo presenta un buen desempeño en los datos de entrenamiento, pero generaliza pobremente a datos no vistos.
 
 La regularización consiste en un conjunto de técnicas diseñadas para mejorar la capacidad de generalización del modelo.
 
-### Sobreajuste
+**Sobreajuste**
 
 El sobreajuste ocurre cuando el modelo aprende no solo las características relevantes del problema, sino también el ruido presente en los datos. Esto suele suceder cuando el modelo tiene una alta capacidad de representación en relación con la cantidad de datos disponibles.
 
-### Penalización de parámetros (Weight Decay)
+**Penalización de parámetros (Weight Decay)**
 
 Una estrategia común consiste en añadir un término de penalización a la función de costo:
 
@@ -1221,11 +1217,11 @@ Desde una perspectiva geométrica, el dropout favorece representaciones distribu
 
 Aunque arquitecturas modernas incorporan otros mecanismos de regularización, como *Batch Normalization* y conexiones residuales, el dropout continúa siendo una herramienta fundamental, especialmente en redes densas tradicionales y en problemas donde la cantidad de datos disponibles es limitada.
 
-## Optimización
+### Optimización
 
 El proceso de entrenamiento de una red neuronal implica la resolución de un problema de optimización en alta dimensión. En la práctica, este problema se aborda mediante métodos iterativos basados en gradiente.
 
-### Descenso por gradiente estocástico (SGD)
+**Descenso por gradiente estocástico (SGD)**
 
 En lugar de utilizar todo el conjunto de datos en cada iteración, el *Stochastic Gradient Descent* (SGD) emplea subconjuntos (mini-batches):
 
@@ -1235,7 +1231,7 @@ $$
 
 Este enfoque reduce el costo computacional y permite actualizaciones más frecuentes.
 
-### Mini-batch gradient descent
+**Mini-batch gradient descent**
 
 Una generalización del SGD consiste en utilizar lotes de tamaño intermedio:
 
@@ -1245,7 +1241,7 @@ $$ {#eq-minibatch}
 
 donde $B$ es el tamaño del lote.
 
-### Métodos adaptativos
+**Métodos adaptativos**
 
 Existen métodos de optimización que ajustan automáticamente la tasa de aprendizaje para cada parámetro. Uno de los más utilizados es *Adam*.
 
@@ -1261,7 +1257,7 @@ donde:
 -   $v_t$ es el promedio exponencial de los gradientes al cuadrado\
 -   $\epsilon$ es un término de estabilidad numérica
 
-### Tasa de aprendizaje
+**Tasa de aprendizaje**
 
 La tasa de aprendizaje $\eta$ controla la magnitud de las actualizaciones. Su elección es crucial:
 

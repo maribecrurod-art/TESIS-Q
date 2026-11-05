@@ -263,14 +263,15 @@
 Comparar el desempeño de los Modelos Ocultos de Markov (HMM) con esquema
 de remuestreo \emph{bootstrap} y las Redes Neuronales Convolucionales
 (CNN) en la clasificación de imágenes monocromáticas de glifos del
-alfabeto náhuatl. Dicha comparación se realizará mediante la
-implementación de ambos algoritmos bajo un protocolo experimental
-estandarizado, con el fin de determinar cuál enfoque ofrece el mejor
-equilibrio entre precisión de clasificación, costo computacional e
-interpretabilidad matemática para el reconocimiento automático de
-patrones.
+alfabeto náhuatl.
 
-\section{Objetivos Particulares}\label{objetivos-particulares}
+\section{Objetivos Específicos}\label{objetivos-especuxedficos}
+
+Dicha comparación se realizará mediante la implementación de ambos
+algoritmos bajo un protocolo experimental estandarizado, con el fin de
+determinar cuál enfoque ofrece el mejor equilibrio entre precisión de
+clasificación, costo computacional e interpretabilidad matemática para
+el reconocimiento automático de patrones.
 
 Para alcanzar el objetivo general, se plantean los siguientes objetivos
 particulares:
@@ -540,7 +541,7 @@ patrones con alta variabilidad morfológica. Desde la perspectiva de las
 matemáticas aplicadas, esta investigación se justifica a través de tres
 ejes teóricos principales:
 
-\subsubsection{Inferencia estocástica vs.~Optimización en espacios
+\subsection{Inferencia estocástica vs.~Optimización en espacios
 tensoriales}\label{inferencia-estocuxe1stica-vs.-optimizaciuxf3n-en-espacios-tensoriales}
 
 El primer paradigma, representado por los HMM, aborda el reconocimiento
@@ -572,7 +573,7 @@ escritura con alta varianza intra-clase, es más eficiente modelar la
 \textbf{invarianza topológica mediante composiciones de funciones no
 lineales} (CNN).
 
-\subsubsection{El tratamiento de la dimensionalidad y la invarianza
+\subsection{El tratamiento de la dimensionalidad y la invarianza
 geométrica}\label{el-tratamiento-de-la-dimensionalidad-y-la-invarianza-geomuxe9trica}
 
 Un aspecto crucial en el reconocimiento de los glifos náhuatl es cómo
@@ -597,7 +598,7 @@ manera endógena. Evaluar el impacto de estas dos estrategias de manejo
 de la dimensionalidad es esencial para entender los límites de cada
 modelo frente a la falta de estandarización tipográfica de los glifos.
 
-\subsubsection{Interpretabilidad matemática y escasez de
+\subsection{Interpretabilidad matemática y escasez de
 datos}\label{interpretabilidad-matemuxe1tica-y-escasez-de-datos}
 
 Finalmente, la investigación se justifica por la naturaleza del conjunto
@@ -632,9 +633,7 @@ estandarizados.
 Modelos
 Ocultos}\label{fundamentos-teuxf3ricos-cadenas-de-markov-a-tiempo-continuo-y-modelos-ocultos}
 
-\bookmarksetup{startatroot}
-
-\chapter{Espacio Probabilístico y Procesos Estocásticos
+\section{Espacio Probabilístico y Procesos Estocásticos
 Subyacentes}\label{espacio-probabiluxedstico-y-procesos-estocuxe1sticos-subyacentes}
 
 Para establecer formalmente una Cadena de Markov a Tiempo Continuo
@@ -645,7 +644,7 @@ Para esto, se asumirá que el lector tiene conocimientos previos sobre
 teoría de la medida como lo son las \(\sigma\)-álgebras, espacio
 muestral y medida de probabilidad, entre otros.
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-espacio-filtrado}: Definición (Espacio de Probabilidad Filtrado)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-espacio-filtrado}: Definición (Espacio de Probabilidad Filtrado)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-espacio-filtrado} 
 
@@ -662,7 +661,7 @@ probabilidad filtrado.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-espacio-estados-discreto}: Definición (Espacio de Estados Discreto)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-espacio-estados-discreto}: Definición (Espacio de Estados Discreto)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-espacio-estados-discreto} 
 
@@ -678,7 +677,7 @@ En el contexto de nuestro proyecto, \(S\) representa el conjunto de
 posibles colores o intensidades de un pixel (por ejemplo, el espacio RGB
 donde \(|S| = 256^3\), o una escala de grises finita).
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-proceso-estocastico}: Definición (Proceso Estocástico a Tiempo Continuo)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-proceso-estocastico}: Definición (Proceso Estocástico a Tiempo Continuo)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-proceso-estocastico} 
 
@@ -697,15 +696,13 @@ donde cada \(X(t): \Omega \to S\) es una función medible respecto a
 Interpretamos \(X(t)\) como el ``color verdadero'' del pixel en el
 instante (o parámetro continuo) \(t\).
 
-\bookmarksetup{startatroot}
-
-\chapter{Cadenas de Markov a Tiempo Continuo
+\section{Cadenas de Markov a Tiempo Continuo
 (CTMC)}\label{cadenas-de-markov-a-tiempo-continuo-ctmc}
 
 La transición del concepto general de proceso estocástico al de proceso
 de Markov requiere la propiedad de amnesia (pérdida de memoria).
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-propiedad-markov}: Definición (Propiedad de Markov)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-propiedad-markov}: Definición (Propiedad de Markov)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-propiedad-markov} 
 
@@ -745,7 +742,7 @@ para todo \(0 \le s \le t\).
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-probabilidades-transicion}: Definición (Probabilidades de Transición y Homogeneidad)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-probabilidades-transicion}: Definición (Probabilidades de Transición y Homogeneidad)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-probabilidades-transicion} 
 
@@ -783,7 +780,7 @@ P(\tau)
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante \ref*{imp-chapman-kolmogorov}: Propiedad (Ecuaciones de Chapman-Kolmogorov)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-important-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-important-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante \ref*{imp-chapman-kolmogorov}: Propiedad (Ecuaciones de Chapman-Kolmogorov)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-important-color!10!white, colframe=quarto-callout-important-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutimp{imp-chapman-kolmogorov} 
 
@@ -820,7 +817,7 @@ posibles estados intermedios \(k\).}
 
 Por otro lado, también se tiene la existencia de los HMM categóricos.
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-hmm-categorico-1}: Definición (Modelo Oculto de Markov Categórico)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-hmm-categorico-1}: Definición (Modelo Oculto de Markov Categórico)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-hmm-categorico-1} 
 
@@ -836,16 +833,14 @@ observación que sí podemos medir.
 
 \end{tcolorbox}
 
-\bookmarksetup{startatroot}
-
-\chapter{Dinámica Infinitesimal y Generador de la
+\subsection{Dinámica Infinitesimal y Generador de la
 Cadena}\label{dinuxe1mica-infinitesimal-y-generador-de-la-cadena}
 
 La evolución continua del color del pixel requiere una descripción
 mediante probabilidades de transición, lo cual nos lleva a la
 representación matricial de la derivada de \(P(t)\).
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-matriz-generadora}: Definición (Matriz Generadora Infinitesimal)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-matriz-generadora}: Definición (Matriz Generadora Infinitesimal)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-matriz-generadora} 
 
@@ -889,7 +884,7 @@ suman cero:
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante \ref*{imp-ecuaciones-dif-kolmogorov}: Propiedad (Ecuaciones Diferenciales de Kolmogorov)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-important-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-important-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante \ref*{imp-ecuaciones-dif-kolmogorov}: Propiedad (Ecuaciones Diferenciales de Kolmogorov)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-important-color!10!white, colframe=quarto-callout-important-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutimp{imp-ecuaciones-dif-kolmogorov} 
 
@@ -933,9 +928,7 @@ e^{Qt}
 
 \end{tcolorbox}
 
-\bookmarksetup{startatroot}
-
-\chapter{Utilidad hacia Cadenas de Márkov Ocultas
+\section{Utilidad hacia Cadenas de Márkov Ocultas
 (HMM)}\label{utilidad-hacia-cadenas-de-muxe1rkov-ocultas-hmm}
 
 La fundamentación teórica precedente modela la dinámica subyacente
@@ -945,7 +938,7 @@ Modelo Oculto de Márkov (HMM) en el contexto de la inferencia y análisis
 de píxeles en imágenes que contienen letras del alfabeto latino, se
 formaliza la siguiente estructura bivariada:
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-proceso-latente}: Definición (Proceso Latente e Inobservable)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-proceso-latente}: Definición (Proceso Latente e Inobservable)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-proceso-latente} 
 
@@ -966,7 +959,7 @@ manteniéndose inaccesibles a la medición directa.
 
 La variable \(X(t)\) describe el estado ideal o ``verdadero'' del pixel.
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-proceso-observacion}: Definición (Proceso de Observación Empírica)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-proceso-observacion}: Definición (Proceso de Observación Empírica)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-proceso-observacion} 
 
@@ -999,7 +992,7 @@ En este caso \(O\) denota el conjunto finito de colores o intensidades
 registrables por un sensor óptico y \(Y\) es la lectura ruidosa del
 pixel en el tiempo \(t\).
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-matriz-emision}: Definición (Matriz de Emisión e Independencia Condicional)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-matriz-emision}: Definición (Matriz de Emisión e Independencia Condicional)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-matriz-emision} 
 
@@ -1039,9 +1032,7 @@ e_{xy}
 
 \end{tcolorbox}
 
-\bookmarksetup{startatroot}
-
-\chapter{Inferencia y Filtrado en el Modelo
+\section{Inferencia y Filtrado en el Modelo
 Oculto}\label{inferencia-y-filtrado-en-el-modelo-oculto}
 
 Una vez establecida la dinámica del sistema, es necesario desarrollar la
@@ -1060,7 +1051,7 @@ en instantes discretos de tiempo (o espacio)
 0 \le t_1 < t_2 < \dots < t_K \le T.
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-filtro-forward}: Definición (Filtro Hacia Adelante (Forward) y Verosimilitud)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-filtro-forward}: Definición (Filtro Hacia Adelante (Forward) y Verosimilitud)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-filtro-forward} 
 
@@ -1129,7 +1120,7 @@ La verosimilitud total de la secuencia de observaciones es simplemente
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-decodificacion-optima}: Definición (Decodificación Óptima Global)}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota \ref*{nte-decodificacion-optima}: Definición (Decodificación Óptima Global)}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-decodificacion-optima} 
 
@@ -1170,7 +1161,7 @@ P(\Delta t_k).
 Para los pixeles es la trayectoria más probable de los colores
 verdaderos del pixel (el problema de decodificación).
 
-\section{Ejemplo ilustrativo del algoritmo
+\subsection{Ejemplo ilustrativo del algoritmo
 Forward--Backward}\label{ejemplo-ilustrativo-del-algoritmo-forwardbackward}
 
 Para ilustrar el funcionamiento de los algoritmos Forward y Backward en
@@ -1352,7 +1343,7 @@ P(Y)
 0.1768.
 \]
 
-\subsection{Cálculo Backward}\label{cuxe1lculo-backward}
+\subsubsection{Cálculo Backward}\label{cuxe1lculo-backward}
 
 La variable Backward se define mediante
 
@@ -1392,7 +1383,7 @@ y
 0.59.
 \]
 
-\subsection{Inferencia del estado
+\subsubsection{Inferencia del estado
 oculto}\label{inferencia-del-estado-oculto}
 
 Una de las principales ventajas del algoritmo Forward--Backward es que
@@ -1469,9 +1460,7 @@ dos estados ocultos y dos observaciones.}
 
 \end{figure}%
 
-\bookmarksetup{startatroot}
-
-\chapter{Estimación de Parámetros y Calibración del
+\section{Estimación de Parámetros y Calibración del
 Modelo}\label{estimaciuxf3n-de-paruxe1metros-y-calibraciuxf3n-del-modelo}
 
 En la práctica, la matriz generadora infinitesimal \(Q\) (que dicta la
@@ -1480,7 +1469,7 @@ probabilidades de emisión empírica rara vez son conocidas a priori y
 deben ser estimadas a partir de un dataset de imágenes (el alfabeto
 latino modificado).
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante \ref*{nte-baum-welch}: Propiedad (Algoritmo de Expectation-Maximization (Baum-Welch))}, toptitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-important-color!10!white, opacityback=0, bottomtitle=1mm, arc=.35mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-important-color-frame, opacitybacktitle=0.6, leftrule=.75mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, colback=white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante \ref*{nte-baum-welch}: Propiedad (Algoritmo de Expectation-Maximization (Baum-Welch))}, leftrule=.75mm, bottomrule=.15mm, left=2mm, breakable, toptitle=1mm, coltitle=black, colbacktitle=quarto-callout-important-color!10!white, colframe=quarto-callout-important-color-frame, opacitybacktitle=0.6, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \quartocalloutnte{nte-baum-welch} 
 
@@ -1533,7 +1522,10 @@ observaciones.}
 
 \bookmarksetup{startatroot}
 
-\chapter{Fundamentos CNN}\label{fundamentos-cnn}
+\chapter{Fundamentos matemáticos de las Redes Neuronales
+Convolucionales}\label{fundamentos-matemuxe1ticos-de-las-redes-neuronales-convolucionales}
+
+\section{Fundamentos CNN}\label{fundamentos-cnn}
 
 En este trabajo se aborda el problema de \textbf{reconocimiento
 automático de glifos del alfabeto náhuatl} mediante el uso de redes
@@ -1549,9 +1541,7 @@ capacidad para extraer características espaciales relevantes
 directamente a partir de los datos, tales como bordes, curvas y patrones
 geométricos distintivos.
 
-\bookmarksetup{startatroot}
-
-\chapter{Formulación Matemática de una
+\section{Formulación Matemática de una
 CNN}\label{formulaciuxf3n-matemuxe1tica-de-una-cnn}
 
 Una red neuronal convolucional puede modelarse como una aplicación
@@ -1583,9 +1573,7 @@ donde:
   modelo.
 \end{itemize}
 
-\bookmarksetup{startatroot}
-
-\chapter{Representación Tensorial de
+\section{Representación Tensorial de
 Imágenes}\label{representaciuxf3n-tensorial-de-imuxe1genes}
 
 Una imagen digital se representa como un tensor de orden tres:
@@ -1603,11 +1591,18 @@ X(i,j) = \left(x_1, x_2, \dots, x_C \right) \in \mathbb{R}^C
 Por tanto, cada píxel contiene un vector que describe información en
 distintos canales.
 
-\pandocbounded{\includegraphics[keepaspectratio]{Imagenes_tesis/Imagen flor 1 corregida.png}}
+\begin{figure}[H]
 
-\bookmarksetup{startatroot}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{Imagenes_tesis/Imagen flor 1 corregida.png}}
 
-\chapter{Estructura Funcional de la
+}
+
+\caption{En la imágen se observa que cada píxel está formado en realidad
+por la combinación de valores de los tres canales.}
+
+\end{figure}%
+
+\subsection{Estructura Funcional de la
 Red}\label{estructura-funcional-de-la-red}
 
 Una CNN se construye como la composición de funciones:
@@ -1626,9 +1621,7 @@ Asimismo, los parámetros globales se expresan como:
 \theta = \left\{ \theta^{(1)}, \theta^{(2)}, \dots, \theta^{(L)} \right\}
 }\end{equation}
 
-\bookmarksetup{startatroot}
-
-\chapter{Parámetros del Modelo}\label{paruxe1metros-del-modelo}
+\subsection{Parámetros del Modelo}\label{paruxe1metros-del-modelo}
 
 Los parámetros de una CNN están constituidos principalmente por:
 
@@ -1644,11 +1637,9 @@ Estos parámetros determinan completamente la función \(f(x;\theta)\) y
 son ajustados mediante procedimientos de optimización basados en
 gradiente.
 
-\bookmarksetup{startatroot}
+\subsection{Kernels Convolucionales}\label{kernels-convolucionales}
 
-\chapter{Kernels Convolucionales}\label{kernels-convolucionales}
-
-\section{Definición Formal}\label{definiciuxf3n-formal}
+\textbf{Definición Formal}
 
 Un kernel es un tensor de parámetros que define un operador lineal
 local.
@@ -1682,8 +1673,7 @@ v \in \{0,\dots,k_w-1\}, \;
 c \in \{1,\dots,C\}
 \]
 
-\section{Interpretación
-Geométrica}\label{interpretaciuxf3n-geomuxe9trica}
+\textbf{Interpretación Geométrica}
 
 Sea \(X_{(i,j)}\) una subregión de la imagen obtenida al centrar el
 kernel en la posición \((i,j)\), cuyos elementos están dados por:
@@ -1705,8 +1695,7 @@ local de la imagen.
 
 \pandocbounded{\includegraphics[keepaspectratio]{images/paste-1.png}}
 
-\section{Compartición de
-parámetros}\label{comparticiuxf3n-de-paruxe1metros}
+\textbf{Compartición de parámetros}
 
 Una propiedad fundamental de las redes neuronales convolucionales es la
 \textbf{compartición de parámetros}, la cual establece que los
@@ -1722,8 +1711,7 @@ K(u,v,c) \text{ es independiente de la posición } (i,j)
 Esto implica que el mismo kernel es utilizado para procesar todas las
 regiones locales de la entrada.
 
-\subsection{Reducción del número de
-parámetros}\label{reducciuxf3n-del-nuxfamero-de-paruxe1metros}
+\textbf{Reducción del número de parámetros}
 
 En ausencia de compartición de parámetros, cada posición \((i,j)\)
 requeriría un conjunto distinto de pesos, lo cual conduciría a un número
@@ -1743,7 +1731,7 @@ k_h \cdot k_w \cdot C
 lo cual representa una reducción significativa en la complejidad del
 modelo.
 
-\subsection{Invarianza traslacional}\label{invarianza-traslacional}
+\textbf{Invarianza traslacional}
 
 La compartición de parámetros induce una propiedad de
 \textbf{equivarianza por traslación}. Sea \(\tau_{a,b}\) un operador de
@@ -1760,9 +1748,7 @@ espaciales, el modelo será capaz de detectarla de manera consistente.
 En consecuencia, la red no depende de la posición absoluta de los
 patrones, sino únicamente de su estructura local.
 
-\bookmarksetup{startatroot}
-
-\chapter{Operación de Convolución}\label{operaciuxf3n-de-convoluciuxf3n}
+\section{Operación de Convolución}\label{operaciuxf3n-de-convoluciuxf3n}
 
 La operación fundamental en una red neuronal convolucional es la
 denominada \textbf{convolución discreta}. No obstante, es importante
@@ -1776,7 +1762,7 @@ Esta operación define un mecanismo mediante el cual se evalúa la
 similitud entre un patrón local (kernel) y distintas regiones de la
 imagen de entrada.
 
-\section{Caso Unicanal}\label{caso-unicanal}
+\subsection{Caso Unicanal}\label{caso-unicanal}
 
 Sea una imagen unicanal representada por:
 
@@ -1814,8 +1800,7 @@ donde:
 
 \pandocbounded{\includegraphics[keepaspectratio]{Imagenes_tesis/img_kernel_1.png}}
 
-\subsection{Interpretación como ventana
-deslizante}\label{interpretaciuxf3n-como-ventana-deslizante}
+\textbf{Interpretación como ventana deslizante}
 
 La ecuación anterior describe un proceso en el cual el kernel se
 desplaza sistemáticamente sobre la imagen. En cada posición, se
@@ -1832,8 +1817,7 @@ Por lo tanto, la salida en \((i,j)\) depende únicamente de una vecindad
 local de la imagen, lo cual establece la propiedad de
 \textbf{conectividad local}.
 
-\subsection{Interpretación como producto
-interno}\label{interpretaciuxf3n-como-producto-interno}
+\textbf{Interpretación como producto interno}
 
 La expresión de la convolución puede reescribirse como un producto
 interno en el espacio vectorial \(\mathbb{R}^{k_h \times k_w}\):
@@ -1851,8 +1835,7 @@ donde el producto interno se define como:
 Esta formulación pone de manifiesto que la convolución mide el grado de
 alineación entre el kernel y la región local.
 
-\subsection{Interpretación
-geométrica}\label{interpretaciuxf3n-geomuxe9trica-1}
+\textbf{Interpretación geométrica}
 
 Desde un punto de vista geométrico, el valor \(Y(i,j)\) representa la
 proyección del vector \(X_{(i,j)}\) sobre el vector \(K\) en el espacio
@@ -1871,8 +1854,7 @@ euclidiano de dimensión \(k_h k_w\). En consecuencia:
 Esto permite interpretar al kernel como un \textbf{detector de
 patrones}.
 
-\subsection{Naturaleza lineal de la
-operación}\label{naturaleza-lineal-de-la-operaciuxf3n}
+\textbf{Naturaleza lineal de la operación}
 
 La convolución es un operador lineal. Es decir, para cualesquiera
 tensores \(X_1, X_2\) y escalares \(\alpha, \beta\), se cumple:
@@ -1885,8 +1867,7 @@ tensores \(X_1, X_2\) y escalares \(\alpha, \beta\), se cumple:
 donde \(\mathcal{T}_K\) denota el operador de convolución asociado al
 kernel \(K\).
 
-\subsection{Relación con la correlación
-cruzada}\label{relaciuxf3n-con-la-correlaciuxf3n-cruzada}
+\textbf{Relación con la correlación cruzada}
 
 Es importante destacar que la definición utilizada en redes neuronales
 corresponde a la correlación cruzada:
@@ -1907,7 +1888,7 @@ Sin embargo, dado que los parámetros del kernel son aprendidos durante
 el entrenamiento, ambas formulaciones resultan equivalentes en términos
 de capacidad representacional.
 
-\subsection{Dependencia local}\label{dependencia-local}
+\textbf{Dependencia local}
 
 Finalmente, se observa que:
 
@@ -1919,7 +1900,7 @@ lo cual implica que cada salida está influenciada únicamente por una
 región local de la entrada. Esta propiedad es clave para la eficiencia
 computacional y la capacidad de generalización del modelo.
 
-\section{Convolución Multicanal}\label{convoluciuxf3n-multicanal}
+\subsection{Convolución Multicanal}\label{convoluciuxf3n-multicanal}
 
 En el caso general, las imágenes no son unicanal, sino que poseen
 múltiples canales (por ejemplo, RGB). En consecuencia, la operación de
@@ -1975,8 +1956,7 @@ al valor final de la salida.
 
 \pandocbounded{\includegraphics[keepaspectratio]{images/paste-2.png}}
 
-\section{Interpretación como producto interno en espacio
-tensorial}\label{interpretaciuxf3n-como-producto-interno-en-espacio-tensorial}
+\textbf{Interpretación como producto interno en espacio tensorial}
 
 Sea \(X_{(i,j)}\) la subregión local de la imagen centrada en \((i,j)\).
 Entonces:
@@ -2001,8 +1981,7 @@ Y(i,j) = \mathrm{vec}(K)^\top \mathrm{vec}(X_{(i,j)})
 Esto muestra que la operación es un producto interno en un espacio
 euclidiano de dimensión \(k_h k_w C\).
 
-\section{Interpretación
-geométrica}\label{interpretaciuxf3n-geomuxe9trica-2}
+\textbf{Interpretación geométrica}
 
 Desde un punto de vista geométrico, cada región local de la imagen se
 interpreta como un punto en el espacio \(\mathbb{R}^{k_h k_w C}\), y el
@@ -2024,7 +2003,7 @@ Por tanto:
 En consecuencia, el kernel actúa como un detector de patrones
 multicanal.
 
-\section{Naturaleza lineal}\label{naturaleza-lineal}
+\textbf{Naturaleza lineal}
 
 La convolución multicanal es un operador lineal. Es decir, para
 cualesquiera tensores \(X_1, X_2\) y escalares \(\alpha, \beta\), se
@@ -2039,8 +2018,7 @@ cumple:
 donde \(\mathcal{T}_K\) denota el operador de convolución asociado al
 kernel \(K\).
 
-\section{Interpretación
-estructural}\label{interpretaciuxf3n-estructural}
+\textbf{Interpretación estructural}
 
 Es importante destacar que, a diferencia del caso unicanal, el kernel
 multicanal no detecta únicamente patrones espaciales, sino también
@@ -2051,15 +2029,13 @@ combinaciones específicas de intensidades en los canales rojo, verde y
 azul, lo cual permite detectar patrones más complejos que aquellos
 basados únicamente en estructura espacial.
 
-\section{Forma Vectorizada}\label{forma-vectorizada}
+\textbf{Forma Vectorizada}
 
 \[
 Y(i,j) = K^\top X_{(i,j)}
 \]
 
-\bookmarksetup{startatroot}
-
-\chapter{Múltiples Filtros}\label{muxfaltiples-filtros}
+\textbf{Múltiples Filtros}
 
 En una red neuronal convolucional, no se utiliza un único kernel, sino
 un conjunto de filtros que permiten extraer distintas características de
@@ -2072,7 +2048,7 @@ K^{(f)} \in \mathbb{R}^{k_h \times k_w \times C}
 
 donde \(F\) representa el número total de filtros.
 
-\section{Definición de la salida}\label{definiciuxf3n-de-la-salida}
+\textbf{Definición de la salida}
 
 Cada filtro \(K^{(f)}\) actúa de manera independiente sobre la entrada y
 produce un mapa de activación asociado. Para cada posición \((i,j)\), la
@@ -2088,8 +2064,7 @@ Por lo tanto, a cada filtro le corresponde una función:
 Y_f : \{1,\dots,H'\} \times \{1,\dots,W'\} \to \mathbb{R}
 \]
 
-\section{Estructura tensorial de la
-salida}\label{estructura-tensorial-de-la-salida}
+\textbf{Estructura tensorial de la salida}
 
 Al considerar todos los filtros simultáneamente, la salida completa se
 organiza como un tensor de orden tres:
@@ -2112,7 +2087,7 @@ donde:
 En particular, la componente \(Y(:,:,f)\) corresponde al mapa de
 activación generado por el filtro \(K^{(f)}\).
 
-\section{Interpretación funcional}\label{interpretaciuxf3n-funcional}
+\textbf{Interpretación funcional}
 
 Cada filtro puede interpretarse como un detector especializado en cierto
 tipo de patrón. En consecuencia, la colección de filtros define una
@@ -2129,8 +2104,7 @@ De este modo, la salida de la capa puede interpretarse como la
 aplicación conjunta de múltiples detectores, produciendo una
 representación enriquecida de la imagen.
 
-\section{Interpretación como vector de características
-local}\label{interpretaciuxf3n-como-vector-de-caracteruxedsticas-local}
+\textbf{Interpretación como vector de características local}
 
 Para cada posición \((i,j)\), la salida puede agruparse como un vector:
 
@@ -2151,8 +2125,7 @@ Por tanto, la capa convolucional realiza una transformación:
 
 aplicada localmente en cada vecindad de la imagen.
 
-\section{Interpretación
-geométrica}\label{interpretaciuxf3n-geomuxe9trica-3}
+\textbf{Interpretación geométrica}
 
 Desde una perspectiva geométrica, cada filtro \(K^{(f)}\) define una
 dirección en el espacio \(\mathbb{R}^{k_h k_w C}\). En consecuencia, el
@@ -2163,7 +2136,7 @@ Esto permite interpretar la salida como una representación de la
 información local en una base (no necesariamente ortogonal) definida por
 los filtros aprendidos.
 
-\section{Ejemplos de filtros}\label{ejemplos-de-filtros}
+\#\#\#Ejemplos de filtros
 
 \begin{figure}[H]
 
@@ -2178,7 +2151,7 @@ una misma imagen.}
 
 \end{figure}%
 
-\section{Observación estructural}\label{observaciuxf3n-estructural}
+\subsection{Observación estructural}\label{observaciuxf3n-estructural}
 
 Es importante notar que el número de filtros \(F\) determina la
 capacidad de representación de la capa. Un mayor número de filtros
@@ -2189,11 +2162,9 @@ En capas profundas, los filtros tienden a representar características de
 mayor nivel semántico, construidas a partir de combinaciones de patrones
 detectados en capas anteriores.
 
-\bookmarksetup{startatroot}
+\section{Stride y Padding}\label{stride-y-padding}
 
-\chapter{Stride y Padding}\label{stride-y-padding}
-
-\section{Stride}\label{stride}
+\subsection{Stride}\label{stride}
 
 El \emph{stride} \(s\) controla el desplazamiento del kernel durante la
 operación de convolución. Es decir, determina cuántas posiciones se
@@ -2223,7 +2194,7 @@ donde:
 Un valor mayor de \(s\) produce una reducción en la resolución espacial
 de la salida.
 
-\section{Padding}\label{padding}
+\subsection{Padding}\label{padding}
 
 El \emph{padding} es una operación que consiste en añadir valores
 (generalmente ceros) alrededor de la entrada antes de aplicar la
@@ -2275,7 +2246,7 @@ donde:
   \(\sigma\) es la función de activación.
 \end{itemize}
 
-\section{Ejemplo ilustrativo}\label{ejemplo-ilustrativo}
+\textbf{Ejemplo ilustrativo}
 
 Para ilustrar el efecto del padding sobre las dimensiones de salida, se
 presenta el siguiente ejemplo:
@@ -2300,13 +2271,13 @@ que no forman parte de la imagen original.}
 
 \end{figure}%
 
-\section{Función de activación}\label{funciuxf3n-de-activaciuxf3n}
+\subsection{Función de activación}\label{funciuxf3n-de-activaciuxf3n}
 
 Una función de activación es una aplicación no lineal que se introduce
 después de una transformación afín, con el objetivo de dotar al modelo
 de la capacidad de aproximar funciones no lineales.
 
-\subsection{Definición}\label{definiciuxf3n}
+\textbf{Definición}
 
 Sea \(x \in \mathbb{R}^n\) un vector de entrada, \(w \in \mathbb{R}^n\)
 un vector de pesos y \(b \in \mathbb{R}\) un sesgo. Se define la
@@ -2325,7 +2296,7 @@ y = \sigma(z)
 donde \(\sigma : \mathbb{R} \to \mathbb{R}\) es la función de
 activación.
 
-\subsection{No linealidad}\label{no-linealidad}
+\textbf{No linealidad}
 
 Considérese una red neuronal profunda compuesta únicamente por
 transformaciones afines. En tal caso, la composición de dichas
@@ -2362,34 +2333,32 @@ donde:
   \(\sigma\) se aplica elemento a elemento
 \end{itemize}
 
-\subsection{Ejemplos de funciones de
-activación}\label{ejemplos-de-funciones-de-activaciuxf3n}
+\textbf{Ejemplos de funciones de activación}
 
 Algunas de las funciones de activación más utilizadas son las
 siguientes: \begin{center}
 \includegraphics[width=0.82\linewidth,height=\textheight,keepaspectratio]{Imagenes_tesis/img_funciones_activacion.png}
 \end{center}
 
-\subsubsection{ReLU (Rectified Linear
-Unit)}\label{relu-rectified-linear-unit}
+\emph{ReLU (Rectified Linear Unit)}
 
 \begin{equation}\phantomsection\label{eq-relu}{
 \sigma(x) = \max(0, x)
 }\end{equation}
 
-\subsubsection{Sigmoide}\label{sigmoide}
+\emph{Sigmoide}
 
 \begin{equation}\phantomsection\label{eq-sigmoide}{
 \sigma(x) = \frac{1}{1 + e^{-x}}
 }\end{equation}
 
-\subsubsection{Tangente hiperbólica}\label{tangente-hiperbuxf3lica}
+\emph{Tangente hiperbólica}
 
 \begin{equation}\phantomsection\label{eq-tanh}{
 \sigma(x) = \tanh(x)
 }\end{equation}
 
-\subsection{Propiedades fundamentales}\label{propiedades-fundamentales}
+\textbf{Propiedades fundamentales}
 
 Las funciones de activación empleadas en redes neuronales satisfacen
 típicamente:
@@ -2407,7 +2376,7 @@ típicamente:
   para métodos de optimización basados en gradiente
 \end{itemize}
 
-\subsection{Formulación funcional}\label{formulaciuxf3n-funcional}
+\textbf{Formulación funcional}
 
 Desde una perspectiva funcional, una red neuronal profunda puede
 interpretarse como la composición de aplicaciones de la forma:
@@ -2422,7 +2391,7 @@ donde cada transformación afín está dada por:
 T_i(x) = W_i x + b_i
 \]
 
-\section{Pooling}\label{pooling}
+\subsection{Pooling}\label{pooling}
 
 El \emph{pooling} es una operación que reduce la dimensión espacial de
 la representación, conservando las características más relevantes. Esta
@@ -2443,7 +2412,7 @@ Y \in \mathbb{R}^{H' \times W' \times C}
 
 donde las dimensiones \(H'\) y \(W'\) son menores que \(H\) y \(W\).
 
-\subsection{Max Pooling}\label{max-pooling}
+\textbf{Max Pooling}
 
 El \emph{max pooling} es la forma más común de pooling. Para cada región
 local \(X_{(i,j)}\), se define:
@@ -2455,7 +2424,7 @@ Y(i,j,c) = \max_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
 donde \(\mathcal{R}\) representa la ventana de pooling (por ejemplo, de
 tamaño \(2 \times 2\)).
 
-\subsection{Average Pooling}\label{average-pooling}
+\textbf{Average Pooling}
 
 Otra variante es el \emph{average pooling}, definido como:
 
@@ -2494,7 +2463,7 @@ general de los datos presentes en cada región de la imagen.}
 
 \end{figure}%
 
-\subsection{Propiedades}\label{propiedades}
+\textbf{Propiedades}
 
 El pooling presenta las siguientes propiedades:
 
@@ -2509,7 +2478,7 @@ El pooling presenta las siguientes propiedades:
   Opera de forma independiente en cada canal
 \end{itemize}
 
-\subsection{Interpretación}\label{interpretaciuxf3n}
+\textbf{Interpretación}
 
 El pooling puede interpretarse como una forma de resumen local de la
 información. En el caso del max pooling, se selecciona la característica
@@ -2520,7 +2489,7 @@ En arquitecturas profundas, el pooling contribuye a la construcción de
 representaciones más abstractas, al reducir progresivamente la
 resolución espacial.
 
-\section{Capas completamente
+\subsection{Capas completamente
 conectadas}\label{capas-completamente-conectadas}
 
 Las capas completamente conectadas (\emph{Fully Connected}, FC)
@@ -2528,8 +2497,7 @@ constituyen la etapa final de una red neuronal convolucional. Su función
 es combinar las características extraídas por las capas anteriores para
 realizar la tarea de clasificación o regresión.
 
-\subsection{Vectorización de la
-entrada}\label{vectorizaciuxf3n-de-la-entrada}
+\textbf{Vectorización de la entrada}
 
 Sea:
 
@@ -2544,7 +2512,7 @@ vector mediante una operación de vectorización:
 x = \mathrm{vec}(X) \in \mathbb{R}^{HWC}
 }\end{equation}
 
-\subsection{Transformación afín}\label{transformaciuxf3n-afuxedn}
+\textbf{Transformación afín}
 
 La capa completamente conectada aplica una transformación lineal seguida
 de un sesgo:
@@ -2577,7 +2545,7 @@ y = \sigma(z)
 donde \(\sigma\) es una función de activación aplicada componente a
 componente.
 
-\subsection{Interpretación}\label{interpretaciuxf3n-1}
+\textbf{Interpretación}
 
 Las capas completamente conectadas pueden interpretarse como
 clasificadores que operan sobre las características extraídas por la red
@@ -2587,7 +2555,7 @@ disponible en la representación vectorizada.
 Esto contrasta con las capas convolucionales, donde la conectividad es
 local.
 
-\subsection{Clasificación}\label{clasificaciuxf3n}
+\textbf{Clasificación}
 
 En problemas de clasificación multiclase, la última capa suele utilizar
 la función \emph{softmax}, definida como:
@@ -2600,7 +2568,7 @@ la función \emph{softmax}, definida como:
 Esta función transforma el vector \(z\) en una distribución de
 probabilidad sobre las clases.
 
-\subsection{Propiedades}\label{propiedades-1}
+\textbf{Propiedades}
 
 Las capas completamente conectadas presentan las siguientes
 características:
@@ -2616,14 +2584,14 @@ características:
   Mayor número de parámetros en comparación con capas convolucionales
 \end{itemize}
 
-\subsection{Observación}\label{observaciuxf3n}
+\textbf{Observación}
 
 Debido al elevado número de parámetros, las capas completamente
 conectadas son más propensas al sobreajuste. Por esta razón, en
 arquitecturas modernas, su uso se reduce o se reemplaza parcialmente
 mediante técnicas como \emph{global average pooling}.
 
-\section{Función de pérdida}\label{funciuxf3n-de-puxe9rdida}
+\subsection{Función de pérdida}\label{funciuxf3n-de-puxe9rdida}
 
 La función de pérdida (\emph{loss function}) cuantifica la discrepancia
 entre las predicciones del modelo y los valores reales. Constituye el
@@ -2631,7 +2599,7 @@ criterio fundamental que guía el proceso de entrenamiento, ya que
 permite evaluar la calidad de las predicciones y definir un objetivo de
 optimización.
 
-\subsection{Definición general}\label{definiciuxf3n-general}
+\textbf{Definición general}
 
 Sea \(f_\theta(x)\) la salida del modelo para una entrada \(x\), y sea
 \(y\) la etiqueta real asociada. Una función de pérdida se define como:
@@ -2650,8 +2618,7 @@ costo global se define como:
 J(\theta) = \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(f_\theta(x_i), y_i)
 }\end{equation}
 
-\subsection{Clasificación multiclase: Entropía
-cruzada}\label{clasificaciuxf3n-multiclase-entropuxeda-cruzada}
+\textbf{Clasificación multiclase: Entropía cruzada}
 
 En problemas de clasificación multiclase, la función de pérdida más
 utilizada es la entropía cruzada (\emph{cross-entropy}).
@@ -2672,8 +2639,7 @@ Dado que \(y\) es un vector one-hot, esta expresión se reduce a:
 
 donde \(p_y\) es la probabilidad asignada a la clase correcta.
 
-\subsection{Interpretación
-probabilística}\label{interpretaciuxf3n-probabiluxedstica}
+\textbf{Interpretación probabilística}
 
 La entropía cruzada puede interpretarse como una medida de divergencia
 entre la distribución verdadera \(y\) y la distribución predicha \(p\).
@@ -2683,8 +2649,7 @@ los datos bajo el modelo.
 Desde un punto de vista estadístico, este enfoque corresponde al método
 de máxima verosimilitud.
 
-\subsection{Caso de regresión: Error cuadrático
-medio}\label{caso-de-regresiuxf3n-error-cuadruxe1tico-medio}
+\textbf{Caso de regresión: Error cuadrático medio}
 
 En problemas de regresión, una función de pérdida común es el error
 cuadrático medio (\emph{Mean Squared Error}, MSE), definido como:
@@ -2696,8 +2661,7 @@ cuadrático medio (\emph{Mean Squared Error}, MSE), definido como:
 Esta función penaliza de manera más severa los errores grandes, lo que
 favorece ajustes más precisos.
 
-\subsection{Relación con el
-entrenamiento}\label{relaciuxf3n-con-el-entrenamiento}
+\textbf{Relación con el entrenamiento}
 
 El objetivo del entrenamiento consiste en encontrar los parámetros
 \(\theta\) que minimizan la función de costo global:
@@ -2709,7 +2673,7 @@ El objetivo del entrenamiento consiste en encontrar los parámetros
 Este problema se resuelve típicamente mediante métodos de optimización
 iterativos, como el descenso por gradiente y sus variantes.
 
-\section{Entrenamiento}\label{entrenamiento}
+\subsection{Entrenamiento}\label{entrenamiento}
 
 El entrenamiento de una red neuronal convolucional consiste en ajustar
 los parámetros \(\theta\) del modelo con el objetivo de minimizar la
@@ -2992,8 +2956,7 @@ describe una dinámica continua en la cual el sistema evoluciona
 siguiendo la dirección de máximo decrecimiento de la función energía
 \(f\).
 
-\subsection{Regla de la cadena y
-retropropagación}\label{regla-de-la-cadena-y-retropropagaciuxf3n}
+\textbf{Regla de la cadena y retropropagación}
 
 El cálculo del gradiente en redes neuronales profundas se realiza
 mediante el algoritmo de retropropagación (\emph{backpropagation}), el
@@ -3017,7 +2980,7 @@ Este procedimiento permite calcular eficientemente:
 
 para cada capa \(l\) de la red.
 
-\section{Regularización}\label{regularizaciuxf3n}
+\textbf{Regularización}
 
 En el entrenamiento de redes neuronales, es común que el modelo se
 ajuste excesivamente a los datos de entrenamiento, fenómeno conocido
@@ -3028,7 +2991,7 @@ generaliza pobremente a datos no vistos.
 La regularización consiste en un conjunto de técnicas diseñadas para
 mejorar la capacidad de generalización del modelo.
 
-\subsection{Sobreajuste}\label{sobreajuste}
+\textbf{Sobreajuste}
 
 El sobreajuste ocurre cuando el modelo aprende no solo las
 características relevantes del problema, sino también el ruido presente
@@ -3036,8 +2999,7 @@ en los datos. Esto suele suceder cuando el modelo tiene una alta
 capacidad de representación en relación con la cantidad de datos
 disponibles.
 
-\subsection{Penalización de parámetros (Weight
-Decay)}\label{penalizaciuxf3n-de-paruxe1metros-weight-decay}
+\textbf{Penalización de parámetros (Weight Decay)}
 
 Una estrategia común consiste en añadir un término de penalización a la
 función de costo:
@@ -3243,14 +3205,13 @@ el dropout continúa siendo una herramienta fundamental, especialmente en
 redes densas tradicionales y en problemas donde la cantidad de datos
 disponibles es limitada.
 
-\section{Optimización}\label{optimizaciuxf3n}
+\subsection{Optimización}\label{optimizaciuxf3n}
 
 El proceso de entrenamiento de una red neuronal implica la resolución de
 un problema de optimización en alta dimensión. En la práctica, este
 problema se aborda mediante métodos iterativos basados en gradiente.
 
-\subsection{Descenso por gradiente estocástico
-(SGD)}\label{descenso-por-gradiente-estocuxe1stico-sgd}
+\textbf{Descenso por gradiente estocástico (SGD)}
 
 En lugar de utilizar todo el conjunto de datos en cada iteración, el
 \emph{Stochastic Gradient Descent} (SGD) emplea subconjuntos
@@ -3263,8 +3224,7 @@ En lugar de utilizar todo el conjunto de datos en cada iteración, el
 Este enfoque reduce el costo computacional y permite actualizaciones más
 frecuentes.
 
-\subsection{Mini-batch gradient
-descent}\label{mini-batch-gradient-descent}
+\textbf{Mini-batch gradient descent}
 
 Una generalización del SGD consiste en utilizar lotes de tamaño
 intermedio:
@@ -3275,7 +3235,7 @@ intermedio:
 
 donde \(B\) es el tamaño del lote.
 
-\subsection{Métodos adaptativos}\label{muxe9todos-adaptativos}
+\textbf{Métodos adaptativos}
 
 Existen métodos de optimización que ajustan automáticamente la tasa de
 aprendizaje para cada parámetro. Uno de los más utilizados es
@@ -3300,7 +3260,7 @@ donde:
   \(\epsilon\) es un término de estabilidad numérica
 \end{itemize}
 
-\subsection{Tasa de aprendizaje}\label{tasa-de-aprendizaje}
+\textbf{Tasa de aprendizaje}
 
 La tasa de aprendizaje \(\eta\) controla la magnitud de las
 actualizaciones. Su elección es crucial:
@@ -3320,12 +3280,10 @@ aprendizaje.
 
 \chapter{Base de datos}\label{base-de-datos}
 
-\bookmarksetup{startatroot}
-
-\chapter{4. Generación y Caracterización del Conjunto de
+\section{Generación y Caracterización del Conjunto de
 Datos}\label{generaciuxf3n-y-caracterizaciuxf3n-del-conjunto-de-datos}
 
-\section{4.1. Construcción del Conjunto de
+\subsection{Construcción del Conjunto de
 Datos}\label{construcciuxf3n-del-conjunto-de-datos}
 
 El reconocimiento óptico de caracteres para sistemas de escritura
@@ -3341,8 +3299,8 @@ computacionales de código abierto.
 18 caracteres base, los cuales, para fines de manipulación
 computacional, se asocian a etiquetas del alfabeto latino.
 
-\subsection{4.1.1. Inexistencia de datasets públicos y justificación de
-la generación
+\subsection{Inexistencia de datasets públicos y justificación de la
+generación
 sintética}\label{inexistencia-de-datasets-puxfablicos-y-justificaciuxf3n-de-la-generaciuxf3n-sintuxe9tica}
 
 Ante esta carencia de una base de datos pública y estandarizada, fue
@@ -3355,7 +3313,7 @@ estocásticas que permitan al modelo generalizar ante las irregularidades
 presentes en documentos históricos reales (desalineación, degradación de
 tinta, variabilidad del trazo).
 
-\subsection{4.1.2. Diseño de las plantillas base y morfología del glifo
+\subsection{Diseño de las plantillas base y morfología del glifo
 náhuatl}\label{diseuxf1o-de-las-plantillas-base-y-morfologuxeda-del-glifo-nuxe1huatl}
 
 Inicialmente, se diseñaron de forma manual y vectorial 25 plantillas
@@ -3368,14 +3326,14 @@ proporción y densidad de ``tinta'' típica de los códices, estableciendo
 así un punto de partida topológicamente válido para la posterior
 augmentación.
 
-\section{4.2. Transformaciones Geométricas y Estocásticas (Data
+\section{Transformaciones Geométricas y Estocásticas (Data
 Augmentation)}\label{transformaciones-geomuxe9tricas-y-estocuxe1sticas-data-augmentation}
 
 Para emular las condiciones de documentos, se aplicaron transformaciones
 a las plantillas base. A cada una de las 25 muestras iniciales se le
 generaron 90 variantes, resultando en un conjunto robusto y diverso.
 
-\subsection{4.2.1. Aplicación de grupos de Lie en transformaciones
+\subsection{Aplicación de grupos de Lie en transformaciones
 afines}\label{aplicaciuxf3n-de-grupos-de-lie-en-transformaciones-afines}
 
 Las transformaciones geométricas aplicadas (rotación, traslación y
@@ -3396,7 +3354,7 @@ práctica, se utilizaron operadores estocásticos acotados (ej.
 \(\theta \sim \mathcal{U}(-0.05\pi, 0.05\pi)\)) para garantizar que la
 identidad del glifo se preservara semánticamente.
 
-\subsection{4.2.2. Modelado de ruido y
+\subsection{Modelado de ruido y
 degradación}\label{modelado-de-ruido-y-degradaciuxf3n}
 
 Para simular la naturaleza física del papel histórico y la tinta, se
@@ -3406,7 +3364,7 @@ emular las imperfecciones del sensor de escaneo. - \textbf{Degradación
 de bordes:} Se aplicó un desenfoque gaussiano leve para simular el
 ``sangrado'' de la tinta en el papel poroso.
 
-\subsection{4.2.3. Análisis estadístico del dataset
+\subsection{Análisis estadístico del dataset
 resultante}\label{anuxe1lisis-estaduxedstico-del-dataset-resultante}
 
 El proceso generó un dataset final balanceado de
@@ -3418,9 +3376,9 @@ maximizada de manera controlada mediante las transformaciones afines,
 asegurando que el modelo no aprenda artefactos de la plantilla base,
 sino las invariantes morfológicas del carácter.
 
-\section{\texorpdfstring{4.3. Mapeo Dimensional: De
+\section{\texorpdfstring{Mapeo Dimensional: De
 \(\mathbb{R}^{28 \times 28}\) a
-\(\mathbb{R}^T\)}{4.3. Mapeo Dimensional: De \textbackslash mathbb\{R\}\^{}\{28 \textbackslash times 28\} a \textbackslash mathbb\{R\}\^{}T}}\label{mapeo-dimensional-de-mathbbr28-times-28-a-mathbbrt}
+\(\mathbb{R}^T\)}{Mapeo Dimensional: De \textbackslash mathbb\{R\}\^{}\{28 \textbackslash times 28\} a \textbackslash mathbb\{R\}\^{}T}}\label{mapeo-dimensional-de-mathbbr28-times-28-a-mathbbrt}
 
 \emph{La pérdida de información topológica al proyectar una imagen en
 una secuencia temporal.}
@@ -3433,7 +3391,7 @@ inherente de la topología 2D (vecindades verticales y horizontales
 simultáneas), la cual debe ser compensada mediante la extracción de
 rasgos estructurales ricos en cada paso de tiempo.
 
-\subsection{4.3.1. Definición del operador de ventana deslizante
+\subsection{Definición del operador de ventana deslizante
 vertical}\label{definiciuxf3n-del-operador-de-ventana-deslizante-vertical}
 
 Se define un operador de ventana deslizante vertical que recorre la
@@ -3444,13 +3402,13 @@ secuencia \(S_t \in \mathbb{R}^{H \times w}\) representa una
 ``rebanada'' vertical de la imagen en el paso de tiempo \(t\),
 preservando la estructura vertical del trazo en ese instante.
 
-\section{4.4. Extracción Matemática de Rasgos Estructurales (Feature
+\section{Extracción Matemática de Rasgos Estructurales (Feature
 Engineering)}\label{extracciuxf3n-matemuxe1tica-de-rasgos-estructurales-feature-engineering}
 
 Para mitigar la pérdida topológica mencionada, se extraen descriptores
 matemáticos de cada ventana \(S_t\).
 
-\subsection{4.4.1. Cálculo del Centro de
+\subsection{Cálculo del Centro de
 Gravedad}\label{cuxe1lculo-del-centro-de-gravedad}
 
 El primer momento de la distribución de ``tinta'' (intensidad de
@@ -3466,7 +3424,7 @@ ventana \(S_t\), las coordenadas del centro de gravedad
 Este rasgo es invariante a traslaciones globales y altamente
 discriminativo para la morfología del glifo.
 
-\subsection{4.4.2. Transiciones de estado y cruces por
+\subsection{Transiciones de estado y cruces por
 cero}\label{transiciones-de-estado-y-cruces-por-cero}
 
 Se analiza la derivada discreta del perfil de proyección horizontal de
@@ -3475,7 +3433,7 @@ múltiples trazos horizontales superpuestos o la transición entre el
 fondo y la tinta, proporcionando información sobre la complejidad
 estructural local.
 
-\subsection{4.4.3. Perfiles superior e inferior (Envoltura
+\subsection{Perfiles superior e inferior (Envoltura
 convexa)}\label{perfiles-superior-e-inferior-envoltura-convexa}
 
 Se calculan los perfiles superior \(P_{sup}\) e inferior \(P_{inf}\) de
@@ -3485,13 +3443,13 @@ respectivamente, donde la intensidad del píxel supera un umbral
 del trazo, actuando como una aproximación discreta de la envoltura
 convexa del carácter en esa columna.
 
-\section{4.5. Cuantificación y Discretización del Espacio de
+\section{Cuantificación y Discretización del Espacio de
 Observaciones}\label{cuantificaciuxf3n-y-discretizaciuxf3n-del-espacio-de-observaciones}
 
 Para alimentar modelos que requieren espacios de observación discretos,
 el espacio continuo de rasgos debe ser discretizado.
 
-\subsection{4.5.1. Función de cuantificación por intervalos
+\subsection{Función de cuantificación por intervalos
 (Binning)}\label{funciuxf3n-de-cuantificaciuxf3n-por-intervalos-binning}
 
 Dado un rasgo continuo \(v \in [v_{min}, v_{max}]\), se aplica una
@@ -3502,8 +3460,8 @@ intervalos (bins):
 q(v) = \left\lfloor \frac{v - v_{min}}{v_{max} - v_{min}} \times N \right\rfloor
 \]
 
-\subsection{4.5.2. Codificación binaria y construcción del alfabeto de
-256 símbolos
+\subsection{Codificación binaria y construcción del alfabeto de 256
+símbolos
 observables}\label{codificaciuxf3n-binaria-y-construcciuxf3n-del-alfabeto-de-256-suxedmbolos-observables}
 
 Combinando los rasgos cuantificados (por ejemplo, centroide Y, espesor
@@ -3513,7 +3471,7 @@ definir un \textbf{alfabeto discreto de exactamente 256 símbolos
 observables} (\(2^8\)), donde cada símbolo representa una configuración
 estructural local única de la ventana deslizante.
 
-\subsection{4.5.3. Análisis de la entropía de Shannon de las secuencias
+\subsection{Análisis de la entropía de Shannon de las secuencias
 generadas}\label{anuxe1lisis-de-la-entropuxeda-de-shannon-de-las-secuencias-generadas}
 
 La riqueza informativa de las secuencias generadas se valida mediante la
@@ -3704,11 +3662,9 @@ la red, disminuyendo el tiempo total de ejecución.
 
 \chapter{Caso de estudio}\label{caso-de-estudio}
 
-\bookmarksetup{startatroot}
+\section{CASO CNN}\label{caso-cnn}
 
-\chapter{CASO CNN}\label{caso-cnn}
-
-\section{Arquitectura de la red neuronal
+\subsection{Arquitectura de la red neuronal
 convolucional}\label{arquitectura-de-la-red-neuronal-convolucional}
 
 La arquitectura propuesta recibe imágenes de tamaño
@@ -3742,7 +3698,8 @@ seguidos de un clasificador denso.
 \end{Highlighting}
 \end{Shaded}
 
-\section{Primer bloque convolucional}\label{primer-bloque-convolucional}
+\subsection{Primer bloque
+convolucional}\label{primer-bloque-convolucional}
 
 La primera capa convolucional emplea 32 filtros de tamaño \(3\times3\):
 
@@ -3789,7 +3746,7 @@ Finalmente, se incorpora un mecanismo de regularización:
 que desactiva mapas de características completos de manera aleatoria,
 obligando a la red a aprender representaciones más robustas.
 
-\section{Segundo y tercer bloque
+\subsection{Segundo y tercer bloque
 convolucional}\label{segundo-y-tercer-bloque-convolucional}
 
 Los bloques posteriores incrementan progresivamente el número de filtros
@@ -3798,7 +3755,7 @@ permite capturar patrones cada vez más complejos, tales como
 combinaciones de curvas, intersecciones y configuraciones geométricas
 características de cada glifo.
 
-\section{Clasificador}\label{clasificador}
+\subsection{Clasificador}\label{clasificador}
 
 Las características extraídas se transforman en un vector
 unidimensional:
@@ -3828,9 +3785,7 @@ La capa de salida utiliza la función Softmax:
 la cual produce una distribución de probabilidad sobre todas las clases
 del alfabeto.
 
-\bookmarksetup{startatroot}
-
-\chapter{Entrenamiento}\label{entrenamiento-1}
+\section{Entrenamiento}\label{entrenamiento-1}
 
 El modelo se compiló utilizando el optimizador Adam:
 
@@ -3877,9 +3832,7 @@ Asimismo, el mejor modelo obtenido se almacenó automáticamente:
 \end{Highlighting}
 \end{Shaded}
 
-\bookmarksetup{startatroot}
-
-\chapter{Sistema de inferencia
+\section{Sistema de inferencia
 interactivo}\label{sistema-de-inferencia-interactivo}
 
 Finalmente, se desarrolló una interfaz interactiva en Google Colab que
@@ -3917,9 +3870,7 @@ Además de la predicción principal, la interfaz presenta las tres clases
 con mayor probabilidad, proporcionando información adicional sobre la
 confianza y las posibles ambigüedades del modelo.
 
-\bookmarksetup{startatroot}
-
-\chapter{CASO HMM}\label{caso-hmm}
+\section{CASO HMM}\label{caso-hmm}
 
 \bookmarksetup{startatroot}
 

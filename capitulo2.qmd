@@ -9,7 +9,7 @@ language:
   crossref-imp-prefix: "Propiedad"
 ---
 
-# Espacio Probabilístico y Procesos Estocásticos Subyacentes
+## Espacio Probabilístico y Procesos Estocásticos Subyacentes
 
 Para establecer formalmente una Cadena de Markov a Tiempo Continuo (CTMC), es necesario partir de los axiomas fundamentales de la teoría de la medida, para más detalle consultar el libro de @Rudin1987.
 
@@ -39,7 +39,7 @@ donde cada $X(t): \Omega \to S$ es una función medible respecto a $\mathcal{F}_
 
 Interpretamos $X(t)$ como el "color verdadero" del pixel en el instante (o parámetro continuo) $t$.
 
-# Cadenas de Markov a Tiempo Continuo (CTMC)
+## Cadenas de Markov a Tiempo Continuo (CTMC)
 
 La transición del concepto general de proceso estocástico al de proceso de Markov requiere la propiedad de amnesia (pérdida de memoria).
 
@@ -134,7 +134,7 @@ Un Modelo Oculto de Márkov Categórico (Categorical HMM, a menudo también llam
 En cualquier HMM, el sistema modela un proceso estocástico con estados que no son directamente visibles, y cada estado genera (emite) una observación que sí podemos medir.
 :::
 
-# Dinámica Infinitesimal y Generador de la Cadena
+### Dinámica Infinitesimal y Generador de la Cadena
 
 La evolución continua del color del pixel requiere una descripción mediante probabilidades de transición, lo cual nos lleva a la representación matricial de la derivada de $P(t)$.
 
@@ -201,7 +201,7 @@ e^{Qt}
 $$
 :::
 
-# Utilidad hacia Cadenas de Márkov Ocultas (HMM)
+## Utilidad hacia Cadenas de Márkov Ocultas (HMM)
 
 La fundamentación teórica precedente modela la dinámica subyacente determinista de la matriz de transición y la evolución estocástica de las trayectorias del sistema. Para extender esta arquitectura a un Modelo Oculto de Márkov (HMM) en el contexto de la inferencia y análisis de píxeles en imágenes que contienen letras del alfabeto latino, se formaliza la siguiente estructura bivariada:
 
@@ -273,7 +273,7 @@ e_{xy}
 $$
 :::
 
-# Inferencia y Filtrado en el Modelo Oculto
+## Inferencia y Filtrado en el Modelo Oculto
 
 Una vez establecida la dinámica del sistema, es necesario desarrollar la maquinaria analítica para inferir el estado latente del pixel a partir de las observaciones empíricas.
 
@@ -376,7 +376,7 @@ $$
 
 Para los pixeles es la trayectoria más probable de los colores verdaderos del pixel (el problema de decodificación).
 
-## Ejemplo ilustrativo del algoritmo Forward--Backward
+### Ejemplo ilustrativo del algoritmo Forward--Backward
 
 Para ilustrar el funcionamiento de los algoritmos Forward y Backward en el contexto del reconocimiento de imágenes, consideremos un píxel cuyo color verdadero puede encontrarse en uno de dos estados ocultos:
 
@@ -545,7 +545,7 @@ P(Y)
 0.1768.
 $$
 
-### Cálculo Backward
+#### Cálculo Backward
 
 La variable Backward se define mediante
 
@@ -585,7 +585,7 @@ $$
 0.59.
 $$
 
-### Inferencia del estado oculto
+#### Inferencia del estado oculto
 
 Una de las principales ventajas del algoritmo Forward--Backward es que permite calcular la probabilidad posterior de cada estado oculto.
 
@@ -643,7 +643,7 @@ A pesar de que el sensor observa un píxel blanco en el primer instante y negro 
 
 ![Modelo Oculto de Markov para un píxel con dos estados ocultos y dos observaciones.](images/imagenesHMM/pixelblanconegrodibujo.png){#fig-pixelbn fig-align="center" width="450"}
 
-# Estimación de Parámetros y Calibración del Modelo
+## Estimación de Parámetros y Calibración del Modelo
 
 En la práctica, la matriz generadora infinitesimal $Q$ (que dicta la probabilidad de degradación del color para el caso de estudio) y las probabilidades de emisión empírica rara vez son conocidas a priori y deben ser estimadas a partir de un dataset de imágenes (el alfabeto latino modificado).
 

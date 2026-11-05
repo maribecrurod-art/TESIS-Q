@@ -4,9 +4,9 @@ execute:
   freeze: false
 ---
 
-# CASO CNN
+## CASO CNN
 
-## Arquitectura de la red neuronal convolucional
+### Arquitectura de la red neuronal convolucional
 
 La arquitectura propuesta recibe imágenes de tamaño $28\times28\times1$ y está compuesta por tres bloques convolucionales seguidos de un clasificador denso.
 
@@ -35,7 +35,7 @@ model = tf.keras.Sequential([
 ])
 ```
 
-## Primer bloque convolucional
+### Primer bloque convolucional
 
 La primera capa convolucional emplea 32 filtros de tamaño $3\times3$:
 
@@ -69,11 +69,11 @@ tf.keras.layers.SpatialDropout2D(0.25)
 
 que desactiva mapas de características completos de manera aleatoria, obligando a la red a aprender representaciones más robustas.
 
-## Segundo y tercer bloque convolucional
+### Segundo y tercer bloque convolucional
 
 Los bloques posteriores incrementan progresivamente el número de filtros hasta 64 y 128, respectivamente. El aumento en la profundidad de la red permite capturar patrones cada vez más complejos, tales como combinaciones de curvas, intersecciones y configuraciones geométricas características de cada glifo.
 
-## Clasificador
+### Clasificador
 
 Las características extraídas se transforman en un vector unidimensional:
 
@@ -95,7 +95,7 @@ tf.keras.layers.Dense(num_classes, activation='softmax')
 
 la cual produce una distribución de probabilidad sobre todas las clases del alfabeto.
 
-# Entrenamiento
+## Entrenamiento
 
 El modelo se compiló utilizando el optimizador Adam:
 
@@ -131,7 +131,7 @@ checkpoint = ModelCheckpoint(
 )
 ```
 
-# Sistema de inferencia interactivo
+## Sistema de inferencia interactivo
 
 Finalmente, se desarrolló una interfaz interactiva en Google Colab que permite dibujar caracteres del alfabeto Náhuatl y obtener predicciones en tiempo real.
 
@@ -157,4 +157,4 @@ idx_ganador = np.argmax(predicciones)
 
 Además de la predicción principal, la interfaz presenta las tres clases con mayor probabilidad, proporcionando información adicional sobre la confianza y las posibles ambigüedades del modelo.
 
-# CASO HMM
+## CASO HMM
