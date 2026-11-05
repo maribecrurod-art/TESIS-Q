@@ -468,8 +468,18 @@ window.Quarto = {
 <h2 data-number="4.1" class="anchored" data-anchor-id="espacio-probabilístico-y-procesos-estocásticos-subyacentes"><span class="header-section-number">4.1</span> Espacio Probabilístico y Procesos Estocásticos Subyacentes</h2>
 <p>Para establecer formalmente una Cadena de Markov a Tiempo Continuo (CTMC), es necesario partir de los axiomas fundamentales de la teoría de la medida, para más detalle consultar el libro de <span class="citation" data-cites="Rudin1987">@Rudin1987</span>.</p>
 <p>Para esto, se asumirá que el lector tiene conocimientos previos sobre teoría de la medida como lo son las <span class="math inline">\(\sigma\)</span>-álgebras, espacio muestral y medida de probabilidad, entre otros.</p>
-<div id="nte-espacio-filtrado" class="definition" name="Espacio de Probabilidad Filtrado">
+<div id="nte-espacio-filtrado" class="callout callout-style-default callout-note callout-titled" title="Definición (Espacio de Probabilidad Filtrado)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definición&nbsp;4.1: Definición (Espacio de Probabilidad Filtrado)
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Sea <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> un espacio de probabilidad, donde <span class="math inline">\(\Omega\)</span> es el espacio muestral, <span class="math inline">\(\mathcal{F}\)</span> es una <span class="math inline">\(\sigma\)</span>-álgebra sobre <span class="math inline">\(\Omega\)</span>, y <span class="math inline">\(\mathbb{P}\)</span> es una medida de probabilidad. Sea <span class="math inline">\(\mathbb{F} = \{\mathcal{F}_t\}_{t \ge 0}\)</span> una filtración, es decir, una familia no decreciente de sub-<span class="math inline">\(\sigma\)</span>-álgebras de <span class="math inline">\(\mathcal{F}\)</span> tal que <span class="math inline">\(\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}\)</span> para todo <span class="math inline">\(0 \le s &lt; t\)</span>. El conjunto <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})\)</span> se denomina espacio de probabilidad filtrado.</p>
+</div>
 </div>
 <div id="nte-espacio-estados-discreto" class="callout callout-style-default callout-note callout-titled" title="Definición (Espacio de Estados Discreto)">
 <div class="callout-header d-flex align-content-center">
@@ -477,7 +487,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.1: Definición (Espacio de Estados Discreto)
+Definición&nbsp;4.2: Definición (Espacio de Estados Discreto)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -492,7 +502,7 @@ Definición&nbsp;4.1: Definición (Espacio de Estados Discreto)
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.2: Definición (Proceso Estocástico a Tiempo Continuo)
+Definición&nbsp;4.3: Definición (Proceso Estocástico a Tiempo Continuo)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -514,7 +524,7 @@ X = \{X(t) : t \in \mathbb{R}_{\ge 0}\},
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.3: Definición (Propiedad de Markov)
+Definición&nbsp;4.4: Definición (Propiedad de Markov)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -549,7 +559,7 @@ i_1, i_2, \dots, i_n, i, j \in S,
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.4: Definición (Probabilidades de Transición y Homogeneidad)
+Definición&nbsp;4.5: Definición (Probabilidades de Transición y Homogeneidad)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -616,7 +626,7 @@ Figura&nbsp;4.1: La probabilidad de transición <span class="math inline">\(p_{i
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.5: Definición (Modelo Oculto de Markov Categórico)
+Definición&nbsp;4.6: Definición (Modelo Oculto de Markov Categórico)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -633,7 +643,7 @@ Definición&nbsp;4.5: Definición (Modelo Oculto de Markov Categórico)
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.6: Definición (Matriz Generadora Infinitesimal)
+Definición&nbsp;4.7: Definición (Matriz Generadora Infinitesimal)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -710,7 +720,7 @@ e^{Qt}
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.7: Definición (Proceso Latente e Inobservable)
+Definición&nbsp;4.8: Definición (Proceso Latente e Inobservable)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -728,7 +738,7 @@ X = \{X(t)\}_{t \ge 0}
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.8: Definición (Proceso de Observación Empírica)
+Definición&nbsp;4.9: Definición (Proceso de Observación Empírica)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -755,7 +765,7 @@ Y(t):\Omega\to O
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.9: Definición (Matriz de Emisión e Independencia Condicional)
+Definición&nbsp;4.10: Definición (Matriz de Emisión e Independencia Condicional)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -769,7 +779,7 @@ Definición&nbsp;4.9: Definición (Matriz de Emisión e Independencia Condiciona
 \quad
 \text{c.s.}
 \]</span></p>
-<p>donde <span class="math inline">\(\mathcal{F}_t^X\)</span> y <span class="math inline">\(\mathcal{F}_{t^-}^Y\)</span> denotan las filtraciones <span class="quarto-unresolved-ref">?nte-espacio-filtrado</span> del historial latente y observable, respectivamente.</p>
+<p>donde <span class="math inline">\(\mathcal{F}_t^X\)</span> y <span class="math inline">\(\mathcal{F}_{t^-}^Y\)</span> denotan las filtraciones <a href="#nte-espacio-filtrado" class="quarto-xref">Definición&nbsp;<span>4.1</span></a> del historial latente y observable, respectivamente.</p>
 <p>Estas probabilidades definen las entradas de la matriz de emisión estocástica</p>
 <p><span class="math display">\[
 E=[e_{xy}],
@@ -799,7 +809,7 @@ Y=(y_1,y_2,\dots,y_K)
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.10: Definición (Filtro Hacia Adelante (Forward) y Verosimilitud)
+Definición&nbsp;4.11: Definición (Filtro Hacia Adelante (Forward) y Verosimilitud)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -813,7 +823,7 @@ Y(t_1)=y_1,\dots,Y(t_k)=y_k,
 X(t_k)=i
 \bigr).
 \]</span></p>
-<p>Esta cantidad se calcula recursivamente mediante la ecuación de Chapman-Kolmogorov <a href="#imp-chapman-kolmogorov" class="quarto-xref">Propiedad&nbsp;<span>4.1</span></a> y la matriz de emisión <span class="math inline">\(E\)</span> <a href="#nte-matriz-emision" class="quarto-xref">Definición&nbsp;<span>4.9</span></a>:</p>
+<p>Esta cantidad se calcula recursivamente mediante la ecuación de Chapman-Kolmogorov <a href="#imp-chapman-kolmogorov" class="quarto-xref">Propiedad&nbsp;<span>4.1</span></a> y la matriz de emisión <span class="math inline">\(E\)</span> <a href="#nte-matriz-emision" class="quarto-xref">Definición&nbsp;<span>4.10</span></a>:</p>
 <p><span class="math display">\[
 \alpha_k(j)
 =
@@ -858,7 +868,7 @@ e^{Q\Delta t_k}.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.11: Definición (Decodificación Óptima Global)
+Definición&nbsp;4.12: Definición (Decodificación Óptima Global)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1115,7 +1125,7 @@ Figura&nbsp;4.2: Modelo Oculto de Markov para un píxel con dos estados ocultos 
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definición&nbsp;4.12: Propiedad (Algoritmo de Expectation-Maximization (Baum-Welch))
+Definición&nbsp;4.13: Propiedad (Algoritmo de Expectation-Maximization (Baum-Welch))
 </div>
 </div>
 <div class="callout-body-container callout-body">
