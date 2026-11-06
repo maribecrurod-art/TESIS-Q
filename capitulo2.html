@@ -468,11 +468,14 @@ window.Quarto = {
 <h2 data-number="4.1" class="anchored" data-anchor-id="espacio-probabilístico-y-procesos-estocásticos-subyacentes"><span class="header-section-number">4.1</span> Espacio Probabilístico y Procesos Estocásticos Subyacentes</h2>
 <p>Para establecer formalmente una Cadena de Markov a Tiempo Continuo (CTMC), es necesario partir de los axiomas fundamentales de la teoría de la medida, para más detalle consultar el libro de <span class="citation" data-cites="Rudin1987">@Rudin1987</span>.</p>
 <p>Para esto, se asumirá que el lector tiene conocimientos previos sobre teoría de la medida como lo son las <span class="math inline">\(\sigma\)</span>-álgebras, espacio muestral y medida de probabilidad, entre otros.</p>
-<p><strong>Espacio de probabilidad filtrado</strong> Sea <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> un espacio de probabilidad, donde <span class="math inline">\(\Omega\)</span> es el espacio muestral, <span class="math inline">\(\mathcal{F}\)</span> es una <span class="math inline">\(\sigma\)</span>-álgebra sobre <span class="math inline">\(\Omega\)</span>, y <span class="math inline">\(\mathbb{P}\)</span> es una medida de probabilidad. Sea <span class="math inline">\(\mathbb{F} = \{\mathcal{F}_t\}_{t \ge 0}\)</span> una filtración, es decir, una familia no decreciente de sub-<span class="math inline">\(\sigma\)</span>-álgebras de <span class="math inline">\(\mathcal{F}\)</span> tal que <span class="math inline">\(\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}\)</span> para todo <span class="math inline">\(0 \le s &lt; t\)</span>. El conjunto <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})\)</span> se denomina espacio de probabilidad filtrado.</p>
-<p><strong>Espacio de estados discreto</strong> Definimos el espacio de estados <span class="math inline">\(S\)</span> como un conjunto discreto y finito (o numerable).</p>
+<p><strong>Espacio de probabilidad filtrado</strong></p>
+<p>Sea <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> un espacio de probabilidad, donde <span class="math inline">\(\Omega\)</span> es el espacio muestral, <span class="math inline">\(\mathcal{F}\)</span> es una <span class="math inline">\(\sigma\)</span>-álgebra sobre <span class="math inline">\(\Omega\)</span>, y <span class="math inline">\(\mathbb{P}\)</span> es una medida de probabilidad. Sea <span class="math inline">\(\mathbb{F} = \{\mathcal{F}_t\}_{t \ge 0}\)</span> una filtración, es decir, una familia no decreciente de sub-<span class="math inline">\(\sigma\)</span>-álgebras de <span class="math inline">\(\mathcal{F}\)</span> tal que <span class="math inline">\(\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}\)</span> para todo <span class="math inline">\(0 \le s &lt; t\)</span>. El conjunto <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})\)</span> se denomina espacio de probabilidad filtrado.</p>
+<p><strong>Espacio de estados discreto</strong></p>
+<p>Definimos el espacio de estados <span class="math inline">\(S\)</span> como un conjunto discreto y finito (o numerable).</p>
 <p>La topología en <span class="math inline">\(S\)</span> es discreta y su <span class="math inline">\(\sigma\)</span>-álgebra asociada es el conjunto potencia <span class="math inline">\(\mathcal{P}(S)\)</span>.</p>
 <p>En el contexto de nuestro proyecto, <span class="math inline">\(S\)</span> representa el conjunto de posibles colores o intensidades de un pixel (por ejemplo, el espacio RGB donde <span class="math inline">\(|S| = 256^3\)</span>, o una escala de grises finita).</p>
-<p><strong>Proceso estocástico a Tiempo Continuo</strong> Un proceso estocástico en tiempo continuo con espacio de estados discreto <span class="math inline">\(S\)</span> es una familia de variables aleatorias</p>
+<p><strong>Proceso estocástico a Tiempo Continuo</strong></p>
+<p>Un proceso estocástico en tiempo continuo con espacio de estados discreto <span class="math inline">\(S\)</span> es una familia de variables aleatorias</p>
 <p><span class="math display">\[
 X = \{X(t) : t \in \mathbb{R}_{\ge 0}\},
 \]</span></p>
@@ -482,7 +485,8 @@ X = \{X(t) : t \in \mathbb{R}_{\ge 0}\},
 <section id="cadenas-de-markov-a-tiempo-continuo-ctmc" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="cadenas-de-markov-a-tiempo-continuo-ctmc"><span class="header-section-number">4.2</span> Cadenas de Markov a Tiempo Continuo (CTMC)</h2>
 <p>La transición del concepto general de proceso estocástico al de proceso de Markov requiere la propiedad de amnesia (pérdida de memoria).</p>
-<p><strong>Propiedad de Markov</strong> El proceso adaptado <span class="math inline">\(X = \{X(t)\}_{t \ge 0}\)</span> es una Cadena de Markov a Tiempo Continuo si satisface la condición de Markov relativa a la filtración <span class="math inline">\(\mathbb{F}\)</span>: para cualquier conjunto discreto de tiempos</p>
+<p><strong>Propiedad de Markov</strong></p>
+<p>El proceso adaptado <span class="math inline">\(X = \{X(t)\}_{t \ge 0}\)</span> es una Cadena de Markov a Tiempo Continuo si satisface la condición de Markov relativa a la filtración <span class="math inline">\(\mathbb{F}\)</span>: para cualquier conjunto discreto de tiempos</p>
 <p><span class="math display">\[
 0 \le t_1 &lt; t_2 &lt; \dots &lt; t_n &lt; t
 \]</span></p>
@@ -505,7 +509,8 @@ i_1, i_2, \dots, i_n, i, j \in S,
 \text{c.s. (casi seguramente)}
 \]</span></p>
 <p>para todo <span class="math inline">\(0 \le s \le t\)</span>.</p>
-<p><strong>Probabilidades de transición y homogeneidad</strong> Definimos la probabilidad de transición del estado <span class="math inline">\(i\)</span> al estado <span class="math inline">\(j\)</span> en el intervalo <span class="math inline">\([s,t]\)</span> como</p>
+<p><strong>Probabilidades de transición y homogeneidad</strong></p>
+<p>Definimos la probabilidad de transición del estado <span class="math inline">\(i\)</span> al estado <span class="math inline">\(j\)</span> en el intervalo <span class="math inline">\([s,t]\)</span> como</p>
 <p><span class="math display">\[
 p_{ij}(s,t)
 =
@@ -610,13 +615,15 @@ e^{Qt}
 <section id="utilidad-hacia-cadenas-de-márkov-ocultas-hmm" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="utilidad-hacia-cadenas-de-márkov-ocultas-hmm"><span class="header-section-number">4.3</span> Utilidad hacia Cadenas de Márkov Ocultas (HMM)</h2>
 <p>La fundamentación teórica precedente modela la dinámica subyacente determinista de la matriz de transición y la evolución estocástica de las trayectorias del sistema. Para extender esta arquitectura a un Modelo Oculto de Márkov (HMM) en el contexto de la inferencia y análisis de píxeles en imágenes que contienen letras del alfabeto latino, se formaliza la siguiente estructura bivariada:</p>
-<p><strong>Proceso latente e Inobservable</strong> El proceso de Markov a tiempo continuo</p>
+<p><strong>Proceso latente e Inobservable</strong></p>
+<p>El proceso de Markov a tiempo continuo</p>
 <p><span class="math display">\[
 X = \{X(t)\}_{t \ge 0}
 \]</span></p>
 <p>sobre el espacio de estados <span class="math inline">\(S\)</span>, caracterizado por su matriz generadora infinitesimal <span class="math inline">\(Q\)</span>, constituye el <em>proceso latente</em>. Las alteraciones estocásticas inducidas por <span class="math inline">\(Q\)</span> a lo largo del parámetro <span class="math inline">\(t\)</span> (representando una métrica de degradación física o divergencia espacial) rigen las transiciones hacia estados degradados, manteniéndose inaccesibles a la medición directa.</p>
 <p>La variable <span class="math inline">\(X(t)\)</span> describe el estado ideal o “verdadero” del pixel.</p>
-<p><strong>Proceso de observación empírica</strong> Sea</p>
+<p><strong>Proceso de observación empírica</strong></p>
+<p>Sea</p>
 <p><span class="math display">\[
 (O,\mathcal{P}(O))
 \]</span></p>
@@ -631,7 +638,8 @@ Y(t):\Omega\to O
 \]</span></p>
 <p>que representan la lectura empírica o ruidosa en el parámetro <span class="math inline">\(t\)</span>.</p>
 <p>En este caso <span class="math inline">\(O\)</span> denota el conjunto finito de colores o intensidades registrables por un sensor óptico y <span class="math inline">\(Y\)</span> es la lectura ruidosa del pixel en el tiempo <span class="math inline">\(t\)</span>.</p>
-<p><strong>Matriz de emisión e independencia condicional</strong> La dependencia estocástica entre ambos procesos queda unívocamente determinada por la condición de independencia local.</p>
+<p><strong>Matriz de emisión e independencia condicional</strong></p>
+<p>La dependencia estocástica entre ambos procesos queda unívocamente determinada por la condición de independencia local.</p>
 <p>Para cualquier instante <span class="math inline">\(t\ge0\)</span>, la observación <span class="math inline">\(Y(t)\)</span> es condicionalmente independiente de toda la historia previa del sistema dado el estado concurrente <span class="math inline">\(X(t)\)</span>.</p>
 <p>Formalmente, para cualquier <span class="math inline">\(y\in O\)</span> y <span class="math inline">\(x\in S\)</span>:</p>
 <p><span class="math display">\[
@@ -663,7 +671,8 @@ Y=(y_1,y_2,\dots,y_K)
 <p><span class="math display">\[
 0 \le t_1 &lt; t_2 &lt; \dots &lt; t_K \le T.
 \]</span></p>
-<p><strong>Filtro hacia adelante y verosimilitud</strong> Definimos la variable de avance <span class="math inline">\(\alpha_k(i)\)</span> como la probabilidad conjunta de observar la secuencia parcial hasta el <span class="math inline">\(k\)</span>-ésimo instante y que el estado oculto en dicho instante sea <span class="math inline">\(i\in S\)</span>:</p>
+<p><strong>Filtro hacia adelante y verosimilitud</strong></p>
+<p>Definimos la variable de avance <span class="math inline">\(\alpha_k(i)\)</span> como la probabilidad conjunta de observar la secuencia parcial hasta el <span class="math inline">\(k\)</span>-ésimo instante y que el estado oculto en dicho instante sea <span class="math inline">\(i\in S\)</span>:</p>
 <p><span class="math display">\[
 \alpha_k(i)
 =
@@ -710,7 +719,8 @@ e^{Q\Delta t_k}.
 \sum_{i\in S}
 \alpha_K(i).
 \]</span></p>
-<p><strong>Decodificación óptima global</strong> Para reconstruir la trayectoria más probable, buscamos la secuencia de estados latentes</p>
+<p><strong>Decodificación óptima global</strong></p>
+<p>Para reconstruir la trayectoria más probable, buscamos la secuencia de estados latentes</p>
 <p><span class="math display">\[
 \hat{X}
 =
