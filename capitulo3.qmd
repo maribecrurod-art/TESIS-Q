@@ -77,7 +77,7 @@ Estos parámetros determinan completamente la función $f(x;\theta)$ y son ajust
 
 ### Kernels Convolucionales
 
- **Definición Formal**
+**Definición Formal**
 
 Un kernel es un tensor de parámetros que define un operador lineal local.
 

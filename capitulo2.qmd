@@ -1,7 +1,11 @@
 ---
 title: "Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos"
-format: html
-lang: es
+format:
+  html:
+    lang: es
+  pdf:
+    lang: es
+    keep-tex: true
 language:
   crossref-nte-title: "Definición"
   crossref-nte-prefix: "Definición"
@@ -15,19 +19,22 @@ Para establecer formalmente una Cadena de Markov a Tiempo Continuo (CTMC), es ne
 
 Para esto, se asumirá que el lector tiene conocimientos previos sobre teoría de la medida como lo son las $\sigma$-álgebras, espacio muestral y medida de probabilidad, entre otros.
 
-::: {#nte-espacio-filtrado .callout-note title="Definición (Espacio de Probabilidad Filtrado)"}
-Sea $(\Omega, \mathcal{F}, \mathbb{P})$ un espacio de probabilidad, donde $\Omega$ es el espacio muestral, $\mathcal{F}$ es una $\sigma$-álgebra sobre $\Omega$, y $\mathbb{P}$ es una medida de probabilidad. Sea $\mathbb{F} = \{\mathcal{F}_t\}_{t \ge 0}$ una filtración, es decir, una familia no decreciente de sub-$\sigma$-álgebras de $\mathcal{F}$ tal que $\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}$ para todo $0 \le s < t$. El conjunto $(\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})$ se denomina espacio de probabilidad filtrado.
-:::
+**Espacio de probabilidad filtrado**
 
-::: {#nte-espacio-estados-discreto .callout-note title="Definición (Espacio de Estados Discreto)"}
+Sea $(\Omega, \mathcal{F}, \mathbb{P})$ un espacio de probabilidad, donde $\Omega$ es el espacio muestral, $\mathcal{F}$ es una $\sigma$-álgebra sobre $\Omega$, y $\mathbb{P}$ es una medida de probabilidad. Sea $\mathbb{F} = \{\mathcal{F}_t\}_{t \ge 0}$ una filtración, es decir, una familia no decreciente de sub-$\sigma$-álgebras de $\mathcal{F}$ tal que $\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}$ para todo $0 \le s < t$. El conjunto $(\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})$ se denomina espacio de probabilidad filtrado.
+
+
+**Espacio de estados discreto**
+
 Definimos el espacio de estados $S$ como un conjunto discreto y finito (o numerable).
 
 La topología en $S$ es discreta y su $\sigma$-álgebra asociada es el conjunto potencia $\mathcal{P}(S)$.
-:::
+
 
 En el contexto de nuestro proyecto, $S$ representa el conjunto de posibles colores o intensidades de un pixel (por ejemplo, el espacio RGB donde $|S| = 256^3$, o una escala de grises finita).
 
-::: {#nte-proceso-estocastico .callout-note title="Definición (Proceso Estocástico a Tiempo Continuo)"}
+**Proceso estocástico a Tiempo Continuo**
+
 Un proceso estocástico en tiempo continuo con espacio de estados discreto $S$ es una familia de variables aleatorias
 
 $$
@@ -35,7 +42,7 @@ X = \{X(t) : t \in \mathbb{R}_{\ge 0}\},
 $$
 
 donde cada $X(t): \Omega \to S$ es una función medible respecto a $\mathcal{F}_t$.
-:::
+
 
 Interpretamos $X(t)$ como el "color verdadero" del pixel en el instante (o parámetro continuo) $t$.
 
@@ -43,7 +50,8 @@ Interpretamos $X(t)$ como el "color verdadero" del pixel en el instante (o pará
 
 La transición del concepto general de proceso estocástico al de proceso de Markov requiere la propiedad de amnesia (pérdida de memoria).
 
-::: {#nte-propiedad-markov .callout-note title="Definición (Propiedad de Markov)"}
+**Propiedad de Markov**
+
 El proceso adaptado $X = \{X(t)\}_{t \ge 0}$ es una Cadena de Markov a Tiempo Continuo si satisface la condición de Markov relativa a la filtración $\mathbb{F}$: para cualquier conjunto discreto de tiempos
 
 $$
@@ -75,9 +83,10 @@ $$
 $$
 
 para todo $0 \le s \le t$.
-:::
 
-::: {#nte-probabilidades-transicion .callout-note title="Definición (Probabilidades de Transición y Homogeneidad)"}
+
+**Probabilidades de transición y homogeneidad**
+
 Definimos la probabilidad de transición del estado $i$ al estado $j$ en el intervalo $[s,t]$ como
 
 $$
@@ -107,9 +116,10 @@ P(\tau)
 =
 [p_{ij}(\tau)]_{i,j\in S}.
 $$
-:::
 
-::: {#imp-chapman-kolmogorov .callout-important title="Propiedad (Ecuaciones de Chapman-Kolmogorov)"}
+
+**Ecuaciones de Chapman-Kolmogorov**
+
 Para cualquier $s,t \ge 0$, la familia de matrices de transición $\{P(t)\}_{t\ge0}$ forma un semigrupo de operadores estocásticos, satisfaciendo$$
 P(t+s)=P(t)P(s)
 $$
@@ -122,23 +132,25 @@ p_{ij}(t+s)
 \sum_{k\in S}
 p_{ik}(t)p_{kj}(s).
 $$
-:::
+
 
 ![La probabilidad de transición $p_{ij}(t+s)$ se obtiene sumando las contribuciones de todos los posibles estados intermedios $k$.](Imagenes_tesis\chapman-k.png){#fig-chapman fig-align="center" width="550"}
 
 Por otro lado, también se tiene la existencia de los HMM categóricos.
 
-::: {#nte-hmm-categorico-1 .callout-note title="Definición (Modelo Oculto de Markov Categórico)"}
+**Modelos Ocultos de Markov Categóricos (HMM)**
+
 Un Modelo Oculto de Márkov Categórico (Categorical HMM, a menudo también llamado HMM Discreto o Multinomial) es una variante de los modelos HMM donde las observaciones emitidas por los estados ocultos son valores discretos y finitos que pertenecen a categorías específicas, en lugar de ser valores numéricos continuos.
 
 En cualquier HMM, el sistema modela un proceso estocástico con estados que no son directamente visibles, y cada estado genera (emite) una observación que sí podemos medir.
-:::
+
 
 ### Dinámica Infinitesimal y Generador de la Cadena
 
 La evolución continua del color del pixel requiere una descripción mediante probabilidades de transición, lo cual nos lleva a la representación matricial de la derivada de $P(t)$.
 
-::: {#nte-matriz-generadora .callout-note title="Definición (Matriz Generadora Infinitesimal)"}
+**Matriz generadora infinitesimal**
+
 Asumiendo que $p_{ij}(t)$ es diferenciable por la derecha en $t=0$, definimos la probabilidad de transición $q_{ij}$ del estado $i$ al estado $j$ (donde $i \neq j$) como:
 
 $$
@@ -172,9 +184,9 @@ se denomina matriz generadora (o matriz $Q$) de la cadena. Sus filas suman cero:
 $$
 \sum_{j\in S} q_{ij}=0.
 $$
-:::
 
-::: {#imp-ecuaciones-dif-kolmogorov .callout-important title="Propiedad (Ecuaciones Diferenciales de Kolmogorov)"}
+**Ecuaciones diferenciales de Kolmogorov**
+
 Bajo condiciones de regularidad (que se cumplen trivialmente si el espacio de estados del color $S$ es finito), la matriz de transición $P(t)$ es la solución única a las ecuaciones diferenciales matriciales de Kolmogorov Hacia Adelante (Forward) y Hacia Atrás (Backward) @Norris1998 :
 
 -   **Forward:**
@@ -199,13 +211,13 @@ e^{Qt}
 \sum_{n=0}^{\infty}
 \frac{(Qt)^n}{n!}.
 $$
-:::
 
 ## Utilidad hacia Cadenas de Márkov Ocultas (HMM)
 
 La fundamentación teórica precedente modela la dinámica subyacente determinista de la matriz de transición y la evolución estocástica de las trayectorias del sistema. Para extender esta arquitectura a un Modelo Oculto de Márkov (HMM) en el contexto de la inferencia y análisis de píxeles en imágenes que contienen letras del alfabeto latino, se formaliza la siguiente estructura bivariada:
 
-::: {#nte-proceso-latente .callout-note title="Definición (Proceso Latente e Inobservable)"}
+**Proceso latente e Inobservable**
+
 El proceso de Markov a tiempo continuo
 
 $$
@@ -213,11 +225,11 @@ X = \{X(t)\}_{t \ge 0}
 $$
 
 sobre el espacio de estados $S$, caracterizado por su matriz generadora infinitesimal $Q$, constituye el *proceso latente*. Las alteraciones estocásticas inducidas por $Q$ a lo largo del parámetro $t$ (representando una métrica de degradación física o divergencia espacial) rigen las transiciones hacia estados degradados, manteniéndose inaccesibles a la medición directa.
-:::
 
 La variable $X(t)$ describe el estado ideal o "verdadero" del pixel.
 
-::: {#nte-proceso-observacion .callout-note title="Definición (Proceso de Observación Empírica)"}
+**Proceso de observación empírica**
+
 Sea
 
 $$
@@ -239,11 +251,12 @@ Y(t):\Omega\to O
 $$
 
 que representan la lectura empírica o ruidosa en el parámetro $t$.
-:::
+
 
 En este caso $O$ denota el conjunto finito de colores o intensidades registrables por un sensor óptico y $Y$ es la lectura ruidosa del pixel en el tiempo $t$.
 
-::: {#nte-matriz-emision .callout-note title="Definición (Matriz de Emisión e Independencia Condicional)"}
+**Matriz de emisión e independencia condicional**
+
 La dependencia estocástica entre ambos procesos queda unívocamente determinada por la condición de independencia local.
 
 Para cualquier instante $t\ge0$, la observación $Y(t)$ es condicionalmente independiente de toda la historia previa del sistema dado el estado concurrente $X(t)$.
@@ -271,7 +284,7 @@ e_{xy}
 =
 \mathbb{P}(Y(t)=y \mid X(t)=x).
 $$
-:::
+
 
 ## Inferencia y Filtrado en el Modelo Oculto
 
@@ -289,7 +302,8 @@ $$
 0 \le t_1 < t_2 < \dots < t_K \le T.
 $$
 
-::: {#nte-filtro-forward .callout-note title="Definición (Filtro Hacia Adelante (Forward) y Verosimilitud)"}
+**Filtro hacia adelante y verosimilitud**
+
 Definimos la variable de avance $\alpha_k(i)$ como la probabilidad conjunta de observar la secuencia parcial hasta el $k$-ésimo instante y que el estado oculto en dicho instante sea $i\in S$:
 
 $$
@@ -348,9 +362,9 @@ $$
 \sum_{i\in S}
 \alpha_K(i).
 $$
-:::
 
-::: {#nte-decodificacion-optima .callout-note title="Definición (Decodificación Óptima Global)"}
+**Decodificación óptima global**
+
 Para reconstruir la trayectoria más probable, buscamos la secuencia de estados latentes
 
 $$
@@ -372,7 +386,7 @@ La solución sistemática a este problema de programación dinámica espacial/te
 $$
 P(\Delta t_k).
 $$
-:::
+
 
 Para los pixeles es la trayectoria más probable de los colores verdaderos del pixel (el problema de decodificación).
 
@@ -457,7 +471,7 @@ $$
 P(y_1,\ldots,y_k,X_k=i).
 $$
 
-#### Paso 1
+**Paso 1**
 
 Para la primera observación $O_B$:
 
@@ -481,7 +495,7 @@ P(X_1=N)\,P(O_B\mid N)
 0.08.
 $$
 
-#### Paso 2
+**Paso 2**
 
 Calculamos primero la probabilidad de alcanzar el estado blanco:
 
@@ -525,7 +539,7 @@ $$
 0.1312.
 $$
 
-#### Verosimilitud de la secuencia observada
+**Verosimilitud de la secuencia observada**
 
 La probabilidad total de observar la secuencia $Y$ es
 
@@ -545,7 +559,7 @@ P(Y)
 0.1768.
 $$
 
-#### Cálculo Backward
+**Cálculo Backward**
 
 La variable Backward se define mediante
 
@@ -585,7 +599,7 @@ $$
 0.59.
 $$
 
-#### Inferencia del estado oculto
+**Inferencia del estado oculto**
 
 Una de las principales ventajas del algoritmo Forward--Backward es que permite calcular la probabilidad posterior de cada estado oculto.
 
@@ -647,7 +661,7 @@ A pesar de que el sensor observa un píxel blanco en el primer instante y negro 
 
 En la práctica, la matriz generadora infinitesimal $Q$ (que dicta la probabilidad de degradación del color para el caso de estudio) y las probabilidades de emisión empírica rara vez son conocidas a priori y deben ser estimadas a partir de un dataset de imágenes (el alfabeto latino modificado).
 
-::: {#nte-baum-welch .callout-important title="Propiedad (Algoritmo de Expectation-Maximization (Baum-Welch))"}
+**Algoritmo de Expectation-Maximization (Baum-Welch)**
 La estimación por máxima verosimilitud del conjunto de parámetros del modelo
 
 $$

@@ -158,3 +158,332 @@ idx_ganador = np.argmax(predicciones)
 Además de la predicción principal, la interfaz presenta las tres clases con mayor probabilidad, proporcionando información adicional sobre la confianza y las posibles ambigüedades del modelo.
 
 ## CASO HMM
+
+---
+title: "Caso de estudio"
+execute:
+  freeze: false
+---
+
+## CASO HMM
+
+En este capítulo se describe la metodología implementada para el reconocimiento automático de letras mayúsculas manuscritas del alfabeto latino mediante Modelos Ocultos de Markov (HMM). A diferencia del capítulo anterior, los bloques de código se muestran con fines documentales y no son ejecutados automáticamente dentro del documento debido al alto costo computacional del entrenamiento.
+
+### Configuración del entorno experimental
+
+El primer paso consistió en importar las bibliotecas necesarias para el procesamiento de imágenes, manipulación de datos, entrenamiento de los modelos HMM y evaluación de resultados, estableciendo una conexión con un sistema de almacenamiento externo:
+
+```python
+from google.colab import drive 
+drive.mount('/content/drive') 
+import cv2 
+import numpy as np 
+import torchvision.datasets as datasets 
+import torchvision.transforms as transforms 
+import matplotlib.pyplot as plt 
+import seaborn as sns 
+import random 
+import os 
+import pickle 
+from tqdm import tqdm  
+try:     
+    from hmmlearn import hmm 
+except ImportError:     
+    import subprocess     
+    import sys     
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "hmmlearn"])     
+    from hmmlearn import hmm  
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report 
+import warnings 
+```
+
+Para asegurar la reproducibilidad de los resultados, se fijaron semillas aleatorias y se deshabilitaron advertencias no críticas:
+
+```python
+np.random.seed(42) 
+random.seed(42) 
+warnings.filterwarnings("ignore") 
+```
+
+### Definición de parámetros del experimento
+
+A continuación, se definieron los parámetros principales utilizados durante el entrenamiento y la evaluación del sistema:
+
+```python
+N_ESTADOS = 12
+TRAIN_POR_CLASE = 1500
+TEST_POR_CLASE = 400
+
+IMG_SIZE = 40
+UMBRAL = 0.30
+
+ARCHIVO_MODELOS_CAT = "/content/drive/MyDrive/modelos_categorical_v_avanzada_hmm.pkl"
+
+TARGETS_MAYUSCULAS = list(range(10,36))
+MAPEO_LETTERS = {i: chr(ord('A') + (i - 10)) for i in range(10,36)}
+LETRAS_OBJETIVO = [chr(ord('A') + i) for i in range(26)]
+```
+
+Se optó por utilizar 12 estados ocultos para equilibrar la capacidad descriptiva y el costo computacional, seleccionando 1500 muestras de entrenamiento y 400 de prueba por clase con un tamaño de imagen fijado en $40\times40$ píxeles.
+
+### Obtención del conjunto de datos
+
+Para el entrenamiento y evaluación del sistema se empleó el conjunto de datos EMNIST ByClass:
+
+```python
+print("Descargando EMNIST ByClass...")
+emnist_train = datasets.EMNIST(root='./data', split='byclass', 
+                               train=True, download=True, 
+                               transform=transforms.ToTensor())
+emnist_test = datasets.EMNIST(root='./data', split='byclass',
+                               train=False, download=True, 
+                               transform=transforms.ToTensor())
+```
+
+De este conjunto se seleccionaron exclusivamente las letras mayúsculas con el propósito de acotar el problema de clasificación.
+
+### Arquitectura del HMM
+
+Se construyó una matriz de transición tipo Bakis flexible para modelar la evolución progresiva de los trazos:
+
+```python
+def construir_matriz_bakis_flexible(n_states):
+    A = np.zeros((n_states, n_states))
+    for i in range(n_states):
+        if i == n_states - 1:
+            A[i, i] = 1.0
+        elif i == n_states - 2:
+            A[i, i] = 0.60
+            A[i, i+1] = 0.40
+        else:
+            A[i, i] = 0.60
+            A[i, i+1] = 0.30
+            A[i, i+2] = 0.10
+    return A
+```
+
+La estructura Bakis impone una restricción direccional que permite permanecer en el mismo estado o avanzar, evitando retrocesos, lo cual resulta adecuado para describir procesos secuenciales como la formación de trazos manuscritos.
+
+### Preprocesamiento de imágenes
+
+Antes de convertir las imágenes en secuencias observables, se aplicó un proceso de normalización y alineamiento:
+
+```python
+def procesar_imagen(imagen_tensor):
+    imagen = imagen_tensor.squeeze().numpy()
+    imagen = np.fliplr(imagen)
+    imagen = np.rot90(imagen)
+
+    img_bin = (imagen > UMBRAL).astype(np.uint8)
+    filas = np.any(img_bin, axis=1)
+    columnas = np.any(img_bin, axis=0)
+
+    if np.any(filas) and np.any(columnas):
+        ymin, ymax = np.where(filas)[0][[0,-1]]
+        xmin, xmax = np.where(columnas)[0][[0,-1]]
+        recorte = imagen[ymin:ymax+1, xmin:xmax+1]
+
+        h, w = recorte.shape
+        max_dim = max(h, w)
+        pad_h = max_dim - h
+        pad_w = max_dim - w
+
+        pad_top = pad_h // 2
+        pad_bottom = pad_h - pad_top
+        pad_left = pad_w // 2
+        pad_right = pad_w - pad_left
+
+        recorte_cuadrado = np.pad(recorte, ((pad_top, pad_bottom), 
+        (pad_left, pad_right)), 
+        mode='constant', constant_values=0)
+        imagen = cv2.resize(recorte_cuadrado.astype(np.float32), 
+        (IMG_SIZE, IMG_SIZE),
+        interpolation=cv2.INTER_LINEAR)
+    else:
+        imagen = cv2.resize(imagen.astype(np.float32), (IMG_SIZE, IMG_SIZE), 
+        interpolation=cv2.INTER_LINEAR)
+
+    imagen = (imagen > UMBRAL).astype(float)
+    return imagen
+```
+
+Este procedimiento incluyó la corrección de orientación del conjunto EMNIST, la eliminación de espacios vacíos mediante recortes, relleno para conservar proporciones y redimensionamiento uniforme.
+
+### Extracción de características
+
+Cada imagen preprocesada fue transformada en una secuencia discreta de observaciones mediante ventanas deslizantes verticales:
+
+```python
+def imagen_a_secuencia(img, w=5, stride=2):
+    secuencia = []
+    altura = IMG_SIZE
+
+    for t in range(0, img.shape[1] - w + 1, stride):
+        ventana = img[:, t:t+w]
+        columna = np.mean(ventana, axis=1)
+        col_bin = (columna > 0.35).astype(int)
+
+        suma_tinta = np.sum(col_bin)
+
+        if suma_tinta == 0:
+            simbolo = 0 
+            secuencia.append([simbolo])
+            continue
+
+        if suma_tinta < 8: tinta_q = 0
+        elif suma_tinta < 16: tinta_q = 1
+        elif suma_tinta < 24: tinta_q = 2
+        else: tinta_q = 3
+
+        cg = np.sum(col_bin * np.arange(altura)) / suma_tinta
+        if cg < 12: cg_q = 0
+        elif cg < 20: cg_q = 1
+        elif cg < 28: cg_q = 2
+        else: cg_q = 3
+
+        transiciones = np.sum(np.abs(np.diff(col_bin)))
+        trans_q = min(int(transiciones), 3)
+
+        indices_tinta = np.where(col_bin > 0)[0]
+        perfil_sup = indices_tinta[0]
+        perfil_inf = indices_tinta[-1]
+
+        up_q = 1 if perfil_sup > 10 else 0    
+        low_q = 1 if perfil_inf < 30 else 0   
+
+        simbolo = (tinta_q << 6) | (cg_q << 4) | (trans_q << 2) | (up_q << 1) | low_q
+        secuencia.append([simbolo])
+
+    return np.array(secuencia)
+```
+
+Se calcularon características geométricas (distribución de tinta, centro de gravedad, número de transiciones y perfiles superior e inferior), cuantificadas en un conjunto discreto de 256 símbolos observables.
+
+### Construcción de los conjuntos de entrenamiento y prueba
+
+Las secuencias obtenidas fueron organizadas en conjuntos balanceados de entrenamiento y evaluación:
+
+```python
+def construir_dataset(dataset, max_muestras):
+    X, y = [], []
+    conteos = {k:0 for k in TARGETS_MAYUSCULAS}
+
+    for tensor, target in dataset:
+        if target not in TARGETS_MAYUSCULAS: continue
+        if conteos[target] >= max_muestras: continue
+
+        img = procesar_imagen(tensor)
+        seq = imagen_a_secuencia(img)
+
+        X.append(seq)
+        y.append(MAPEO_LETTERS[target])
+        conteos[target] += 1
+
+        if all(c >= max_muestras for c in conteos.values()): break
+
+    return X, np.array(y)
+
+print("Construyendo entrenamiento...")
+X_train, y_train = construir_dataset(emnist_train, TRAIN_POR_CLASE)
+
+print("Construyendo prueba...")
+X_test, y_test = construir_dataset(emnist_test, TEST_POR_CLASE)
+```
+
+### Entrenamiento de los modelos
+
+Se entrenó un modelo HMM independiente para cada una de las letras del alfabeto:
+
+```python
+modelos_hmm = {}
+
+if os.path.exists(ARCHIVO_MODELOS_CAT):
+    print("\n[INFO] Modelos detectados en Drive. Cargando...")
+    with open(ARCHIVO_MODELOS_CAT, 'rb') as f:
+        modelos_hmm = pickle.load(f)
+else:
+    print("\nEntrenando CategoricalHMMs...\n")
+    barra = tqdm(LETRAS_OBJETIVO, desc="Entrenando", unit="letra")
+    for letra in barra:
+        barra.set_description(f"Entrenando '{letra}'")
+        idx = np.where(y_train == letra)[0]
+        secuencias = [X_train[i] for i in idx]
+        lengths = [len(s) for s in secuencias]
+        X_concat = np.vstack(secuencias)
+
+        model = hmm.CategoricalHMM(
+            n_components=N_ESTADOS,
+            n_features=256, 
+            n_iter=250,
+            random_state=42,
+            init_params='e'
+        )
+
+        model.startprob_ = np.zeros(N_ESTADOS)
+        model.startprob_[0] = 1.0
+        model.transmat_ = construir_matriz_bakis_flexible(N_ESTADOS)
+
+        model.fit(X_concat, lengths)
+        modelos_hmm[letra] = model
+
+    with open(ARCHIVO_MODELOS_CAT, 'wb') as f:
+        pickle.dump(modelos_hmm, f)
+```
+
+### Inferencia y clasificación
+
+Cada muestra del conjunto de prueba fue evaluada frente a todos los HMM disponibles:
+
+```python
+print("\nClasificando...\n")
+y_pred = []
+
+for seq in tqdm(X_test, desc="Evaluando Inferencia"):
+    scores = {}
+    for letra, model in modelos_hmm.items():
+        try: scores[letra] = model.score(seq)
+        except: scores[letra] = -np.inf
+
+    pred = max(scores, key=scores.get)
+    y_pred.append(pred)
+```
+
+La predicción final se obtuvo seleccionando la letra cuyo modelo produjo la mayor puntuación de verosimilitud (principio de máxima verosimilitud).
+
+### Evaluación del desempeño
+
+Finalmente, se calcularon métricas globales e individuales de rendimiento para evaluar la capacidad de generalización del sistema:
+
+```python
+accuracy = accuracy_score(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred, labels=LETRAS_OBJETIVO)
+
+precision_por_letra = cm.diagonal() / cm.sum(axis=1)
+
+print("\n" + "="*70)
+print("EXACTITUD (ACCURACY) INDIVIDUAL POR LETRA")
+print("="*70)
+for i, letra in enumerate(LETRAS_OBJETIVO):
+    acc = precision_por_letra[i] * 100
+    print(f"Precisión Letra {letra} : {acc:>6.2f} %")
+
+print("\n" + "="*70)
+print(f"ACCURACY GLOBAL: {accuracy*100:.2f}%")
+print("="*70 + "\n")
+
+print(classification_report(y_test, y_pred, target_names=LETRAS_OBJETIVO))
+```
+
+Asimismo, se construyó una matriz de confusión para identificar visualmente los patrones de error entre caracteres similares:
+
+```python
+plt.figure(figsize=(16,14))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
+xticklabels=LETRAS_OBJETIVO,
+yticklabels=LETRAS_OBJETIVO)
+plt.title(f'Matriz CategoricalHMM con Rasgos Estructurales (Precisión: {accuracy*100:.2f}%)', fontsize=16, fontweight='bold')
+plt.ylabel('Letra Real', fontsize=14)
+plt.xlabel('Letra Predicha', fontsize=14)
+plt.tight_layout()
+plt.show()
+``` 

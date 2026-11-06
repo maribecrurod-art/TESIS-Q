@@ -15,10 +15,6 @@ Comparar el desempeño de los Modelos Ocultos de Markov (HMM) con esquema de rem
 
 ## Objetivos Específicos
 
-Dicha comparación se realizará mediante la implementación de ambos algoritmos bajo un protocolo experimental estandarizado, con el fin de determinar cuál enfoque ofrece el mejor equilibrio entre precisión de clasificación, costo computacional e interpretabilidad matemática para el reconocimiento automático de patrones.
-
-Para alcanzar el objetivo general, se plantean los siguientes objetivos particulares:
-
 1.  **Preprocesar y caracterizar el conjunto de datos** de imágenes monocromáticas de glifos del alfabeto náhuatl, aplicando técnicas de normalización, aumentación geométrica y generación de ruido controlado, para establecer una base de evaluación estandarizada y robusta que permita la comparación equitativa de ambos modelos.
 
 2.  **Implementar y ajustar un modelo de clasificación basado en Modelos Ocultos de Markov (HMM)** categóricos, integrado con un esquema de remuestreo *bootstrap*. El propósito es modelar la secuencia de características estructurales extraídas de los glifos y cuantificar la incertidumbre estadística en su identificación.
