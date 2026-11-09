@@ -11,7 +11,7 @@ language:
 
 ## Fundamentos CNN
 
-En este trabajo se aborda el problema de **reconocimiento automático de glifos del alfabeto náhuatl** mediante el uso de redes neuronales convolucionales (*Convolutional Neural Networks*, CNN). Este problema puede formularse como una tarea de clasificación de imágenes, en la cual cada glifo es representado mediante una estructura matricial que codifica su información visual.
+En la tarea de clasificación de imágenes, cada glifo es representado mediante una estructura matricial que codifica su información visual.
 
 Los glifos presentan variaciones en forma, trazo y estilo, lo que dificulta su identificación mediante métodos tradicionales. En este contexto, las CNN resultan particularmente adecuadas debido a su capacidad para extraer características espaciales relevantes directamente a partir de los datos, tales como bordes, curvas y patrones geométricos distintivos.
 

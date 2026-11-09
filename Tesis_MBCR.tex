@@ -337,7 +337,7 @@ textos en lenguas mayoritarias con alfabetos estandarizados, como el
 español o el inglés. Sin embargo, su aplicación a sistemas de escritura
 indígenas, y particularmente a propuestas como el Abecedario Provisional
 Náhuatl, enfrenta desafíos que trascienden la ingeniería de software y
-se adentran en el aprendizaje automático.Algunos de estos desafíos son:
+se adentran en el aprendizaje automático. Algunos de estos desafíos son:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -459,15 +459,15 @@ secuencial. Al proyectar la imagen 2D en una secuencia 1D de
 características estructurales (como la distribución de ``tinta'', el
 centro de gravedad o las transiciones de bordes), el HMM utiliza
 matrices de transición y de emisión para capturar la probabilidad de
-evolución del trazo. * \emph{Ventaja matemática:} Poseen una sólida
+evolución del trazo. \emph{Ventaja matemática:} Poseen una sólida
 fundamentación en la teoría de la probabilidad, permiten cuantificar la
 incertidumbre y son altamente interpretables (es posible analizar las
-probabilidades de transición entre estados). * \emph{Limitación:}
-Dependen críticamente de la \emph{ingeniería manual de características}.
-La proyección de 2D a 1D conlleva una pérdida irreversible de
-información topológica y espacial, y la matriz de emisión sufre la
-``maldición de la dimensionalidad'' si el alfabeto de símbolos
-observables es demasiado grande.
+probabilidades de transición entre estados). \emph{Limitación:} Dependen
+críticamente de la \emph{ingeniería manual de características}. La
+proyección de 2D a 1D conlleva una pérdida irreversible de información
+topológica y espacial, y la matriz de emisión sufre la ``maldición de la
+dimensionalidad'' si el alfabeto de símbolos observables es demasiado
+grande.
 
 \textbf{2. El enfoque de optimización en espacios tensoriales (Redes
 Neuronales Convolucionales - CNN):} Las CNN abordan el problema desde el
@@ -3421,7 +3421,7 @@ clasificación automática.
 
 \centering{
 
-\includegraphics[width=8.33333in,height=\textheight,keepaspectratio]{images/Alfabeto nahuatl.png}
+\includegraphics[width=5.41667in,height=\textheight,keepaspectratio]{images/Alfabeto nahuatl.png}
 
 }
 
@@ -3450,9 +3450,11 @@ razones principales:
 muestras}\label{generaciuxf3n-de-las-muestras}
 
 Inicialmente se diseñaron de forma manual 25 ejemplos base para cada
-carácter del alfabeto. Posteriormente, a cada muestra se le aplicaron
-transformaciones geométricas y perturbaciones aleatorias para
-incrementar la variabilidad del conjunto de datos.
+carácter del alfabet
+
+o. Posteriormente, a cada muestra se le aplicaron transformaciones
+geométricas y perturbaciones aleatorias para incrementar la variabilidad
+del conjunto de datos.
 
 La Figura Figura~\ref{fig-dataset-augmentation} muestra algunos ejemplos
 de las imágenes generadas.
@@ -3461,7 +3463,7 @@ de las imágenes generadas.
 
 \centering{
 
-\includegraphics[width=8.33333in,height=\textheight,keepaspectratio]{images/dataset aumentado.png}
+\includegraphics[width=5.41667in,height=\textheight,keepaspectratio]{images/dataset aumentado.png}
 
 }
 

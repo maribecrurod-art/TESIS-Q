@@ -112,7 +112,7 @@ Una entropía alta indica que el proceso de generación sintética y extracción
 
 El reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto Náhuatl @fig-alfabeto-nahuatl, presenta una limitación inicial importante: no existe un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de otros alfabetos, para los cuales existen repositorios ampliamente documentados, el alfabeto Náhuatl carece de recursos computacionales que puedan emplearse directamente en tareas de clasificación automática.
 
-![Glifos del alfabeto nahuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean letras del alfabeto latino para su manipulación.](images/Alfabeto%20nahuatl.png){#fig-alfabeto-nahuatl fig-align="center" width="800"}
+![Glifos del alfabeto nahuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean letras del alfabeto latino para su manipulación.](images/Alfabeto%20nahuatl.png){#fig-alfabeto-nahuatl fig-align="center" width="520"}
 
 Ante esta situación, fue necesario construir un conjunto de datos propio. La decisión de generar un dataset sintético se tomó por dos razones principales:
 
@@ -125,7 +125,7 @@ Inicialmente se diseñaron de forma manual 25 ejemplos base para cada carácter 
 
 La Figura @fig-dataset-augmentation muestra algunos ejemplos de las imágenes generadas.
 
-![Se observa el proceso por el que pasa cada una de las 25 imagenes por letra para generar 90 variantes obtenidas a partir de rotación, traslación, distorción elástica, cambio de escala y ruido, de este modo se consigue un dataset más completo.](images/dataset%20aumentado.png){#fig-dataset-augmentation fig-align="center" width="800"}
+![Se observa el proceso por el que pasa cada una de las 25 imagenes por letra para generar 90 variantes obtenidas a partir de rotación, traslación, distorción elástica, cambio de escala y ruido, de este modo se consigue un dataset más completo.](images/dataset%20aumentado.png){#fig-dataset-augmentation fig-align="center" width="520"}
 
 ## Carga y organización de los datos
 

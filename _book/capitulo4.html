@@ -621,7 +621,7 @@ H(S) = - \sum_{i=1}^{256} p(s_i) \log_2 p(s_i)
 <div id="fig-alfabeto-nahuatl" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-alfabeto-nahuatl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/Alfabeto nahuatl.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="800">
+<img src="images/Alfabeto nahuatl.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="520">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alfabeto-nahuatl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;6.1: Glifos del alfabeto nahuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean letras del alfabeto latino para su manipulación.
@@ -635,12 +635,13 @@ Figura&nbsp;6.1: Glifos del alfabeto nahuatl. Este alfabeto consta de 18 caracte
 </ol>
 <section id="generación-de-las-muestras" class="level3" data-number="6.6.1">
 <h3 data-number="6.6.1" class="anchored" data-anchor-id="generación-de-las-muestras"><span class="header-section-number">6.6.1</span> Generación de las muestras</h3>
-<p>Inicialmente se diseñaron de forma manual 25 ejemplos base para cada carácter del alfabeto. Posteriormente, a cada muestra se le aplicaron transformaciones geométricas y perturbaciones aleatorias para incrementar la variabilidad del conjunto de datos.</p>
+<p>Inicialmente se diseñaron de forma manual 25 ejemplos base para cada carácter del alfabet</p>
+<p>o. Posteriormente, a cada muestra se le aplicaron transformaciones geométricas y perturbaciones aleatorias para incrementar la variabilidad del conjunto de datos.</p>
 <p>La Figura <a href="#fig-dataset-augmentation" class="quarto-xref">Figura&nbsp;<span>6.2</span></a> muestra algunos ejemplos de las imágenes generadas.</p>
 <div id="fig-dataset-augmentation" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dataset-augmentation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/dataset aumentado.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="800">
+<img src="images/dataset aumentado.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="520">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dataset-augmentation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;6.2: Se observa el proceso por el que pasa cada una de las 25 imagenes por letra para generar 90 variantes obtenidas a partir de rotación, traslación, distorción elástica, cambio de escala y ruido, de este modo se consigue un dataset más completo.
