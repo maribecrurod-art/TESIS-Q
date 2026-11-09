@@ -23,13 +23,11 @@ Para esto, se asumirá que el lector tiene conocimientos previos sobre teoría d
 
 Sea $(\Omega, \mathcal{F}, \mathbb{P})$ un espacio de probabilidad, donde $\Omega$ es el espacio muestral, $\mathcal{F}$ es una $\sigma$-álgebra sobre $\Omega$, y $\mathbb{P}$ es una medida de probabilidad. Sea $\mathbb{F} = \{\mathcal{F}_t\}_{t \ge 0}$ una filtración, es decir, una familia no decreciente de sub-$\sigma$-álgebras de $\mathcal{F}$ tal que $\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}$ para todo $0 \le s < t$. El conjunto $(\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})$ se denomina espacio de probabilidad filtrado.
 
-
 **Espacio de estados discreto**
 
 Definimos el espacio de estados $S$ como un conjunto discreto y finito (o numerable).
 
 La topología en $S$ es discreta y su $\sigma$-álgebra asociada es el conjunto potencia $\mathcal{P}(S)$.
-
 
 En el contexto de nuestro proyecto, $S$ representa el conjunto de posibles colores o intensidades de un pixel (por ejemplo, el espacio RGB donde $|S| = 256^3$, o una escala de grises finita).
 
@@ -42,7 +40,6 @@ X = \{X(t) : t \in \mathbb{R}_{\ge 0}\},
 $$
 
 donde cada $X(t): \Omega \to S$ es una función medible respecto a $\mathcal{F}_t$.
-
 
 Interpretamos $X(t)$ como el "color verdadero" del pixel en el instante (o parámetro continuo) $t$.
 
@@ -84,7 +81,6 @@ $$
 
 para todo $0 \le s \le t$.
 
-
 **Probabilidades de transición y homogeneidad**
 
 Definimos la probabilidad de transición del estado $i$ al estado $j$ en el intervalo $[s,t]$ como
@@ -117,7 +113,6 @@ P(\tau)
 [p_{ij}(\tau)]_{i,j\in S}.
 $$
 
-
 **Ecuaciones de Chapman-Kolmogorov**
 
 Para cualquier $s,t \ge 0$, la familia de matrices de transición $\{P(t)\}_{t\ge0}$ forma un semigrupo de operadores estocásticos, satisfaciendo$$
@@ -133,8 +128,7 @@ p_{ij}(t+s)
 p_{ik}(t)p_{kj}(s).
 $$
 
-
-![La probabilidad de transición $p_{ij}(t+s)$ se obtiene sumando las contribuciones de todos los posibles estados intermedios $k$.](Imagenes_tesis\chapman-k.png){#fig-chapman fig-align="center" width="550"}
+![La probabilidad de transición $p_{ij}(t+s)$ se obtiene sumando las contribuciones de todos los posibles estados intermedios $k$.](Imagenes_tesis\chapman-k.png){#fig-chapman width="550"}
 
 Por otro lado, también se tiene la existencia de los HMM categóricos.
 
@@ -143,7 +137,6 @@ Por otro lado, también se tiene la existencia de los HMM categóricos.
 Un Modelo Oculto de Márkov Categórico (Categorical HMM, a menudo también llamado HMM Discreto o Multinomial) es una variante de los modelos HMM donde las observaciones emitidas por los estados ocultos son valores discretos y finitos que pertenecen a categorías específicas, en lugar de ser valores numéricos continuos.
 
 En cualquier HMM, el sistema modela un proceso estocástico con estados que no son directamente visibles, y cada estado genera (emite) una observación que sí podemos medir.
-
 
 ### Dinámica Infinitesimal y Generador de la Cadena
 
@@ -252,7 +245,6 @@ $$
 
 que representan la lectura empírica o ruidosa en el parámetro $t$.
 
-
 En este caso $O$ denota el conjunto finito de colores o intensidades registrables por un sensor óptico y $Y$ es la lectura ruidosa del pixel en el tiempo $t$.
 
 **Matriz de emisión e independencia condicional**
@@ -284,7 +276,6 @@ e_{xy}
 =
 \mathbb{P}(Y(t)=y \mid X(t)=x).
 $$
-
 
 ## Inferencia y Filtrado en el Modelo Oculto
 
@@ -387,7 +378,6 @@ $$
 P(\Delta t_k).
 $$
 
-
 Para los pixeles es la trayectoria más probable de los colores verdaderos del pixel (el problema de decodificación).
 
 ### Ejemplo ilustrativo del algoritmo Forward--Backward
@@ -471,8 +461,6 @@ $$
 P(y_1,\ldots,y_k,X_k=i).
 $$
 
-**Paso 1**
-
 Para la primera observación $O_B$:
 
 $$
@@ -494,8 +482,6 @@ P(X_1=N)\,P(O_B\mid N)
 =
 0.08.
 $$
-
-**Paso 2**
 
 Calculamos primero la probabilidad de alcanzar el estado blanco:
 
@@ -661,8 +647,7 @@ A pesar de que el sensor observa un píxel blanco en el primer instante y negro 
 
 En la práctica, la matriz generadora infinitesimal $Q$ (que dicta la probabilidad de degradación del color para el caso de estudio) y las probabilidades de emisión empírica rara vez son conocidas a priori y deben ser estimadas a partir de un dataset de imágenes (el alfabeto latino modificado).
 
-**Algoritmo de Expectation-Maximization (Baum-Welch)**
-La estimación por máxima verosimilitud del conjunto de parámetros del modelo
+**Algoritmo de Expectation-Maximization (Baum-Welch)** La estimación por máxima verosimilitud del conjunto de parámetros del modelo
 
 $$
 \Theta=\{Q,E\}
@@ -672,7 +657,6 @@ dado un conjunto de secuencias observadas se realiza mediante un proceso iterati
 
 -   **Paso** $E$ (**Expectation):** Se calculan las estadísticas suficientes esperadas del sistema latente (tiempo esperado de permanencia en cada estado de color y número esperado de transiciones) condicionado a las observaciones y a la estimación actual de los parámetros en el paso $m$ $\Theta^{(m)}$, utilizando las variables recursivas Forward y Backward.
 
--   **Paso** $M$ **(Maximization):** Se actualizan los parámetros $\Theta^{(m+1)}$ para maximizar la función $Q$ de verosimilitud esperada. En particular, la estimación de las probabilidades de transición empíricas se formula restringiendo las soluciones para garantizar que las filas de $Q^{(m+1)}$ sigan sumando cero y $q_{ij}\ge0$ para $i\neq j$.
-:::
+-   **Paso** $M$ **(Maximization):** Se actualizan los parámetros $\Theta^{(m+1)}$ para maximizar la función $Q$ de verosimilitud esperada. En particular, la estimación de las probabilidades de transición empíricas se formula restringiendo las soluciones para garantizar que las filas de $Q^{(m+1)}$ sigan sumando cero y $q_{ij}\ge0$ para $i\neq j$. :::
 
 ![Esquema general del algoritmo Expectation–Maximization (Baum–Welch) para un Modelo Oculto de Markov. En el Paso E se estiman las probabilidades posteriores de los estados ocultos y las transiciones esperadas mediante los algoritmos Forward–Backward. En el Paso M se actualizan iterativamente la matriz generadora y la matriz de emisión para maximizar la verosimilitud de las observaciones.](images/imagenesHMM/ME_HMM.png){#fig-ME fig-align="center" width="500"}

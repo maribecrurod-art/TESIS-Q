@@ -3,7 +3,7 @@ author:
   - name: Mariana Belén Cruz Rodríguez
     email: mariana.cruz68@unach.mx
     corresponding: true
-  - name: Yofre Hernán García Gómez
+  - name: Yofre H. García Gómez
     degrees: PhD
     email: yofre.garcia@unach.mx
     roles: supervisor
@@ -12,6 +12,7 @@ number-sections: true
 crossref:
   eq-prefix: "Ecuación"
 ---
- 
+
 # Introducción
-(pendiente) 
+
+(pendiente)
