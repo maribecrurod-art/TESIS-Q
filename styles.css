@@ -84,7 +84,7 @@ img {
 
 /* Centrar captions */
 figcaption {
-    text-align: center;
+    text-align: justify;
     font-size: 0.9rem;
     margin-top: 0.5rem;
 }
