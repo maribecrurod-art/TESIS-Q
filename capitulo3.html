@@ -512,10 +512,14 @@ X \in \mathbb{R}^{H \times W \times C}
 X(i,j) = \left(x_1, x_2, \dots, x_C \right) \in \mathbb{R}^C
 \tag{5.3}\]</span></span></p>
 <p>Por tanto, cada píxel contiene un vector que describe información en distintos canales.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Imagenes_tesis/Imagen flor 1 corregida.png" class="img-fluid figure-img"></p>
-<figcaption>En la imágen se observa que cada píxel está formado en realidad por la combinación de valores de los tres canales.</figcaption>
+<div id="fig-imagen_multicanal" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-imagen_multicanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Imagenes_tesis/Imagen flor 1 corregida.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-imagen_multicanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.1: En la imágen se observa que cada píxel está formado en realidad por la combinación de valores de los tres canales.
+</figcaption>
 </figure>
 </div>
 <section id="estructura-funcional-de-la-red" class="level3" data-number="5.3.1">
@@ -575,7 +579,16 @@ X(i+u, j+v, c)
 \langle K, X_{(i,j)} \rangle
 \tag{5.8}\]</span></span></p>
 <p>mide la similitud entre el patrón definido por el kernel y la región local de la imagen.</p>
-<p><img src="images/paste-1.png" class="img-fluid"></p>
+<div id="fig-kernel_unicanal" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kernel_unicanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/paste-1.png" id="fig-kernel_unicanal" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-kernel_unicanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.2
+</figcaption>
+</figure>
+</div>
 <p><strong>Compartición de parámetros</strong></p>
 <p>Una propiedad fundamental de las redes neuronales convolucionales es la <strong>compartición de parámetros</strong>, la cual establece que los coeficientes del kernel no dependen de la posición espacial en la que se aplica la operación.</p>
 <p>Formalmente, si <span class="math inline">\(K\)</span> es un kernel convolucional, entonces:</p>
@@ -629,7 +642,16 @@ K(u,v)\, X(i+u, j+v)
 <li><span class="math inline">\((u,v)\)</span> recorre las coordenadas internas del kernel,</li>
 <li><span class="math inline">\(X(i+u, j+v)\)</span> representa la región local de la imagen.</li>
 </ul>
-<p><img src="Imagenes_tesis/img_kernel_1.png" class="img-fluid"></p>
+<div id="fig-operacion_kernel" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-operacion_kernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Imagenes_tesis/img_kernel_1.png" id="fig-operacion_kernel" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-operacion_kernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.3
+</figcaption>
+</figure>
+</div>
 <p><strong>Interpretación como ventana deslizante</strong></p>
 <p>La ecuación anterior describe un proceso en el cual el kernel se desplaza sistemáticamente sobre la imagen. En cada posición, se selecciona una submatriz de <span class="math inline">\(X\)</span> de dimensiones <span class="math inline">\(k_h \times k_w\)</span>, sobre la cual se realiza una operación de agregación ponderada.</p>
 <p>Formalmente, definimos la submatriz local como:</p>
@@ -714,7 +736,16 @@ Y^{(c)}(i,j) =
 K(u,v,c)\, X(i+u,j+v,c)
 \]</span></p>
 <p>Cada término <span class="math inline">\(Y^{(c)}(i,j)\)</span> representa la contribución del canal <span class="math inline">\(c\)</span> al valor final de la salida.</p>
-<p><img src="images/paste-2.png" class="img-fluid"></p>
+<div id="fig-convolucion_ejemplo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-convolucion_ejemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/paste-2.png" id="fig-convolucion_ejemplo" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-convolucion_ejemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.4
+</figcaption>
+</figure>
+</div>
 <p><strong>Interpretación como producto interno en espacio tensorial</strong></p>
 <p>Sea <span class="math inline">\(X_{(i,j)}\)</span> la subregión local de la imagen centrada en <span class="math inline">\((i,j)\)</span>. Entonces:</p>
 <p><span class="math display">\[
@@ -805,10 +836,14 @@ Y(i,j) = \left( Y_1(i,j), Y_2(i,j), \dots, Y_F(i,j) \right) \in \mathbb{R}^{F}
 <p>Desde una perspectiva geométrica, cada filtro <span class="math inline">\(K^{(f)}\)</span> define una dirección en el espacio <span class="math inline">\(\mathbb{R}^{k_h k_w C}\)</span>. En consecuencia, el vector <span class="math inline">\(Y(i,j)\)</span> contiene las proyecciones de la región local <span class="math inline">\(X_{(i,j)}\)</span> sobre cada una de estas direcciones.</p>
 <p>Esto permite interpretar la salida como una representación de la información local en una base (no necesariamente ortogonal) definida por los filtros aprendidos.</p>
 <p>###Ejemplos de filtros</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/paste-4.png" class="img-fluid figure-img"></p>
-<figcaption>Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. En la imagen se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.</figcaption>
+<div id="fig-Ejemplos_kernels" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Ejemplos_kernels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/paste-4.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Ejemplos_kernels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.5: Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. En la imagen se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -874,7 +909,7 @@ Y = \sigma\big( (\text{pad}(X)) \star K + b \big)
 <img src="Imagenes_tesis/img_kernel_mapa.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-padding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5.1: Ejemplo de convolución con y sin padding. La incorporación de padding permite controlar el tamaño de la salida. En particular, cuando se utiliza padding adecuado, es posible preservar las dimensiones espaciales de la imagen original tras la aplicación de la convolución. El color rosa identifica la imagen de entrada y la salida de la convolución, mientras que el verde representa el filtro empleado. En el caso del ejemplo con padding, las celdas correspondientes al relleno se distinguen al estar por fuera del cuadro rojo, para resaltar que no forman parte de la imagen original.
+Figura&nbsp;5.6: Ejemplo de convolución con y sin padding. La incorporación de padding permite controlar el tamaño de la salida. En particular, cuando se utiliza padding adecuado, es posible preservar las dimensiones espaciales de la imagen original tras la aplicación de la convolución. El color rosa identifica la imagen de entrada y la salida de la convolución, mientras que el verde representa el filtro empleado. En el caso del ejemplo con padding, las celdas correspondientes al relleno se distinguen al estar por fuera del cuadro rojo, para resaltar que no forman parte de la imagen original.
 </figcaption>
 </figure>
 </div>
@@ -970,10 +1005,14 @@ Y(i,j,c) = \max_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
 <p><span id="eq-avgpool"><span class="math display">\[
 Y(i,j,c) = \frac{1}{|\mathcal{R}|} \sum_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
 \tag{5.28}\]</span></span> El pooling sirve para reducir las dimensiones espaciales (ancho y alto) de un tensor, asegurando que se conserve la información más relevante. Aplicar esta técnica brinda grandes beneficios a los modelos: disminuye significativamente el costo computacional, introduce invariancia a pequeñas traslaciones en la imagen y ayuda a prevenir el sobreajuste. Además, es importante destacar que esta reducción se aplica de manera independiente a cada canal de profundidad del tensor</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/paste-3.png" class="img-fluid figure-img"></p>
-<figcaption>En la parte superior de la figura se ilustra el funcionamiento del Max Pooling utilizando una ventana de tamaño 2×2 y un stride de 2. La imagen de entrada se divide en cuatro regiones no superpuestas, identificadas mediante diferentes colores. Para cada región, el operador selecciona únicamente el valor máximo: en la región superior izquierda se obtiene 6, en la superior derecha 4, en la inferior izquierda 8 y en la inferior derecha 3. Estos valores conforman el mapa de salida de tamaño 2×2, preservando las características más destacadas de cada zona mientras se reduce la dimensionalidad espacial. De manera similar, en la parte inferior de la figura se muestra el proceso de Average Pooling con la misma ventana 2×2 y el mismo stride. En lugar de conservar el valor máximo, se calcula el promedio de los elementos contenidos en cada región. Así, las cuatro ventanas generan los valores 3.75, 2.25, 4.50 y 1, que constituyen la salida reducida. Este método produce una representación más suavizada de la información, manteniendo la tendencia general de los datos presentes en cada región de la imagen.</figcaption>
+<div id="fig-pooloing" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pooloing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/paste-3.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pooloing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.7: En la parte superior de la figura se ilustra el funcionamiento del Max Pooling utilizando una ventana de tamaño 2×2 y un stride de 2. La imagen de entrada se divide en cuatro regiones no superpuestas, identificadas mediante diferentes colores. Para cada región, el operador selecciona únicamente el valor máximo: en la región superior izquierda se obtiene 6, en la superior derecha 4, en la inferior izquierda 8 y en la inferior derecha 3. Estos valores conforman el mapa de salida de tamaño 2×2, preservando las características más destacadas de cada zona mientras se reduce la dimensionalidad espacial. De manera similar, en la parte inferior de la figura se muestra el proceso de Average Pooling con la misma ventana 2×2 y el mismo stride. En lugar de conservar el valor máximo, se calcula el promedio de los elementos contenidos en cada región. Así, las cuatro ventanas generan los valores 3.75, 2.25, 4.50 y 1, que constituyen la salida reducida. Este método produce una representación más suavizada de la información, manteniendo la tendencia general de los datos presentes en cada región de la imagen.
+</figcaption>
 </figure>
 </div>
 <p><strong>Propiedades</strong></p>
