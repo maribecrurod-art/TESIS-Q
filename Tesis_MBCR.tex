@@ -205,7 +205,7 @@
 \urlstyle{same}
 \hypersetup{
   pdftitle={Caso de estudio},
-  pdfauthor={Mariana Belén Cruz Rodríguez; Yofre Hernán García Gómez},
+  pdfauthor={Mariana Belén Cruz Rodríguez; Yofre H. García Gómez},
   pdflang={es},
   colorlinks=true,
   linkcolor={blue},
@@ -216,7 +216,7 @@
 
 
 \title{Caso de estudio}
-\author{Mariana Belén Cruz Rodríguez \and Yofre Hernán García Gómez}
+\author{Mariana Belén Cruz Rodríguez \and Yofre H. García Gómez}
 \date{}
 \begin{document}
 \maketitle
@@ -475,11 +475,11 @@ análisis funcional y el álgebra lineal en espacios de alta dimensión. Al
 tratar la imagen como un tensor en \(\mathbb{R}^{H \times W \times C}\),
 aplican operadores de convolución (productos internos locales) que
 aprenden de manera endógena (automática) filtros detectores de
-características jerárquicas. * \emph{Ventaja matemática:} Gracias a la
+características jerárquicas. \emph{Ventaja matemática:} Gracias a la
 compartición de parámetros y las operaciones de \emph{pooling}, son
 naturalmente equivariantes a traslaciones y robustas a pequeñas
 deformaciones geométricas, eliminando la necesidad de diseñar
-características manuales. * \emph{Limitación:} Funcionan como modelos
+características manuales. \emph{Limitación:} Funcionan como modelos
 ``caja negra'' (baja interpretabilidad matemática de sus decisiones
 internas) y requieren una gran cantidad de datos para ajustar sus miles
 de parámetros mediante descenso de gradiente, evitando el sobreajuste.
@@ -493,12 +493,12 @@ dominio específico.
 
 Por lo tanto, el problema central de esta tesis es determinar, mediante
 un protocolo experimental riguroso, \textbf{cuál de estos dos marcos
-matemáticos ---la inferencia probabilística secuencial (HMM) o la
-optimización de funciones no lineales en tensores (CNN)--- ofrece un
-mejor equilibrio entre precisión de clasificación, eficiencia
-computacional e interpretabilidad} para el reconocimiento de los glifos
-del alfabeto náhuatl, y bajo qué condiciones morfológicas cada modelo
-demuestra su superioridad.
+matemáticos (la inferencia probabilística secuencial (HMM) o la
+optimización de funciones no lineales en tensores (CNN)) ofrece un mejor
+equilibrio entre precisión de clasificación, eficiencia computacional e
+interpretabilidad} para el reconocimiento de los glifos del alfabeto
+náhuatl, y bajo qué condiciones morfológicas cada modelo demuestra su
+superioridad.
 
 \section{Justificación desde las Matemáticas
 Aplicadas}\label{justificaciuxf3n-desde-las-matemuxe1ticas-aplicadas}
@@ -1169,8 +1169,6 @@ La variable Forward se define como
 P(y_1,\ldots,y_k,X_k=i).
 \]
 
-\textbf{Paso 1}
-
 Para la primera observación \(O_B\):
 
 \[
@@ -1192,8 +1190,6 @@ P(X_1=N)\,P(O_B\mid N)
 =
 0.08.
 \]
-
-\textbf{Paso 2}
 
 Calculamos primero la probabilidad de alcanzar el estado blanco:
 
@@ -1435,12 +1431,8 @@ Convolucionales}\label{fundamentos-matemuxe1ticos-de-las-redes-neuronales-convol
 
 \section{Fundamentos CNN}\label{fundamentos-cnn}
 
-En este trabajo se aborda el problema de \textbf{reconocimiento
-automático de glifos del alfabeto náhuatl} mediante el uso de redes
-neuronales convolucionales (\emph{Convolutional Neural Networks}, CNN).
-Este problema puede formularse como una tarea de clasificación de
-imágenes, en la cual cada glifo es representado mediante una estructura
-matricial que codifica su información visual.
+En la tarea de clasificación de imágenes, cada glifo es representado
+mediante una estructura matricial que codifica su información visual.
 
 Los glifos presentan variaciones en forma, trazo y estilo, lo que
 dificulta su identificación mediante métodos tradicionales. En este
@@ -3450,11 +3442,9 @@ razones principales:
 muestras}\label{generaciuxf3n-de-las-muestras}
 
 Inicialmente se diseñaron de forma manual 25 ejemplos base para cada
-carácter del alfabet
-
-o. Posteriormente, a cada muestra se le aplicaron transformaciones
-geométricas y perturbaciones aleatorias para incrementar la variabilidad
-del conjunto de datos.
+carácter del alfabeto. Posteriormente, a cada muestra se le aplicaron
+transformaciones geométricas y perturbaciones aleatorias para
+incrementar la variabilidad del conjunto de datos.
 
 La Figura Figura~\ref{fig-dataset-augmentation} muestra algunos ejemplos
 de las imágenes generadas.
