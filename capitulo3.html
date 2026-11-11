@@ -582,10 +582,10 @@ X(i+u, j+v, c)
 <div id="fig-kernel_unicanal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kernel_unicanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/paste-1.png" id="fig-kernel_unicanal" class="img-fluid figure-img">
+<img src="images/paste-1.png" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-kernel_unicanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5.2
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kernel_unicanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.2: Se observa un ejemplo de como funciona un kernel especial para detectar bordes al aplicarlo a una subregión.
 </figcaption>
 </figure>
 </div>
@@ -645,10 +645,10 @@ K(u,v)\, X(i+u, j+v)
 <div id="fig-operacion_kernel" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-operacion_kernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Imagenes_tesis/img_kernel_1.png" id="fig-operacion_kernel" class="img-fluid figure-img">
+<img src="Imagenes_tesis/img_kernel_1.png" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-operacion_kernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5.3
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-operacion_kernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.3: En la imágen se observa como opera un kernel. Se visualiza los valores correspondientes a la imágen original compuesta de ceros y unos, se selecciona una subregión o parche y usando el filtro dado se realizan las operaciones correspondientes de multiplicación y suma, de modo que el resultado es registrado en el mapa de salidas, que constituye una nueva imágen más pequeña que la original.
 </figcaption>
 </figure>
 </div>
@@ -739,10 +739,10 @@ K(u,v,c)\, X(i+u,j+v,c)
 <div id="fig-convolucion_ejemplo" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-convolucion_ejemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/paste-2.png" id="fig-convolucion_ejemplo" class="img-fluid figure-img">
+<img src="images/paste-2.png" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-convolucion_ejemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5.4
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-convolucion_ejemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.4: Se representa la manera en la que opera un kernel dependiendo de si se trata de una imágen a blanco y negro (unicanal) o una a color en RGB (multicanal), ambas tomando la misma subregión correspondiente.
 </figcaption>
 </figure>
 </div>
@@ -950,19 +950,36 @@ Y = \sigma\big( X \star K + b \big)
 <li><span class="math inline">\(\sigma\)</span> se aplica elemento a elemento</li>
 </ul>
 <p><strong>Ejemplos de funciones de activación</strong></p>
-<p>Algunas de las funciones de activación más utilizadas son las siguientes: <img src="Imagenes_tesis/img_funciones_activacion.png" id="fig-activaciones" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:82.0%" alt="ReLU es eficientemente y se usa ampliamente en redes profundas. Sigmoide es útil en la capa de salida para clasificación binaria. Tanh es útil cuando se necesita una salida centrada en 0. Leaky ReLu evita el problema de “neuronas muertas” de ReLu."></p>
+<p>Imagenes_tesis/img_funciones_activacion.png</p>
+<p>Algunas de las funciones de activación más utilizadas son las siguientes:</p>
+<div id="fig-activaciones" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-activaciones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Imagenes_tesis/img_funciones_activacion.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-activaciones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.7: Gráficas y formulaciones de funciones de activación comunes (ReLU, Sigmoide, Tanh, Leaky ReLU).
+</figcaption>
+</figure>
+</div>
 <p><em>ReLU (Rectified Linear Unit)</em></p>
+<p>ReLU es eficientemente y se usa ampliamente en redes profundas.</p>
 <p><span id="eq-relu"><span class="math display">\[
 \sigma(x) = \max(0, x)
 \tag{5.23}\]</span></span></p>
 <p><em>Sigmoide</em></p>
+<p>Sigmoide es útil en la capa de salida para clasificación binaria.</p>
 <p><span id="eq-sigmoide"><span class="math display">\[
 \sigma(x) = \frac{1}{1 + e^{-x}}
 \tag{5.24}\]</span></span></p>
 <p><em>Tangente hiperbólica</em></p>
-<p><span id="eq-tanh"><span class="math display">\[
+<p>Tanh es útil cuando se necesita una salida centrada en 0. <span id="eq-tanh"><span class="math display">\[
 \sigma(x) = \tanh(x)
 \tag{5.25}\]</span></span></p>
+<p><em>Leaky ReLU</em></p>
+<p><span class="math display">\[
+\sigma(x) = \max(0, x)
+\]</span></p>
 <p><strong>Propiedades fundamentales</strong></p>
 <p>Las funciones de activación empleadas en redes neuronales satisfacen típicamente:</p>
 <ul>
@@ -1011,7 +1028,7 @@ Y(i,j,c) = \frac{1}{|\mathcal{R}|} \sum_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
 <img src="images/paste-3.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pooloing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5.7: En la parte superior de la figura se ilustra el funcionamiento del Max Pooling utilizando una ventana de tamaño 2×2 y un stride de 2. La imagen de entrada se divide en cuatro regiones no superpuestas, identificadas mediante diferentes colores. Para cada región, el operador selecciona únicamente el valor máximo: en la región superior izquierda se obtiene 6, en la superior derecha 4, en la inferior izquierda 8 y en la inferior derecha 3. Estos valores conforman el mapa de salida de tamaño 2×2, preservando las características más destacadas de cada zona mientras se reduce la dimensionalidad espacial. De manera similar, en la parte inferior de la figura se muestra el proceso de Average Pooling con la misma ventana 2×2 y el mismo stride. En lugar de conservar el valor máximo, se calcula el promedio de los elementos contenidos en cada región. Así, las cuatro ventanas generan los valores 3.75, 2.25, 4.50 y 1, que constituyen la salida reducida. Este método produce una representación más suavizada de la información, manteniendo la tendencia general de los datos presentes en cada región de la imagen.
+Figura&nbsp;5.8: En la parte superior de la figura se ilustra el funcionamiento del Max Pooling utilizando una ventana de tamaño 2×2 y un stride de 2. La imagen de entrada se divide en cuatro regiones no superpuestas, identificadas mediante diferentes colores. Para cada región, el operador selecciona únicamente el valor máximo: en la región superior izquierda se obtiene 6, en la superior derecha 4, en la inferior izquierda 8 y en la inferior derecha 3. Estos valores conforman el mapa de salida de tamaño 2×2, preservando las características más destacadas de cada zona mientras se reduce la dimensionalidad espacial. De manera similar, en la parte inferior de la figura se muestra el proceso de Average Pooling con la misma ventana 2×2 y el mismo stride. En lugar de conservar el valor máximo, se calcula el promedio de los elementos contenidos en cada región. Así, las cuatro ventanas generan los valores 3.75, 2.25, 4.50 y 1, que constituyen la salida reducida. Este método produce una representación más suavizada de la información, manteniendo la tendencia general de los datos presentes en cada región de la imagen.
 </figcaption>
 </figure>
 </div>
