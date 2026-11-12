@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -466,7 +486,7 @@ window.Quarto = {
 
 <section id="espacio-probabilístico-y-procesos-estocásticos-subyacentes" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="espacio-probabilístico-y-procesos-estocásticos-subyacentes"><span class="header-section-number">4.1</span> Espacio Probabilístico y Procesos Estocásticos Subyacentes</h2>
-<p>Para establecer formalmente una Cadena de Markov a Tiempo Continuo (CTMC), es necesario partir de los axiomas fundamentales de la teoría de la medida, para más detalle consultar el libro de <span class="citation" data-cites="rudin1987real">@rudin1987real</span> Para esto, se asumirá que el lector tiene conocimientos previos sobre teoría de la medida como lo son las <span class="math inline">\(\sigma\)</span>-álgebras, espacio muestral y medida de probabilidad, entre otros.</p>
+<p>Para establecer formalmente una Cadena de Markov a Tiempo Continuo (CTMC), es necesario partir de los axiomas fundamentales de la teoría de la medida, para más detalle consultar el libro de <span class="citation" data-cites="rudin1987real">(<a href="#ref-rudin1987real" role="doc-biblioref"><strong>rudin1987real?</strong></a>)</span> Para esto, se asumirá que el lector tiene conocimientos previos sobre teoría de la medida como lo son las <span class="math inline">\(\sigma\)</span>-álgebras, espacio muestral y medida de probabilidad, entre otros.</p>
 <p><strong>Espacio de probabilidad filtrado</strong></p>
 <p>Sea <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> un espacio de probabilidad, donde <span class="math inline">\(\Omega\)</span> es el espacio muestral, <span class="math inline">\(\mathcal{F}\)</span> es una <span class="math inline">\(\sigma\)</span>-álgebra sobre <span class="math inline">\(\Omega\)</span>, y <span class="math inline">\(\mathbb{P}\)</span> es una medida de probabilidad. Sea <span class="math inline">\(\mathbb{F} = \{\mathcal{F}_t\}_{t \ge 0}\)</span> una filtración, es decir, una familia no decreciente de sub-<span class="math inline">\(\sigma\)</span>-álgebras de <span class="math inline">\(\mathcal{F}\)</span> tal que <span class="math inline">\(\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}\)</span> para todo <span class="math inline">\(0 \le s &lt; t\)</span>. El conjunto <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})\)</span> se denomina espacio de probabilidad filtrado.</p>
 <p><strong>Espacio de estados discreto</strong></p>
@@ -587,7 +607,7 @@ Q=[q_{ij}]_{i,j\in S}
 \sum_{j\in S} q_{ij}=0.
 \]</span></p>
 <p><strong>Ecuaciones diferenciales de Kolmogorov</strong></p>
-<p>Bajo condiciones de regularidad (que se cumplen trivialmente si el espacio de estados del color <span class="math inline">\(S\)</span> es finito), la matriz de transición <span class="math inline">\(P(t)\)</span> es la solución única a las ecuaciones diferenciales matriciales de Kolmogorov Hacia Adelante (Forward) y Hacia Atrás (Backward) <span class="citation" data-cites="Norris1998">@Norris1998</span> :</p>
+<p>Bajo condiciones de regularidad (que se cumplen trivialmente si el espacio de estados del color <span class="math inline">\(S\)</span> es finito), la matriz de transición <span class="math inline">\(P(t)\)</span> es la solución única a las ecuaciones diferenciales matriciales de Kolmogorov Hacia Adelante (Forward) y Hacia Atrás (Backward) <span class="citation" data-cites="Norris1998">Norris (<a href="#ref-Norris1998" role="doc-biblioref">1998</a>)</span> :</p>
 <ul>
 <li><strong>Forward:</strong></li>
 </ul>
@@ -730,7 +750,7 @@ e^{Q\Delta t_k}.
 \hat{X} = \arg\max_{x_1,\dots,x_K} \mathbb{P}\left(X(t_1)=x_1,\dots,X(t_K)=x_K \mid Y(t_1)=y_1,\dots,Y(t_K)=y_K\right).
 \]</span></p>
 <p>A diferencia de la función <span class="math inline">\(\max\)</span>, que devuelve el <strong>valor numérico</strong> de la probabilidad más alta alcanzada, el operador <span class="math inline">\(\arg\max\)</span> (argumento del máximo) devuelve el <strong>conjunto de entradas</strong> que producen ese valor máximo. En este contexto, no nos interesa saber cuál es el porcentaje exacto de la probabilidad máxima, sino descubrir específicamente <strong>cuál es la secuencia exacta de estados latentes</strong> <span class="math inline">\(\hat{X}\)</span> que hace que esa probabilidad sea máxima</p>
-<p>La solución sistemática a este problema de programación dinámica espacial/temporal se obtiene mediante la adaptación del Algoritmo de Viterbi <span class="citation" data-cites="rabiner1989tutorial">@rabiner1989tutorial</span> para cadenas a tiempo continuo, evaluando las transiciones máximas sobre</p>
+<p>La solución sistemática a este problema de programación dinámica espacial/temporal se obtiene mediante la adaptación del Algoritmo de Viterbi <span class="citation" data-cites="rabiner1989tutorial">Rabiner (<a href="#ref-rabiner1989tutorial" role="doc-biblioref">1989</a>)</span> para cadenas a tiempo continuo, evaluando las transiciones máximas sobre</p>
 <p><span class="math display">\[
 P(\Delta t_k).
 \]</span></p>
@@ -973,6 +993,14 @@ Figura&nbsp;4.3: Esquema general del algoritmo Expectation–Maximization (Baum�
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Norris1998" class="csl-entry" role="listitem">
+Norris, J. R. 1998. <em>Markov Chains</em>. Cambridge: Cambridge University Press.
+</div>
+<div id="ref-rabiner1989tutorial" class="csl-entry" role="listitem">
+Rabiner, Lawrence R. 1989. <span>«A tutorial on hidden Markov models and selected applications in speech recognition»</span>. <em>Proceedings of the IEEE</em> 77 (2): 257-86. <a href="https://doi.org/10.1109/5.18626">https://doi.org/10.1109/5.18626</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
