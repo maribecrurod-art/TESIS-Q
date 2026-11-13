@@ -486,26 +486,29 @@ window.Quarto = {
 
 <section id="espacio-probabilístico-y-procesos-estocásticos-subyacentes" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="espacio-probabilístico-y-procesos-estocásticos-subyacentes"><span class="header-section-number">4.1</span> Espacio Probabilístico y Procesos Estocásticos Subyacentes</h2>
-<p>Para establecer formalmente una Cadena de Markov a Tiempo Continuo (CTMC), es necesario partir de los axiomas fundamentales de la teoría de la medida, para más detalle consultar el libro de <span class="citation" data-cites="rudin1987real">(<a href="referencias.html#ref-rudin1987real" role="doc-biblioref"><strong>rudin1987real?</strong></a>)</span> Para esto, se asumirá que el lector tiene conocimientos previos sobre teoría de la medida como lo son las <span class="math inline">\(\sigma\)</span>-álgebras, espacio muestral y medida de probabilidad, entre otros.</p>
-<p><strong>Espacio de probabilidad filtrado</strong></p>
-<p>Sea <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> un espacio de probabilidad, donde <span class="math inline">\(\Omega\)</span> es el espacio muestral, <span class="math inline">\(\mathcal{F}\)</span> es una <span class="math inline">\(\sigma\)</span>-álgebra sobre <span class="math inline">\(\Omega\)</span>, y <span class="math inline">\(\mathbb{P}\)</span> es una medida de probabilidad. Sea <span class="math inline">\(\mathbb{F} = \{\mathcal{F}_t\}_{t \ge 0}\)</span> una filtración, es decir, una familia no decreciente de sub-<span class="math inline">\(\sigma\)</span>-álgebras de <span class="math inline">\(\mathcal{F}\)</span> tal que <span class="math inline">\(\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}\)</span> para todo <span class="math inline">\(0 \le s &lt; t\)</span>. El conjunto <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})\)</span> se denomina espacio de probabilidad filtrado.</p>
-<p><strong>Espacio de estados discreto</strong></p>
-<p>Definimos el espacio de estados <span class="math inline">\(S\)</span> como un conjunto discreto y finito (o numerable).</p>
+<p>Para establecer formalmente una Cadena de Markov a Tiempo Continuo (CTMC), es necesario partir de los axiomas fundamentales de la teoría de la medida, para más detalle consultar el libro de <span class="citation" data-cites="Rudin1987">Rudin (<a href="referencias.html#ref-Rudin1987" role="doc-biblioref">1987</a>)</span> Para esto, se asumirá que el lector tiene conocimientos previos sobre teoría de la medida como lo son las <span class="math inline">\(\sigma\)</span>-álgebras, espacio muestral y medida de probabilidad, entre otros.</p>
+<div id="def-espacio-filtrado" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 4.1 (Espacio de probabilidad filtrado)</strong></span> Sea <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> un espacio de probabilidad, donde <span class="math inline">\(\Omega\)</span> es el espacio muestral, <span class="math inline">\(\mathcal{F}\)</span> es una <span class="math inline">\(\sigma\)</span>-álgebra sobre <span class="math inline">\(\Omega\)</span>, y <span class="math inline">\(\mathbb{P}\)</span> es una medida de probabilidad. Sea <span class="math inline">\(\mathbb{F} = \{\mathcal{F}_t\}_{t \ge 0}\)</span> una filtración, es decir, una familia no decreciente de sub-<span class="math inline">\(\sigma\)</span>-álgebras de <span class="math inline">\(\mathcal{F}\)</span> tal que <span class="math inline">\(\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}\)</span> para todo <span class="math inline">\(0 \le s &lt; t\)</span>. El conjunto <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})\)</span> se denomina espacio de probabilidad filtrado.</p>
+</div>
+<div id="def-espacio-discreto" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 4.2 (Espacio de estados discreto)</strong></span> Definimos el espacio de estados <span class="math inline">\(S\)</span> como un conjunto discreto y finito (o numerable).</p>
 <p>La topología en <span class="math inline">\(S\)</span> es discreta y su <span class="math inline">\(\sigma\)</span>-álgebra asociada es el conjunto potencia <span class="math inline">\(\mathcal{P}(S)\)</span>.</p>
 <p>En el contexto de nuestro proyecto, <span class="math inline">\(S\)</span> representa el conjunto de posibles colores o intensidades de un pixel (por ejemplo, el espacio RGB donde <span class="math inline">\(|S| = 256^3\)</span>, o una escala de grises finita).</p>
-<p><strong>Proceso estocástico a Tiempo Continuo</strong></p>
-<p>Un proceso estocástico en tiempo continuo con espacio de estados discreto <span class="math inline">\(S\)</span> es una familia de variables aleatorias</p>
+</div>
+<div id="def-proceso-estocastico" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 4.3 (Proceso estocástico a Tiempo Continuo)</strong></span> Un proceso estocástico en tiempo continuo con espacio de estados discreto <span class="math inline">\(S\)</span> es una familia de variables aleatorias</p>
 <p><span class="math display">\[
 X = \{X(t) : t \in \mathbb{R}_{\ge 0}\},
 \]</span></p>
 <p>donde cada <span class="math inline">\(X(t): \Omega \to S\)</span> es una función medible respecto a <span class="math inline">\(\mathcal{F}_t\)</span>.</p>
 <p>Interpretamos <span class="math inline">\(X(t)\)</span> como el “color verdadero” del pixel en el instante (o parámetro continuo) <span class="math inline">\(t\)</span>.</p>
+</div>
 </section>
 <section id="cadenas-de-markov-a-tiempo-continuo-ctmc" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="cadenas-de-markov-a-tiempo-continuo-ctmc"><span class="header-section-number">4.2</span> Cadenas de Markov a Tiempo Continuo (CTMC)</h2>
 <p>La transición del concepto general de proceso estocástico al de proceso de Markov requiere la propiedad de amnesia (pérdida de memoria).</p>
-<p><strong>Propiedad de Markov</strong></p>
-<p>El proceso adaptado <span class="math inline">\(X = \{X(t)\}_{t \ge 0}\)</span> es una Cadena de Markov a Tiempo Continuo si satisface la condición de Markov relativa a la filtración <span class="math inline">\(\mathbb{F}\)</span>: para cualquier conjunto discreto de tiempos</p>
+<div id="def-propiedad-markov" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 4.4 (Propiedad de Markov)</strong></span> El proceso adaptado <span class="math inline">\(X = \{X(t)\}_{t \ge 0}\)</span> es una Cadena de Markov a Tiempo Continuo si satisface la condición de Markov relativa a la filtración <span class="math inline">\(\mathbb{F}\)</span>: para cualquier conjunto discreto de tiempos</p>
 <p><span class="math display">\[
 0 \le t_1 &lt; t_2 &lt; \dots &lt; t_n &lt; t
 \]</span></p>
@@ -528,6 +531,7 @@ i_1, i_2, \dots, i_n, i, j \in S,
 \text{c.s. (casi seguramente)}
 \]</span></p>
 <p>para todo <span class="math inline">\(0 \le s \le t\)</span>.</p>
+</div>
 <p><strong>Probabilidades de transición y homogeneidad</strong></p>
 <p>Definimos la probabilidad de transición del estado <span class="math inline">\(i\)</span> al estado <span class="math inline">\(j\)</span> en el intervalo <span class="math inline">\([s,t]\)</span> como</p>
 <p><span class="math display">\[
@@ -999,6 +1003,9 @@ Norris, J. R. 1998. <em>Markov Chains</em>. Cambridge: Cambridge University Pres
 </div>
 <div id="ref-rabiner1989tutorial" class="csl-entry" role="listitem">
 Rabiner, Lawrence R. 1989. <span>«A tutorial on hidden Markov models and selected applications in speech recognition»</span>. <em>Proceedings of the IEEE</em> 77 (2): 257-86. <a href="https://doi.org/10.1109/5.18626">https://doi.org/10.1109/5.18626</a>.
+</div>
+<div id="ref-Rudin1987" class="csl-entry" role="listitem">
+Rudin, Walter. 1987. <em>Real and Complex Analysis</em>. 3.ª ed. New York: McGraw-Hill.
 </div>
 </div>
 </section>
