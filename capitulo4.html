@@ -553,7 +553,9 @@ window.Quarto = {
 </section>
 <section id="modelado-de-ruido-y-degradación" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="modelado-de-ruido-y-degradación"><span class="header-section-number">6.2.2</span> Modelado de ruido y degradación</h3>
-<p>Para simular la naturaleza física del papel histórico y la tinta, se inyectaron perturbaciones estocásticas: - <strong>Ruido aditivo:</strong> Se modeló como ruido blanco gaussiano <span class="math inline">\(\mathcal{N}(0, \sigma^2)\)</span> para emular las imperfecciones del sensor de escaneo. - <strong>Degradación de bordes:</strong> Se aplicó un desenfoque gaussiano leve para simular el “sangrado” de la tinta en el papel poroso.</p>
+<p>Para simular la naturaleza física del papel histórico y la tinta, se inyectaron perturbaciones estocásticas:</p>
+<p><strong>Ruido aditivo:</strong> Se modeló como ruido blanco gaussiano <span class="math inline">\(\mathcal{N}(0, \sigma^2)\)</span> para emular las imperfecciones del sensor de escaneo.</p>
+<p><strong>Degradación de bordes:</strong> Se aplicó un desenfoque gaussiano leve para simular el “sangrado” de la tinta en el papel poroso.</p>
 </section>
 <section id="análisis-estadístico-del-dataset-resultante" class="level3" data-number="6.2.3">
 <h3 data-number="6.2.3" class="anchored" data-anchor-id="análisis-estadístico-del-dataset-resultante"><span class="header-section-number">6.2.3</span> Análisis estadístico del dataset resultante</h3>
@@ -611,8 +613,6 @@ q(v) = \left\lfloor \frac{v - v_{min}}{v_{max} - v_{min}} \times N \right\rfloor
 H(S) = - \sum_{i=1}^{256} p(s_i) \log_2 p(s_i)
 \]</span></p>
 <p>Una entropía alta indica que el proceso de generación sintética y extracción de rasgos produce una diversidad de patrones locales rica y no redundante, lo cual es un prerrequisito fundamental para que un modelo de aprendizaje automático pueda aprender representaciones discriminativas y generalizar adecuadamente.</p>
-<hr>
-<p><em>(Nota: El código de carga de datos en TensorFlow que tenías originalmente es totalmente válido y se puede insertar como una subsección práctica al final, por ejemplo, bajo un “4.6. Implementación Computacional del Pipeline”, si tu director lo permite, o integrarlo como ejemplos dentro de las secciones anteriores).</em></p>
 </section>
 </section>
 <section id="construcción-del-conjunto-de-datos-1" class="level2" data-number="6.6">
