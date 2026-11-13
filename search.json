@@ -328,5 +328,15 @@
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span>"
     ]
+  },
+  {
+    "objectID": "referencias.html",
+    "href": "referencias.html",
+    "title": "9  Referencias",
+    "section": "",
+    "text": "Norris, J. R. 1998. Markov Chains. Cambridge: Cambridge\nUniversity Press.\n\n\nRabiner, Lawrence R. 1989. “A Tutorial on Hidden Markov Models and\nSelected Applications in Speech Recognition.” Proceedings of\nthe IEEE 77 (2): 257–86. https://doi.org/10.1109/5.18626.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Referencias</span>"
+    ]
   }
 ]
