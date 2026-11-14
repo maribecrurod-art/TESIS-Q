@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis</title>
+<title>4&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis HMM vs CNN</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d6a2ae2cb249da1580f0a11f71b8f854.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b2cc3fa21794160b313e4ac029c03c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-fe2070592f9b8f3438b31c1dc38ae10b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a10894211e69ec7231936de48b38be85.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-c3e928dbf8c89a21f601b3e5827c656e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -131,14 +131,6 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="4&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis">
-<meta property="og:description" content="">
-<meta property="og:image" content="Imagenes_tesis\chapman-k.png">
-<meta property="og:site_name" content="Tesis">
-<meta name="twitter:title" content="4&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="Imagenes_tesis\chapman-k.png">
-<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
@@ -323,15 +315,10 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./LOGOunach.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./LOGOunach.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Tesis</a> 
+      <a href="./">Tesis HMM vs CNN</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/maribecrurod-art/TESIS-Q" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -459,7 +446,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#estimación-de-parámetros-y-calibración-del-modelo" id="toc-estimación-de-parámetros-y-calibración-del-modelo" class="nav-link" data-scroll-target="#estimación-de-parámetros-y-calibración-del-modelo"><span class="header-section-number">4.5</span> Estimación de Parámetros y Calibración del Modelo</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maribecrurod-art/TESIS-Q/edit/main/capitulo2.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/TESIS-Q/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/TESIS-Q/blob/main/capitulo2.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -708,7 +695,7 @@ Y(t_1)=y_1,\dots,Y(t_k)=y_k,
 X(t_k)=i
 \bigr).
 \]</span></p>
-<p>Esta cantidad se calcula recursivamente mediante la ecuación de Chapman-Kolmogorov <a href="#eq-chapman" class="quarto-xref">Ecuación&nbsp;<span>4.1</span></a> y la matriz de emisión <span class="math inline">\(E\)</span> <a href="#eq-matrizemision" class="quarto-xref">Ecuación&nbsp;<span>4.2</span></a>.</p>
+<p>Esta cantidad se calcula recursivamente mediante la ecuación de Chapman-Kolmogorov <a href="#eq-chapman" class="quarto-xref">Ecuación&nbsp;<span>4.1</span></a> y la matriz de emisión <span class="math inline">\(E\)</span> definida en la <a href="#eq-matrizemision" class="quarto-xref">Ecuación&nbsp;<span>4.2</span></a>.</p>
 <p><span class="math display">\[
 \alpha_k(j)
 =
@@ -967,7 +954,7 @@ P(X_1=N\mid Y)\approx 26.7\%.
 <div id="fig-pixelbn" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pixelbn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/imagenesHMM/pixelblanconegrodibujo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="450">
+<img src="images/imagenesHMM/pixelblanconegrodibujo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pixelbn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;4.2: Modelo Oculto de Markov para un píxel con dos estados ocultos y dos observaciones.
@@ -1444,4 +1431,4 @@ Rudin, Walter. 1987. <em>Real and Complex Analysis</em>. 3.ª ed. New York: McGr
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maribecrurod-art/TESIS-Q/edit/main/capitulo2.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/TESIS-Q/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/TESIS-Q/blob/main/capitulo2.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></div></div></footer></body></html>
+</body></html>
