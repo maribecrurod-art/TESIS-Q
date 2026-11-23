@@ -79,6 +79,35 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -383,7 +412,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> Introducción</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">1</span> </a></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link" data-scroll-target="#introducción"><span class="header-section-number">2</span> Introducción</a>
+  <ul class="collapse">
+  <li><a href="#contexto-histórico-lingüístico-y-tecnológico" id="toc-contexto-histórico-lingüístico-y-tecnológico" class="nav-link" data-scroll-target="#contexto-histórico-lingüístico-y-tecnológico"><span class="header-section-number">2.1</span> Contexto histórico, lingüístico y tecnológico</a></li>
+  <li><a href="#el-desafío-matemático-del-reconocimiento-de-glifos-náhuatl" id="toc-el-desafío-matemático-del-reconocimiento-de-glifos-náhuatl" class="nav-link" data-scroll-target="#el-desafío-matemático-del-reconocimiento-de-glifos-náhuatl"><span class="header-section-number">2.2</span> El desafío matemático del reconocimiento de glifos náhuatl</a></li>
+  <li><a href="#la-dicotomía-matemática-inferencia-estocástica-frente-a-optimización-tensorial" id="toc-la-dicotomía-matemática-inferencia-estocástica-frente-a-optimización-tensorial" class="nav-link" data-scroll-target="#la-dicotomía-matemática-inferencia-estocástica-frente-a-optimización-tensorial"><span class="header-section-number">2.3</span> La dicotomía matemática: Inferencia estocástica frente a optimización tensorial</a></li>
+  <li><a href="#enfoque-metodológico-y-construcción-del-conjunto-de-datos" id="toc-enfoque-metodológico-y-construcción-del-conjunto-de-datos" class="nav-link" data-scroll-target="#enfoque-metodológico-y-construcción-del-conjunto-de-datos"><span class="header-section-number">2.4</span> Enfoque metodológico y construcción del conjunto de datos</a></li>
+  <li><a href="#aportes-desde-las-matemáticas-aplicadas" id="toc-aportes-desde-las-matemáticas-aplicadas" class="nav-link" data-scroll-target="#aportes-desde-las-matemáticas-aplicadas"><span class="header-section-number">2.5</span> Aportes desde las Matemáticas Aplicadas</a></li>
+  <li><a href="#estructura-de-la-tesis" id="toc-estructura-de-la-tesis" class="nav-link" data-scroll-target="#estructura-de-la-tesis"><span class="header-section-number">2.6</span> Estructura de la tesis</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -424,11 +462,60 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="introducción" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1><p><img src="LOGOunach.png" title="Tesis HMM vs CNN" class="quarto-cover-image nolightbox img-fluid"></p>
-<p>(pendiente)</p>
+<section id="section" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> </h1><p><img src="LOGOunach.png" title="Tesis HMM vs CNN" class="quarto-cover-image nolightbox img-fluid"></p>
+</section>
+<section id="introducción" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Introducción</h1>
+<section id="contexto-histórico-lingüístico-y-tecnológico" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="contexto-histórico-lingüístico-y-tecnológico"><span class="header-section-number">2.1</span> Contexto histórico, lingüístico y tecnológico</h2>
+<p>La preservación, estudio y difusión del patrimonio documental de las lenguas originarias representa uno de los desafíos científicos y culturales más apremiantes de la actualidad. En el ámbito mesoamericano, el náhuatl ocupa un lugar central tanto por su vigencia demográfica como por la profundidad de su tradición escrita, la cual se remonta a varios siglos antes del contacto europeo. Durante la época prehispánica y los primeros siglos del periodo colonial, los escribas y pintores indígenas —conocidos como <em>tlacuilos</em>— desarrollaron un sofisticado sistema de registro basado en glifos, pictogramas e ideogramas plasmados en códices, mediante los cuales documentaron genealogías, registros tributarios, eventos históricos, conocimientos astronómicos y prácticas ceremoniales. Posteriormente, tras la conquista, se consolidó una adaptación ortográfica fundamentada en el alfabeto latino con convenciones fonéticas específicas para representar los sonidos propios de la lengua.</p>
+<p>En décadas recientes, con el propósito de fortalecer la revitalización lingüística y pedagógica del náhuatl, han surgido sistemas gráficos intermedios que buscan tender un puente entre la herencia visual mesoamericana y la escritura alfabética moderna. Un ejemplo representativo de estas iniciativas es el <em>Abecedario Provisional Náhuatl</em>, el cual asocia un conjunto estructurado de <span class="math inline">\(18\)</span> símbolos geométricos simplificados con los fonemas fundamentales de la lengua, conservando rasgos estéticos de la iconografía tradicional al tiempo que facilita su lectura y aprendizaje. Sin embargo, la digitalización, indexación y transcripción de documentos elaborados bajo este tipo de sistemas continúa dependiendo casi exclusivamente de la intervención manual de paleógrafos y lingüistas, un proceso lento, costoso y susceptible a inconsistencias humanas.</p>
+<p>En las lenguas mayoritarias con alfabetos ampliamente estandarizados —como el español o el inglés—, el Reconocimiento Óptico de Caracteres (OCR, por sus siglas en inglés) ha alcanzado un alto grado de madurez operativa gracias a la existencia de tipografías uniformes y repositorios masivos de datos etiquetados. No obstante, al trasladar estas tecnologías al dominio de los sistemas de escritura indígenas emergen obstáculos estructurales que trascienden la mera implementación de software y demandan una formulación rigurosa desde las matemáticas aplicadas y el aprendizaje automático.</p>
+</section>
+<section id="el-desafío-matemático-del-reconocimiento-de-glifos-náhuatl" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="el-desafío-matemático-del-reconocimiento-de-glifos-náhuatl"><span class="header-section-number">2.2</span> El desafío matemático del reconocimiento de glifos náhuatl</h2>
+<p>El reconocimiento automático de los glifos que conforman el Abecedario Provisional Náhuatl plantea un problema de clasificación de patrones visuales caracterizado por cuatro dificultades fundamentales:</p>
+<ol type="1">
+<li><strong>Ambigüedad en la correspondencia fonética:</strong> A diferencia de las ortografías modernas estandarizadas, en la escritura glífica del náhuatl existe flexibilidad histórica y regional en la selección del pictograma asociado a un mismo sonido (por ejemplo, representar el fonema <span class="math inline">\(/e/\)</span> mediante el glifo de <em>etl</em> —frijol— o el de <em>elotl</em> —elote—). Para aislar el problema de reconocimiento de patrones, esta investigación delimita su alcance asumiendo un sistema ortográfico fijo de <span class="math inline">\(18\)</span> clases bien definidas.</li>
+<li><strong>Ausencia de estandarización tipográfica:</strong> Al no existir una fuente tipográfica digital oficial, cada material didáctico, trazo manuscrito o reproducción documental introduce variaciones notables en la curvatura, la proporción relativa de los componentes internos y la continuidad de las líneas de un mismo grafema.</li>
+<li><strong>Variabilidad morfológica intra-clase y degradación física:</strong> Matemáticamente, la dispersión geométrica entre distintas realizaciones de un mismo glifo se traduce en distribuciones de probabilidad de alta varianza intra-clase y de naturaleza frecuentemente no gaussiana. A ello se suman las perturbaciones inherentes al soporte físico y al proceso de digitalización, tales como ruido de escaneo, manchas, pérdida de contraste y difusión de tinta en papel poroso, factores que degradan los contornos y hacen que los métodos clásicos basados en correlación rígida de plantillas (<em>template matching</em>) fracasen al intentar generalizar.</li>
+<li><strong>Escasez crítica de datos etiquetados:</strong> Mientras que el estudio del alfabeto latino cuenta con colecciones de referencia masivas y estandarizadas (como MNIST o EMNIST), no existen bases de datos públicas de glifos del alfabeto náhuatl. Esta carencia restringe severamente la aplicación directa de arquitecturas modernas de aprendizaje profundo, las cuales suelen requerir decenas de miles de ejemplos para ajustar sus parámetros sin incurrir en sobreajuste.</li>
+</ol>
+</section>
+<section id="la-dicotomía-matemática-inferencia-estocástica-frente-a-optimización-tensorial" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="la-dicotomía-matemática-inferencia-estocástica-frente-a-optimización-tensorial"><span class="header-section-number">2.3</span> La dicotomía matemática: Inferencia estocástica frente a optimización tensorial</h2>
+<p>Ante la convergencia de una alta variabilidad morfológica y una disponibilidad limitada de muestras reales, la teoría del reconocimiento de patrones ofrece dos paradigmas matemáticos profundamente distintos, cuya comparación sistemática constituye el eje rector de esta tesis:</p>
+<ul>
+<li><strong>El paradigma generativo secuencial mediante Modelos Ocultos de Markov (HMM):</strong> Fundamentado en la teoría de la medida, los espacios de probabilidad filtrados y la teoría de procesos estocásticos, este enfoque concibe cada glifo no como una matriz estática de intensidades, sino como la realización observable de un proceso latente que evoluciona a lo largo de un parámetro espacial o temporal. Partiendo de la formulación de Cadenas de Markov a Tiempo Continuo (CTMC) gobernadas por matrices generadoras infinitesimales <span class="math inline">\(Q\)</span> y las ecuaciones diferenciales de Kolmogorov, el modelo discretiza o proyecta la imagen bidimensional hacia una secuencia unidimensional de observaciones (<span class="math inline">\(\mathbb{R}^{28\times 28} \to \mathbb{R}^T\)</span> o mediante ventanas deslizantes verticales). La inferencia del estado oculto se resuelve mediante programación dinámica (<em>Forward-Backward</em> y algoritmo de Viterbi) y la calibración de parámetros se realiza por máxima verosimilitud a través del algoritmo <em>Expectation-Maximization</em> (Baum-Welch). Su principal fortaleza matemática radica en su bajo número de parámetros, su capacidad para cuantificar la incertidumbre estadística mediante esquemas de remuestreo <em>bootstrap</em> y su transparencia interpretativa; sin embargo, enfrenta como limitación la pérdida irreversible de información topológica bidimensional al proyectar el plano en una secuencia y su dependencia de la extracción manual de rasgos estructurales.</li>
+<li><strong>El paradigma discriminativo tensorial mediante Redes Neuronales Convolucionales (CNN):</strong> Sustentado en el análisis funcional, el álgebra multilineal y la optimización no lineal en espacios de alta dimensión, este enfoque modela cada imagen como un tensor de tercer orden <span class="math inline">\(X \in \mathbb{R}^{H\times W\times C}\)</span> y construye un clasificador como una composición profunda de transformaciones afines locales y operadores no lineales: <span class="math display">\[f(x;\theta) = \left(f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}\right)(x).\]</span> A través de productos internos locales definidos por <em>kernels</em> convolucionales con compartición de parámetros, funciones de activación no lineales (como ReLU y <em>Softmax</em>) y operaciones de agrupamiento (<em>pooling</em>), las CNN extraen jerarquías espaciales de bordes, curvaturas y motivos geométricos de manera endógena, garantizando equivarianza ante traslaciones sin requerir ingeniería manual de características. En contrapartida, su elevada capacidad representacional las vuelve vulnerables al sobreajuste en regímenes de pocos datos —exigiendo técnicas de regularización como <em>Weight Decay</em>, <em>Dropout</em>, <em>SpatialDropout2D</em> y <em>Batch Normalization</em>—, además de demandar mayor costo computacional y comportarse como modelos de baja interpretabilidad interna.</li>
+</ul>
+</section>
+<section id="enfoque-metodológico-y-construcción-del-conjunto-de-datos" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="enfoque-metodológico-y-construcción-del-conjunto-de-datos"><span class="header-section-number">2.4</span> Enfoque metodológico y construcción del conjunto de datos</h2>
+<p>Para evaluar ambos marcos matemáticos en condiciones controladas y equitativas, este trabajo aborda primero la inexistencia de repositorios públicos mediante el diseño de un conjunto de datos sintético y balanceado. A partir de un análisis morfológico detallado de los trazos curvos, segmentos rectos, bucles cerrados y puntos diacríticos de los <span class="math inline">\(18\)</span> glifos del Abecedario Provisional Náhuatl, se elaboraron <span class="math inline">\(25\)</span> plantillas base normalizadas por clase. Sobre cada plantilla se aplicaron operadores estocásticos de aumento de datos formalizados mediante acciones del grupo afín de Lie <span class="math inline">\(\mathrm{Aff}(2)\)</span> (rotaciones, traslaciones y escalamientos acotados), distorsiones elásticas del trazo, ruido blanco gaussiano <span class="math inline">\(\mathcal{N}(0,\sigma^2)\)</span> y desenfoque gaussiano leve para emular la degradación física de documentos históricos. Este procedimiento produjo un total de <span class="math inline">\(40{,}500\)</span> imágenes monocromáticas perfectamente balanceadas (<span class="math inline">\(2{,}250\)</span> muestras por cada clase).</p>
+<p>Sobre esta base experimental se implementan dos flujos de procesamiento especializados: por un lado, un <em>pipeline</em> tensorial en escala de grises de resolución <span class="math inline">\(28\times 28\)</span> con normalización y aumentación en línea para entrenar una arquitectura convolucional profunda mediante optimización adaptativa Adam y minimización de la entropía cruzada; por otro lado, un <em>pipeline</em> secuencial que extrae ventanas deslizantes verticales de izquierda a derecha, acompañadas de descriptores geométricos (centro de gravedad, cruces por cero de derivadas discretas y perfiles de envoltura convexa) y cuantificación en un alfabeto discreto de <span class="math inline">\(256\)</span> símbolos validado mediante la entropía de Shannon, para entrenar modelos ocultos de Markov específicos por clase.</p>
+</section>
+<section id="aportes-desde-las-matemáticas-aplicadas" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="aportes-desde-las-matemáticas-aplicadas"><span class="header-section-number">2.5</span> Aportes desde las Matemáticas Aplicadas</h2>
+<p>Más allá del desarrollo de una herramienta computacional orientada a la preservación del patrimonio lingüístico, la relevancia de esta tesis para las matemáticas aplicadas reside en contrastar formal y empíricamente dos filosofías de modelación frente a un problema inverso de alta complejidad geométrica: la modelación estocástica guiada por estructura frente a la aproximación funcional guiada por datos. Al cuantificar el compromiso entre exactitud de clasificación, tiempos de convergencia, consumo de recursos computacionales, sensibilidad ante la escasez de datos e interpretabilidad de los parámetros aprendidos, esta investigación establece criterios rigurosos para seleccionar arquitecturas de reconocimiento de patrones en sistemas de escritura no estandarizados y lenguas de bajos recursos digitales.</p>
+</section>
+<section id="estructura-de-la-tesis" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="estructura-de-la-tesis"><span class="header-section-number">2.6</span> Estructura de la tesis</h2>
+<p>Con el fin de desarrollar de manera ordenada los fundamentos teóricos, la metodología experimental y el análisis comparativo propuesto, el presente documento se organiza en los siguientes capítulos:</p>
+<ul>
+<li><strong>Capítulo 2 (Objetivos):</strong> Se enuncian el objetivo general y los cuatro objetivos específicos que articulan el preprocesamiento de datos, la implementación de los modelos HMM con remuestreo <em>bootstrap</em>, el diseño de la arquitectura CNN y la evaluación comparativa de ambos enfoques.</li>
+<li><strong>Capítulo 3 (Preliminares):</strong> Se profundiza en el contexto histórico del sistema glífico náhuatl y los retos del OCR en lenguas indígenas, se delimita formalmente el problema de investigación y se expone la justificación teórica desde las matemáticas aplicadas.</li>
+<li><strong>Capítulo 4 (Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos):</strong> Se construye el marco probabilístico formal partiendo de espacios de probabilidad filtrados, CTMC, matrices generadoras infinitesimales y ecuaciones de Kolmogorov, hasta derivar la formulación de los HMM, los algoritmos de inferencia <em>Forward-Backward</em> y Viterbi, y el esquema iterativo de calibración de Baum-Welch.</li>
+<li><strong>Capítulo 5 (Fundamentos matemáticos de las Redes Neuronales Convolucionales):</strong> Se desarrolla la formulación analítica y tensorial de las CNN, abarcando la operación de convolución unicanal y multicanal, el efecto de <em>stride</em> y <em>padding</em>, las funciones de activación, las capas de <em>pooling</em> y completamente conectadas, la función de pérdida de entropía cruzada, los algoritmos de descenso del gradiente y las técnicas de regularización.</li>
+<li><strong>Capítulo 6 (Base de datos):</strong> Se detalla la creación de las plantillas base, la generación sintética de las <span class="math inline">\(40{,}500\)</span> imágenes mediante transformaciones afines en <span class="math inline">\(\mathrm{Aff}(2)\)</span> y perturbaciones estocásticas, así como los <em>pipelines</em> de representación tensorial y secuencial, incluyendo la extracción de rasgos estructurales, la discretización binaria de <span class="math inline">\(8\)</span> bits y el análisis de entropía de Shannon.</li>
+<li><strong>Capítulo 7 (Caso de estudio):</strong> Se documenta la implementación computacional y la justificación de hiperparámetros tanto del clasificador basado en <code>GaussianHMM</code> como de la arquitectura CNN, presentando las curvas de aprendizaje, matrices de confusión y métricas de desempeño por clase.</li>
+<li><strong>Capítulo 8 (Conclusiones):</strong> Se sintetizan los hallazgos obtenidos tras contrastar ambos paradigmas matemáticos, discutiendo sus fortalezas, limitaciones y ámbitos óptimos de aplicación en el reconocimiento automático de caracteres.</li>
+<li><strong>Capítulo 9 (Referencias):</strong> Se recopilan las fuentes bibliográficas fundamentales que sustentan el desarrollo teórico y metodológico de la investigación.</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
