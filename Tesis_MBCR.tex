@@ -7,8 +7,7 @@
 \documentclass[
   spanish,
   us-letterpaper,
-  DIV=11,
-  numbers=noendperiod]{scrreprt}
+]{scrreprt}
 \usepackage{xcolor}
 \usepackage{amsmath,amssymb}
 \setcounter{secnumdepth}{5}
@@ -134,6 +133,39 @@
 \makeatother
 
 
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
 \usepackage[bidi=basic]{babel}
@@ -155,7 +187,6 @@
  
 
 
-\KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
 \makeatother
@@ -193,6 +224,15 @@
 \@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
 \floatname{codelisting}{Listado}
 \newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[chapter]
+\theoremstyle{remark}
+\AtBeginDocument{\renewcommand*{\proofname}{Demostración}}
+\newtheorem*{remark}{Observación}
+\newtheorem*{solution}{Solución}
+\newtheorem{refremark}{Observación}[chapter]
+\newtheorem{refsolution}{Solución}[chapter]
 \makeatother
 \makeatletter
 \makeatother
@@ -204,7 +244,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Caso de estudio},
+  pdftitle={Tesis HMM vs CNN},
   pdfauthor={Mariana Belén Cruz Rodríguez; Yofre H. García Gómez},
   pdflang={es},
   colorlinks=true,
@@ -215,12 +255,73 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Caso de estudio}
+\title{Tesis HMM vs CNN}
 \author{Mariana Belén Cruz Rodríguez \and Yofre H. García Gómez}
-\date{}
+\date{2026-11-23}
 \begin{document}
-\maketitle
+\begin{titlepage}
+\hspace{-1.7cm} %Este comando es para mandar a la izquierda :)
+%Aquí empiezan los tres minipages de antes
+\begin{minipage}[t][0.03\textheight][c]{0.22\textwidth}
+        \includegraphics[width=3.7cm]{LOGOunach.png}
+\end{minipage}\hspace{0.9cm}
+\begin{minipage}[t][0.03\textheight][c]{0.69\textwidth}
+\begin{center}
+                \textsc{\huge Benemérita Universidad Autónoma de Chiapas}\\[0.3cm]
+                \hrule height 2.5pt
+                \vspace{0.2cm}
+                \hrule height1pt
+                \vspace{0.3cm}
+                \textsc{\Large Facultad de Ciencias en Física y Matemáticas}
+\end{center}
+\end{minipage}\hspace{0.2cm}
+\begin{minipage}[t][0.03\textheight][c]{0.2\textwidth}
+		\includegraphics[width=2.7cm]{fcfm_logo.png}
+\end{minipage}\\
+%%%%%%%%%%%%%%%%%%Aquí comienzan los otros dos minipages del título%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[t][0.93\textheight][c]{0.06\textwidth}
+\vspace{60pt}
+    \begin{center}
+        \vrule width1pt height18cm
+        \vspace{5mm}
+        \vrule width2.5pt height18cm
+        \vspace{5mm}
+        \vrule width1pt height18cm
+   \end{center}
+\end{minipage}\hspace{1.3cm} %Esto mueve las letras que tienes ahí
+\begin{minipage}[t][0.95\textheight][c]{0.76\textwidth}
 
+            \begin{center}
+                \vspace{0.7cm}
+                {\Large\bfseries Modelación probabilística y optimización convolucional para la clasificación de glifos del alfabeto náhuatl bajo variabilidad morfológica y escasez de datos.}\\[2cm]
+                \textsc{\huge \textbf{T\, E\, S\, I\, S}}\\[1.5cm]
+                \textsc{\large QUE PARA OBTENER EL TÍTULO DE:}\\[0.3cm]
+                \textbf{\textsc{LICENCIADA EN MATEMÁTICAS APLICADAS}}\\[1.5cm]
+                \textsc{\large PRESENTA:}\\[0.3cm]
+                \textbf{\textsc{\large {Mariana Belén Cruz Rodríguez 100004480}}}\\[2cm]
+                {\large\scshape Director:\\[0.3cm]
+                {\textbf{\large Dr. Yofre Hernán García Gómez }}}\\[2.0cm]
+                \large{Tuxtla Gutiérrez, Chiapas a \today.}
+
+            \end{center}
+\end{minipage}
+\end{titlepage}
+
+\pagebreak[2]
+
+\chapter*{Dedicatoria}
+\begin{flushright}
+\itshape
+\setlength{\parindent}{0pt} % Elimina sangría para mayor elegancia
+\setlength{\parskip}{1.2\baselineskip} % Espacio generoso entre párrafos
+
+Dedicatoria.
+\end{flushright}
+
+
+\chapter*{Agradecimientos}
+
+GRACIAS.
 \renewcommand*\contentsname{Tabla de contenidos}
 {
 \hypersetup{linkcolor=}
@@ -289,31 +390,47 @@ documental}\label{el-alfabeto-nuxe1huatl-y-la-preservaciuxf3n-del-patrimonio-doc
 
 El náhuatl es una de las lenguas más importantes de Mesoamérica, con una
 historia escrita que se remonta a siglos antes de la llegada de los
-españoles. Originalmes nahuas (llamados \emph{tlacuilos}) utilizaban un
-sistema de glifos y pictogramas para registrar información histórica,
-tributaria y ceremonial en códices. Tras la conquista, se desarrolló una
-adaptación del alfabeto latino que incorporaba convenciones ortográficas
-específicas para representar los sonidos propios del náhuatl.
+españoles. Originalmente los nahuas (llamados \emph{tlacuilos})
+utilizaban un sistema de glifos y pictogramas para registrar información
+histórica, tributaria y ceremonial en códices. Tras la conquista, se
+desarrolló una adaptación del alfabeto latino que incorporaba
+convenciones ortográficas específicas para representar los sonidos
+propios del náhuatl.
 
 En la actualidad, han surgido propuestas de \textbf{sistemas de
 escritura intermedios} que buscan establecer un puente entre la
 tradición glífica ancestral y la escritura alfabética moderna. Un
-ejemplo es el siguiente abecedario provisional Náhuatl (ver @abcnauatl
-), el cual asigna símbolos geométricos simplificados a los fonemas de la
-lengua, manteniendo cierta estética visual mesoamericana mientras
-facilita la transición hacia la lectoescritura.
+ejemplo es el siguiente abecedario provisional Náhuatl (ver
+Figura~\ref{fig-nauatl} ), el cual asigna símbolos geométricos
+simplificados a los fonemas de la lengua, manteniendo cierta estética
+visual mesoamericana mientras facilita la transición hacia la
+lectoescritura.
 
 \begin{figure}
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/02ebf77bcfe068987b8a9bcc02498d49.png}}
+\centering{
+
+\includegraphics[width=5.20833in,height=\textheight,keepaspectratio]{images/02ebf77bcfe068987b8a9bcc02498d49.png}
 
 }
 
-\caption{Construcción de un ``alfabeto'' fónico para el náuatl.}
+\caption{\label{fig-nauatl}Construcción de un ``alfabeto'' fónico para
+el náuatl.}
 
 \end{figure}%
 
-\pandocbounded{\includegraphics[keepaspectratio]{images/Alfabeto nahuatl.png}}
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=5.20833in,height=\textheight,keepaspectratio]{images/Alfabeto nahuatl.png}
+
+}
+
+\caption{\label{fig-abcnauatl}Representación del alfabeto fónico
+háhuatl.}
+
+\end{figure}%
 
 La preservación de estos documentos y sistemas de escritura no solo
 implica su conservación física, sino también su digitalización y
@@ -379,12 +496,12 @@ la elección del pictograma (frijol vs.~elote) es un problema lingüístico
 relevante, su resolución excede el ámbito de esta tesis.
 
 Por lo tanto, \textbf{este trabajo asume un sistema ortográfico fijo y
-estandarizado}: el Abecedario Provisional Náhuatl mostrado en la Figura
-@abcnauatl, donde se ha establecido de manera definitiva qué glifo
-representa a cada fonema. Bajo esta suposición, el problema se traslada
-al terreno del \textbf{reconocimiento de patrones}, el cual presenta
-desafíos matemáticos propios que justifican la comparación de dos
-enfoques fundamentales:
+estandarizado}: el Abecedario Provisional Náhuatl mostrado en la
+Figura~\ref{fig-abcnauatl}, donde se ha establecido de manera definitiva
+qué glifo representa a cada fonema. Bajo esta suposición, el problema se
+traslada al terreno del \textbf{reconocimiento de patrones}, el cual
+presenta desafíos matemáticos propios que justifican la comparación de
+dos enfoques fundamentales:
 
 \begin{itemize}
 \item
@@ -609,13 +726,14 @@ Subyacentes}\label{espacio-probabiluxedstico-y-procesos-estocuxe1sticos-subyacen
 
 Para establecer formalmente una Cadena de Markov a Tiempo Continuo
 (CTMC), es necesario partir de los axiomas fundamentales de la teoría de
-la medida, para más detalle consultar el libro de @Rudin1987.
+la medida, para más detalle consultar el libro de Rudin
+(\citeproc{ref-Rudin1987}{1987}) Para esto, se asumirá que el lector
+tiene conocimientos previos sobre teoría de la medida como lo son las
+\(\sigma\)-álgebras, espacio muestral y medida de probabilidad, entre
+otros.
 
-Para esto, se asumirá que el lector tiene conocimientos previos sobre
-teoría de la medida como lo son las \(\sigma\)-álgebras, espacio
-muestral y medida de probabilidad, entre otros.
-
-\textbf{Espacio de probabilidad filtrado}
+\begin{definition}[Espacio de probabilidad
+filtrado]\protect\hypertarget{def-espacio-filtrado}{}\label{def-espacio-filtrado}
 
 Sea \((\Omega, \mathcal{F}, \mathbb{P})\) un espacio de probabilidad,
 donde \(\Omega\) es el espacio muestral, \(\mathcal{F}\) es una
@@ -628,7 +746,10 @@ todo \(0 \le s < t\). El conjunto
 \((\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})\) se denomina espacio de
 probabilidad filtrado.
 
-\textbf{Espacio de estados discreto}
+\end{definition}
+
+\begin{definition}[Espacio de estados
+discreto]\protect\hypertarget{def-espacio-discreto}{}\label{def-espacio-discreto}
 
 Definimos el espacio de estados \(S\) como un conjunto discreto y finito
 (o numerable).
@@ -640,7 +761,10 @@ En el contexto de nuestro proyecto, \(S\) representa el conjunto de
 posibles colores o intensidades de un pixel (por ejemplo, el espacio RGB
 donde \(|S| = 256^3\), o una escala de grises finita).
 
-\textbf{Proceso estocástico a Tiempo Continuo}
+\end{definition}
+
+\begin{definition}[Proceso estocástico a Tiempo
+Continuo]\protect\hypertarget{def-proceso-estocastico}{}\label{def-proceso-estocastico}
 
 Un proceso estocástico en tiempo continuo con espacio de estados
 discreto \(S\) es una familia de variables aleatorias
@@ -655,13 +779,16 @@ donde cada \(X(t): \Omega \to S\) es una función medible respecto a
 Interpretamos \(X(t)\) como el ``color verdadero'' del pixel en el
 instante (o parámetro continuo) \(t\).
 
+\end{definition}
+
 \section{Cadenas de Markov a Tiempo Continuo
 (CTMC)}\label{cadenas-de-markov-a-tiempo-continuo-ctmc}
 
 La transición del concepto general de proceso estocástico al de proceso
 de Markov requiere la propiedad de amnesia (pérdida de memoria).
 
-\textbf{Propiedad de Markov}
+\begin{definition}[Propiedad de
+Markov]\protect\hypertarget{def-propiedad-markov}{}\label{def-propiedad-markov}
 
 El proceso adaptado \(X = \{X(t)\}_{t \ge 0}\) es una Cadena de Markov a
 Tiempo Continuo si satisface la condición de Markov relativa a la
@@ -696,6 +823,8 @@ De manera equivalente y más elegante mediante la esperanza condicional:
 \]
 
 para todo \(0 \le s \le t\).
+
+\end{definition}
 
 \textbf{Probabilidades de transición y homogeneidad}
 
@@ -735,18 +864,18 @@ P(\tau)
 
 Para cualquier \(s,t \ge 0\), la familia de matrices de transición
 \(\{P(t)\}_{t\ge0}\) forma un semigrupo de operadores estocásticos,
-satisfaciendo\[
+satisfaciendo \[
 P(t+s)=P(t)P(s)
 \]
 
 lo que equivale a
 
-\[
+\begin{equation}\phantomsection\label{eq-chapman}{
 p_{ij}(t+s)
 =
 \sum_{k\in S}
 p_{ik}(t)p_{kj}(s).
-\]
+}\end{equation}
 
 \begin{figure}
 
@@ -828,8 +957,8 @@ suman cero:
 Bajo condiciones de regularidad (que se cumplen trivialmente si el
 espacio de estados del color \(S\) es finito), la matriz de transición
 \(P(t)\) es la solución única a las ecuaciones diferenciales matriciales
-de Kolmogorov Hacia Adelante (Forward) y Hacia Atrás (Backward)
-@Norris1998 :
+de Kolmogorov Hacia Adelante (Forward) y Hacia Atrás (Backward) Norris
+(\citeproc{ref-Norris1998}{1998}) :
 
 \begin{itemize}
 \tightlist
@@ -930,17 +1059,17 @@ dado el estado concurrente \(X(t)\).
 
 Formalmente, para cualquier \(y\in O\) y \(x\in S\):
 
-\[
+\begin{equation}\phantomsection\label{eq-matrizemision}{
 \mathbb{P}(Y(t)=y \mid \mathcal{F}_t^X,\mathcal{F}_{t^-}^Y)
 =
 \mathbb{P}(Y(t)=y \mid X(t)=x)
 \quad
 \text{c.s.}
-\]
+}\end{equation}
 
 donde \(\mathcal{F}_t^X\) y \(\mathcal{F}_{t^-}^Y\) denotan las
-filtraciones \textbf{?@nte-espacio-filtrado} del historial latente y
-observable, respectivamente.
+filtraciones Definición~\ref{def-espacio-filtrado} del historial latente
+y observable, respectivamente.
 
 Estas probabilidades definen las entradas de la matriz de emisión
 estocástica
@@ -949,7 +1078,9 @@ estocástica
 E=[e_{xy}],
 \]
 
-donde \[
+donde
+
+\[
 e_{xy}
 =
 \mathbb{P}(Y(t)=y \mid X(t)=x).
@@ -991,8 +1122,8 @@ X(t_k)=i
 \]
 
 Esta cantidad se calcula recursivamente mediante la ecuación de
-Chapman-Kolmogorov \textbf{?@imp-chapman-kolmogorov} y la matriz de
-emisión \(E\) \textbf{?@nte-matriz-emision}:
+Chapman-Kolmogorov Ecuación~\ref{eq-chapman} y la matriz de emisión
+\(E\) definida en la Ecuación~\ref{eq-matrizemision}.
 
 \[
 \alpha_k(j)
@@ -1066,8 +1197,8 @@ estados latentes} \(\hat{X}\) que hace que esa probabilidad sea máxima
 
 La solución sistemática a este problema de programación dinámica
 espacial/temporal se obtiene mediante la adaptación del Algoritmo de
-Viterbi @rabiner1989tutorial para cadenas a tiempo continuo, evaluando
-las transiciones máximas sobre
+Viterbi Rabiner (\citeproc{ref-rabiner1989tutorial}{1989}) para cadenas
+a tiempo continuo, evaluando las transiciones máximas sobre
 
 \[
 P(\Delta t_k).
@@ -1360,7 +1491,7 @@ estado real subyacente del píxel.
 
 \centering{
 
-\includegraphics[width=4.6875in,height=\textheight,keepaspectratio]{images/imagenesHMM/pixelblanconegrodibujo.png}
+\includegraphics[width=2.08333in,height=\textheight,keepaspectratio]{images/imagenesHMM/pixelblanconegrodibujo.png}
 
 }
 
@@ -1491,14 +1622,17 @@ X(i,j) = \left(x_1, x_2, \dots, x_C \right) \in \mathbb{R}^C
 Por tanto, cada píxel contiene un vector que describe información en
 distintos canales.
 
-\begin{figure}[H]
+\begin{figure}
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{Imagenes_tesis/Imagen flor 1 corregida.png}}
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{Imagenes_tesis/Imagen flor 1 corregida.png}}
 
 }
 
-\caption{En la imágen se observa que cada píxel está formado en realidad
-por la combinación de valores de los tres canales.}
+\caption{\label{fig-imagen_multicanal}En la imágen se observa que cada
+píxel está formado en realidad por la combinación de valores de los tres
+canales.}
 
 \end{figure}%
 
@@ -1593,7 +1727,19 @@ El producto interno:
 mide la similitud entre el patrón definido por el kernel y la región
 local de la imagen.
 
+\begin{figure}
+
+\centering{
+
 \pandocbounded{\includegraphics[keepaspectratio]{images/paste-1.png}}
+
+}
+
+\caption{\label{fig-kernel_unicanal}Se observa un ejemplo de como
+funciona un kernel especial para detectar bordes al aplicarlo a una
+subregión.}
+
+\end{figure}%
 
 \textbf{Compartición de parámetros}
 
@@ -1698,7 +1844,23 @@ donde:
   \(X(i+u, j+v)\) representa la región local de la imagen.
 \end{itemize}
 
+\begin{figure}
+
+\centering{
+
 \pandocbounded{\includegraphics[keepaspectratio]{Imagenes_tesis/img_kernel_1.png}}
+
+}
+
+\caption{\label{fig-operacion_kernel}En la imágen se observa como opera
+un kernel. Se visualiza los valores correspondientes a la imágen
+original compuesta de ceros y unos, se selecciona una subregión o parche
+y usando el filtro dado se realizan las operaciones correspondientes de
+multiplicación y suma, de modo que el resultado es registrado en el mapa
+de salidas, que constituye una nueva imágen más pequeña que la
+original.}
+
+\end{figure}%
 
 \textbf{Interpretación como ventana deslizante}
 
@@ -1854,7 +2016,20 @@ K(u,v,c)\, X(i+u,j+v,c)
 Cada término \(Y^{(c)}(i,j)\) representa la contribución del canal \(c\)
 al valor final de la salida.
 
+\begin{figure}
+
+\centering{
+
 \pandocbounded{\includegraphics[keepaspectratio]{images/paste-2.png}}
+
+}
+
+\caption{\label{fig-convolucion_ejemplo}Se representa la manera en la
+que opera un kernel dependiendo de si se trata de una imágen a blanco y
+negro (unicanal) o una a color en RGB (multicanal), ambas tomando la
+misma subregión correspondiente.}
+
+\end{figure}%
 
 \textbf{Interpretación como producto interno en espacio tensorial}
 
@@ -2038,16 +2213,18 @@ los filtros aprendidos.
 
 \#\#\#Ejemplos de filtros
 
-\begin{figure}[H]
+\begin{figure}
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/paste-4.png}}
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{images/paste-4.png}}
 
 }
 
-\caption{Los distintos filtros convolucionales permiten detectar
-características específicas en la imagen de entrada. En la imagen se
-muestran ejemplos representativos del efecto de diferentes kernels sobre
-una misma imagen.}
+\caption{\label{fig-Ejemplos_kernels}Los distintos filtros
+convolucionales permiten detectar características específicas en la
+imagen de entrada. En la imagen se muestran ejemplos representativos del
+efecto de diferentes kernels sobre una misma imagen.}
 
 \end{figure}%
 
@@ -2235,12 +2412,27 @@ donde:
 
 \textbf{Ejemplos de funciones de activación}
 
+Imagenes\_tesis/img\_funciones\_activacion.png
+
 Algunas de las funciones de activación más utilizadas son las
-siguientes: \begin{center}
-\includegraphics[width=0.82\linewidth,height=\textheight,keepaspectratio]{Imagenes_tesis/img_funciones_activacion.png}
-\end{center}
+siguientes:
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{Imagenes_tesis/img_funciones_activacion.png}
+
+}
+
+\caption{\label{fig-activaciones}Gráficas y formulaciones de funciones
+de activación comunes (ReLU, Sigmoide, Tanh, Leaky ReLU).}
+
+\end{figure}%
 
 \emph{ReLU (Rectified Linear Unit)}
+
+ReLU es eficientemente y se usa ampliamente en redes profundas.
 
 \begin{equation}\phantomsection\label{eq-relu}{
 \sigma(x) = \max(0, x)
@@ -2248,15 +2440,24 @@ siguientes: \begin{center}
 
 \emph{Sigmoide}
 
+Sigmoide es útil en la capa de salida para clasificación binaria.
+
 \begin{equation}\phantomsection\label{eq-sigmoide}{
 \sigma(x) = \frac{1}{1 + e^{-x}}
 }\end{equation}
 
 \emph{Tangente hiperbólica}
 
+Tanh es útil cuando se necesita una salida centrada en 0.
 \begin{equation}\phantomsection\label{eq-tanh}{
 \sigma(x) = \tanh(x)
 }\end{equation}
+
+\emph{Leaky ReLU}
+
+\[
+\sigma(x) = \max(0, x)
+\]
 
 \textbf{Propiedades fundamentales}
 
@@ -2338,28 +2539,31 @@ invariancia a pequeñas traslaciones en la imagen y ayuda a prevenir el
 sobreajuste. Además, es importante destacar que esta reducción se aplica
 de manera independiente a cada canal de profundidad del tensor
 
-\begin{figure}[H]
+\begin{figure}
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{images/paste-3.png}}
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{images/paste-3.png}}
 
 }
 
-\caption{En la parte superior de la figura se ilustra el funcionamiento
-del Max Pooling utilizando una ventana de tamaño 2×2 y un stride de 2.
-La imagen de entrada se divide en cuatro regiones no superpuestas,
-identificadas mediante diferentes colores. Para cada región, el operador
-selecciona únicamente el valor máximo: en la región superior izquierda
-se obtiene 6, en la superior derecha 4, en la inferior izquierda 8 y en
-la inferior derecha 3. Estos valores conforman el mapa de salida de
-tamaño 2×2, preservando las características más destacadas de cada zona
-mientras se reduce la dimensionalidad espacial. De manera similar, en la
-parte inferior de la figura se muestra el proceso de Average Pooling con
-la misma ventana 2×2 y el mismo stride. En lugar de conservar el valor
-máximo, se calcula el promedio de los elementos contenidos en cada
-región. Así, las cuatro ventanas generan los valores 3.75, 2.25, 4.50 y
-1, que constituyen la salida reducida. Este método produce una
-representación más suavizada de la información, manteniendo la tendencia
-general de los datos presentes en cada región de la imagen.}
+\caption{\label{fig-pooloing}En la parte superior de la figura se
+ilustra el funcionamiento del Max Pooling utilizando una ventana de
+tamaño 2×2 y un stride de 2. La imagen de entrada se divide en cuatro
+regiones no superpuestas, identificadas mediante diferentes colores.
+Para cada región, el operador selecciona únicamente el valor máximo: en
+la región superior izquierda se obtiene 6, en la superior derecha 4, en
+la inferior izquierda 8 y en la inferior derecha 3. Estos valores
+conforman el mapa de salida de tamaño 2×2, preservando las
+características más destacadas de cada zona mientras se reduce la
+dimensionalidad espacial. De manera similar, en la parte inferior de la
+figura se muestra el proceso de Average Pooling con la misma ventana 2×2
+y el mismo stride. En lugar de conservar el valor máximo, se calcula el
+promedio de los elementos contenidos en cada región. Así, las cuatro
+ventanas generan los valores 3.75, 2.25, 4.50 y 1, que constituyen la
+salida reducida. Este método produce una representación más suavizada de
+la información, manteniendo la tendencia general de los datos presentes
+en cada región de la imagen.}
 
 \end{figure}%
 
@@ -3187,17 +3391,16 @@ Datos}\label{generaciuxf3n-y-caracterizaciuxf3n-del-conjunto-de-datos}
 Datos}\label{construcciuxf3n-del-conjunto-de-datos}
 
 El reconocimiento óptico de caracteres para sistemas de escritura
-indígenas, particularmente para el alfabeto náhuatl (Figura 4.1),
-presenta una limitación inicial crítica: la inexistencia de un conjunto
-de datos público, estandarizado y etiquetado que permita entrenar
-modelos de aprendizaje profundo. A diferencia de alfabetos latinos o
-asiáticos, que cuentan con repositorios ampliamente documentados (como
-MNIST o EMNIST), el dominio de los glifos náhuatl carece de recursos
-computacionales de código abierto.
+indígenas, particularmente para el alfabeto náhuatl
+Figura~\ref{fig-abcnauatl} , presenta una limitación inicial crítica: la
+inexistencia de un conjunto de datos público, estandarizado y etiquetado
+que permita entrenar modelos de aprendizaje profundo. A diferencia de
+alfabetos latinos o asiáticos, que cuentan con repositorios ampliamente
+documentados (como MNIST o EMNIST), el dominio de los glifos náhuatl
+carece de recursos computacionales de código abierto.
 
-\textbf{Figura 4.1:} Glifos del alfabeto náhuatl. Este sistema consta de
-18 caracteres base, los cuales, para fines de manipulación
-computacional, se asocian a etiquetas del alfabeto latino.
+Este sistema consta de 18 caracteres base, los cuales, para fines de
+manipulación computacional, se asocian a etiquetas del alfabeto latino.
 
 \subsection{Inexistencia de datasets públicos y justificación de la
 generación
@@ -3258,11 +3461,14 @@ identidad del glifo se preservara semánticamente.
 degradación}\label{modelado-de-ruido-y-degradaciuxf3n}
 
 Para simular la naturaleza física del papel histórico y la tinta, se
-inyectaron perturbaciones estocásticas: - \textbf{Ruido aditivo:} Se
-modeló como ruido blanco gaussiano \(\mathcal{N}(0, \sigma^2)\) para
-emular las imperfecciones del sensor de escaneo. - \textbf{Degradación
-de bordes:} Se aplicó un desenfoque gaussiano leve para simular el
-``sangrado'' de la tinta en el papel poroso.
+inyectaron perturbaciones estocásticas:
+
+\textbf{Ruido aditivo:} Se modeló como ruido blanco gaussiano
+\(\mathcal{N}(0, \sigma^2)\) para emular las imperfecciones del sensor
+de escaneo.
+
+\textbf{Degradación de bordes:} Se aplicó un desenfoque gaussiano leve
+para simular el ``sangrado'' de la tinta en el papel poroso.
 
 \subsection{Análisis estadístico del dataset
 resultante}\label{anuxe1lisis-estaduxedstico-del-dataset-resultante}
@@ -3387,14 +3593,6 @@ extracción de rasgos produce una diversidad de patrones locales rica y
 no redundante, lo cual es un prerrequisito fundamental para que un
 modelo de aprendizaje automático pueda aprender representaciones
 discriminativas y generalizar adecuadamente.
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\emph{(Nota: El código de carga de datos en TensorFlow que tenías
-originalmente es totalmente válido y se puede insertar como una
-subsección práctica al final, por ejemplo, bajo un ``4.6. Implementación
-Computacional del Pipeline'', si tu director lo permite, o integrarlo
-como ejemplos dentro de las secciones anteriores).}
 
 \section{Construcción del conjunto de
 datos}\label{construcciuxf3n-del-conjunto-de-datos-1}
@@ -3562,217 +3760,7 @@ la red, disminuyendo el tiempo total de ejecución.
 
 \chapter{Caso de estudio}\label{caso-de-estudio}
 
-\section{CASO CNN}\label{caso-cnn}
-
-\subsection{Arquitectura de la red neuronal
-convolucional}\label{arquitectura-de-la-red-neuronal-convolucional}
-
-La arquitectura propuesta recibe imágenes de tamaño
-\(28\times28\times1\) y está compuesta por tres bloques convolucionales
-seguidos de un clasificador denso.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{model }\OperatorTok{=}\NormalTok{ tf.keras.Sequential([}
-\NormalTok{    tf.keras.layers.Input(shape}\OperatorTok{=}\NormalTok{(}\DecValTok{28}\NormalTok{,}\DecValTok{28}\NormalTok{,}\DecValTok{1}\NormalTok{)),}
-
-\NormalTok{    tf.keras.layers.Conv2D(}\DecValTok{32}\NormalTok{,}\DecValTok{3}\NormalTok{,activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
-\NormalTok{    tf.keras.layers.BatchNormalization(),}
-\NormalTok{    tf.keras.layers.MaxPooling2D(),}
-\NormalTok{    tf.keras.layers.SpatialDropout2D(}\FloatTok{0.25}\NormalTok{),}
-
-\NormalTok{    tf.keras.layers.Conv2D(}\DecValTok{64}\NormalTok{,}\DecValTok{3}\NormalTok{,activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
-\NormalTok{    tf.keras.layers.BatchNormalization(),}
-\NormalTok{    tf.keras.layers.MaxPooling2D(),}
-\NormalTok{    tf.keras.layers.SpatialDropout2D(}\FloatTok{0.25}\NormalTok{),}
-
-\NormalTok{    tf.keras.layers.Conv2D(}\DecValTok{128}\NormalTok{,}\DecValTok{3}\NormalTok{,activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
-\NormalTok{    tf.keras.layers.MaxPooling2D(),}
-\NormalTok{    tf.keras.layers.SpatialDropout2D(}\FloatTok{0.25}\NormalTok{),}
-
-\NormalTok{    tf.keras.layers.Flatten(),}
-\NormalTok{    tf.keras.layers.Dense(}\DecValTok{256}\NormalTok{, activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
-\NormalTok{    tf.keras.layers.Dropout(}\FloatTok{0.5}\NormalTok{),}
-\NormalTok{    tf.keras.layers.Dense(num\_classes, activation}\OperatorTok{=}\StringTok{\textquotesingle{}softmax\textquotesingle{}}\NormalTok{)}
-\NormalTok{])}
-\end{Highlighting}
-\end{Shaded}
-
-\subsection{Primer bloque
-convolucional}\label{primer-bloque-convolucional}
-
-La primera capa convolucional emplea 32 filtros de tamaño \(3\times3\):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{tf.keras.layers.Conv2D(}\DecValTok{32}\NormalTok{,}\DecValTok{3}\NormalTok{,activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-Este bloque se encarga de detectar características de bajo nivel, tales
-como bordes, esquinas y pequeños segmentos de los trazos.
-
-La incorporación de una capa de normalización por lotes:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{tf.keras.layers.BatchNormalization()}
-\end{Highlighting}
-\end{Shaded}
-
-permite estabilizar la distribución de las activaciones internas,
-acelerando el proceso de convergencia.
-
-Posteriormente, la operación de \emph{max pooling}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{tf.keras.layers.MaxPooling2D()}
-\end{Highlighting}
-\end{Shaded}
-
-reduce la dimensionalidad espacial de las representaciones, disminuyendo
-el número de parámetros y haciendo al modelo menos sensible a pequeñas
-traslaciones.
-
-Finalmente, se incorpora un mecanismo de regularización:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{tf.keras.layers.SpatialDropout2D(}\FloatTok{0.25}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-que desactiva mapas de características completos de manera aleatoria,
-obligando a la red a aprender representaciones más robustas.
-
-\subsection{Segundo y tercer bloque
-convolucional}\label{segundo-y-tercer-bloque-convolucional}
-
-Los bloques posteriores incrementan progresivamente el número de filtros
-hasta 64 y 128, respectivamente. El aumento en la profundidad de la red
-permite capturar patrones cada vez más complejos, tales como
-combinaciones de curvas, intersecciones y configuraciones geométricas
-características de cada glifo.
-
-\subsection{Clasificador}\label{clasificador}
-
-Las características extraídas se transforman en un vector
-unidimensional:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{tf.keras.layers.Flatten()}
-\end{Highlighting}
-\end{Shaded}
-
-y posteriormente se procesan mediante una capa densa:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{tf.keras.layers.Dense(}\DecValTok{256}\NormalTok{, activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-La capa de salida utiliza la función Softmax:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{tf.keras.layers.Dense(num\_classes, activation}\OperatorTok{=}\StringTok{\textquotesingle{}softmax\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-la cual produce una distribución de probabilidad sobre todas las clases
-del alfabeto.
-
-\section{Entrenamiento}\label{entrenamiento-1}
-
-El modelo se compiló utilizando el optimizador Adam:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{model.}\BuiltInTok{compile}\NormalTok{(}
-\NormalTok{    optimizer}\OperatorTok{=}\StringTok{\textquotesingle{}adam\textquotesingle{}}\NormalTok{,}
-\NormalTok{    loss}\OperatorTok{=}\StringTok{\textquotesingle{}sparse\_categorical\_crossentropy\textquotesingle{}}\NormalTok{,}
-\NormalTok{    metrics}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{]}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-La función de pérdida de entropía cruzada dispersa se seleccionó debido
-a que las etiquetas de las imágenes se encuentran codificadas como
-enteros y no mediante vectores \emph{one-hot}.
-
-Para evitar el sobreajuste se implementó un mecanismo de detención
-temprana:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{early\_stop }\OperatorTok{=}\NormalTok{ EarlyStopping(}
-\NormalTok{    monitor}\OperatorTok{=}\StringTok{\textquotesingle{}val\_loss\textquotesingle{}}\NormalTok{,}
-\NormalTok{    patience}\OperatorTok{=}\DecValTok{7}\NormalTok{,}
-\NormalTok{    restore\_best\_weights}\OperatorTok{=}\VariableTok{True}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-La elección de siete épocas de paciencia permite al modelo continuar el
-aprendizaje ante pequeñas oscilaciones de la pérdida de validación,
-evitando finalizar el entrenamiento de forma prematura.
-
-Asimismo, el mejor modelo obtenido se almacenó automáticamente:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{checkpoint }\OperatorTok{=}\NormalTok{ ModelCheckpoint(}
-\NormalTok{    ruta\_modelo,}
-\NormalTok{    monitor}\OperatorTok{=}\StringTok{\textquotesingle{}val\_loss\textquotesingle{}}\NormalTok{,}
-\NormalTok{    save\_best\_only}\OperatorTok{=}\VariableTok{True}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\section{Sistema de inferencia
-interactivo}\label{sistema-de-inferencia-interactivo}
-
-Finalmente, se desarrolló una interfaz interactiva en Google Colab que
-permite dibujar caracteres del alfabeto Náhuatl y obtener predicciones
-en tiempo real.
-
-La imagen generada por el usuario se redimensiona a \(28\times28\)
-píxeles:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{img\_resized }\OperatorTok{=}\NormalTok{ cv2.resize(img, (}\DecValTok{28}\NormalTok{,}\DecValTok{28}\NormalTok{))}
-\NormalTok{img\_normalized }\OperatorTok{=}\NormalTok{ img\_resized }\OperatorTok{/} \FloatTok{255.0}
-\NormalTok{img\_input }\OperatorTok{=}\NormalTok{ np.expand\_dims(img\_normalized, axis}\OperatorTok{=}\NormalTok{(}\DecValTok{0}\NormalTok{,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-Posteriormente, el modelo produce un vector de probabilidades:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{predicciones }\OperatorTok{=}\NormalTok{ model.predict(img\_input)}
-\end{Highlighting}
-\end{Shaded}
-
-y se determina la clase más probable mediante:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{idx\_ganador }\OperatorTok{=}\NormalTok{ np.argmax(predicciones)}
-\end{Highlighting}
-\end{Shaded}
-
-Además de la predicción principal, la interfaz presenta las tres clases
-con mayor probabilidad, proporcionando información adicional sobre la
-confianza y las posibles ambigüedades del modelo.
-
 \section{CASO HMM}\label{caso-hmm}
-
-\section{CASO HMM}\label{caso-hmm-1}
 
 En este capítulo se describe la metodología implementada para el
 reconocimiento automático de letras mayúsculas manuscritas del alfabeto
@@ -4160,6 +4148,214 @@ visualmente los patrones de error entre caracteres similares:
 \end{Highlighting}
 \end{Shaded}
 
+\section{CASO CNN}\label{caso-cnn}
+
+\subsection{Arquitectura de la red neuronal
+convolucional}\label{arquitectura-de-la-red-neuronal-convolucional}
+
+La arquitectura propuesta recibe imágenes de tamaño
+\(28\times28\times1\) y está compuesta por tres bloques convolucionales
+seguidos de un clasificador denso.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model }\OperatorTok{=}\NormalTok{ tf.keras.Sequential([}
+\NormalTok{    tf.keras.layers.Input(shape}\OperatorTok{=}\NormalTok{(}\DecValTok{28}\NormalTok{,}\DecValTok{28}\NormalTok{,}\DecValTok{1}\NormalTok{)),}
+
+\NormalTok{    tf.keras.layers.Conv2D(}\DecValTok{32}\NormalTok{,}\DecValTok{3}\NormalTok{,activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
+\NormalTok{    tf.keras.layers.BatchNormalization(),}
+\NormalTok{    tf.keras.layers.MaxPooling2D(),}
+\NormalTok{    tf.keras.layers.SpatialDropout2D(}\FloatTok{0.25}\NormalTok{),}
+
+\NormalTok{    tf.keras.layers.Conv2D(}\DecValTok{64}\NormalTok{,}\DecValTok{3}\NormalTok{,activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
+\NormalTok{    tf.keras.layers.BatchNormalization(),}
+\NormalTok{    tf.keras.layers.MaxPooling2D(),}
+\NormalTok{    tf.keras.layers.SpatialDropout2D(}\FloatTok{0.25}\NormalTok{),}
+
+\NormalTok{    tf.keras.layers.Conv2D(}\DecValTok{128}\NormalTok{,}\DecValTok{3}\NormalTok{,activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
+\NormalTok{    tf.keras.layers.MaxPooling2D(),}
+\NormalTok{    tf.keras.layers.SpatialDropout2D(}\FloatTok{0.25}\NormalTok{),}
+
+\NormalTok{    tf.keras.layers.Flatten(),}
+\NormalTok{    tf.keras.layers.Dense(}\DecValTok{256}\NormalTok{, activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
+\NormalTok{    tf.keras.layers.Dropout(}\FloatTok{0.5}\NormalTok{),}
+\NormalTok{    tf.keras.layers.Dense(num\_classes, activation}\OperatorTok{=}\StringTok{\textquotesingle{}softmax\textquotesingle{}}\NormalTok{)}
+\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Primer bloque
+convolucional}\label{primer-bloque-convolucional}
+
+La primera capa convolucional emplea 32 filtros de tamaño \(3\times3\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.Conv2D(}\DecValTok{32}\NormalTok{,}\DecValTok{3}\NormalTok{,activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Este bloque se encarga de detectar características de bajo nivel, tales
+como bordes, esquinas y pequeños segmentos de los trazos.
+
+La incorporación de una capa de normalización por lotes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.BatchNormalization()}
+\end{Highlighting}
+\end{Shaded}
+
+permite estabilizar la distribución de las activaciones internas,
+acelerando el proceso de convergencia.
+
+Posteriormente, la operación de \emph{max pooling}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.MaxPooling2D()}
+\end{Highlighting}
+\end{Shaded}
+
+reduce la dimensionalidad espacial de las representaciones, disminuyendo
+el número de parámetros y haciendo al modelo menos sensible a pequeñas
+traslaciones.
+
+Finalmente, se incorpora un mecanismo de regularización:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.SpatialDropout2D(}\FloatTok{0.25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+que desactiva mapas de características completos de manera aleatoria,
+obligando a la red a aprender representaciones más robustas.
+
+\subsection{Segundo y tercer bloque
+convolucional}\label{segundo-y-tercer-bloque-convolucional}
+
+Los bloques posteriores incrementan progresivamente el número de filtros
+hasta 64 y 128, respectivamente. El aumento en la profundidad de la red
+permite capturar patrones cada vez más complejos, tales como
+combinaciones de curvas, intersecciones y configuraciones geométricas
+características de cada glifo.
+
+\subsection{Clasificador}\label{clasificador}
+
+Las características extraídas se transforman en un vector
+unidimensional:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.Flatten()}
+\end{Highlighting}
+\end{Shaded}
+
+y posteriormente se procesan mediante una capa densa:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.Dense(}\DecValTok{256}\NormalTok{, activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+La capa de salida utiliza la función Softmax:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf.keras.layers.Dense(num\_classes, activation}\OperatorTok{=}\StringTok{\textquotesingle{}softmax\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+la cual produce una distribución de probabilidad sobre todas las clases
+del alfabeto.
+
+\section{Entrenamiento}\label{entrenamiento-1}
+
+El modelo se compiló utilizando el optimizador Adam:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model.}\BuiltInTok{compile}\NormalTok{(}
+\NormalTok{    optimizer}\OperatorTok{=}\StringTok{\textquotesingle{}adam\textquotesingle{}}\NormalTok{,}
+\NormalTok{    loss}\OperatorTok{=}\StringTok{\textquotesingle{}sparse\_categorical\_crossentropy\textquotesingle{}}\NormalTok{,}
+\NormalTok{    metrics}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{]}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+La función de pérdida de entropía cruzada dispersa se seleccionó debido
+a que las etiquetas de las imágenes se encuentran codificadas como
+enteros y no mediante vectores \emph{one-hot}.
+
+Para evitar el sobreajuste se implementó un mecanismo de detención
+temprana:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{early\_stop }\OperatorTok{=}\NormalTok{ EarlyStopping(}
+\NormalTok{    monitor}\OperatorTok{=}\StringTok{\textquotesingle{}val\_loss\textquotesingle{}}\NormalTok{,}
+\NormalTok{    patience}\OperatorTok{=}\DecValTok{7}\NormalTok{,}
+\NormalTok{    restore\_best\_weights}\OperatorTok{=}\VariableTok{True}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+La elección de siete épocas de paciencia permite al modelo continuar el
+aprendizaje ante pequeñas oscilaciones de la pérdida de validación,
+evitando finalizar el entrenamiento de forma prematura.
+
+Asimismo, el mejor modelo obtenido se almacenó automáticamente:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{checkpoint }\OperatorTok{=}\NormalTok{ ModelCheckpoint(}
+\NormalTok{    ruta\_modelo,}
+\NormalTok{    monitor}\OperatorTok{=}\StringTok{\textquotesingle{}val\_loss\textquotesingle{}}\NormalTok{,}
+\NormalTok{    save\_best\_only}\OperatorTok{=}\VariableTok{True}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Sistema de inferencia
+interactivo}\label{sistema-de-inferencia-interactivo}
+
+Finalmente, se desarrolló una interfaz interactiva en Google Colab que
+permite dibujar caracteres del alfabeto Náhuatl y obtener predicciones
+en tiempo real.
+
+La imagen generada por el usuario se redimensiona a \(28\times28\)
+píxeles:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{img\_resized }\OperatorTok{=}\NormalTok{ cv2.resize(img, (}\DecValTok{28}\NormalTok{,}\DecValTok{28}\NormalTok{))}
+\NormalTok{img\_normalized }\OperatorTok{=}\NormalTok{ img\_resized }\OperatorTok{/} \FloatTok{255.0}
+\NormalTok{img\_input }\OperatorTok{=}\NormalTok{ np.expand\_dims(img\_normalized, axis}\OperatorTok{=}\NormalTok{(}\DecValTok{0}\NormalTok{,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Posteriormente, el modelo produce un vector de probabilidades:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predicciones }\OperatorTok{=}\NormalTok{ model.predict(img\_input)}
+\end{Highlighting}
+\end{Shaded}
+
+y se determina la clase más probable mediante:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{idx\_ganador }\OperatorTok{=}\NormalTok{ np.argmax(predicciones)}
+\end{Highlighting}
+\end{Shaded}
+
+Además de la predicción principal, la interfaz presenta las tres clases
+con mayor probabilidad, proporcionando información adicional sobre la
+confianza y las posibles ambigüedades del modelo.
+
 \bookmarksetup{startatroot}
 
 \chapter{Conclusiones: Comparación entre HMM y CNN en Reconocimiento de
@@ -4208,6 +4404,23 @@ escalabilidad.
 \bookmarksetup{startatroot}
 
 \chapter{Referencias}\label{referencias}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-Norris1998}
+Norris, J. R. 1998. \emph{Markov Chains}. Cambridge: Cambridge
+University Press.
+
+\bibitem[\citeproctext]{ref-rabiner1989tutorial}
+Rabiner, Lawrence R. 1989. {«A tutorial on hidden Markov models and
+selected applications in speech recognition»}. \emph{Proceedings of the
+IEEE} 77 (2): 257-86. \url{https://doi.org/10.1109/5.18626}.
+
+\bibitem[\citeproctext]{ref-Rudin1987}
+Rudin, Walter. 1987. \emph{Real and Complex Analysis}. 3.ª ed. New York:
+McGraw-Hill.
+
+\end{CSLReferences}
 
 
 

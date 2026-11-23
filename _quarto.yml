@@ -2,38 +2,40 @@ project:
   type: book
   output-dir: _book
 
+bibliography: Referencias.bib
+
 website:
   favicon: LOGOunach.png
   reader-mode: true
+  open-graph: true
+  twitter-card: true
+  repo-url: https://github.com/maribecrurod-art/TESIS-Q
+  repo-actions: [edit, issue, source]
+  page-navigation: true
   search:
     location: sidebar
     type: overlay
-  comments:
-    hypothesis: true
-
-book:
-  title: "Tesis"
-  reader-mode: true
-  language: es
-  output-file: "Tesis_MBCR"
-  image: LOGOunach.png
-  cover-image: LOGOunach.png
-  sharing: [twitter, facebook]
-  downloads: [pdf, epub]
-  favicon: LOGOunach.png
   sidebar:
     logo: LOGOunach.png
     style: floating
     collapse-level: 2
     border: true
     search: true
-  open-graph: true
-  twitter-card: true
-  repo-url: https://github.com/maribecrurod-art/TESIS-Q
-  repo-actions: [edit, issue, source]
-  page-navigation: true
-  chapters:
-  
+  comments:
+    hypothesis: true
+
+book:
+  title: "Tesis HMM vs CNN"
+  reader-mode: true
+  language: es
+  date: today
+  output-file: "Tesis_MBCR"
+  image: LOGOunach.png
+  cover-image: LOGOunach.png
+  sharing: [twitter, facebook]
+  downloads: [pdf, epub]
+  favicon: LOGOunach.png
+  chapters: 
     - index.qmd
     - objetivos.qmd
     - capitulo1.qmd
@@ -63,17 +65,25 @@ format:
       gutter-width: 1.5rem
     code-copy: true
     code-fold: true
+    toc: true
+    toc-location: right
 
   pdf:
     lang: es
+    include-in-header: 
+      - packa.tex
+    template-partials: 
+      - before-body.tex
     documentclass: scrreprt
     papersize: us-letter
     titlegraphic: LOGOunach.png
     institution: Benemérita Universidad Autónoma de Chiapas
     email: mariana.cruz68@unach.mx
     keep-tex: true
-
-  epub:
-    cover-image: LOGOunach.png
+    toc: true
+    link-citations: true
+    code-fold: true
+    fig-align: center
+    fig-cap-location: bottom 
 
 editor: visual

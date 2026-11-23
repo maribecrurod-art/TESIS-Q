@@ -8,9 +8,9 @@ execute:
 
 ### Construcción del Conjunto de Datos
 
-El reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto náhuatl (Figura 4.1), presenta una limitación inicial crítica: la inexistencia de un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de alfabetos latinos o asiáticos, que cuentan con repositorios ampliamente documentados (como MNIST o EMNIST), el dominio de los glifos náhuatl carece de recursos computacionales de código abierto.
+El reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto náhuatl @fig-abcnauatl , presenta una limitación inicial crítica: la inexistencia de un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de alfabetos latinos o asiáticos, que cuentan con repositorios ampliamente documentados (como MNIST o EMNIST), el dominio de los glifos náhuatl carece de recursos computacionales de código abierto.
 
-**Figura 4.1:** Glifos del alfabeto náhuatl. Este sistema consta de 18 caracteres base, los cuales, para fines de manipulación computacional, se asocian a etiquetas del alfabeto latino.
+Este sistema consta de 18 caracteres base, los cuales, para fines de manipulación computacional, se asocian a etiquetas del alfabeto latino.
 
 ### Inexistencia de datasets públicos y justificación de la generación sintética
 
@@ -39,7 +39,11 @@ donde $\theta$ representa la rotación, $(t_x, t_y)$ la traslación, y $(s_x, s_
 
 ### Modelado de ruido y degradación
 
-Para simular la naturaleza física del papel histórico y la tinta, se inyectaron perturbaciones estocásticas: - **Ruido aditivo:** Se modeló como ruido blanco gaussiano $\mathcal{N}(0, \sigma^2)$ para emular las imperfecciones del sensor de escaneo. - **Degradación de bordes:** Se aplicó un desenfoque gaussiano leve para simular el "sangrado" de la tinta en el papel poroso.
+Para simular la naturaleza física del papel histórico y la tinta, se inyectaron perturbaciones estocásticas:
+
+**Ruido aditivo:** Se modeló como ruido blanco gaussiano $\mathcal{N}(0, \sigma^2)$ para emular las imperfecciones del sensor de escaneo.
+
+**Degradación de bordes:** Se aplicó un desenfoque gaussiano leve para simular el "sangrado" de la tinta en el papel poroso.
 
 ### Análisis estadístico del dataset resultante
 
@@ -103,10 +107,6 @@ H(S) = - \sum_{i=1}^{256} p(s_i) \log_2 p(s_i)
 $$
 
 Una entropía alta indica que el proceso de generación sintética y extracción de rasgos produce una diversidad de patrones locales rica y no redundante, lo cual es un prerrequisito fundamental para que un modelo de aprendizaje automático pueda aprender representaciones discriminativas y generalizar adecuadamente.
-
-------------------------------------------------------------------------
-
-*(Nota: El código de carga de datos en TensorFlow que tenías originalmente es totalmente válido y se puede insertar como una subsección práctica al final, por ejemplo, bajo un "4.6. Implementación Computacional del Pipeline", si tu director lo permite, o integrarlo como ejemplos dentro de las secciones anteriores).*
 
 ## Construcción del conjunto de datos
 

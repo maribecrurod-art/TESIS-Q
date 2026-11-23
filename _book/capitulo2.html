@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis</title>
+<title>4&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis HMM vs CNN</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -44,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d6a2ae2cb249da1580f0a11f71b8f854.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b2cc3fa21794160b313e4ac029c03c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-fe2070592f9b8f3438b31c1dc38ae10b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a10894211e69ec7231936de48b38be85.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-c3e928dbf8c89a21f601b3e5827c656e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -111,14 +131,6 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="4&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis">
-<meta property="og:description" content="">
-<meta property="og:image" content="Imagenes_tesis\chapman-k.png">
-<meta property="og:site_name" content="Tesis">
-<meta name="twitter:title" content="4&nbsp; Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos – Tesis">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="Imagenes_tesis\chapman-k.png">
-<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
@@ -303,15 +315,10 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./LOGOunach.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./LOGOunach.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Tesis</a> 
+      <a href="./">Tesis HMM vs CNN</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/maribecrurod-art/TESIS-Q" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -439,7 +446,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#estimación-de-parámetros-y-calibración-del-modelo" id="toc-estimación-de-parámetros-y-calibración-del-modelo" class="nav-link" data-scroll-target="#estimación-de-parámetros-y-calibración-del-modelo"><span class="header-section-number">4.5</span> Estimación de Parámetros y Calibración del Modelo</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maribecrurod-art/TESIS-Q/edit/main/capitulo2.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/TESIS-Q/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/TESIS-Q/blob/main/capitulo2.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -466,27 +473,29 @@ window.Quarto = {
 
 <section id="espacio-probabilístico-y-procesos-estocásticos-subyacentes" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="espacio-probabilístico-y-procesos-estocásticos-subyacentes"><span class="header-section-number">4.1</span> Espacio Probabilístico y Procesos Estocásticos Subyacentes</h2>
-<p>Para establecer formalmente una Cadena de Markov a Tiempo Continuo (CTMC), es necesario partir de los axiomas fundamentales de la teoría de la medida, para más detalle consultar el libro de <span class="citation" data-cites="Rudin1987">@Rudin1987</span>.</p>
-<p>Para esto, se asumirá que el lector tiene conocimientos previos sobre teoría de la medida como lo son las <span class="math inline">\(\sigma\)</span>-álgebras, espacio muestral y medida de probabilidad, entre otros.</p>
-<p><strong>Espacio de probabilidad filtrado</strong></p>
-<p>Sea <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> un espacio de probabilidad, donde <span class="math inline">\(\Omega\)</span> es el espacio muestral, <span class="math inline">\(\mathcal{F}\)</span> es una <span class="math inline">\(\sigma\)</span>-álgebra sobre <span class="math inline">\(\Omega\)</span>, y <span class="math inline">\(\mathbb{P}\)</span> es una medida de probabilidad. Sea <span class="math inline">\(\mathbb{F} = \{\mathcal{F}_t\}_{t \ge 0}\)</span> una filtración, es decir, una familia no decreciente de sub-<span class="math inline">\(\sigma\)</span>-álgebras de <span class="math inline">\(\mathcal{F}\)</span> tal que <span class="math inline">\(\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}\)</span> para todo <span class="math inline">\(0 \le s &lt; t\)</span>. El conjunto <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})\)</span> se denomina espacio de probabilidad filtrado.</p>
-<p><strong>Espacio de estados discreto</strong></p>
-<p>Definimos el espacio de estados <span class="math inline">\(S\)</span> como un conjunto discreto y finito (o numerable).</p>
+<p>Para establecer formalmente una Cadena de Markov a Tiempo Continuo (CTMC), es necesario partir de los axiomas fundamentales de la teoría de la medida, para más detalle consultar el libro de <span class="citation" data-cites="Rudin1987">Rudin (<a href="referencias.html#ref-Rudin1987" role="doc-biblioref">1987</a>)</span> Para esto, se asumirá que el lector tiene conocimientos previos sobre teoría de la medida como lo son las <span class="math inline">\(\sigma\)</span>-álgebras, espacio muestral y medida de probabilidad, entre otros.</p>
+<div id="def-espacio-filtrado" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 4.1 (Espacio de probabilidad filtrado)</strong></span> Sea <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> un espacio de probabilidad, donde <span class="math inline">\(\Omega\)</span> es el espacio muestral, <span class="math inline">\(\mathcal{F}\)</span> es una <span class="math inline">\(\sigma\)</span>-álgebra sobre <span class="math inline">\(\Omega\)</span>, y <span class="math inline">\(\mathbb{P}\)</span> es una medida de probabilidad. Sea <span class="math inline">\(\mathbb{F} = \{\mathcal{F}_t\}_{t \ge 0}\)</span> una filtración, es decir, una familia no decreciente de sub-<span class="math inline">\(\sigma\)</span>-álgebras de <span class="math inline">\(\mathcal{F}\)</span> tal que <span class="math inline">\(\mathcal{F}_s \subseteq \mathcal{F}_t \subseteq \mathcal{F}\)</span> para todo <span class="math inline">\(0 \le s &lt; t\)</span>. El conjunto <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})\)</span> se denomina espacio de probabilidad filtrado.</p>
+</div>
+<div id="def-espacio-discreto" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 4.2 (Espacio de estados discreto)</strong></span> Definimos el espacio de estados <span class="math inline">\(S\)</span> como un conjunto discreto y finito (o numerable).</p>
 <p>La topología en <span class="math inline">\(S\)</span> es discreta y su <span class="math inline">\(\sigma\)</span>-álgebra asociada es el conjunto potencia <span class="math inline">\(\mathcal{P}(S)\)</span>.</p>
 <p>En el contexto de nuestro proyecto, <span class="math inline">\(S\)</span> representa el conjunto de posibles colores o intensidades de un pixel (por ejemplo, el espacio RGB donde <span class="math inline">\(|S| = 256^3\)</span>, o una escala de grises finita).</p>
-<p><strong>Proceso estocástico a Tiempo Continuo</strong></p>
-<p>Un proceso estocástico en tiempo continuo con espacio de estados discreto <span class="math inline">\(S\)</span> es una familia de variables aleatorias</p>
+</div>
+<div id="def-proceso-estocastico" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 4.3 (Proceso estocástico a Tiempo Continuo)</strong></span> Un proceso estocástico en tiempo continuo con espacio de estados discreto <span class="math inline">\(S\)</span> es una familia de variables aleatorias</p>
 <p><span class="math display">\[
 X = \{X(t) : t \in \mathbb{R}_{\ge 0}\},
 \]</span></p>
 <p>donde cada <span class="math inline">\(X(t): \Omega \to S\)</span> es una función medible respecto a <span class="math inline">\(\mathcal{F}_t\)</span>.</p>
 <p>Interpretamos <span class="math inline">\(X(t)\)</span> como el “color verdadero” del pixel en el instante (o parámetro continuo) <span class="math inline">\(t\)</span>.</p>
+</div>
 </section>
 <section id="cadenas-de-markov-a-tiempo-continuo-ctmc" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="cadenas-de-markov-a-tiempo-continuo-ctmc"><span class="header-section-number">4.2</span> Cadenas de Markov a Tiempo Continuo (CTMC)</h2>
 <p>La transición del concepto general de proceso estocástico al de proceso de Markov requiere la propiedad de amnesia (pérdida de memoria).</p>
-<p><strong>Propiedad de Markov</strong></p>
-<p>El proceso adaptado <span class="math inline">\(X = \{X(t)\}_{t \ge 0}\)</span> es una Cadena de Markov a Tiempo Continuo si satisface la condición de Markov relativa a la filtración <span class="math inline">\(\mathbb{F}\)</span>: para cualquier conjunto discreto de tiempos</p>
+<div id="def-propiedad-markov" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 4.4 (Propiedad de Markov)</strong></span> El proceso adaptado <span class="math inline">\(X = \{X(t)\}_{t \ge 0}\)</span> es una Cadena de Markov a Tiempo Continuo si satisface la condición de Markov relativa a la filtración <span class="math inline">\(\mathbb{F}\)</span>: para cualquier conjunto discreto de tiempos</p>
 <p><span class="math display">\[
 0 \le t_1 &lt; t_2 &lt; \dots &lt; t_n &lt; t
 \]</span></p>
@@ -509,6 +518,8 @@ i_1, i_2, \dots, i_n, i, j \in S,
 \text{c.s. (casi seguramente)}
 \]</span></p>
 <p>para todo <span class="math inline">\(0 \le s \le t\)</span>.</p>
+</div>
+<div class="{def-probabilidad-transicion-homogeneidad}">
 <p><strong>Probabilidades de transición y homogeneidad</strong></p>
 <p>Definimos la probabilidad de transición del estado <span class="math inline">\(i\)</span> al estado <span class="math inline">\(j\)</span> en el intervalo <span class="math inline">\([s,t]\)</span> como</p>
 <p><span class="math display">\[
@@ -532,17 +543,18 @@ P(\tau)
 =
 [p_{ij}(\tau)]_{i,j\in S}.
 \]</span></p>
+</div>
 <p><strong>Ecuaciones de Chapman-Kolmogorov</strong></p>
-<p>Para cualquier <span class="math inline">\(s,t \ge 0\)</span>, la familia de matrices de transición <span class="math inline">\(\{P(t)\}_{t\ge0}\)</span> forma un semigrupo de operadores estocásticos, satisfaciendo<span class="math display">\[
+<p>Para cualquier <span class="math inline">\(s,t \ge 0\)</span>, la familia de matrices de transición <span class="math inline">\(\{P(t)\}_{t\ge0}\)</span> forma un semigrupo de operadores estocásticos, satisfaciendo <span class="math display">\[
 P(t+s)=P(t)P(s)
 \]</span></p>
 <p>lo que equivale a</p>
-<p><span class="math display">\[
+<p><span id="eq-chapman"><span class="math display">\[
 p_{ij}(t+s)
 =
 \sum_{k\in S}
 p_{ik}(t)p_{kj}(s).
-\]</span></p>
+\tag{4.1}\]</span></span></p>
 <div id="fig-chapman" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-chapman-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -588,7 +600,7 @@ Q=[q_{ij}]_{i,j\in S}
 \sum_{j\in S} q_{ij}=0.
 \]</span></p>
 <p><strong>Ecuaciones diferenciales de Kolmogorov</strong></p>
-<p>Bajo condiciones de regularidad (que se cumplen trivialmente si el espacio de estados del color <span class="math inline">\(S\)</span> es finito), la matriz de transición <span class="math inline">\(P(t)\)</span> es la solución única a las ecuaciones diferenciales matriciales de Kolmogorov Hacia Adelante (Forward) y Hacia Atrás (Backward) <span class="citation" data-cites="Norris1998">@Norris1998</span> :</p>
+<p>Bajo condiciones de regularidad (que se cumplen trivialmente si el espacio de estados del color <span class="math inline">\(S\)</span> es finito), la matriz de transición <span class="math inline">\(P(t)\)</span> es la solución única a las ecuaciones diferenciales matriciales de Kolmogorov Hacia Adelante (Forward) y Hacia Atrás (Backward) <span class="citation" data-cites="Norris1998">Norris (<a href="referencias.html#ref-Norris1998" role="doc-biblioref">1998</a>)</span> :</p>
 <ul>
 <li><strong>Forward:</strong></li>
 </ul>
@@ -642,19 +654,20 @@ Y(t):\Omega\to O
 <p>La dependencia estocástica entre ambos procesos queda unívocamente determinada por la condición de independencia local.</p>
 <p>Para cualquier instante <span class="math inline">\(t\ge0\)</span>, la observación <span class="math inline">\(Y(t)\)</span> es condicionalmente independiente de toda la historia previa del sistema dado el estado concurrente <span class="math inline">\(X(t)\)</span>.</p>
 <p>Formalmente, para cualquier <span class="math inline">\(y\in O\)</span> y <span class="math inline">\(x\in S\)</span>:</p>
-<p><span class="math display">\[
+<p><span id="eq-matrizemision"><span class="math display">\[
 \mathbb{P}(Y(t)=y \mid \mathcal{F}_t^X,\mathcal{F}_{t^-}^Y)
 =
 \mathbb{P}(Y(t)=y \mid X(t)=x)
 \quad
 \text{c.s.}
-\]</span></p>
-<p>donde <span class="math inline">\(\mathcal{F}_t^X\)</span> y <span class="math inline">\(\mathcal{F}_{t^-}^Y\)</span> denotan las filtraciones <span class="quarto-unresolved-ref">?nte-espacio-filtrado</span> del historial latente y observable, respectivamente.</p>
+\tag{4.2}\]</span></span></p>
+<p>donde <span class="math inline">\(\mathcal{F}_t^X\)</span> y <span class="math inline">\(\mathcal{F}_{t^-}^Y\)</span> denotan las filtraciones <a href="#def-espacio-filtrado" class="quarto-xref">Definición&nbsp;<span>4.1</span></a> del historial latente y observable, respectivamente.</p>
 <p>Estas probabilidades definen las entradas de la matriz de emisión estocástica</p>
 <p><span class="math display">\[
 E=[e_{xy}],
 \]</span></p>
-<p>donde <span class="math display">\[
+<p>donde</p>
+<p><span class="math display">\[
 e_{xy}
 =
 \mathbb{P}(Y(t)=y \mid X(t)=x).
@@ -682,7 +695,7 @@ Y(t_1)=y_1,\dots,Y(t_k)=y_k,
 X(t_k)=i
 \bigr).
 \]</span></p>
-<p>Esta cantidad se calcula recursivamente mediante la ecuación de Chapman-Kolmogorov <span class="quarto-unresolved-ref">?imp-chapman-kolmogorov</span> y la matriz de emisión <span class="math inline">\(E\)</span> <span class="quarto-unresolved-ref">?nte-matriz-emision</span>:</p>
+<p>Esta cantidad se calcula recursivamente mediante la ecuación de Chapman-Kolmogorov <a href="#eq-chapman" class="quarto-xref">Ecuación&nbsp;<span>4.1</span></a> y la matriz de emisión <span class="math inline">\(E\)</span> definida en la <a href="#eq-matrizemision" class="quarto-xref">Ecuación&nbsp;<span>4.2</span></a>.</p>
 <p><span class="math display">\[
 \alpha_k(j)
 =
@@ -731,7 +744,7 @@ e^{Q\Delta t_k}.
 \hat{X} = \arg\max_{x_1,\dots,x_K} \mathbb{P}\left(X(t_1)=x_1,\dots,X(t_K)=x_K \mid Y(t_1)=y_1,\dots,Y(t_K)=y_K\right).
 \]</span></p>
 <p>A diferencia de la función <span class="math inline">\(\max\)</span>, que devuelve el <strong>valor numérico</strong> de la probabilidad más alta alcanzada, el operador <span class="math inline">\(\arg\max\)</span> (argumento del máximo) devuelve el <strong>conjunto de entradas</strong> que producen ese valor máximo. En este contexto, no nos interesa saber cuál es el porcentaje exacto de la probabilidad máxima, sino descubrir específicamente <strong>cuál es la secuencia exacta de estados latentes</strong> <span class="math inline">\(\hat{X}\)</span> que hace que esa probabilidad sea máxima</p>
-<p>La solución sistemática a este problema de programación dinámica espacial/temporal se obtiene mediante la adaptación del Algoritmo de Viterbi <span class="citation" data-cites="rabiner1989tutorial">@rabiner1989tutorial</span> para cadenas a tiempo continuo, evaluando las transiciones máximas sobre</p>
+<p>La solución sistemática a este problema de programación dinámica espacial/temporal se obtiene mediante la adaptación del Algoritmo de Viterbi <span class="citation" data-cites="rabiner1989tutorial">Rabiner (<a href="referencias.html#ref-rabiner1989tutorial" role="doc-biblioref">1989</a>)</span> para cadenas a tiempo continuo, evaluando las transiciones máximas sobre</p>
 <p><span class="math display">\[
 P(\Delta t_k).
 \]</span></p>
@@ -941,7 +954,7 @@ P(X_1=N\mid Y)\approx 26.7\%.
 <div id="fig-pixelbn" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pixelbn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/imagenesHMM/pixelblanconegrodibujo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="450">
+<img src="images/imagenesHMM/pixelblanconegrodibujo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pixelbn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;4.2: Modelo Oculto de Markov para un píxel con dos estados ocultos y dos observaciones.
@@ -974,6 +987,17 @@ Figura&nbsp;4.3: Esquema general del algoritmo Expectation–Maximization (Baum�
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Norris1998" class="csl-entry" role="listitem">
+Norris, J. R. 1998. <em>Markov Chains</em>. Cambridge: Cambridge University Press.
+</div>
+<div id="ref-rabiner1989tutorial" class="csl-entry" role="listitem">
+Rabiner, Lawrence R. 1989. <span>«A tutorial on hidden Markov models and selected applications in speech recognition»</span>. <em>Proceedings of the IEEE</em> 77 (2): 257-86. <a href="https://doi.org/10.1109/5.18626">https://doi.org/10.1109/5.18626</a>.
+</div>
+<div id="ref-Rudin1987" class="csl-entry" role="listitem">
+Rudin, Walter. 1987. <em>Real and Complex Analysis</em>. 3.ª ed. New York: McGraw-Hill.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -1407,4 +1431,4 @@ Figura&nbsp;4.3: Esquema general del algoritmo Expectation–Maximization (Baum�
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maribecrurod-art/TESIS-Q/edit/main/capitulo2.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/TESIS-Q/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/TESIS-Q/blob/main/capitulo2.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></div></div></footer></body></html>
+</body></html>

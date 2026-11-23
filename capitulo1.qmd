@@ -13,13 +13,13 @@ language:
 
 ### El alfabeto náhuatl y la preservación del patrimonio documental
 
-El náhuatl es una de las lenguas más importantes de Mesoamérica, con una historia escrita que se remonta a siglos antes de la llegada de los españoles. Originalmes nahuas (llamados *tlacuilos*) utilizaban un sistema de glifos y pictogramas para registrar información histórica, tributaria y ceremonial en códices. Tras la conquista, se desarrolló una adaptación del alfabeto latino que incorporaba convenciones ortográficas específicas para representar los sonidos propios del náhuatl.
+El náhuatl es una de las lenguas más importantes de Mesoamérica, con una historia escrita que se remonta a siglos antes de la llegada de los españoles. Originalmente los nahuas (llamados *tlacuilos*) utilizaban un sistema de glifos y pictogramas para registrar información histórica, tributaria y ceremonial en códices. Tras la conquista, se desarrolló una adaptación del alfabeto latino que incorporaba convenciones ortográficas específicas para representar los sonidos propios del náhuatl.
 
-En la actualidad, han surgido propuestas de **sistemas de escritura intermedios** que buscan establecer un puente entre la tradición glífica ancestral y la escritura alfabética moderna. Un ejemplo es el siguiente abecedario provisional Náhuatl (ver @abcnauatl ), el cual asigna símbolos geométricos simplificados a los fonemas de la lengua, manteniendo cierta estética visual mesoamericana mientras facilita la transición hacia la lectoescritura.
+En la actualidad, han surgido propuestas de **sistemas de escritura intermedios** que buscan establecer un puente entre la tradición glífica ancestral y la escritura alfabética moderna. Un ejemplo es el siguiente abecedario provisional Náhuatl (ver @fig-nauatl ), el cual asigna símbolos geométricos simplificados a los fonemas de la lengua, manteniendo cierta estética visual mesoamericana mientras facilita la transición hacia la lectoescritura.
 
-![Construcción de un "alfabeto" fónico para el náuatl.](images/02ebf77bcfe068987b8a9bcc02498d49.png){#abcnauatl fig-align="center"}
+![Construcción de un "alfabeto" fónico para el náuatl.](images/02ebf77bcfe068987b8a9bcc02498d49.png){#fig-nauatl fig-align="center" width="500"}
 
-![](images\Alfabeto%20nahuatl.png)
+![Representación del alfabeto fónico háhuatl.](images\Alfabeto%20nahuatl.png){#fig-abcnauatl width="500"}
 
 La preservación de estos documentos y sistemas de escritura no solo implica su conservación física, sino también su digitalización y análisis computacional para garantizar su accesibilidad a futuras generaciones. Sin embargo, este proceso enfrenta un desafío importante: la transcripción manual por parte de especialistas es un proceso lento, costoso y propenso a errores. En este contexto, el desarrollo de herramientas automatizadas de reconocimiento se vuelve crucial.
 
@@ -41,7 +41,7 @@ El Reconocimiento Óptico de Caracteres (OCR, por sus siglas en inglés) ha alca
 
 Para abordar este problema desde las matemáticas aplicadas, es necesario realizar una delimitación clara del alcance. Si bien la variabilidad en la elección del pictograma (frijol vs. elote) es un problema lingüístico relevante, su resolución excede el ámbito de esta tesis.
 
-Por lo tanto, **este trabajo asume un sistema ortográfico fijo y estandarizado**: el Abecedario Provisional Náhuatl mostrado en la Figura @abcnauatl, donde se ha establecido de manera definitiva qué glifo representa a cada fonema. Bajo esta suposición, el problema se traslada al terreno del **reconocimiento de patrones**, el cual presenta desafíos matemáticos propios que justifican la comparación de dos enfoques fundamentales:
+Por lo tanto, **este trabajo asume un sistema ortográfico fijo y estandarizado**: el Abecedario Provisional Náhuatl mostrado en la @fig-abcnauatl, donde se ha establecido de manera definitiva qué glifo representa a cada fonema. Bajo esta suposición, el problema se traslada al terreno del **reconocimiento de patrones**, el cual presenta desafíos matemáticos propios que justifican la comparación de dos enfoques fundamentales:
 
 -   **Modelos Ocultos de Markov (HMM):** Que modelan la secuencia estocástica de los rasgos geométricos extraídos del trazo mediante procesos probabilísticos.
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Fundamentos matemáticos de las Redes Neuronales Convolucionales – Tesis</title>
+<title>5&nbsp; Fundamentos matemáticos de las Redes Neuronales Convolucionales – Tesis HMM vs CNN</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -44,8 +44,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d6a2ae2cb249da1580f0a11f71b8f854.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b2cc3fa21794160b313e4ac029c03c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-fe2070592f9b8f3438b31c1dc38ae10b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a10894211e69ec7231936de48b38be85.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-c3e928dbf8c89a21f601b3e5827c656e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -111,14 +111,6 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="5&nbsp; Fundamentos matemáticos de las Redes Neuronales Convolucionales – Tesis">
-<meta property="og:description" content="">
-<meta property="og:image" content="Imagenes_tesis/Imagen flor 1 corregida.png">
-<meta property="og:site_name" content="Tesis">
-<meta name="twitter:title" content="5&nbsp; Fundamentos matemáticos de las Redes Neuronales Convolucionales – Tesis">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="Imagenes_tesis/Imagen flor 1 corregida.png">
-<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
@@ -303,15 +295,10 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./LOGOunach.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./LOGOunach.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Tesis</a> 
+      <a href="./">Tesis HMM vs CNN</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/maribecrurod-art/TESIS-Q" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -455,7 +442,7 @@ window.Quarto = {
   <li><a href="#optimización" id="toc-optimización" class="nav-link" data-scroll-target="#optimización"><span class="header-section-number">5.5.11</span> Optimización</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maribecrurod-art/TESIS-Q/edit/main/capitulo3.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/TESIS-Q/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/TESIS-Q/blob/main/capitulo3.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -512,10 +499,14 @@ X \in \mathbb{R}^{H \times W \times C}
 X(i,j) = \left(x_1, x_2, \dots, x_C \right) \in \mathbb{R}^C
 \tag{5.3}\]</span></span></p>
 <p>Por tanto, cada píxel contiene un vector que describe información en distintos canales.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Imagenes_tesis/Imagen flor 1 corregida.png" class="img-fluid figure-img"></p>
-<figcaption>En la imágen se observa que cada píxel está formado en realidad por la combinación de valores de los tres canales.</figcaption>
+<div id="fig-imagen_multicanal" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-imagen_multicanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Imagenes_tesis/Imagen flor 1 corregida.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-imagen_multicanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.1: En la imágen se observa que cada píxel está formado en realidad por la combinación de valores de los tres canales.
+</figcaption>
 </figure>
 </div>
 <section id="estructura-funcional-de-la-red" class="level3" data-number="5.3.1">
@@ -575,7 +566,16 @@ X(i+u, j+v, c)
 \langle K, X_{(i,j)} \rangle
 \tag{5.8}\]</span></span></p>
 <p>mide la similitud entre el patrón definido por el kernel y la región local de la imagen.</p>
-<p><img src="images/paste-1.png" class="img-fluid"></p>
+<div id="fig-kernel_unicanal" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kernel_unicanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/paste-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kernel_unicanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.2: Se observa un ejemplo de como funciona un kernel especial para detectar bordes al aplicarlo a una subregión.
+</figcaption>
+</figure>
+</div>
 <p><strong>Compartición de parámetros</strong></p>
 <p>Una propiedad fundamental de las redes neuronales convolucionales es la <strong>compartición de parámetros</strong>, la cual establece que los coeficientes del kernel no dependen de la posición espacial en la que se aplica la operación.</p>
 <p>Formalmente, si <span class="math inline">\(K\)</span> es un kernel convolucional, entonces:</p>
@@ -629,7 +629,16 @@ K(u,v)\, X(i+u, j+v)
 <li><span class="math inline">\((u,v)\)</span> recorre las coordenadas internas del kernel,</li>
 <li><span class="math inline">\(X(i+u, j+v)\)</span> representa la región local de la imagen.</li>
 </ul>
-<p><img src="Imagenes_tesis/img_kernel_1.png" class="img-fluid"></p>
+<div id="fig-operacion_kernel" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-operacion_kernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Imagenes_tesis/img_kernel_1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-operacion_kernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.3: En la imágen se observa como opera un kernel. Se visualiza los valores correspondientes a la imágen original compuesta de ceros y unos, se selecciona una subregión o parche y usando el filtro dado se realizan las operaciones correspondientes de multiplicación y suma, de modo que el resultado es registrado en el mapa de salidas, que constituye una nueva imágen más pequeña que la original.
+</figcaption>
+</figure>
+</div>
 <p><strong>Interpretación como ventana deslizante</strong></p>
 <p>La ecuación anterior describe un proceso en el cual el kernel se desplaza sistemáticamente sobre la imagen. En cada posición, se selecciona una submatriz de <span class="math inline">\(X\)</span> de dimensiones <span class="math inline">\(k_h \times k_w\)</span>, sobre la cual se realiza una operación de agregación ponderada.</p>
 <p>Formalmente, definimos la submatriz local como:</p>
@@ -714,7 +723,16 @@ Y^{(c)}(i,j) =
 K(u,v,c)\, X(i+u,j+v,c)
 \]</span></p>
 <p>Cada término <span class="math inline">\(Y^{(c)}(i,j)\)</span> representa la contribución del canal <span class="math inline">\(c\)</span> al valor final de la salida.</p>
-<p><img src="images/paste-2.png" class="img-fluid"></p>
+<div id="fig-convolucion_ejemplo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-convolucion_ejemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/paste-2.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-convolucion_ejemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.4: Se representa la manera en la que opera un kernel dependiendo de si se trata de una imágen a blanco y negro (unicanal) o una a color en RGB (multicanal), ambas tomando la misma subregión correspondiente.
+</figcaption>
+</figure>
+</div>
 <p><strong>Interpretación como producto interno en espacio tensorial</strong></p>
 <p>Sea <span class="math inline">\(X_{(i,j)}\)</span> la subregión local de la imagen centrada en <span class="math inline">\((i,j)\)</span>. Entonces:</p>
 <p><span class="math display">\[
@@ -805,10 +823,14 @@ Y(i,j) = \left( Y_1(i,j), Y_2(i,j), \dots, Y_F(i,j) \right) \in \mathbb{R}^{F}
 <p>Desde una perspectiva geométrica, cada filtro <span class="math inline">\(K^{(f)}\)</span> define una dirección en el espacio <span class="math inline">\(\mathbb{R}^{k_h k_w C}\)</span>. En consecuencia, el vector <span class="math inline">\(Y(i,j)\)</span> contiene las proyecciones de la región local <span class="math inline">\(X_{(i,j)}\)</span> sobre cada una de estas direcciones.</p>
 <p>Esto permite interpretar la salida como una representación de la información local en una base (no necesariamente ortogonal) definida por los filtros aprendidos.</p>
 <p>###Ejemplos de filtros</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/paste-4.png" class="img-fluid figure-img"></p>
-<figcaption>Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. En la imagen se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.</figcaption>
+<div id="fig-Ejemplos_kernels" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Ejemplos_kernels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/paste-4.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Ejemplos_kernels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.5: Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. En la imagen se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -874,7 +896,7 @@ Y = \sigma\big( (\text{pad}(X)) \star K + b \big)
 <img src="Imagenes_tesis/img_kernel_mapa.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-padding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5.1: Ejemplo de convolución con y sin padding. La incorporación de padding permite controlar el tamaño de la salida. En particular, cuando se utiliza padding adecuado, es posible preservar las dimensiones espaciales de la imagen original tras la aplicación de la convolución. El color rosa identifica la imagen de entrada y la salida de la convolución, mientras que el verde representa el filtro empleado. En el caso del ejemplo con padding, las celdas correspondientes al relleno se distinguen al estar por fuera del cuadro rojo, para resaltar que no forman parte de la imagen original.
+Figura&nbsp;5.6: Ejemplo de convolución con y sin padding. La incorporación de padding permite controlar el tamaño de la salida. En particular, cuando se utiliza padding adecuado, es posible preservar las dimensiones espaciales de la imagen original tras la aplicación de la convolución. El color rosa identifica la imagen de entrada y la salida de la convolución, mientras que el verde representa el filtro empleado. En el caso del ejemplo con padding, las celdas correspondientes al relleno se distinguen al estar por fuera del cuadro rojo, para resaltar que no forman parte de la imagen original.
 </figcaption>
 </figure>
 </div>
@@ -915,19 +937,36 @@ Y = \sigma\big( X \star K + b \big)
 <li><span class="math inline">\(\sigma\)</span> se aplica elemento a elemento</li>
 </ul>
 <p><strong>Ejemplos de funciones de activación</strong></p>
-<p>Algunas de las funciones de activación más utilizadas son las siguientes: <img src="Imagenes_tesis/img_funciones_activacion.png" id="fig-activaciones" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:82.0%" alt="ReLU es eficientemente y se usa ampliamente en redes profundas. Sigmoide es útil en la capa de salida para clasificación binaria. Tanh es útil cuando se necesita una salida centrada en 0. Leaky ReLu evita el problema de “neuronas muertas” de ReLu."></p>
+<p>Imagenes_tesis/img_funciones_activacion.png</p>
+<p>Algunas de las funciones de activación más utilizadas son las siguientes:</p>
+<div id="fig-activaciones" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-activaciones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Imagenes_tesis/img_funciones_activacion.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-activaciones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.7: Gráficas y formulaciones de funciones de activación comunes (ReLU, Sigmoide, Tanh, Leaky ReLU).
+</figcaption>
+</figure>
+</div>
 <p><em>ReLU (Rectified Linear Unit)</em></p>
+<p>ReLU es eficientemente y se usa ampliamente en redes profundas.</p>
 <p><span id="eq-relu"><span class="math display">\[
 \sigma(x) = \max(0, x)
 \tag{5.23}\]</span></span></p>
 <p><em>Sigmoide</em></p>
+<p>Sigmoide es útil en la capa de salida para clasificación binaria.</p>
 <p><span id="eq-sigmoide"><span class="math display">\[
 \sigma(x) = \frac{1}{1 + e^{-x}}
 \tag{5.24}\]</span></span></p>
 <p><em>Tangente hiperbólica</em></p>
-<p><span id="eq-tanh"><span class="math display">\[
+<p>Tanh es útil cuando se necesita una salida centrada en 0. <span id="eq-tanh"><span class="math display">\[
 \sigma(x) = \tanh(x)
 \tag{5.25}\]</span></span></p>
+<p><em>Leaky ReLU</em></p>
+<p><span class="math display">\[
+\sigma(x) = \max(0, x)
+\]</span></p>
 <p><strong>Propiedades fundamentales</strong></p>
 <p>Las funciones de activación empleadas en redes neuronales satisfacen típicamente:</p>
 <ul>
@@ -970,10 +1009,14 @@ Y(i,j,c) = \max_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
 <p><span id="eq-avgpool"><span class="math display">\[
 Y(i,j,c) = \frac{1}{|\mathcal{R}|} \sum_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
 \tag{5.28}\]</span></span> El pooling sirve para reducir las dimensiones espaciales (ancho y alto) de un tensor, asegurando que se conserve la información más relevante. Aplicar esta técnica brinda grandes beneficios a los modelos: disminuye significativamente el costo computacional, introduce invariancia a pequeñas traslaciones en la imagen y ayuda a prevenir el sobreajuste. Además, es importante destacar que esta reducción se aplica de manera independiente a cada canal de profundidad del tensor</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/paste-3.png" class="img-fluid figure-img"></p>
-<figcaption>En la parte superior de la figura se ilustra el funcionamiento del Max Pooling utilizando una ventana de tamaño 2×2 y un stride de 2. La imagen de entrada se divide en cuatro regiones no superpuestas, identificadas mediante diferentes colores. Para cada región, el operador selecciona únicamente el valor máximo: en la región superior izquierda se obtiene 6, en la superior derecha 4, en la inferior izquierda 8 y en la inferior derecha 3. Estos valores conforman el mapa de salida de tamaño 2×2, preservando las características más destacadas de cada zona mientras se reduce la dimensionalidad espacial. De manera similar, en la parte inferior de la figura se muestra el proceso de Average Pooling con la misma ventana 2×2 y el mismo stride. En lugar de conservar el valor máximo, se calcula el promedio de los elementos contenidos en cada región. Así, las cuatro ventanas generan los valores 3.75, 2.25, 4.50 y 1, que constituyen la salida reducida. Este método produce una representación más suavizada de la información, manteniendo la tendencia general de los datos presentes en cada región de la imagen.</figcaption>
+<div id="fig-pooloing" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pooloing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/paste-3.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pooloing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.8: En la parte superior de la figura se ilustra el funcionamiento del Max Pooling utilizando una ventana de tamaño 2×2 y un stride de 2. La imagen de entrada se divide en cuatro regiones no superpuestas, identificadas mediante diferentes colores. Para cada región, el operador selecciona únicamente el valor máximo: en la región superior izquierda se obtiene 6, en la superior derecha 4, en la inferior izquierda 8 y en la inferior derecha 3. Estos valores conforman el mapa de salida de tamaño 2×2, preservando las características más destacadas de cada zona mientras se reduce la dimensionalidad espacial. De manera similar, en la parte inferior de la figura se muestra el proceso de Average Pooling con la misma ventana 2×2 y el mismo stride. En lugar de conservar el valor máximo, se calcula el promedio de los elementos contenidos en cada región. Así, las cuatro ventanas generan los valores 3.75, 2.25, 4.50 y 1, que constituyen la salida reducida. Este método produce una representación más suavizada de la información, manteniendo la tendencia general de los datos presentes en cada región de la imagen.
+</figcaption>
 </figure>
 </div>
 <p><strong>Propiedades</strong></p>
@@ -1845,4 +1888,4 @@ h_i.
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maribecrurod-art/TESIS-Q/edit/main/capitulo3.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/maribecrurod-art/TESIS-Q/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li><li><a href="https://github.com/maribecrurod-art/TESIS-Q/blob/main/capitulo3.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></div></div></footer></body></html>
+</body></html>

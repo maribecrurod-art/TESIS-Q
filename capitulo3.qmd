@@ -48,7 +48,7 @@ $$ {#eq-pixel-vector}
 
 Por tanto, cada píxel contiene un vector que describe información en distintos canales.
 
-![En la imágen se observa que cada píxel está formado en realidad por la combinación de valores de los tres canales.](Imagenes_tesis/Imagen%20flor%201%20corregida.png)
+![En la imágen se observa que cada píxel está formado en realidad por la combinación de valores de los tres canales.](Imagenes_tesis/Imagen%20flor%201%20corregida.png){#fig-imagen_multicanal}
 
 ### Estructura Funcional de la Red
 
@@ -128,7 +128,7 @@ $$ {#eq-producto-interno}
 
 mide la similitud entre el patrón definido por el kernel y la región local de la imagen.
 
-![](images/paste-1.png)
+![Se observa un ejemplo de como funciona un kernel especial para detectar bordes al aplicarlo a una subregión.](images/paste-1.png){#fig-kernel_unicanal}
 
 **Compartición de parámetros**
 
@@ -205,7 +205,7 @@ donde:
 -   $(u,v)$ recorre las coordenadas internas del kernel,
 -   $X(i+u, j+v)$ representa la región local de la imagen.
 
-![](Imagenes_tesis/img_kernel_1.png)
+![En la imágen se observa como opera un kernel. Se visualiza los valores correspondientes a la imágen original compuesta de ceros y unos, se selecciona una subregión o parche y usando el filtro dado se realizan las operaciones correspondientes de multiplicación y suma, de modo que el resultado es registrado en el mapa de salidas, que constituye una nueva imágen más pequeña que la original.](Imagenes_tesis/img_kernel_1.png){#fig-operacion_kernel}
 
 **Interpretación como ventana deslizante**
 
@@ -331,7 +331,7 @@ $$
 
 Cada término $Y^{(c)}(i,j)$ representa la contribución del canal $c$ al valor final de la salida.
 
-![](images/paste-2.png)
+![Se representa la manera en la que opera un kernel dependiendo de si se trata de una imágen a blanco y negro (unicanal) o una a color en RGB (multicanal), ambas tomando la misma subregión correspondiente.](images/paste-2.png){#fig-convolucion_ejemplo}
 
 **Interpretación como producto interno en espacio tensorial**
 
@@ -472,7 +472,7 @@ Esto permite interpretar la salida como una representación de la información l
 
 ###Ejemplos de filtros
 
-![Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. En la imagen se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.](images/paste-4.png)
+![Los distintos filtros convolucionales permiten detectar características específicas en la imagen de entrada. En la imagen se muestran ejemplos representativos del efecto de diferentes kernels sobre una misma imagen.](images/paste-4.png){#fig-Ejemplos_kernels}
 
 ### Observación estructural
 
@@ -589,9 +589,15 @@ donde:
 
 **Ejemplos de funciones de activación**
 
-Algunas de las funciones de activación más utilizadas son las siguientes: ![ReLU es eficientemente y se usa ampliamente en redes profundas. Sigmoide es útil en la capa de salida para clasificación binaria. Tanh es útil cuando se necesita una salida centrada en 0. Leaky ReLu evita el problema de "neuronas muertas" de ReLu.](Imagenes_tesis/img_funciones_activacion.png){#fig-activaciones fig-align="center" width="82%"}
+Imagenes_tesis/img_funciones_activacion.png
+
+Algunas de las funciones de activación más utilizadas son las siguientes:
+
+![Gráficas y formulaciones de funciones de activación comunes (ReLU, Sigmoide, Tanh, Leaky ReLU).](Imagenes_tesis/img_funciones_activacion.png){#fig-activaciones fig-align="center" width="80%"}
 
 *ReLU (Rectified Linear Unit)*
+
+ReLU es eficientemente y se usa ampliamente en redes profundas.
 
 $$
 \sigma(x) = \max(0, x)
@@ -599,15 +605,23 @@ $$ {#eq-relu}
 
 *Sigmoide*
 
+Sigmoide es útil en la capa de salida para clasificación binaria.
+
 $$
 \sigma(x) = \frac{1}{1 + e^{-x}}
 $$ {#eq-sigmoide}
 
 *Tangente hiperbólica*
 
-$$
+Tanh es útil cuando se necesita una salida centrada en 0. $$
 \sigma(x) = \tanh(x)
 $$ {#eq-tanh}
+
+*Leaky ReLU*
+
+$$
+\sigma(x) = \max(0, x)
+$$
 
 **Propiedades fundamentales**
 
@@ -667,7 +681,7 @@ $$
 Y(i,j,c) = \frac{1}{|\mathcal{R}|} \sum_{(u,v) \in \mathcal{R}} X(i+u, j+v, c)
 $$ {#eq-avgpool} El pooling sirve para reducir las dimensiones espaciales (ancho y alto) de un tensor, asegurando que se conserve la información más relevante. Aplicar esta técnica brinda grandes beneficios a los modelos: disminuye significativamente el costo computacional, introduce invariancia a pequeñas traslaciones en la imagen y ayuda a prevenir el sobreajuste. Además, es importante destacar que esta reducción se aplica de manera independiente a cada canal de profundidad del tensor
 
-![En la parte superior de la figura se ilustra el funcionamiento del Max Pooling utilizando una ventana de tamaño 2×2 y un stride de 2. La imagen de entrada se divide en cuatro regiones no superpuestas, identificadas mediante diferentes colores. Para cada región, el operador selecciona únicamente el valor máximo: en la región superior izquierda se obtiene 6, en la superior derecha 4, en la inferior izquierda 8 y en la inferior derecha 3. Estos valores conforman el mapa de salida de tamaño 2×2, preservando las características más destacadas de cada zona mientras se reduce la dimensionalidad espacial. De manera similar, en la parte inferior de la figura se muestra el proceso de Average Pooling con la misma ventana 2×2 y el mismo stride. En lugar de conservar el valor máximo, se calcula el promedio de los elementos contenidos en cada región. Así, las cuatro ventanas generan los valores 3.75, 2.25, 4.50 y 1, que constituyen la salida reducida. Este método produce una representación más suavizada de la información, manteniendo la tendencia general de los datos presentes en cada región de la imagen.](images/paste-3.png)
+![En la parte superior de la figura se ilustra el funcionamiento del Max Pooling utilizando una ventana de tamaño 2×2 y un stride de 2. La imagen de entrada se divide en cuatro regiones no superpuestas, identificadas mediante diferentes colores. Para cada región, el operador selecciona únicamente el valor máximo: en la región superior izquierda se obtiene 6, en la superior derecha 4, en la inferior izquierda 8 y en la inferior derecha 3. Estos valores conforman el mapa de salida de tamaño 2×2, preservando las características más destacadas de cada zona mientras se reduce la dimensionalidad espacial. De manera similar, en la parte inferior de la figura se muestra el proceso de Average Pooling con la misma ventana 2×2 y el mismo stride. En lugar de conservar el valor máximo, se calcula el promedio de los elementos contenidos en cada región. Así, las cuatro ventanas generan los valores 3.75, 2.25, 4.50 y 1, que constituyen la salida reducida. Este método produce una representación más suavizada de la información, manteniendo la tendencia general de los datos presentes en cada región de la imagen.](images/paste-3.png){#fig-pooloing}
 
 **Propiedades**
 
