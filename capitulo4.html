@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -399,13 +419,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./capitulo1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Preliminares</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Marco Contextual y Planteamiento del Problema</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./capitulo2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos de los Modelos Probabilísticos (HMM)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -429,7 +449,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./conclusiones.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusiones y Trabajo Futuro</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -461,16 +481,16 @@ window.Quarto = {
   </ul></li>
   <li><a href="#carga-y-organización-de-los-datos-pipeline-cnn" id="toc-carga-y-organización-de-los-datos-pipeline-cnn" class="nav-link" data-scroll-target="#carga-y-organización-de-los-datos-pipeline-cnn"><span class="header-section-number">6.3</span> Carga y Organización de los Datos (Pipeline CNN)</a></li>
   <li><a href="#normalización-y-aumentación-en-línea" id="toc-normalización-y-aumentación-en-línea" class="nav-link" data-scroll-target="#normalización-y-aumentación-en-línea"><span class="header-section-number">6.4</span> Normalización y Aumentación en Línea</a></li>
-  <li><a href="#mapeo-dimensional-de-mathbbr28-times-28-a-mathbbrt-pipeline-hmm" id="toc-mapeo-dimensional-de-mathbbr28-times-28-a-mathbbrt-pipeline-hmm" class="nav-link" data-scroll-target="#mapeo-dimensional-de-mathbbr28-times-28-a-mathbbrt-pipeline-hmm"><span class="header-section-number">6.5</span> Mapeo Dimensional: De <span class="math inline">\(\mathbb{R}^{28 \times 28}\)</span> a <span class="math inline">\(\mathbb{R}^T\)</span> (Pipeline HMM)</a></li>
+  <li><a href="#mapeo-dimensional-de-mathbbr28-times-28-a-ot-pipeline-hmm" id="toc-mapeo-dimensional-de-mathbbr28-times-28-a-ot-pipeline-hmm" class="nav-link" data-scroll-target="#mapeo-dimensional-de-mathbbr28-times-28-a-ot-pipeline-hmm"><span class="header-section-number">6.5</span> Mapeo Dimensional: De <span class="math inline">\(\mathbb{R}^{28 \times 28}\)</span> a <span class="math inline">\(O^T\)</span> (Pipeline HMM)</a></li>
   <li><a href="#extracción-matemática-de-rasgos-estructurales-feature-engineering" id="toc-extracción-matemática-de-rasgos-estructurales-feature-engineering" class="nav-link" data-scroll-target="#extracción-matemática-de-rasgos-estructurales-feature-engineering"><span class="header-section-number">6.6</span> Extracción Matemática de Rasgos Estructurales (Feature Engineering)</a>
   <ul class="collapse">
-  <li><a href="#cálculo-del-centro-de-gravedad" id="toc-cálculo-del-centro-de-gravedad" class="nav-link" data-scroll-target="#cálculo-del-centro-de-gravedad"><span class="header-section-number">6.6.1</span> Cálculo del Centro de Gravedad</a></li>
+  <li><a href="#cálculo-del-centro-de-gravedad-vertical" id="toc-cálculo-del-centro-de-gravedad-vertical" class="nav-link" data-scroll-target="#cálculo-del-centro-de-gravedad-vertical"><span class="header-section-number">6.6.1</span> Cálculo del Centro de Gravedad Vertical</a></li>
   <li><a href="#transiciones-de-estado-y-cruces-por-cero" id="toc-transiciones-de-estado-y-cruces-por-cero" class="nav-link" data-scroll-target="#transiciones-de-estado-y-cruces-por-cero"><span class="header-section-number">6.6.2</span> Transiciones de estado y cruces por cero</a></li>
   <li><a href="#perfiles-superior-e-inferior-envoltura-convexa" id="toc-perfiles-superior-e-inferior-envoltura-convexa" class="nav-link" data-scroll-target="#perfiles-superior-e-inferior-envoltura-convexa"><span class="header-section-number">6.6.3</span> Perfiles superior e inferior (envoltura convexa)</a></li>
   </ul></li>
   <li><a href="#cuantificación-y-discretización-del-espacio-de-observaciones" id="toc-cuantificación-y-discretización-del-espacio-de-observaciones" class="nav-link" data-scroll-target="#cuantificación-y-discretización-del-espacio-de-observaciones"><span class="header-section-number">6.7</span> Cuantificación y Discretización del Espacio de Observaciones</a>
   <ul class="collapse">
-  <li><a href="#función-de-cuantificación-por-intervalos-binning" id="toc-función-de-cuantificación-por-intervalos-binning" class="nav-link" data-scroll-target="#función-de-cuantificación-por-intervalos-binning"><span class="header-section-number">6.7.1</span> Función de cuantificación por intervalos (Binning)</a></li>
+  <li><a href="#función-de-cuantificación-uniforme-binning" id="toc-función-de-cuantificación-uniforme-binning" class="nav-link" data-scroll-target="#función-de-cuantificación-uniforme-binning"><span class="header-section-number">6.7.1</span> Función de cuantificación uniforme (Binning)</a></li>
   <li><a href="#codificación-binaria-y-construcción-del-alfabeto-de-256-símbolos-observables" id="toc-codificación-binaria-y-construcción-del-alfabeto-de-256-símbolos-observables" class="nav-link" data-scroll-target="#codificación-binaria-y-construcción-del-alfabeto-de-256-símbolos-observables"><span class="header-section-number">6.7.2</span> Codificación binaria y construcción del alfabeto de 256 símbolos observables</a></li>
   <li><a href="#análisis-de-la-entropía-de-shannon-de-las-secuencias-generadas" id="toc-análisis-de-la-entropía-de-shannon-de-las-secuencias-generadas" class="nav-link" data-scroll-target="#análisis-de-la-entropía-de-shannon-de-las-secuencias-generadas"><span class="header-section-number">6.7.3</span> Análisis de la entropía de Shannon de las secuencias generadas</a></li>
   </ul></li>
@@ -504,26 +524,26 @@ window.Quarto = {
 <h2 data-number="6.1" class="anchored" data-anchor-id="generación-y-caracterización-del-conjunto-de-datos"><span class="header-section-number">6.1</span> Generación y Caracterización del Conjunto de Datos</h2>
 <section id="inexistencia-de-datasets-públicos-y-justificación" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="inexistencia-de-datasets-públicos-y-justificación"><span class="header-section-number">6.1.1</span> Inexistencia de datasets públicos y justificación</h3>
-<p>El reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto náhuatl <a href="#fig-alfabeto-nahuatl" class="quarto-xref">Figura&nbsp;<span>6.1</span></a>, presenta una limitación inicial crítica: la inexistencia de un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de alfabetos latinos o asiáticos, que cuentan con repositorios ampliamente documentados (como MNIST o EMNIST), el dominio de los glifos náhuatl carece de recursos computacionales de código abierto.</p>
+<p>El reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto náhuatl (<a href="#fig-alfabeto-nahuatl" class="quarto-xref">Figura&nbsp;<span>6.1</span></a>), presenta una limitación inicial crítica: la inexistencia de un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos estadísticos y de aprendizaje profundo. A diferencia de alfabetos latinos o asiáticos, que cuentan con repositorios ampliamente documentados —como MNIST o EMNIST <span class="citation" data-cites="cohen2017">(<a href="referencias.html#ref-cohen2017" role="doc-biblioref">Cohen et&nbsp;al. 2017</a>)</span>—, el dominio de los glifos náhuatl carece de recursos computacionales de código abierto.</p>
 <div id="fig-alfabeto-nahuatl" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-alfabeto-nahuatl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/Alfabeto nahuatl.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="520">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alfabeto-nahuatl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6.1: Glifos del alfabeto náhuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean letras del alfabeto latino para su manipulación.
+Figura&nbsp;6.1: Glifos del alfabeto náhuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean etiquetas del alfabeto latino para su manipulación computacional. Adaptado de Kanakue (s.f.).
 </figcaption>
 </figure>
 </div>
-<p>Ante esta carencia, fue necesario construir un conjunto de datos propio. La decisión de generar un dataset sintético se fundamenta en dos razones principales:</p>
+<p>Ante esta carencia, fue necesario construir un conjunto de datos propio. La decisión de generar un dataset sintético controlado se fundamenta en dos razones principales:</p>
 <ol type="1">
-<li><strong>Volumen de datos:</strong> proporcionar un número suficiente de ejemplos para evitar el sobreajuste en redes neuronales profundas.</li>
-<li><strong>Variabilidad controlada:</strong> introducir deformaciones geométricas y estocásticas que permitan al modelo generalizar ante las irregularidades presentes en documentos históricos reales (desalineación, degradación de tinta, variabilidad del trazo).</li>
+<li><strong>Volumen de datos:</strong> proporcionar un número suficiente de ejemplos por clase para evitar el sobreajuste en arquitecturas de alta capacidad como las redes neuronales convolucionales.</li>
+<li><strong>Variabilidad controlada:</strong> introducir deformaciones geométricas y perturbaciones estocásticas que permitan evaluar la capacidad de generalización ante las irregularidades presentes en documentos históricos reales (desalineación, degradación de tinta y variabilidad del trazo).</li>
 </ol>
 </section>
 <section id="diseño-de-las-plantillas-base-y-morfología-del-glifo-náhuatl" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="diseño-de-las-plantillas-base-y-morfología-del-glifo-náhuatl"><span class="header-section-number">6.1.2</span> Diseño de las plantillas base y morfología del glifo náhuatl</h3>
-<p>Inicialmente, se diseñaron de forma manual y vectorial 25 plantillas base por cada uno de los 18 caracteres. Este diseño no fue arbitrario; se basó en el análisis morfológico de los glifos, los cuales se caracterizan por una combinación de trazos curvos, segmentos rectos, puntos diacríticos y bucles cerrados. La representación base se normalizó a una cuadrícula de <span class="math inline">\(28 \times 28\)</span> píxeles, preservando la proporción y densidad de “tinta” típica de los códices, estableciendo así un punto de partida topológicamente válido para la posterior augmentación.</p>
+<p>Inicialmente, se diseñaron de forma manual y vectorial 25 plantillas base por cada uno de los 18 caracteres. Este diseño se fundamentó en el análisis morfológico de los glifos, los cuales combinan trazos curvos, segmentos rectos, puntos diacríticos aislados y bucles cerrados. La representación base se normalizó a una cuadrícula monocromática de <span class="math inline">\(28 \times 28\)</span> píxeles, preservando la proporción y densidad de tinta característica, estableciendo así un punto de partida topológicamente válido para la posterior aumentación de datos.</p>
 <div id="cell-fig-plantillas" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div id="fig-plantillas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -532,7 +552,7 @@ Figura&nbsp;6.1: Glifos del alfabeto náhuatl. Este alfabeto consta de 18 caract
 <img src="capitulo4_files/figure-html/fig-plantillas-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="452" height="314">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plantillas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6.2: Observamos cómo del lado izquierdo se muestra la letra E original y del lado derecho la representación de 28x28 píxeles que servirá como plantilla.
+Figura&nbsp;6.2: Del lado izquierdo se muestra el glifo correspondiente al fonema /e/ (etl) original y del lado derecho su discretización normalizada a 28 × 28 píxeles utilizada como plantilla base.
 </figcaption>
 </figure>
 </div>
@@ -542,50 +562,46 @@ Figura&nbsp;6.2: Observamos cómo del lado izquierdo se muestra la letra E origi
 </section>
 <section id="transformaciones-geométricas-y-estocásticas-data-augmentation" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="transformaciones-geométricas-y-estocásticas-data-augmentation"><span class="header-section-number">6.2</span> Transformaciones Geométricas y Estocásticas (Data Augmentation)</h2>
-<p>Para emular las condiciones de documentos históricos, se aplicaron transformaciones a las plantillas base. A cada una de las 25 muestras iniciales se le generaron 90 variantes, resultando en un conjunto robusto y diverso.</p>
+<p>Para emular las condiciones de documentos históricos y variaciones caligráficas, se aplicaron transformaciones estocásticas a las plantillas base. A cada una de las 25 muestras iniciales se le generaron 90 variantes, conformando un conjunto diverso y balanceado.</p>
 <div id="fig-dataset-augmentation" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dataset-augmentation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/dataset aumentado.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="520">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dataset-augmentation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6.3: Se observa el proceso por el que pasa cada una de las 25 imágenes por letra para generar 90 variantes obtenidas a partir de rotación, traslación, distorsión elástica, cambio de escala y ruido, de este modo se consigue un dataset más completo.
+Figura&nbsp;6.3: Proceso de aumentación de datos aplicado a cada una de las 25 plantillas por clase para generar 90 variantes mediante rotación, traslación, distorsión elástica, cambio de escala y ruido aditivo.
 </figcaption>
 </figure>
 </div>
 <section id="aplicación-de-grupos-de-lie-en-transformaciones-afines" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="aplicación-de-grupos-de-lie-en-transformaciones-afines"><span class="header-section-number">6.2.1</span> Aplicación de grupos de Lie en transformaciones afines</h3>
-<p>Las transformaciones geométricas aplicadas (rotación, traslación y escalamiento) pueden formalizarse como acciones del grupo afín <span class="math inline">\(Aff(2)\)</span> sobre el espacio de la imagen. Una transformación afín se expresa como:</p>
-<p><span class="math display">\[
-\begin{pmatrix} x' \\ y' \end{pmatrix} =
-\begin{pmatrix} s_x \cos\theta &amp; -s_y \sin\theta \\ s_x \sin\theta &amp; s_y \cos\theta \end{pmatrix}
-\begin{pmatrix} x \\ y \end{pmatrix} +
-\begin{pmatrix} t_x \\ t_y \end{pmatrix}
-\]</span></p>
-<p>donde <span class="math inline">\(\theta\)</span> representa la rotación, <span class="math inline">\((t_x, t_y)\)</span> la traslación, y <span class="math inline">\((s_x, s_y)\)</span> los factores de escalamiento. En la implementación práctica, se utilizaron operadores estocásticos acotados (ej. <span class="math inline">\(\theta \sim \mathcal{U}(-0.05\pi, 0.05\pi)\)</span>) para garantizar que la identidad del glifo se preservara semánticamente.</p>
+<p>Las transformaciones geométricas aplicadas (rotación, traslación y escalamiento) se formalizan como acciones del grupo afín <span class="math inline">\(\mathrm{Aff}(2)\)</span> sobre el dominio bidimensional de la imagen. Una transformación afín se expresa como:</p>
+<p><span class="math display">\[\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} s_x \cos\theta &amp; -s_y \sin\theta \\ s_x \sin\theta &amp; s_y \cos\theta \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} t_x \\ t_y \end{pmatrix},\]</span> {#eq-transformacion-afin}</p>
+<p>donde <span class="math inline">\(\theta\)</span> representa el ángulo de rotación, <span class="math inline">\((t_x, t_y)\)</span> el vector de traslación y <span class="math inline">\((s_x, s_y)\)</span> los factores de escalamiento. En la implementación práctica se emplearon parámetros aleatorios acotados —por ejemplo, <span class="math inline">\(\theta \sim \mathcal{U}(-0.05\pi, 0.05\pi)\)</span>— para preservar la identidad topológica y semántica de cada glifo.</p>
 </section>
 <section id="modelado-de-ruido-y-degradación" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="modelado-de-ruido-y-degradación"><span class="header-section-number">6.2.2</span> Modelado de ruido y degradación</h3>
-<p>Para simular la naturaleza física del papel histórico y la tinta, se inyectaron perturbaciones estocásticas:</p>
+<p>Para simular la naturaleza física del papel histórico y la tinta, se inyectaron perturbaciones estocásticas adicionales:</p>
 <ul>
-<li><strong>Ruido aditivo:</strong> se modeló como ruido blanco gaussiano <span class="math inline">\(\mathcal{N}(0, \sigma^2)\)</span> para emular las imperfecciones del sensor de escaneo.</li>
-<li><strong>Degradación de bordes:</strong> se aplicó un desenfoque gaussiano leve para simular el “sangrado” de la tinta en el papel poroso.</li>
+<li><strong>Ruido aditivo:</strong> modelado mediante ruido blanco gaussiano <span class="math inline">\(\varepsilon \sim \mathcal{N}(0, \sigma^2)\)</span> para emular imperfecciones del sensor óptico de escaneo.</li>
+<li><strong>Degradación de bordes:</strong> aplicación de un filtro de suavizado gaussiano leve para simular la difusión o “sangrado” de la tinta sobre soporte poroso.</li>
 </ul>
 </section>
 <section id="análisis-estadístico-del-dataset-resultante" class="level3" data-number="6.2.3">
 <h3 data-number="6.2.3" class="anchored" data-anchor-id="análisis-estadístico-del-dataset-resultante"><span class="header-section-number">6.2.3</span> Análisis estadístico del dataset resultante</h3>
-<p>El proceso generó un dataset final balanceado de <span class="math inline">\(18 \times 25 \times 90 = 40{,}500\)</span> imágenes. Al ser sintético, el <strong>balance de clases</strong> es adecuado (exactamente 2,250 muestras por clase); este tamaño es el estándar y usual al trabajar en reconocimiento de patrones. La <strong>varianza intra-clase</strong> fue maximizada de manera controlada mediante las transformaciones afines, asegurando que el modelo no aprenda artefactos de la plantilla base, sino las invariantes morfológicas del carácter.</p>
+<p>El proceso generó un conjunto de datos final balanceado de <span class="math inline">\(18 \times 25 \times 90 = 40{,}500\)</span> imágenes monocromáticas de <span class="math inline">\(28 \times 28\)</span> píxeles, con exactamente <span class="math inline">\(2{,}250\)</span> muestras por clase. Este balance perfecto elimina sesgos hacia clases mayoritarias, mientras que la varianza intra-clase inducida controlada obliga a ambos modelos (HMM y CNN) a capturar las invariantes morfológicas del carácter en lugar de memorizar las plantillas base.</p>
 </section>
 </section>
 <section id="carga-y-organización-de-los-datos-pipeline-cnn" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="carga-y-organización-de-los-datos-pipeline-cnn"><span class="header-section-number">6.3</span> Carga y Organización de los Datos (Pipeline CNN)</h2>
-<p>Una vez construido el conjunto de datos, las imágenes se almacenaron siguiendo una estructura jerárquica de directorios, donde cada carpeta representa una clase distinta del alfabeto. El cargado de las imágenes se realizó mediante la función <code>image_dataset_from_directory</code> de TensorFlow:</p>
+<p>Para garantizar una comparación experimental equitativa, tanto la CNN como el HMM operan sobre la misma resolución base (<span class="math inline">\(28 \times 28\)</span> píxeles en escala de grises) y bajo la misma proporción de partición entrenamiento-validación (<span class="math inline">\(80\% - 20\%\)</span>).</p>
+<p>En el flujo de la CNN, las imágenes se cargaron desde directorios jerárquicos mediante TensorFlow:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>train_ds <span class="op">=</span> tf.keras.utils.image_dataset_from_directory(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    data_dir,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    validation_split<span class="op">=</span><span class="fl">0.2</span>,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    subset<span class="op">=</span><span class="st">"training"</span>,</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    seed<span class="op">=</span><span class="dv">123</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    image_size<span class="op">=</span>(<span class="dv">28</span>,<span class="dv">28</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    image_size<span class="op">=</span>(<span class="dv">28</span>, <span class="dv">28</span>),</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    batch_size<span class="op">=</span><span class="dv">32</span>,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    color_mode<span class="op">=</span><span class="st">"grayscale"</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
@@ -595,82 +611,113 @@ Figura&nbsp;6.3: Se observa el proceso por el que pasa cada una de las 25 imáge
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    validation_split<span class="op">=</span><span class="fl">0.2</span>,</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    subset<span class="op">=</span><span class="st">"validation"</span>,</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    seed<span class="op">=</span><span class="dv">123</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    image_size<span class="op">=</span>(<span class="dv">28</span>,<span class="dv">28</span>),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    image_size<span class="op">=</span>(<span class="dv">28</span>, <span class="dv">28</span>),</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    batch_size<span class="op">=</span><span class="dv">32</span>,</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    color_mode<span class="op">=</span><span class="st">"grayscale"</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>La elección de una partición de entrenamiento-validación de 80%-20% constituye una práctica común en aprendizaje automático, ya que permite disponer de un número suficiente de ejemplos para el ajuste de los parámetros del modelo y, al mismo tiempo, reservar un conjunto independiente para evaluar la capacidad de generalización.</p>
-<p>Asimismo, las imágenes se convirtieron a escala de grises. Dado que los glifos del alfabeto náhuatl se distinguen principalmente por su geometría y no por información cromática, el uso de un solo canal reduce el costo computacional sin sacrificar información relevante.</p>
+<p>Dado que los glifos del alfabeto náhuatl se distinguen por su geometría estructural y no por información cromática, el uso de un único canal (<span class="math inline">\(C = 1\)</span>) reduce la dimensionalidad de entrada sin pérdida de información discriminativa.</p>
 </section>
 <section id="normalización-y-aumentación-en-línea" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="normalización-y-aumentación-en-línea"><span class="header-section-number">6.4</span> Normalización y Aumentación en Línea</h2>
-<p>Antes de alimentar las imágenes a la red neuronal, se realizó un proceso de normalización:</p>
+<p>Antes de ingresar a las capas convolucionales, las intensidades de píxel se normalizan al intervalo <span class="math inline">\([0, 1]\)</span>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>normalization_layer <span class="op">=</span> tf.keras.layers.Rescaling(<span class="fl">1.</span><span class="op">/</span><span class="dv">255</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Esta transformación reescala los valores de intensidad al intervalo <span class="math inline">\([0,1]\)</span>, lo cual mejora la estabilidad numérica del proceso de entrenamiento y facilita la convergencia del algoritmo de optimización.</p>
-<p>Adicionalmente, se implementó un mecanismo de aumentación de datos en línea:</p>
+<p>Adicionalmente, sobre el conjunto de entrenamiento se aplica aumentación estocástica en línea para reforzar la invarianza local y mitigar el sobreajuste:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_augmentation <span class="op">=</span> tf.keras.Sequential([</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.RandomRotation(<span class="fl">0.05</span>),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.RandomZoom(<span class="fl">0.1</span>),</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.RandomTranslation(<span class="fl">0.05</span>, <span class="fl">0.05</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>La introducción de pequeñas rotaciones, cambios de escala y traslaciones tiene como objetivo simular las variaciones presentes en documentos escaneados o en la escritura manual. De esta manera, el modelo aprende representaciones más robustas y reduce su tendencia al sobreajuste.</p>
-<p>Finalmente, los datos fueron almacenados temporalmente en memoria y preparados para alimentar la GPU:</p>
+<p>Finalmente, el flujo de datos se optimiza en memoria mediante almacenamiento en caché y precarga asíncrona:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>train_ds <span class="op">=</span> train_ds.cache().shuffle(<span class="dv">5000</span>).prefetch(AUTOTUNE)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>val_ds <span class="op">=</span> val_ds.cache().prefetch(AUTOTUNE)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>El uso de <code>cache()</code> evita que las imágenes sean leídas repetidamente desde el disco, mientras que <code>prefetch()</code> permite superponer las operaciones de lectura de datos con el entrenamiento de la red, disminuyendo el tiempo total de ejecución.</p>
 </section>
-<section id="mapeo-dimensional-de-mathbbr28-times-28-a-mathbbrt-pipeline-hmm" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="mapeo-dimensional-de-mathbbr28-times-28-a-mathbbrt-pipeline-hmm"><span class="header-section-number">6.5</span> Mapeo Dimensional: De <span class="math inline">\(\mathbb{R}^{28 \times 28}\)</span> a <span class="math inline">\(\mathbb{R}^T\)</span> (Pipeline HMM)</h2>
-<p><em>La pérdida de información topológica al proyectar una imagen en una secuencia temporal.</em></p>
-<p>Para abordar el reconocimiento desde una perspectiva de secuencias (modelo HMM), es necesario proyectar la representación bidimensional de la imagen <span class="math inline">\(X \in \mathbb{R}^{H \times W}\)</span> en una secuencia unidimensional de vectores <span class="math inline">\(S \in \mathbb{R}^T\)</span>. Este mapeo implica una pérdida inherente de la topología 2D (vecindades verticales y horizontales simultáneas), la cual debe ser compensada mediante la extracción de rasgos estructurales ricos en cada paso de tiempo.</p>
-<div id="def-bakis" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 6.1 (Definición del operador de ventana deslizante vertical)</strong></span> Se define un operador de ventana deslizante vertical que recorre la imagen de izquierda a derecha. Para una imagen <span class="math inline">\(X\)</span> de ancho <span class="math inline">\(W\)</span>, se extraen <span class="math inline">\(T\)</span> ventanas de ancho <span class="math inline">\(w\)</span> y stride <span class="math inline">\(s\)</span>, donde <span class="math inline">\(T = \lfloor \frac{W - w}{s} \rfloor + 1\)</span>. Cada elemento de la secuencia <span class="math inline">\(S_t \in \mathbb{R}^{H \times w}\)</span> representa una “rebanada” vertical de la imagen en el paso de tiempo <span class="math inline">\(t\)</span>, preservando la estructura vertical del trazo en ese instante.</p>
+<section id="mapeo-dimensional-de-mathbbr28-times-28-a-ot-pipeline-hmm" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="mapeo-dimensional-de-mathbbr28-times-28-a-ot-pipeline-hmm"><span class="header-section-number">6.5</span> Mapeo Dimensional: De <span class="math inline">\(\mathbb{R}^{28 \times 28}\)</span> a <span class="math inline">\(O^T\)</span> (Pipeline HMM)</h2>
+<p>Para abordar el reconocimiento mediante un Modelo Oculto de Markov Categórico con topología de Bakis, cada imagen bidimensional <span class="math inline">\(X \in \mathbb{R}^{H \times W}\)</span> (<span class="math inline">\(H = W = 28\)</span>) debe proyectarse en una secuencia unidimensional ordenada de observaciones discretas <span class="math inline">\(Y = (y_1, y_2, \dots, y_T) \in O^T\)</span> <span class="citation" data-cites="plotz2009">(<a href="referencias.html#ref-plotz2009" role="doc-biblioref">Plötz y Fink 2009</a>)</span>. Dado que esta proyección conlleva una reducción dimensional que sacrifica vecindades bidimensionales simultáneas, la transición se realiza mediante extracción de rasgos estructurales sobre ventanas deslizantes verticales.</p>
+<div id="def-ventana-deslizante" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.1 (Operador de ventana deslizante vertical)</strong></span> Sea <span class="math inline">\(X \in [0, 1]^{H \times W}\)</span> una imagen normalizada con trazo activo (donde los píxeles de tinta tienen valores positivos tras invertir el fondo). El <strong>operador de ventana deslizante vertical</strong> recorre la imagen de izquierda a derecha extrayendo <span class="math inline">\(T\)</span> submatrices (rebanadas verticales) de altura <span class="math inline">\(H\)</span> y ancho <span class="math inline">\(w\)</span> con paso (<em>stride</em>) <span class="math inline">\(s\)</span>:</p>
+<p><span id="eq-longitud-secuencia"><span class="math display">\[
+T = \left\lfloor \frac{W - w}{s} \right\rfloor + 1.
+\tag{6.1}\]</span></span></p>
+<p>Cada ventana <span class="math inline">\(S_t \in [0, 1]^{H \times w}\)</span>, para <span class="math inline">\(t \in \{1, \dots, T\}\)</span>, captura la distribución vertical del trazo en la <span class="math inline">\(t\)</span>-ésima posición horizontal. Por ejemplo, para <span class="math inline">\(W = 28\)</span>, <span class="math inline">\(w = 4\)</span> y <span class="math inline">\(s = 2\)</span>, se obtiene una secuencia de longitud <span class="math inline">\(T = 13\)</span> pasos espaciales.</p>
 </div>
 </section>
 <section id="extracción-matemática-de-rasgos-estructurales-feature-engineering" class="level2" data-number="6.6">
 <h2 data-number="6.6" class="anchored" data-anchor-id="extracción-matemática-de-rasgos-estructurales-feature-engineering"><span class="header-section-number">6.6</span> Extracción Matemática de Rasgos Estructurales (Feature Engineering)</h2>
-<p>Para mitigar la pérdida topológica mencionada, se extraen descriptores matemáticos de cada ventana <span class="math inline">\(S_t\)</span>.</p>
-<section id="cálculo-del-centro-de-gravedad" class="level3" data-number="6.6.1">
-<h3 data-number="6.6.1" class="anchored" data-anchor-id="cálculo-del-centro-de-gravedad"><span class="header-section-number">6.6.1</span> Cálculo del Centro de Gravedad</h3>
-<p>El primer momento de la distribución de “tinta” (intensidad de píxeles) proporciona el centroide local de la masa del trazo. Para una ventana <span class="math inline">\(S_t\)</span>, las coordenadas del centro de gravedad <span class="math inline">\((\mu_x, \mu_y)\)</span> se calculan como:</p>
-<p><span class="math display">\[
-\mu_x = \frac{\sum_{i,j} j \cdot S_t(i,j)}{\sum_{i,j} S_t(i,j)}, \quad
-\mu_y = \frac{\sum_{i,j} i \cdot S_t(i,j)}{\sum_{i,j} S_t(i,j)}
-\]</span></p>
-<p>Este rasgo es invariante a traslaciones globales y altamente discriminativo para la morfología del glifo.</p>
+<p>Con el fin de preservar la geometría vertical del glifo dentro de cada ventana <span class="math inline">\(S_t\)</span>, se extraen tres descriptores morfológicos complementarios:</p>
+<section id="cálculo-del-centro-de-gravedad-vertical" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="cálculo-del-centro-de-gravedad-vertical"><span class="header-section-number">6.6.1</span> Cálculo del Centro de Gravedad Vertical</h3>
+<p>El primer momento de la distribución de masa de tinta proporciona el centroide vertical <span class="math inline">\(\mu_y(t)\)</span> dentro de la ventana <span class="math inline">\(S_t\)</span>. Denotando por <span class="math inline">\(M_t = \sum_{i=0}^{H-1} \sum_{j=0}^{w-1} S_t(i,j)\)</span> la masa total de tinta en la ventana, el centroide vertical normalizado se define como:</p>
+<p><span id="eq-centroide-vertical"><span class="math display">\[
+\mu_y(t) =
+\begin{cases}
+\dfrac{1}{H - 1} \dfrac{\sum_{i=0}^{H-1} \sum_{j=0}^{w-1} i \cdot S_t(i,j)}{M_t}, &amp; \text{si } M_t &gt; \epsilon, \\[10pt]
+0.5, &amp; \text{si } M_t \le \epsilon,
+\end{cases}
+\tag{6.2}\]</span></span></p>
+<p>donde <span class="math inline">\(\epsilon &gt; 0\)</span> es un umbral numérico para ventanas vacías (fondo sin trazo). Este descriptor captura la altura relativa del trazo a lo largo del eje horizontal.</p>
 </section>
 <section id="transiciones-de-estado-y-cruces-por-cero" class="level3" data-number="6.6.2">
 <h3 data-number="6.6.2" class="anchored" data-anchor-id="transiciones-de-estado-y-cruces-por-cero"><span class="header-section-number">6.6.2</span> Transiciones de estado y cruces por cero</h3>
-<p>Se analiza la derivada discreta del perfil de proyección horizontal de la ventana. Los cruces por cero de esta derivada indican la presencia de múltiples trazos horizontales superpuestos o la transición entre el fondo y la tinta, proporcionando información sobre la complejidad estructural local.</p>
+<p>Se proyecta horizontalmente la ventana <span class="math inline">\(S_t\)</span> sumando sus intensidades por fila para obtener el perfil vertical <span class="math inline">\(h_t(i) = \sum_{j=0}^{w-1} S_t(i,j)\)</span>, y se binariza mediante un umbral <span class="math inline">\(\tau\)</span>. El número de transiciones fondo-tinta <span class="math inline">\(z(t)\)</span> se calcula contando los cambios de estado entre filas adyacentes:</p>
+<p><span id="eq-transiciones-tinta"><span class="math display">\[
+z(t) = \sum_{i=0}^{H-2} \left| \mathbb{I}(h_t(i+1) &gt; \tau) - \mathbb{I}(h_t(i) &gt; \tau) \right|.
+\tag{6.3}\]</span></span></p>
+<p>Este rasgo permite distinguir trazos simples de estructuras con bucles cerrados o trazos horizontales superpuestos (como en los glifos <em>A</em>, <em>Ch</em>, <em>S</em> o <em>Ts</em>).</p>
 </section>
 <section id="perfiles-superior-e-inferior-envoltura-convexa" class="level3" data-number="6.6.3">
 <h3 data-number="6.6.3" class="anchored" data-anchor-id="perfiles-superior-e-inferior-envoltura-convexa"><span class="header-section-number">6.6.3</span> Perfiles superior e inferior (envoltura convexa)</h3>
-<p>Se calculan los perfiles superior <span class="math inline">\(P_{sup}\)</span> e inferior <span class="math inline">\(P_{inf}\)</span> de la ventana, definidos como los índices de fila mínimo y máximo, respectivamente, donde la intensidad del píxel supera un umbral <span class="math inline">\(\tau\)</span>. La diferencia <span class="math inline">\(P_{sup} - P_{inf}\)</span> define el espesor local del trazo, actuando como una aproximación discreta de la envoltura convexa del carácter en esa columna.</p>
+<p>Para cada ventana <span class="math inline">\(S_t\)</span> con tinta activa (<span class="math inline">\(M_t &gt; \epsilon\)</span>), se definen el <strong>perfil superior</strong> <span class="math inline">\(P_{\text{sup}}(t)\)</span> y el <strong>perfil inferior</strong> <span class="math inline">\(P_{\text{inf}}(t)\)</span> como los índices de fila mínimo y máximo donde la intensidad supera el umbral <span class="math inline">\(\tau\)</span>:</p>
+<p><span class="math display">\[
+P_{\text{sup}}(t) = \min \{ i : h_t(i) &gt; \tau \}, \qquad P_{\text{inf}}(t) = \max \{ i : h_t(i) &gt; \tau \}.
+\]</span></p>
+<p>Dado que el índice de fila crece de arriba hacia abajo (<span class="math inline">\(0 \le P_{\text{sup}}(t) \le P_{\text{inf}}(t) \le H - 1\)</span>), el <strong>espesor local de la envoltura</strong> del carácter en el paso <span class="math inline">\(t\)</span> queda definido de forma no negativa como:</p>
+<p><span id="eq-espesor-envoltura"><span class="math display">\[
+\Delta P(t) = \frac{P_{\text{inf}}(t) - P_{\text{sup}}(t) + 1}{H} \in (0, 1].
+\tag{6.4}\]</span></span></p>
 </section>
 </section>
 <section id="cuantificación-y-discretización-del-espacio-de-observaciones" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="cuantificación-y-discretización-del-espacio-de-observaciones"><span class="header-section-number">6.7</span> Cuantificación y Discretización del Espacio de Observaciones</h2>
-<p>Para alimentar modelos que requieren espacios de observación discretos, el espacio continuo de rasgos debe ser discretizado.</p>
-<section id="función-de-cuantificación-por-intervalos-binning" class="level3" data-number="6.7.1">
-<h3 data-number="6.7.1" class="anchored" data-anchor-id="función-de-cuantificación-por-intervalos-binning"><span class="header-section-number">6.7.1</span> Función de cuantificación por intervalos (Binning)</h3>
-<p>Dado un rasgo continuo <span class="math inline">\(v \in [v_{min}, v_{max}]\)</span>, se aplica una función de cuantificación uniforme que lo mapea a uno de <span class="math inline">\(N\)</span> intervalos (bins):</p>
-<p><span class="math display">\[
-q(v) = \left\lfloor \frac{v - v_{min}}{v_{max} - v_{min}} \times N \right\rfloor
-\]</span></p>
+<p>Para alimentar el <strong>Modelo Oculto de Markov Categórico</strong> desarrollado en el capítulo teórico, el vector continuo de rasgos extraído en cada paso <span class="math inline">\(t\)</span> debe mapearse a un alfabeto finito de símbolos observables <span class="math inline">\(O\)</span>.</p>
+<section id="función-de-cuantificación-uniforme-binning" class="level3" data-number="6.7.1">
+<h3 data-number="6.7.1" class="anchored" data-anchor-id="función-de-cuantificación-uniforme-binning"><span class="header-section-number">6.7.1</span> Función de cuantificación uniforme (Binning)</h3>
+<p>Dado un rasgo continuo acotado <span class="math inline">\(v \in [v_{\min}, v_{\max}]\)</span>, se aplica una función de cuantificación uniforme que lo asigna a uno de <span class="math inline">\(N_b\)</span> intervalos discretos <span class="math inline">\(\{0, 1, \dots, N_b - 1\}\)</span>:</p>
+<p><span id="eq-binning"><span class="math display">\[
+q(v) = \min\left( \left\lfloor \frac{v - v_{\min}}{v_{\max} - v_{\min}} \times N_b \right\rfloor,\; N_b - 1 \right).
+\tag{6.5}\]</span></span></p>
 </section>
 <section id="codificación-binaria-y-construcción-del-alfabeto-de-256-símbolos-observables" class="level3" data-number="6.7.2">
 <h3 data-number="6.7.2" class="anchored" data-anchor-id="codificación-binaria-y-construcción-del-alfabeto-de-256-símbolos-observables"><span class="header-section-number">6.7.2</span> Codificación binaria y construcción del alfabeto de 256 símbolos observables</h3>
-<p>Combinando los rasgos cuantificados (por ejemplo, centroide Y, espesor del trazo y perfil superior), se construye un vector de características que se codifica en una representación binaria de 8 bits. Esto permite definir un <strong>alfabeto discreto de exactamente 256 símbolos observables</strong> (<span class="math inline">\(2^8\)</span>), donde cada símbolo representa una configuración estructural local única de la ventana deslizante.</p>
+<p>Para cada ventana <span class="math inline">\(S_t\)</span>, los rasgos estructurales se cuantifican asignando una resolución de bits específica a cada descriptor:</p>
+<ul>
+<li>Centroide vertical <span class="math inline">\(\mu_y(t)\)</span>: cuantificado en <span class="math inline">\(N_b = 8\)</span> niveles (<span class="math inline">\(3\)</span> bits).</li>
+<li>Espesor de la envoltura <span class="math inline">\(\Delta P(t)\)</span>: cuantificado en <span class="math inline">\(N_b = 8\)</span> niveles (<span class="math inline">\(3\)</span> bits).</li>
+<li>Número de transiciones <span class="math inline">\(z(t)\)</span>: acotado en <span class="math inline">\(N_b = 4\)</span> niveles (<span class="math inline">\(2\)</span> bits).</li>
+</ul>
+<p>Concatenando estas tres representaciones binarias (<span class="math inline">\(3 + 3 + 2 = 8\)</span> bits), se obtiene un entero único <span class="math inline">\(y_t \in \{0, 1, \dots, 255\}\)</span> mediante:</p>
+<p><span id="eq-codificacion-8bits"><span class="math display">\[
+y_t = 32 \cdot q(\mu_y(t)) + 4 \cdot q(\Delta P(t)) + q(z(t)).
+\tag{6.6}\]</span></span></p>
+<p>De este modo, se construye un <strong>alfabeto discreto de exactamente <span class="math inline">\(M = 2^8 = 256\)</span> símbolos observables</strong>, donde cada símbolo codifica una configuración morfológica local de la ventana deslizante.</p>
 </section>
 <section id="análisis-de-la-entropía-de-shannon-de-las-secuencias-generadas" class="level3" data-number="6.7.3">
 <h3 data-number="6.7.3" class="anchored" data-anchor-id="análisis-de-la-entropía-de-shannon-de-las-secuencias-generadas"><span class="header-section-number">6.7.3</span> Análisis de la entropía de Shannon de las secuencias generadas</h3>
-<p>La riqueza informativa de las secuencias generadas se valida mediante la entropía de Shannon <span class="math inline">\(H(S)\)</span> de la distribución de símbolos en el dataset:</p>
-<p><span class="math display">\[
-H(S) = - \sum_{i=1}^{256} p(s_i) \log_2 p(s_i)
-\]</span></p>
-<p>Una entropía alta indica que el proceso de generación sintética y extracción de rasgos produce una diversidad de patrones locales rica y no redundante, lo cual es un prerrequisito fundamental para que un modelo de aprendizaje automático pueda aprender representaciones discriminativas y generalizar adecuadamente.</p>
+<p>Para verificar que la discretización no colapsa la variabilidad morfológica de los glifos en unos pocos símbolos triviales, se evalúa la <strong>entropía de Shannon</strong> <span class="math inline">\(H(Y)\)</span> sobre la distribución empírica de los 256 símbolos en el conjunto de entrenamiento <span class="citation" data-cites="shannon1948">(<a href="referencias.html#ref-shannon1948" role="doc-biblioref"><strong>shannon1948?</strong></a>)</span>:</p>
+<p><span id="eq-entropia-shannon"><span class="math display">\[
+H(Y) = - \sum_{m=0}^{255} p(v_m) \log_2 p(v_m) \in [0, 8] \text{ bits}.
+\tag{6.7}\]</span></span></p>
+<p>Un valor elevado de <span class="math inline">\(H(Y)\)</span> confirma que el esquema de cuantificación preserva una alta diversidad informativa a lo largo de las secuencias, condición indispensable para que las matrices de emisión <span class="math inline">\(E\)</span> del HMM discriminen eficazmente entre las 18 clases del alfabeto náhuatl.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-cohen2017" class="csl-entry" role="listitem">
+Cohen, Gregory, Saeed Afshar, Jonathan Tapson, y André van Schaik. 2017. <span>«<span>EMNIST</span>: Extending <span>MNIST</span> to handwritten letters»</span>. En <em>2017 International Joint Conference on Neural Networks (IJCNN)</em>, 2921-26. <a href="https://doi.org/10.1109/IJCNN.2017.7966217">https://doi.org/10.1109/IJCNN.2017.7966217</a>.
+</div>
+<div id="ref-plotz2009" class="csl-entry" role="listitem">
+Plötz, Thomas, y Gernot A. Fink. 2009. <span>«Markov models for offline handwriting recognition: a survey»</span>. <em>International Journal on Document Analysis and Recognition (IJDAR)</em> 12 (4): 269-98. <a href="https://doi.org/10.1007/s10032-009-0098-4">https://doi.org/10.1007/s10032-009-0098-4</a>.
+</div>
+</div>
 </section>
 </section>
 
