@@ -372,7 +372,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resumen</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">index.html</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -497,7 +497,7 @@ window.Quarto = {
 <p><span class="theorem-title"><strong>Definición 4.1 (Espacio de probabilidad)</strong></span> Un <strong>espacio de probabilidad</strong> es una terna <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span>, donde:</p>
 <ol type="1">
 <li><span class="math inline">\(\Omega\)</span> es un conjunto no vacío denominado <em>espacio muestral</em>, cuyos elementos <span class="math inline">\(\omega \in \Omega\)</span> representan resultados elementales o realizaciones completas del fenómeno aleatorio (por ejemplo, una instancia particular de un glifo manuscrito sometido a ruido).</li>
-<li><span class="math inline">\(\mathcal{F} \subseteq \mathcal{P}(\Omega)\)</span> es una <strong><span class="math inline">\(\sigma\)</span>-álgebra</strong> de subconjuntos de <span class="math inline">\(\Omega\)</span> (denominados <em>eventos</em>), cerrada bajo complementos y uniones numerables, con <span class="math inline">\(\Omega \in \mathcal{F}\)</span>.</li>
+<li><span class="math inline">\(\mathcal{F} \subseteq \mathcal{P}(\Omega)\)</span> es una <span class="math inline">\(\sigma\)</span>-álgebra de subconjuntos de <span class="math inline">\(\Omega\)</span> (denominados <em>eventos</em>), cerrada bajo complementos y uniones numerables, con <span class="math inline">\(\Omega \in \mathcal{F}\)</span>.</li>
 <li><span class="math inline">\(\mathbb{P}: \mathcal{F} \to [0, 1]\)</span> es una <strong>medida de probabilidad</strong>, es decir, una función de conjunto numerablemente aditiva (<span class="math inline">\(\sigma\)</span>-aditiva) tal que <span class="math inline">\(\mathbb{P}(\emptyset) = 0\)</span> y <span class="math inline">\(\mathbb{P}(\Omega) = 1\)</span>.</li>
 </ol>
 </div>
@@ -693,37 +693,34 @@ e_{xm} = \mathbb{P}(Y_k = v_m \mid X_k = x), \qquad \text{sujetas a } e_{xm} \ge
 <section id="el-algoritmo-forward-backward-filtrado-y-suavizado" class="level3" data-number="4.4.1">
 <h3 data-number="4.4.1" class="anchored" data-anchor-id="el-algoritmo-forward-backward-filtrado-y-suavizado"><span class="header-section-number">4.4.1</span> El Algoritmo Forward-Backward (Filtrado y Suavizado)</h3>
 <p>El cálculo directo de <span class="math inline">\(\mathbb{P}(Y \mid \lambda)\)</span> sumando sobre todas las posibles trayectorias latentes <span class="math inline">\(X \in S^T\)</span> requiere <span class="math inline">\(\mathcal{O}(2T N^T)\)</span> operaciones, lo cual es computacionalmente intratable. El algoritmo <strong>Forward-Backward</strong> reduce esta complejidad a <span class="math inline">\(\mathcal{O}(N^2 T)\)</span> mediante programación dinámica <span class="citation" data-cites="rabiner1989">(<a href="referencias.html#ref-rabiner1989" role="doc-biblioref">Rabiner 1989</a>)</span>.</p>
-<section id="procedimiento-forward-filtrado" class="level4" data-number="4.4.1.1">
-<h4 data-number="4.4.1.1" class="anchored" data-anchor-id="procedimiento-forward-filtrado"><span class="header-section-number">4.4.1.1</span> Procedimiento Forward (Filtrado)</h4>
+<p><strong>Procedimiento Forward (Filtrado)</strong></p>
 <p>Definimos la <strong>variable de avance (<em>forward</em>)</strong> <span class="math inline">\(\alpha_k(i)\)</span> como la probabilidad conjunta de haber observado la secuencia parcial <span class="math inline">\((y_1, \dots, y_k)\)</span> y encontrarse en el estado latente <span class="math inline">\(i \in S\)</span> en el paso <span class="math inline">\(k\)</span>:</p>
 <p><span class="math display">\[
 \alpha_k(i) = \mathbb{P}(Y_1 = y_1, \dots, Y_k = y_k, X_k = i \mid \lambda).
 \]</span></p>
 <p>Esta cantidad se calcula recursivamente en tres etapas:</p>
 <ol type="1">
-<li><strong>Inicialización (<span class="math inline">\(k = 1\)</span>):</strong> <span class="math display">\[
+<li><strong>Inicialización (</strong><span class="math inline">\(k = 1\)</span>): <span class="math display">\[
 \alpha_1(i) = \pi_i \, e_{i, y_1}, \qquad \forall\, i \in S.
 \]</span></li>
-<li><strong>Inducción (<span class="math inline">\(k = 2, \dots, T\)</span>):</strong> Empleando la ecuación de Chapman-Kolmogorov (<a href="#eq-chapman" class="quarto-xref">Ecuación&nbsp;<span>4.6</span></a>) y la independencia de emisión (<a href="#eq-matrizemision" class="quarto-xref">Ecuación&nbsp;<span>4.9</span></a>): <span id="eq-forward-recursion"><span class="math display">\[
+<li><strong>Inducción (</strong><span class="math inline">\(k = 2, \dots, T\)</span>): Empleando la ecuación de Chapman-Kolmogorov (<a href="#eq-chapman" class="quarto-xref">Ecuación&nbsp;<span>4.6</span></a>) y la independencia de emisión (<a href="#eq-matrizemision" class="quarto-xref">Ecuación&nbsp;<span>4.9</span></a>): <span id="eq-forward-recursion"><span class="math display">\[
 \alpha_k(j) = \left(\sum_{i=1}^{N} \alpha_{k-1}(i)\, p_{ij}(\Delta t_k)\right) e_{j, y_k}, \qquad \forall\, j \in S,
 \tag{4.10}\]</span></span> donde <span class="math inline">\(p_{ij}(\Delta t_k) = [e^{Q\Delta t_k}]_{ij}\)</span> (que se reduce a <span class="math inline">\(a_{ij}\)</span> en pasos unitarios).</li>
 <li><strong>Terminación:</strong> La verosimilitud marginal total de la secuencia observada se obtiene marginalizando sobre el estado final: <span id="eq-verosimilitud-total"><span class="math display">\[
 \mathbb{P}(Y \mid \lambda) = \sum_{i=1}^{N} \alpha_T(i).
 \tag{4.11}\]</span></span></li>
 </ol>
-</section>
-<section id="procedimiento-backward-suavizado" class="level4" data-number="4.4.1.2">
-<h4 data-number="4.4.1.2" class="anchored" data-anchor-id="procedimiento-backward-suavizado"><span class="header-section-number">4.4.1.2</span> Procedimiento Backward (Suavizado)</h4>
+<p><strong>Procedimiento Backward (Suavizado)</strong></p>
 <p>De manera simétrica, definimos la <strong>variable de retroceso (<em>backward</em>)</strong> <span class="math inline">\(\beta_k(i)\)</span> como la probabilidad condicional de observar la secuencia futura <span class="math inline">\((y_{k+1}, \dots, y_T)\)</span> dado que el sistema se encuentra en el estado <span class="math inline">\(i \in S\)</span> en el paso <span class="math inline">\(k\)</span>:</p>
 <p><span class="math display">\[
 \beta_k(i) = \mathbb{P}(Y_{k+1} = y_{k+1}, \dots, Y_T = y_T \mid X_k = i, \lambda).
 \]</span></p>
 <p>Su cálculo recursivo procede de derecha a izquierda:</p>
 <ol type="1">
-<li><strong>Inicialización (<span class="math inline">\(k = T\)</span>):</strong> <span class="math display">\[
+<li><strong>Inicialización (</strong><span class="math inline">\(k = T\)</span>): <span class="math display">\[
 \beta_T(i) = 1, \qquad \forall\, i \in S.
 \]</span></li>
-<li><strong>Inducción (<span class="math inline">\(k = T-1, T-2, \dots, 1\)</span>):</strong> <span id="eq-backward-recursion"><span class="math display">\[
+<li><strong>Inducción (</strong><span class="math inline">\(k = T-1, T-2, \dots, 1\)</span>): <span id="eq-backward-recursion"><span class="math display">\[
 \beta_k(i) = \sum_{j=1}^{N} p_{ij}(\Delta t_{k+1})\, e_{j, y_{k+1}}\, \beta_{k+1}(j), \qquad \forall\, i \in S.
 \tag{4.12}\]</span></span></li>
 </ol>
@@ -731,9 +728,8 @@ e_{xm} = \mathbb{P}(Y_k = v_m \mid X_k = x), \qquad \text{sujetas a } e_{xm} \ge
 <p><span id="eq-gamma-posterior"><span class="math display">\[
 \gamma_k(i) = \mathbb{P}(X_k = i \mid Y, \lambda) = \frac{\alpha_k(i)\,\beta_k(i)}{\mathbb{P}(Y \mid \lambda)} = \frac{\alpha_k(i)\,\beta_k(i)}{\sum_{j=1}^{N} \alpha_k(j)\,\beta_k(j)}.
 \tag{4.13}\]</span></span></p>
-</section>
-<section id="ejemplo-ilustrativo-del-algoritmo-forwardbackward" class="level4" data-number="4.4.1.3">
-<h4 data-number="4.4.1.3" class="anchored" data-anchor-id="ejemplo-ilustrativo-del-algoritmo-forwardbackward"><span class="header-section-number">4.4.1.3</span> Ejemplo ilustrativo del algoritmo Forward–Backward</h4>
+<section id="ejemplo-ilustrativo-del-algoritmo-forwardbackward" class="level4" data-number="4.4.1.1">
+<h4 data-number="4.4.1.1" class="anchored" data-anchor-id="ejemplo-ilustrativo-del-algoritmo-forwardbackward"><span class="header-section-number">4.4.1.1</span> Ejemplo ilustrativo del algoritmo Forward–Backward</h4>
 <p>Para concretar el funcionamiento de las ecuaciones anteriores en el análisis de imágenes, consideremos un píxel cuya intensidad verdadera puede encontrarse en uno de dos estados ocultos <span class="math inline">\(S = \{B, N\}\)</span>, donde <span class="math inline">\(B\)</span> denota un píxel verdaderamente blanco y <span class="math inline">\(N\)</span> un píxel verdaderamente negro.</p>
 <p>Debido al ruido de digitalización, la lectura empírica puede diferir del estado real. Supongamos una dinámica discretizada (<span class="math inline">\(\Delta t = 1\)</span>) gobernada por la matriz de transición</p>
 <p><span class="math display">\[
@@ -780,10 +776,10 @@ Figura&nbsp;4.2: Modelo Oculto de Markov para un píxel con dos estados ocultos 
 \]</span></p>
 <p>Dado que el denominador <span class="math inline">\(\mathbb{P}(Y \mid \lambda)\)</span> es constante respecto a <span class="math inline">\(X\)</span>, esto equivale a maximizar la probabilidad conjunta <span class="math inline">\(\mathbb{P}(X, Y \mid \lambda)\)</span>. El <strong>Algoritmo de Viterbi</strong> resuelve este problema mediante el principio de optimalidad de Bellman, sustituyendo la suma en (<a href="#eq-forward-recursion" class="quarto-xref">Ecuación&nbsp;<span>4.10</span></a>) por el operador máximo:</p>
 <ol type="1">
-<li><strong>Inicialización (<span class="math inline">\(k = 1\)</span>):</strong> Para cada <span class="math inline">\(i \in S\)</span>, definimos la probabilidad máxima parcial <span class="math inline">\(\delta_1(i)\)</span> y el puntero de retroceso <span class="math inline">\(\psi_1(i)\)</span>: <span class="math display">\[
+<li><strong>Inicialización (</strong><span class="math inline">\(k = 1\)</span>): Para cada <span class="math inline">\(i \in S\)</span>, definimos la probabilidad máxima parcial <span class="math inline">\(\delta_1(i)\)</span> y el puntero de retroceso <span class="math inline">\(\psi_1(i)\)</span>: <span class="math display">\[
 \delta_1(i) = \pi_i \, e_{i, y_1}, \qquad \psi_1(i) = 0.
 \]</span></li>
-<li><strong>Recursión (<span class="math inline">\(k = 2, \dots, T\)</span>):</strong> <span id="eq-viterbi-recursion"><span class="math display">\[
+<li><strong>Recursión (</strong><span class="math inline">\(k = 2, \dots, T\)</span>): <span id="eq-viterbi-recursion"><span class="math display">\[
 \delta_k(j) = \left(\max_{1 \le i \le N} \bigl[\delta_{k-1}(i)\, p_{ij}(\Delta t_k)\bigr]\right) e_{j, y_k}, \qquad \psi_k(j) = \arg\max_{1 \le i \le N} \bigl[\delta_{k-1}(i)\, p_{ij}(\Delta t_k)\bigr].
 \tag{4.14}\]</span></span></li>
 <li><strong>Terminación y reconstrucción (<em>Backtracking</em>):</strong> <span class="math display">\[
@@ -810,10 +806,10 @@ Figura&nbsp;4.2: Modelo Oculto de Markov para un píxel con dos estados ocultos 
 \tag{4.15}\]</span></span></p>
 <p>Partiendo de una inicialización <span class="math inline">\(\lambda^{(0)}\)</span>, cada iteración <span class="math inline">\(m \to m+1\)</span> alterna dos pasos:</p>
 <ul>
-<li><p><strong>Paso <span class="math inline">\(E\)</span> (<em>Expectation</em>):</strong> Utilizando los parámetros vigentes <span class="math inline">\(\lambda^{(m)}\)</span>, se ejecutan los algoritmos Forward (<a href="#eq-forward-recursion" class="quarto-xref">Ecuación&nbsp;<span>4.10</span></a>) y Backward (<a href="#eq-backward-recursion" class="quarto-xref">Ecuación&nbsp;<span>4.12</span></a>) para calcular las estadísticas suficientes esperadas <span class="math inline">\(\gamma_k(i)\)</span> y <span class="math inline">\(\xi_k(i, j)\)</span>, construyendo la función auxiliar de verosimilitud logarítmica esperada: <span class="math display">\[
+<li><p><strong>Paso</strong> <span class="math inline">\(E\)</span> (<em>Expectation</em>): Utilizando los parámetros vigentes <span class="math inline">\(\lambda^{(m)}\)</span>, se ejecutan los algoritmos Forward (<a href="#eq-forward-recursion" class="quarto-xref">Ecuación&nbsp;<span>4.10</span></a>) y Backward (<a href="#eq-backward-recursion" class="quarto-xref">Ecuación&nbsp;<span>4.12</span></a>) para calcular las estadísticas suficientes esperadas <span class="math inline">\(\gamma_k(i)\)</span> y <span class="math inline">\(\xi_k(i, j)\)</span>, construyendo la función auxiliar de verosimilitud logarítmica esperada: <span class="math display">\[
 \mathcal{Q}(\lambda, \lambda^{(m)}) = \sum_{X} \mathbb{P}(X \mid Y, \lambda^{(m)}) \log \mathbb{P}(X, Y \mid \lambda).
 \]</span></p></li>
-<li><p><strong>Paso <span class="math inline">\(M\)</span> (<em>Maximization</em>):</strong> Se maximiza <span class="math inline">\(\mathcal{Q}(\lambda, \lambda^{(m)})\)</span> respecto a <span class="math inline">\(\lambda\)</span> sujeto a las restricciones de normalización estocástica mediante multiplicadores de Lagrange:</p>
+<li><p><strong>Paso</strong> <span class="math inline">\(M\)</span> (<em>Maximization</em>): Se maximiza <span class="math inline">\(\mathcal{Q}(\lambda, \lambda^{(m)})\)</span> respecto a <span class="math inline">\(\lambda\)</span> sujeto a las restricciones de normalización estocástica mediante multiplicadores de Lagrange:</p>
 <ol type="1">
 <li><em>Actualización de la distribución inicial:</em> <span class="math display">\[
 \pi_i^{(m+1)} = \gamma_1(i).

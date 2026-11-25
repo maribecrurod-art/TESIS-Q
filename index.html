@@ -283,7 +283,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resumen</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">index.html</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -353,7 +353,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resumen</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">index.html</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -409,17 +409,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Tabla de contenidos</h2>
-   
-  <ul>
-  <li><a href="#resumen" id="toc-resumen" class="nav-link active" data-scroll-target="#resumen"><span class="header-section-number">1</span> Resumen</a>
-  <ul class="collapse">
-  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract"><span class="header-section-number">1.1</span> Abstract</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -471,18 +462,14 @@ window.Quarto = {
 </header>
 
 
-<section id="resumen" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Resumen</h1>
+<p><strong>Resumen</strong></p>
 <p>La preservación digital y el reconocimiento óptico de caracteres (OCR) en sistemas de escritura de lenguas originarias requieren métodos matemáticos rigurosos que superen la falta de datos etiquetados, la ausencia de una tipografía estandarizada y la alta variabilidad en la forma de los trazos. En este trabajo se formula, implementa y compara el desempeño de dos enfoques matemáticos opuestos (un modelo generativo secuencial basado en Modelos Ocultos de Markov Categóricos (HMM) con topología izquierda-derecha de Bakis y un modelo discriminativo profundo basado en Redes Neuronales Convolucionales (CNN)) para clasificar los 18 grafemas monocromáticos del alfabeto provisional náhuatl. Ante la falta de bases de datos públicas, se construye un conjunto de datos sintético controlado y balanceado de 45,000 imágenes de <span class="math inline">\(28 \times 28\)</span> píxeles mediante transformaciones del grupo afín <span class="math inline">\(Aff(2)\)</span>, junto con perturbaciones aleatorias de ruido y sangrado de tinta. Tras establecer la base teórica desde los espacios de probabilidad filtrados, las ecuaciones de Kolmogorov y el semigrupo <span class="math inline">\(P(t)=e^{Qt}\)</span> hasta la optimización no lineal en espacios tensoriales, ambos modelos se evalúan bajo una misma partición estratificada (<span class="math inline">\(80\%/20\%\)</span>) y mediante remuestreo estadístico no paramétrico Bootstrap (<span class="math inline">\(B=200\)</span> réplicas). Para el enfoque probabilístico, cada imagen se transforma mediante ventanas deslizantes verticales en una secuencia unidimensional cuantificada en un alfabeto de 256 símbolos (<span class="math inline">\(H(Y)=4.3121\)</span> bits), ajustando 18 cadenas de Bakis con el algoritmo Baum-Welch. Los resultados muestran que, si bien el HMM requiere pocos parámetros y ofrece una interpretación clara de su estructura (<span class="math inline">\(50.03\%\)</span> de exactitud global; IC <span class="math inline">\(95\%\)</span>: <span class="math inline">\([48.93\%, 51.02\%]\)</span>), reducir la imagen a una secuencia lineal pierde la conexión espacial en glifos compuestos; en cambio, la CNN conserva la estructura bidimensional y alcanza una exactitud global de <span class="math inline">\(99.38\%\)</span> (IC <span class="math inline">\(95\%\)</span>: <span class="math inline">\([99.23\%, 99.54\%]\)</span>), consolidándose como la opción más adecuada para el procesamiento automatizado del alfabeto náhuatl.</p>
 <p><strong>Palabras clave:</strong> reconocimiento óptico de caracteres, alfabeto náhuatl, modelos ocultos de Markov, topología de Bakis, redes neuronales convolucionales, remuestreo Bootstrap.</p>
-<section id="abstract" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="abstract"><span class="header-section-number">1.1</span> Abstract</h2>
+<p><strong>Abstract</strong></p>
 <p>Digital preservation and Optical Character Recognition (OCR) in indigenous writing systems require rigorous mathematical methods capable of overcoming the lack of labeled data, the absence of standardized typography, and high variability in stroke shapes. In this work, the performance of two contrasting mathematical approaches—a sequential generative model based on Categorical Hidden Markov Models (HMM) with left-to-right Bakis topology and a deep discriminative model based on Convolutional Neural Networks (CNN)—is formulated, implemented, and compared for classifying the 18 monochromatic graphemes of the provisional Nahuatl alphabet. Given the lack of public datasets, a controlled and balanced synthetic dataset of 45,000 images (<span class="math inline">\(28 \times 28\)</span> pixels) is constructed using affine group <span class="math inline">\(Aff(2)\)</span> transformations alongside random noise and ink-bleeding perturbations. Following the theoretical foundation from filtered probability spaces, Kolmogorov equations, and the operator semigroup <span class="math inline">\(P(t)=e^{Qt}\)</span> to non-linear optimization in tensor spaces, both models are evaluated under an identical stratified split (<span class="math inline">\(80\%/20\%\)</span>) and non-parametric Bootstrap resampling (<span class="math inline">\(B=200\)</span> replicates). For the probabilistic approach, each image is projected via vertical sliding windows into a one-dimensional sequence quantized into a 256-symbol alphabet (<span class="math inline">\(H(Y)=4.3121\)</span> bits), calibrating 18 Bakis chains with the Baum-Welch algorithm. The results show that while the HMM uses few parameters and offers clear structural interpretability (<span class="math inline">\(50.03\%\)</span> overall accuracy; <span class="math inline">\(95\%\)</span> CI: <span class="math inline">\([48.93\%, 51.02\%]\)</span>), reducing the image to a linear sequence loses spatial connectivity in compound glyphs; in contrast, the CNN preserves two-dimensional structure and achieves an overall accuracy of <span class="math inline">\(99.38\%\)</span> (<span class="math inline">\(95\%\)</span> CI: <span class="math inline">\([99.23\%, 99.54\%]\)</span>), establishing itself as the most suitable option for the automated processing of the Nahuatl alphabet.</p>
 <p><strong>Keywords:</strong> optical character recognition, Nahuatl alphabet, hidden Markov models, Bakis topology, convolutional neural networks, Bootstrap resampling.</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
