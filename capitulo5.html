@@ -452,8 +452,8 @@ window.Quarto = {
   <li><a href="#implementación-del-modelo-cnn" id="toc-implementación-del-modelo-cnn" class="nav-link" data-scroll-target="#implementación-del-modelo-cnn"><span class="header-section-number">7.2</span> Implementación del modelo CNN</a></li>
   <li><a href="#resultados-experimentales-y-análisis-comparativo" id="toc-resultados-experimentales-y-análisis-comparativo" class="nav-link" data-scroll-target="#resultados-experimentales-y-análisis-comparativo"><span class="header-section-number">7.3</span> Resultados Experimentales y Análisis Comparativo</a>
   <ul class="collapse">
-  <li><a href="#análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm" id="toc-análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm" class="nav-link" data-scroll-target="#análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm"><span class="header-section-number">7.3.1</span> Análisis del desempeño del Modelo Oculto de Markov (<code>CategoricalHMM</code>)</a></li>
-  <li><a href="#análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn" id="toc-análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn" class="nav-link" data-scroll-target="#análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn"><span class="header-section-number">7.3.2</span> Análisis del desempeño de la Red Neuronal Convolucional (<code>CNN</code>)</a></li>
+  <li><a href="#análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm" id="toc-análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm" class="nav-link" data-scroll-target="#análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm"><span class="header-section-number">7.3.1</span> Análisis del desempeño del Modelo Oculto de Markov (<em>CategoricalHMM</em>)</a></li>
+  <li><a href="#análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn" id="toc-análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn" class="nav-link" data-scroll-target="#análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn"><span class="header-section-number">7.3.2</span> Análisis del desempeño de la Red Neuronal Convolucional (<em>CNN</em>)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -933,8 +933,8 @@ Tabla&nbsp;7.1: Comparación cuantitativa entre el Modelo Oculto de Markov Categ
 <thead>
 <tr class="header">
 <th style="text-align: left;">Métrica / Indicador</th>
-<th style="text-align: center;"><code>CategoricalHMM</code> (Topología de Bakis)</th>
-<th style="text-align: center;">Red Neuronal Convolucional (<code>CNN</code>)</th>
+<th style="text-align: center;"><em>CategoricalHMM</em> (Topología de Bakis)</th>
+<th style="text-align: center;">Red Neuronal Convolucional (<em>CNN</em>)</th>
 <th style="text-align: center;">Diferencia / Relación</th>
 </tr>
 </thead>
@@ -981,7 +981,7 @@ Tabla&nbsp;7.1: Comparación cuantitativa entre el Modelo Oculto de Markov Categ
 </figure>
 </div>
 <section id="análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm"><span class="header-section-number">7.3.1</span> Análisis del desempeño del Modelo Oculto de Markov (<code>CategoricalHMM</code>)</h3>
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm"><span class="header-section-number">7.3.1</span> Análisis del desempeño del Modelo Oculto de Markov (<em>CategoricalHMM</em>)</h3>
 <p>La cuantificación de los descriptores geométricos produjo una <strong>entropía de Shannon de</strong> <span class="math inline">\(H(Y) = 4.3121 \text{ bits}\)</span> sobre el máximo teórico de <span class="math inline">\(8.0000 \text{ bits}\)</span>, confirmando que la discretización conserva diversidad morfológica sin colapsar en un único símbolo trivial, aunque concentra la masa probabilística en aproximadamente <span class="math inline">\(2^{4.31} \approx 20\)</span> configuraciones verticales dominantes.</p>
 <div id="fig-resultados-hmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -989,19 +989,19 @@ Tabla&nbsp;7.1: Comparación cuantitativa entre el Modelo Oculto de Markov Categ
 <img src="images/paste-10.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-resultados-hmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7.1: Resultados del modelo <code>CategoricalHMM</code> con topología de Bakis (<span class="math inline">\(N=6\)</span>, <span class="math inline">\(\Delta=2\)</span>): matriz de confusión sobre validación (izquierda), exactitud individual por glifo frente al promedio global (centro) y matriz de transición aprendida para el glifo <code>A</code> (derecha).
+Figura&nbsp;7.1: Resultados del modelo <em>CategoricalHMM</em> con topología de Bakis (<span class="math inline">\(N=6\)</span>, <span class="math inline">\(\Delta=2\)</span>): matriz de confusión sobre validación (izquierda), exactitud individual por glifo frente al promedio global (centro) y matriz de transición aprendida para el glifo A (derecha).
 </figcaption>
 </figure>
 </div>
 <p>Como se observa en la <a href="#fig-resultados-hmm" class="quarto-xref">Figura&nbsp;<span>7.1</span></a>, el comportamiento del HMM revela tres hallazgos fundamentales:</p>
 <ol type="1">
-<li><strong>Verificación empírica de la topología de Bakis:</strong> En el panel derecho de la <a href="#fig-resultados-hmm" class="quarto-xref">Figura&nbsp;<span>7.1</span></a>, la matriz de transición aprendida para el glifo <code>A</code> presenta valores estrictamente iguales a <span class="math inline">\(0.00\)</span> en toda la región triangular inferior (<span class="math inline">\(j &lt; i\)</span>) y fuera de la banda <span class="math inline">\(\Delta = 2\)</span>, culminando en un estado final absorbente (<span class="math inline">\(a_{66} = 1.00\)</span>). Esto demuestra que el algoritmo Baum-Welch respeta la restricción de progresión unidireccional de izquierda a derecha.</li>
+<li><strong>Verificación empírica de la topología de Bakis:</strong> En el panel derecho de la <a href="#fig-resultados-hmm" class="quarto-xref">Figura&nbsp;<span>7.1</span></a>, la matriz de transición aprendida para el glifo <em>A</em> presenta valores estrictamente iguales a <span class="math inline">\(0.00\)</span> en toda la región triangular inferior (<span class="math inline">\(j &lt; i\)</span>) y fuera de la banda <span class="math inline">\(\Delta = 2\)</span>, culminando en un estado final absorbente (<span class="math inline">\(a_{66} = 1.00\)</span>). Esto demuestra que el algoritmo Baum-Welch respeta la restricción de progresión unidireccional de izquierda a derecha.</li>
 <li><strong>Alta discriminabilidad en glifos con envolvente asimétrica:</strong> Los caracteres <strong><code>O</code></strong> (<span class="math inline">\(\text{Recall} = 92\%\)</span>, <span class="math inline">\(\text{F1} = 0.80\)</span>), <strong><code>HJ</code></strong> (<span class="math inline">\(\text{Recall} = 89\%\)</span>, <span class="math inline">\(\text{F1} = 0.55\)</span>), <strong><code>T</code></strong> (<span class="math inline">\(\text{Recall} = 69\%\)</span>, <span class="math inline">\(\text{F1} = 0.65\)</span>) y <strong><code>M</code></strong> (<span class="math inline">\(\text{Recall} = 63\%\)</span>, <span class="math inline">\(\text{F1} = 0.68\)</span>) son identificados con alta eficacia gracias a que su perfil vertical cambia de manera distintiva a lo largo del eje horizontal.</li>
 <li><strong>Ambigüedad por proyección dimensional en glifos con trazos compuestos:</strong> Los glifos <strong><code>A</code></strong> (<span class="math inline">\(\text{F1} = 0.17\)</span>), <strong><code>Ch</code></strong> (<span class="math inline">\(\text{F1} = 0.25\)</span>) y <strong><code>E</code></strong> (<span class="math inline">\(\text{F1} = 0.31\)</span>) presentan las tasas más altas de confusión cruzada con <code>P</code> y <code>HJ</code>. Asimismo, existe una confusión simétrica marcada entre <strong><code>I</code></strong> y <strong><code>UW</code></strong> (<span class="math inline">\(126\)</span> muestras de <code>I</code> clasificadas como <code>UW</code> y <span class="math inline">\(57\)</span> viceversa). Este fenómeno evidencia la limitación teórica anticipada en el mapeo <span class="math inline">\(\mathbb{R}^{28 \times 28} \to O^{13}\)</span>: al proyectar rebanadas verticales mediante centroides y espesores agregados, dos glifos distintos cuyas secciones verticales poseen similar altura media y grosor generan secuencias de símbolos casi idénticas.</li>
 </ol>
 </section>
 <section id="análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn"><span class="header-section-number">7.3.2</span> Análisis del desempeño de la Red Neuronal Convolucional (<code>CNN</code>)</h3>
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn"><span class="header-section-number">7.3.2</span> Análisis del desempeño de la Red Neuronal Convolucional (<em>CNN</em>)</h3>
 <p>Por su parte, la arquitectura convolucional alcanzó una <strong>exactitud global de</strong> <span class="math inline">\(99.38\%\)</span> (<span class="math inline">\(\text{IC } 95\%: [99.23\%, 99.54\%]\)</span>) y un <span class="math inline">\(\text{Macro F1-Score} = 0.99\)</span>, activando la parada temprana en la época <span class="math inline">\(39\)</span> tras alcanzar su pérdida mínima de validación en la época <span class="math inline">\(32\)</span> (<span class="math inline">\(\text{val\_loss} = 0.0182\)</span>).</p>
 <div id="fig-resultados-cnn" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1009,7 +1009,7 @@ Figura&nbsp;7.1: Resultados del modelo <code>CategoricalHMM</code> con topologí
 <img src="images/paste-11.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-resultados-cnn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7.2: Resultados de la Red Neuronal Convolucional (<code>CNN</code>): evolución de la exactitud (izquierda), curva de pérdida de entropía cruzada (centro) y matriz de confusión sobre el conjunto de validación (derecha).
+Figura&nbsp;7.2: Resultados de la Red Neuronal Convolucional (<em>CNN</em>): evolución de la exactitud (izquierda), curva de pérdida de entropía cruzada (centro) y matriz de confusión sobre el conjunto de validación (derecha).
 </figcaption>
 </figure>
 </div>
