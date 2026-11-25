@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Mariana Belén Cruz Rodríguez">
+<meta name="author" content="Asesor: Dr.&nbsp;Yofre Hernán García Gómez">
 
 <title>Modelación probabilística y optimización convolucional para la clasificación de glifos del alfabeto náhuatl bajo variabilidad morfológica y escasez de datos.</title>
 <style>
@@ -79,6 +81,35 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -440,11 +471,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-
 <section id="resumen" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Resumen</h1><p><img src="LOGOunach.png" title="Modelación probabilística y optimización convolucional para la clasificación de glifos del alfabeto náhuatl bajo variabilidad morfológica y escasez de datos." class="quarto-cover-image nolightbox img-fluid"></p>
+<h1 data-number="1"><span class="header-section-number">1</span> Resumen</h1>
+<p>La preservación digital y el reconocimiento óptico de caracteres (OCR) en sistemas de escritura de lenguas originarias requieren marcos matemáticos rigurosos que superen la escasez de acervos etiquetados, la ausencia de tipografía estandarizada y la alta variabilidad morfológica del trazo. En este trabajo se formula, implementa y compara el desempeño de dos paradigmas matemáticos opuestos (un enfoque generativo secuencial basado en Modelos Ocultos de Markov Categóricos (HMM) con topología izquierda-derecha de Bakis y un enfoque discriminativo profundo basado en Redes Neuronales Convolucionales (CNN)) para la clasificación de los 18 grafemas monocromáticos del alfabeto provisional náhuatl. Ante la inexistencia de repositorios públicos, se construye un conjunto de datos sintético controlado y balanceado de 45,000 imágenes de <span class="math inline">\(28 \times 28\)</span> píxeles mediante transformaciones del grupo afín <span class="math inline">\(Aff(2)\)</span> y perturbaciones estocásticas de ruido y sangrado de tinta. Tras establecer la fundamentación formal desde los espacios de probabilidad filtrados, las ecuaciones de Kolmogorov y el semigrupo <span class="math inline">\(P(t)=e^{Qt}\)</span> hasta la optimización no lineal en espacios tensoriales, ambos modelos se evalúan bajo una partición estratificada idéntica (<span class="math inline">\(80\%/20\%\)</span>) e inferencia estadística no paramétrica Bootstrap (<span class="math inline">\(B=200\)</span> réplicas). Para el enfoque probabilístico, cada imagen se proyecta mediante ventanas deslizantes verticales hacia una secuencia unidimensional cuantificada en un alfabeto de 256 símbolos (<span class="math inline">\(H(Y)=4.3121\)</span> bits), calibrando 18 cadenas de Bakis mediante el algoritmo Baum-Welch. Los resultados demuestran que, si bien el HMM ofrece alta parsimonia paramétrica e interpretabilidad estructural (<span class="math inline">\(50.03\%\)</span> de exactitud global; IC <span class="math inline">\(95\%\)</span>: <span class="math inline">\([48.93\%, 51.02\%]\)</span>), la proyección dimensional sacrifica conectividad espacial en glifos compuestos; en contraste, la CNN preserva la topología bidimensional y alcanza una exactitud global de <span class="math inline">\(99.38\%\)</span> (IC <span class="math inline">\(95\%\)</span>: <span class="math inline">\([99.23\%, 99.54\%]\)</span>), consolidándose como el estándar idóneo para el procesamiento automatizado del alfabeto náhuatl.</p>
+<p><strong>Palabras clave:</strong> reconocimiento óptico de caracteres, alfabeto náhuatl, modelos ocultos de Markov, topología de Bakis, redes neuronales convolucionales, remuestreo Bootstrap.</p>
 <section id="abstract" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="abstract"><span class="header-section-number">1.1</span> Abstract</h2>
+<p>Digital preservation and Optical Character Recognition (OCR) in indigenous writing systems require rigorous mathematical frameworks capable of overcoming the scarcity of labeled repositories, the lack of standardized typography, and high morphological stroke variability. In this work, the performance of two contrasting mathematical paradigms (a sequential generative approach based on Categorical Hidden Markov Models (HMM) with left-to-right Bakis topology and a deep discriminative approach based on Convolutional Neural Networks (CNN)) is formulated, implemented, and compared for the classification of the 18 monochromatic graphemes of the provisional Nahuatl alphabet. Given the absence of public datasets, a controlled and balanced synthetic dataset of 45,000 images (<span class="math inline">\(28 \times 28\)</span> pixels) is constructed using affine group <span class="math inline">\(Aff(2)\)</span> transformations alongside stochastic noise and ink-bleeding perturbations. Following the formalization from filtered probability spaces, Kolmogorov equations, and the operator semigroup <span class="math inline">\(P(t)=e^{Qt}\)</span> to non-linear optimization in tensor spaces, both models are evaluated under an identical stratified split (<span class="math inline">\(80\%/20\%\)</span>) and non-parametric Bootstrap statistical inference (<span class="math inline">\(B=200\)</span> replicates). For the probabilistic approach, each image is projected via vertical sliding windows into a one-dimensional sequence quantized into a 256-symbol alphabet (<span class="math inline">\(H(Y)=4.3121\)</span> bits), calibrating 18 Bakis chains through the Baum-Welch algorithm. The results demonstrate that while the HMM provides high parametric parsimony and structural interpretability (<span class="math inline">\(50.03\%\)</span> overall accuracy; <span class="math inline">\(95\%\)</span> CI: <span class="math inline">\([48.93\%, 51.02\%]\)</span>), dimensional projection sacrifices spatial connectivity in compound glyphs; conversely, the CNN preserves two-dimensional topology and achieves an overall accuracy of <span class="math inline">\(99.38\%\)</span> (<span class="math inline">\(95\%\)</span> CI: <span class="math inline">\([99.23\%, 99.54\%]\)</span>), establishing itself as the optimal standard for the automated processing of the Nahuatl alphabet.</p>
+<p><strong>Keywords:</strong> optical character recognition, Nahuatl alphabet, hidden Markov models, Bakis topology, convolutional neural networks, Bootstrap resampling.</p>
 
 
 </section>
