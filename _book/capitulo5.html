@@ -79,8 +79,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d6a2ae2cb249da1580f0a11f71b8f854.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a10894211e69ec7231936de48b38be85.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-c3e928dbf8c89a21f601b3e5827c656e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a613a3e357fd1f17d617a176501624ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-f950fba16277e4a35167a7cafc9d0b50.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -399,13 +399,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./capitulo1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Preliminares</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Marco Contextual y Planteamiento del Problema</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./capitulo2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fundamentos teóricos: Cadenas de Markov a Tiempo Continuo y Modelos Ocultos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos de los Modelos Probabilísticos (HMM)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -429,7 +429,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./conclusiones.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusiones y Trabajo Futuro</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -448,28 +448,13 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#caso-hmm" id="toc-caso-hmm" class="nav-link active" data-scroll-target="#caso-hmm"><span class="header-section-number">7.1</span> CASO HMM</a>
+  <li><a href="#implementación-del-modelo-hmm-categórico-topología-de-bakis" id="toc-implementación-del-modelo-hmm-categórico-topología-de-bakis" class="nav-link active" data-scroll-target="#implementación-del-modelo-hmm-categórico-topología-de-bakis"><span class="header-section-number">7.1</span> Implementación del modelo HMM Categórico (Topología de Bakis)</a></li>
+  <li><a href="#implementación-del-modelo-cnn" id="toc-implementación-del-modelo-cnn" class="nav-link" data-scroll-target="#implementación-del-modelo-cnn"><span class="header-section-number">7.2</span> Implementación del modelo CNN</a></li>
+  <li><a href="#resultados-experimentales-y-análisis-comparativo" id="toc-resultados-experimentales-y-análisis-comparativo" class="nav-link" data-scroll-target="#resultados-experimentales-y-análisis-comparativo"><span class="header-section-number">7.3</span> Resultados Experimentales y Análisis Comparativo</a>
   <ul class="collapse">
-  <li><a href="#configuración-del-entorno-experimental" id="toc-configuración-del-entorno-experimental" class="nav-link" data-scroll-target="#configuración-del-entorno-experimental"><span class="header-section-number">7.1.1</span> Configuración del entorno experimental</a></li>
-  <li><a href="#definición-de-parámetros-del-experimento" id="toc-definición-de-parámetros-del-experimento" class="nav-link" data-scroll-target="#definición-de-parámetros-del-experimento"><span class="header-section-number">7.1.2</span> Definición de parámetros del experimento</a></li>
-  <li><a href="#obtención-del-conjunto-de-datos" id="toc-obtención-del-conjunto-de-datos" class="nav-link" data-scroll-target="#obtención-del-conjunto-de-datos"><span class="header-section-number">7.1.3</span> Obtención del conjunto de datos</a></li>
-  <li><a href="#arquitectura-del-hmm" id="toc-arquitectura-del-hmm" class="nav-link" data-scroll-target="#arquitectura-del-hmm"><span class="header-section-number">7.1.4</span> Arquitectura del HMM</a></li>
-  <li><a href="#preprocesamiento-de-imágenes" id="toc-preprocesamiento-de-imágenes" class="nav-link" data-scroll-target="#preprocesamiento-de-imágenes"><span class="header-section-number">7.1.5</span> Preprocesamiento de imágenes</a></li>
-  <li><a href="#extracción-de-características" id="toc-extracción-de-características" class="nav-link" data-scroll-target="#extracción-de-características"><span class="header-section-number">7.1.6</span> Extracción de características</a></li>
-  <li><a href="#construcción-de-los-conjuntos-de-entrenamiento-y-prueba" id="toc-construcción-de-los-conjuntos-de-entrenamiento-y-prueba" class="nav-link" data-scroll-target="#construcción-de-los-conjuntos-de-entrenamiento-y-prueba"><span class="header-section-number">7.1.7</span> Construcción de los conjuntos de entrenamiento y prueba</a></li>
-  <li><a href="#entrenamiento-de-los-modelos" id="toc-entrenamiento-de-los-modelos" class="nav-link" data-scroll-target="#entrenamiento-de-los-modelos"><span class="header-section-number">7.1.8</span> Entrenamiento de los modelos</a></li>
-  <li><a href="#inferencia-y-clasificación" id="toc-inferencia-y-clasificación" class="nav-link" data-scroll-target="#inferencia-y-clasificación"><span class="header-section-number">7.1.9</span> Inferencia y clasificación</a></li>
-  <li><a href="#evaluación-del-desempeño" id="toc-evaluación-del-desempeño" class="nav-link" data-scroll-target="#evaluación-del-desempeño"><span class="header-section-number">7.1.10</span> Evaluación del desempeño</a></li>
+  <li><a href="#análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm" id="toc-análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm" class="nav-link" data-scroll-target="#análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm"><span class="header-section-number">7.3.1</span> Análisis del desempeño del Modelo Oculto de Markov (<code>CategoricalHMM</code>)</a></li>
+  <li><a href="#análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn" id="toc-análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn" class="nav-link" data-scroll-target="#análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn"><span class="header-section-number">7.3.2</span> Análisis del desempeño de la Red Neuronal Convolucional (<code>CNN</code>)</a></li>
   </ul></li>
-  <li><a href="#caso-cnn" id="toc-caso-cnn" class="nav-link" data-scroll-target="#caso-cnn"><span class="header-section-number">7.2</span> CASO CNN</a>
-  <ul class="collapse">
-  <li><a href="#arquitectura-de-la-red-neuronal-convolucional" id="toc-arquitectura-de-la-red-neuronal-convolucional" class="nav-link" data-scroll-target="#arquitectura-de-la-red-neuronal-convolucional"><span class="header-section-number">7.2.1</span> Arquitectura de la red neuronal convolucional</a></li>
-  <li><a href="#primer-bloque-convolucional" id="toc-primer-bloque-convolucional" class="nav-link" data-scroll-target="#primer-bloque-convolucional"><span class="header-section-number">7.2.2</span> Primer bloque convolucional</a></li>
-  <li><a href="#segundo-y-tercer-bloque-convolucional" id="toc-segundo-y-tercer-bloque-convolucional" class="nav-link" data-scroll-target="#segundo-y-tercer-bloque-convolucional"><span class="header-section-number">7.2.3</span> Segundo y tercer bloque convolucional</a></li>
-  <li><a href="#clasificador" id="toc-clasificador" class="nav-link" data-scroll-target="#clasificador"><span class="header-section-number">7.2.4</span> Clasificador</a></li>
-  </ul></li>
-  <li><a href="#entrenamiento" id="toc-entrenamiento" class="nav-link" data-scroll-target="#entrenamiento"><span class="header-section-number">7.3</span> Entrenamiento</a></li>
-  <li><a href="#sistema-de-inferencia-interactivo" id="toc-sistema-de-inferencia-interactivo" class="nav-link" data-scroll-target="#sistema-de-inferencia-interactivo"><span class="header-section-number">7.4</span> Sistema de inferencia interactivo</a></li>
   </ul>
 </nav>
     </div>
@@ -496,380 +481,547 @@ window.Quarto = {
 </header>
 
 
-<section id="caso-hmm" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="caso-hmm"><span class="header-section-number">7.1</span> CASO HMM</h2>
-<p>En este capítulo se describe la metodología implementada para el reconocimiento automático de letras mayúsculas manuscritas del alfabeto latino mediante Modelos Ocultos de Markov (HMM). A diferencia del capítulo anterior, los bloques de código se muestran con fines documentales y no son ejecutados automáticamente dentro del documento debido al alto costo computacional del entrenamiento.</p>
-<section id="configuración-del-entorno-experimental" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="configuración-del-entorno-experimental"><span class="header-section-number">7.1.1</span> Configuración del entorno experimental</h3>
-<p>El primer paso consistió en importar las bibliotecas necesarias para el procesamiento de imágenes, manipulación de datos, entrenamiento de los modelos HMM y evaluación de resultados, estableciendo una conexión con un sistema de almacenamiento externo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>) </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2 </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torchvision.datasets <span class="im">as</span> datasets </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torchvision.transforms <span class="im">as</span> transforms </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm  </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:     </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> hmmlearn <span class="im">import</span> hmm </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:     </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> subprocess     </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> sys     </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    subprocess.check_call([sys.executable, <span class="st">"-m"</span>, <span class="st">"pip"</span>, <span class="st">"install"</span>, <span class="st">"hmmlearn"</span>])     </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> hmmlearn <span class="im">import</span> hmm  </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, confusion_matrix, classification_report </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings </span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Para asegurar la reproducibilidad de los resultados, se fijaron semillas aleatorias y se deshabilitaron advertencias no críticas:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>) </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">42</span>) </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>) </span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>En este apartado se contrasta el diseño, implementación y comportamiento empírico de dos paradigmas de modelado sobre el conjunto de datos de glifos del alfabeto náhuatl (<span class="math inline">\(45{,}000\)</span> muestras distribuidas equitativamente en <span class="math inline">\(18\)</span> clases, a razón de <span class="math inline">\(2{,}500\)</span> imágenes de <span class="math inline">\(28 \times 28\)</span> píxeles por grafema): un enfoque generativo secuencial basado en <strong>Modelos Ocultos de Markov Categóricos con topología de Bakis (<code>CategoricalHMM</code>)</strong> y un enfoque discriminativo espacial profundo basado en <strong>Redes Neuronales Convolucionales (<code>CNN</code>)</strong>.</p>
+<p>Para garantizar una comparación estadística rigurosa y libre de sesgos de muestreo, ambos modelos se entrenan y evalúan bajo condiciones experimentales estrictamente idénticas: resolución monocromática de <span class="math inline">\(28 \times 28\)</span> píxeles, polaridad normalizada de tinta activa, partición estratificada <span class="math inline">\(80\% / 20\%\)</span> (<span class="math inline">\(36{,}000\)</span> imágenes de entrenamiento y <span class="math inline">\(9{,}000\)</span> de validación sobre exactamente los mismos archivos mediante <code>random_state = 123</code>), e intervalos de confianza al <span class="math inline">\(95\%\)</span> estimados mediante remuestreo <em>bootstrap</em> no paramétrico (<span class="math inline">\(B = 200\)</span> réplicas).</p>
+<section id="implementación-del-modelo-hmm-categórico-topología-de-bakis" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="implementación-del-modelo-hmm-categórico-topología-de-bakis"><span class="header-section-number">7.1</span> Implementación del modelo HMM Categórico (Topología de Bakis)</h2>
+<p>El enfoque basado en HMM reformula el reconocimiento de cada glifo como un problema de inferencia sobre secuencias unidimensionales observadas de izquierda a derecha. Se entrena un modelo generativo independiente <span class="math inline">\(\lambda_c = (\pi, A_c, E_c)\)</span> por cada una de las <span class="math inline">\(18\)</span> clases para clasificar nuevas muestras mediante la regla de máxima log-verosimilitud <span class="math inline">\(\hat{c} = \arg\max_{c} \log \mathbb{P}(Y \mid \lambda_c)\)</span>.</p>
+<div id="hmm-config-imports" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Instalación de dependencias e importaciones</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install hmmlearn opencv<span class="op">-</span>python<span class="op">-</span>headless scikit<span class="op">-</span>learn matplotlib seaborn tqdm <span class="op">-</span>q</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, classification_report, accuracy_score</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hmmlearn.hmm <span class="im">import</span> CategoricalHMM</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>logging.getLogger(<span class="st">"hmmlearn"</span>).setLevel(logging.ERROR)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Hiperparámetros y configuración experimental</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>DATASET_PATH <span class="op">=</span> <span class="st">"/content/drive/MyDrive/nahuatl_dataset/dataset_hibrido_final"</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>IMG_SIZE <span class="op">=</span> (<span class="dv">28</span>, <span class="dv">28</span>)       <span class="co"># Misma resolución base que la CNN (H=28, W=28)</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>WIN_WIDTH <span class="op">=</span> <span class="dv">4</span>             <span class="co"># Ancho de la ventana deslizante vertical (w)</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>STRIDE <span class="op">=</span> <span class="dv">2</span>                <span class="co"># Paso horizontal (s) -&gt; T = floor((28-4)/2) + 1 = 13</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>N_STATES <span class="op">=</span> <span class="dv">6</span>              <span class="co"># Estados ocultos ordenados de izquierda a derecha (N)</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>BAKIS_DELTA <span class="op">=</span> <span class="dv">2</span>           <span class="co"># Orden de salto permitido en topología de Bakis (Delta=2)</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>N_SYMBOLS <span class="op">=</span> <span class="dv">256</span>           <span class="co"># Alfabeto discreto de 8 bits (2^8 = 256 símbolos)</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>N_ITER <span class="op">=</span> <span class="dv">100</span>              <span class="co"># Iteraciones máximas de Baum-Welch (EM)</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>TRAIN_RATIO <span class="op">=</span> <span class="fl">0.80</span>        <span class="co"># Partición 80% entrenamiento / 20% validación</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>RANDOM_STATE <span class="op">=</span> <span class="dv">123</span>        <span class="co"># Semilla reproducible</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>N_BOOTSTRAP <span class="op">=</span> <span class="dv">200</span>         <span class="co"># Réplicas bootstrap para intervalos de confianza</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><strong>Por qué se eligen estos parámetros y configuración:</strong></p>
+<ul>
+<li><strong>Resolución unificada <code>IMG_SIZE = (28, 28)</code> en escala de grises:</strong> Mantener exactamente la misma cuadrícula bidimensional de <span class="math inline">\(28 \times 28\)</span> píxeles que recibe la CNN elimina cualquier ventaja artificial derivada de interpolaciones de mayor resolución, asegurando que las diferencias observadas provengan exclusivamente de la naturaleza matemática de cada modelo.</li>
+<li><strong>Ventana deslizante vertical (<code>WIN_WIDTH = 4</code>, <code>STRIDE = 2</code>):</strong> Recorre el glifo de izquierda a derecha generando <span class="math inline">\(T = \lfloor (28 - 4)/2 \rfloor + 1 = 13\)</span> rebanadas verticales de dimensión <span class="math inline">\(28 \times 4\)</span>. Un ancho de <span class="math inline">\(4\)</span> píxeles captura la estructura vertical local del trazo, mientras que el desplazamiento de <span class="math inline">\(2\)</span> píxeles introduce un <span class="math inline">\(50\%\)</span> de solapamiento espacial que suaviza las transiciones entre observaciones consecutivas.</li>
+<li><strong>Alfabeto categórico de</strong> <span class="math inline">\(M = 256\)</span> símbolos y <span class="math inline">\(N = 6\)</span> estados de Bakis: En lugar de vectorizar píxeles crudos en alta dimensión (lo que induce dispersión y singularidades en covarianzas continuas), cada ventana se proyecta en un símbolo discreto de <span class="math inline">\(8\)</span> bits, permitiendo emplear un <code>CategoricalHMM</code> con <span class="math inline">\(6\)</span> fases estructurales progresivas y salto máximo <span class="math inline">\(\Delta = 2\)</span>.</li>
+</ul>
+<div id="hmm-extraccion-division" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Extracción de rasgos estructurales y cuantificación de 8 bits</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> quantize_uniform(val, vmin, vmax, n_bins):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Función de cuantificación uniforme q(v) en {0, ..., n_bins - 1}."""</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    val_clipped <span class="op">=</span> np.clip(val, vmin, vmax)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> <span class="bu">int</span>(np.floor(((val_clipped <span class="op">-</span> vmin) <span class="op">/</span> (vmax <span class="op">-</span> vmin)) <span class="op">*</span> n_bins))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">min</span>(q, n_bins <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_discrete_sequence(img_norm, win_width<span class="op">=</span><span class="dv">4</span>, stride<span class="op">=</span><span class="dv">2</span>, ink_thresh<span class="op">=</span><span class="fl">0.25</span>):</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Proyecta una imagen 2D (28x28) en una secuencia 1D de símbolos discretos</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">    en {0, ..., 255} mediante ventana deslizante vertical y codificación de 8 bits.</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    H, W <span class="op">=</span> img_norm.shape</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    sequence <span class="op">=</span> []</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, W <span class="op">-</span> win_width <span class="op">+</span> <span class="dv">1</span>, stride):</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        window <span class="op">=</span> img_norm[:, x:x <span class="op">+</span> win_width]</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        mass <span class="op">=</span> np.<span class="bu">sum</span>(window)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Perfil de proyección horizontal de la ventana h_t(i)</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        row_profile <span class="op">=</span> np.mean(window, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        active_rows <span class="op">=</span> np.where(row_profile <span class="op">&gt;</span> ink_thresh)[<span class="dv">0</span>]</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> mass <span class="op">&lt;=</span> <span class="fl">1e-4</span> <span class="kw">or</span> <span class="bu">len</span>(active_rows) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Ventana vacía (fondo sin tinta)</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>            mu_y <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>            delta_p <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            transitions <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>            <span class="co"># 1. Centro de gravedad vertical normalizado mu_y(t) en [0, 1]</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>            row_indices <span class="op">=</span> np.arange(H).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>            mu_y <span class="op">=</span> np.<span class="bu">sum</span>(row_indices <span class="op">*</span> window) <span class="op">/</span> (mass <span class="op">*</span> (H <span class="op">-</span> <span class="dv">1</span>))</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>            <span class="co"># 2. Perfiles superior e inferior -&gt; espesor de la envoltura Delta_P(t)</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>            p_sup <span class="op">=</span> active_rows[<span class="dv">0</span>]</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>            p_inf <span class="op">=</span> active_rows[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>            delta_p <span class="op">=</span> (p_inf <span class="op">-</span> p_sup <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> H</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>            <span class="co"># 3. Transiciones de estado fondo-tinta z(t)</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>            binary_profile <span class="op">=</span> (row_profile <span class="op">&gt;</span> ink_thresh).astype(<span class="bu">int</span>)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>            transitions <span class="op">=</span> <span class="bu">int</span>(np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(np.diff(binary_profile))))</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Cuantificación: 3 bits (8 niveles) + 3 bits (8 niveles) + 2 bits (4 niveles)</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>        q_mu <span class="op">=</span> quantize_uniform(mu_y, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="dv">8</span>)          <span class="co"># {0..7}</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>        q_dp <span class="op">=</span> quantize_uniform(delta_p, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="dv">8</span>)       <span class="co"># {0..7}</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>        q_tr <span class="op">=</span> <span class="bu">min</span>(transitions, <span class="dv">3</span>)                          <span class="co"># {0..3}</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Codificación entera de 8 bits: y_t in {0, ..., 255}</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>        symbol <span class="op">=</span> <span class="dv">32</span> <span class="op">*</span> q_mu <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> q_dp <span class="op">+</span> q_tr</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>        sequence.append([symbol])</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(sequence, dtype<span class="op">=</span>np.int32)</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_shannon_entropy(sequences, n_symbols<span class="op">=</span><span class="dv">256</span>):</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calcula la entropía de Shannon H(Y) en bits sobre el alfabeto observado."""</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    all_symbols <span class="op">=</span> np.concatenate(sequences).ravel()</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> np.bincount(all_symbols, minlength<span class="op">=</span>n_symbols)</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    probs <span class="op">=</span> counts[counts <span class="op">&gt;</span> <span class="dv">0</span>] <span class="op">/</span> <span class="bu">len</span>(all_symbols)</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>np.<span class="bu">sum</span>(probs <span class="op">*</span> np.log2(probs))</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Carga y preprocesamiento del dataset (28x28)</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_dataset_hmm(dataset_path):</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    sequences, labels <span class="op">=</span> [], []</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>    class_names <span class="op">=</span> <span class="bu">sorted</span>([</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>        d <span class="cf">for</span> d <span class="kw">in</span> os.listdir(dataset_path)</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> os.path.isdir(os.path.join(dataset_path, d))</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> class_name <span class="kw">in</span> class_names:</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>        class_dir <span class="op">=</span> os.path.join(dataset_path, class_name)</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>        img_files <span class="op">=</span> <span class="bu">sorted</span>([</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>            f <span class="cf">for</span> f <span class="kw">in</span> os.listdir(class_dir)</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> f.lower().endswith((<span class="st">'.png'</span>, <span class="st">'.jpg'</span>, <span class="st">'.jpeg'</span>, <span class="st">'.bmp'</span>))</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>        ])</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> fname <span class="kw">in</span> tqdm(img_files, desc<span class="op">=</span><span class="ss">f"Extrayendo rasgos '</span><span class="sc">{</span>class_name<span class="sc">}</span><span class="ss">'"</span>, leave<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>            img_path <span class="op">=</span> os.path.join(class_dir, fname)</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>            img <span class="op">=</span> cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> img <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> img.shape <span class="op">!=</span> IMG_SIZE:</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>                img <span class="op">=</span> cv2.resize(img, IMG_SIZE, interpolation<span class="op">=</span>cv2.INTER_AREA)</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>            img_norm <span class="op">=</span> img.astype(np.float32) <span class="op">/</span> <span class="fl">255.0</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Asegurar polaridad: tinta = valores altos (&gt;0.5), fondo = cerca de 0</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> np.mean(img_norm) <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>                img_norm <span class="op">=</span> <span class="fl">1.0</span> <span class="op">-</span> img_norm</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>            seq <span class="op">=</span> extract_discrete_sequence(img_norm, WIN_WIDTH, STRIDE)</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">len</span>(seq) <span class="op">&gt;=</span> N_STATES:</span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>                sequences.append(seq)</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>                labels.append(class_name)</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sequences, np.array(labels), class_names</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>t0_prep <span class="op">=</span> time.time()</span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>sequences, labels, class_names <span class="op">=</span> load_dataset_hmm(DATASET_PATH)</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>prep_time <span class="op">=</span> time.time() <span class="op">-</span> t0_prep</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>entropy_bits <span class="op">=</span> compute_shannon_entropy(sequences, N_SYMBOLS)</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="co"># Partición estratificada 80% / 20%</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>le <span class="op">=</span> LabelEncoder()</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>y_encoded <span class="op">=</span> le.fit_transform(labels)</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>seq_train, seq_val, y_train, y_val <span class="op">=</span> train_test_split(</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>    sequences, y_encoded,</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>    train_size<span class="op">=</span>TRAIN_RATIO,</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span>RANDOM_STATE,</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>    stratify<span class="op">=</span>y_encoded</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><strong>Por qué se diseña así la extracción de rasgos y la partición:</strong></p>
+<ul>
+<li><strong>Normalización de polaridad (<code>np.mean(img_norm) &gt; 0.5</code>):</strong> Garantiza que los píxeles pertenecientes al trazo activo tengan intensidades positivas cercanas a <span class="math inline">\(1\)</span> y el fondo cercano a <span class="math inline">\(0\)</span>, condición necesaria para que el cálculo del centro de gravedad <span class="math inline">\(\mu_y(t)\)</span> y los perfiles de envoltura <span class="math inline">\(P_{\text{sup}}(t), P_{\text{inf}}(t)\)</span> midan correctamente la masa de tinta.</li>
+<li><strong>Codificación combinatoria de</strong> <span class="math inline">\(8\)</span> bits (<span class="math inline">\(32 \cdot q_{\mu} + 4 \cdot q_{\Delta P} + q_{z}\)</span>): Sintetiza simultáneamente la posición vertical del trazo (<span class="math inline">\(3\)</span> bits), su grosor o apertura vertical (<span class="math inline">\(3\)</span> bits) y su complejidad de cruces fondo-tinta (<span class="math inline">\(2\)</span> bits) en un entero único en <span class="math inline">\(\{0, \dots, 255\}\)</span>.</li>
+<li><strong>Ordenamiento determinista y partición estratificada (<code>sorted(...)</code>, <code>random_state = 123</code>):</strong> Asegura que las <span class="math inline">\(36{,}000\)</span> muestras de entrenamiento y <span class="math inline">\(9{,}000\)</span> de validación correspondan exactamente a los mismos archivos empleados posteriormente en la CNN.</li>
+</ul>
+<div id="hmm-entrenamiento-evaluacion" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Construcción y entrenamiento de HMM categóricos con topología de Bakis</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_bakis_categorical_hmm(n_states, n_symbols, delta<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">123</span>):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Inicializa un CategoricalHMM con topología izquierda-derecha de Bakis:</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    - pi = (1, 0, ..., 0)</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    - a_ij = 0 para j &lt; i y j &gt; i + delta</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    rng <span class="op">=</span> np.random.default_rng(random_state)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> CategoricalHMM(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        n_components<span class="op">=</span>n_states,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        n_features<span class="op">=</span>n_symbols,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        n_iter<span class="op">=</span>N_ITER,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        tol<span class="op">=</span><span class="fl">1e-4</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        init_params<span class="op">=</span><span class="st">""</span>,   <span class="co"># Preservar matrices estructuradas</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        params<span class="op">=</span><span class="st">"te"</span>,      <span class="co"># Actualizar solo transiciones (t) y emisiones (e)</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        random_state<span class="op">=</span>random_state</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Vector inicial determinista en el primer estado</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    startprob <span class="op">=</span> np.zeros(n_states, dtype<span class="op">=</span>np.float64)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    startprob[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    model.startprob_ <span class="op">=</span> startprob</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Matriz de transición triangular superior en banda (Bakis)</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    transmat <span class="op">=</span> np.zeros((n_states, n_states), dtype<span class="op">=</span>np.float64)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_states):</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        max_j <span class="op">=</span> <span class="bu">min</span>(n_states <span class="op">-</span> <span class="dv">1</span>, i <span class="op">+</span> delta)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        valid_cols <span class="op">=</span> np.arange(i, max_j <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        weights <span class="op">=</span> rng.uniform(<span class="fl">0.3</span>, <span class="fl">1.0</span>, size<span class="op">=</span><span class="bu">len</span>(valid_cols))</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        transmat[i, valid_cols] <span class="op">=</span> weights <span class="op">/</span> np.<span class="bu">sum</span>(weights)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    model.transmat_ <span class="op">=</span> transmat</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Matriz de emisión inicializada cerca de uniforme</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    emissionprob <span class="op">=</span> rng.uniform(<span class="fl">0.8</span>, <span class="fl">1.2</span>, size<span class="op">=</span>(n_states, n_symbols))</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    emissionprob <span class="op">/=</span> emissionprob.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    model.emissionprob_ <span class="op">=</span> emissionprob</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> model</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>t0_train <span class="op">=</span> time.time()</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>hmm_models <span class="op">=</span> {}</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, class_name <span class="kw">in</span> <span class="bu">enumerate</span>(class_names):</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    class_seqs <span class="op">=</span> [s <span class="cf">for</span> s, lab <span class="kw">in</span> <span class="bu">zip</span>(seq_train, y_train) <span class="cf">if</span> lab <span class="op">==</span> idx]</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    lengths <span class="op">=</span> [<span class="bu">len</span>(s) <span class="cf">for</span> s <span class="kw">in</span> class_seqs]</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    X_concat <span class="op">=</span> np.vstack(class_seqs)</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> build_bakis_categorical_hmm(</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>        n_states<span class="op">=</span>N_STATES,</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>        n_symbols<span class="op">=</span>N_SYMBOLS,</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>        delta<span class="op">=</span>BAKIS_DELTA,</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>        random_state<span class="op">=</span>RANDOM_STATE <span class="op">+</span> idx</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>    model.fit(X_concat, lengths)</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Suavizado de Laplace (epsilon = 1e-6) en emisiones para evitar log(0)</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>    eps <span class="op">=</span> <span class="fl">1e-6</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    model.emissionprob_ <span class="op">=</span> (model.emissionprob_ <span class="op">+</span> eps) <span class="op">/</span> (<span class="fl">1.0</span> <span class="op">+</span> N_SYMBOLS <span class="op">*</span> eps)</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    hmm_models[class_name] <span class="op">=</span> model</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>train_time <span class="op">=</span> time.time() <span class="op">-</span> t0_train</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Inferencia por máxima verosimilitud y remuestreo Bootstrap</span></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>t0_inf <span class="op">=</span> time.time()</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>y_true_names <span class="op">=</span> [le.inverse_transform([lbl])[<span class="dv">0</span>] <span class="cf">for</span> lbl <span class="kw">in</span> y_val]</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>y_pred_names <span class="op">=</span> []</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>log_likelihood_matrix <span class="op">=</span> np.zeros((<span class="bu">len</span>(seq_val), <span class="bu">len</span>(class_names)))</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, seq <span class="kw">in</span> <span class="bu">enumerate</span>(tqdm(seq_val, desc<span class="op">=</span><span class="st">"Clasificando validación"</span>)):</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c_idx, c_name <span class="kw">in</span> <span class="bu">enumerate</span>(class_names):</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>        log_likelihood_matrix[i, c_idx] <span class="op">=</span> hmm_models[c_name].score(seq)</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>    best_c_idx <span class="op">=</span> np.argmax(log_likelihood_matrix[i])</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>    y_pred_names.append(class_names[best_c_idx])</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>inf_time <span class="op">=</span> time.time() <span class="op">-</span> t0_inf</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>global_acc <span class="op">=</span> accuracy_score(y_true_names, y_pred_names)</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervalo de confianza Bootstrap (B = 200)</span></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>rng_boot <span class="op">=</span> np.random.default_rng(RANDOM_STATE)</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>n_val <span class="op">=</span> <span class="bu">len</span>(y_true_names)</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>y_true_arr <span class="op">=</span> np.array(y_true_names)</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>y_pred_arr <span class="op">=</span> np.array(y_pred_names)</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>boot_accuracies <span class="op">=</span> np.array([</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>    np.mean(y_true_arr[idx] <span class="op">==</span> y_pred_arr[idx])</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> idx <span class="kw">in</span> (rng_boot.integers(<span class="dv">0</span>, n_val, size<span class="op">=</span>n_val) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(N_BOOTSTRAP))</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>ci_low, ci_high <span class="op">=</span> np.percentile(boot_accuracies, [<span class="fl">2.5</span>, <span class="fl">97.5</span>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><strong>Por qué se diseña así el entrenamiento e inferencia del HMM:</strong></p>
+<ul>
+<li><strong>Preservación algebraica de la topología de Bakis (<code>init_params=""</code>, <code>params="te"</code>):</strong> Al inicializar <span class="math inline">\(a_{ij}^{(0)} = 0\)</span> fuera de la banda <span class="math inline">\(0 \le j - i \le 2\)</span> y fijar <span class="math inline">\(\pi_1 = 1\)</span>, las ecuaciones de actualización multiplicativa del algoritmo Baum-Welch mantienen estrictamente en cero las transiciones prohibidas en cada iteración EM, forzando una alineación monotónica izquierda-derecha.</li>
+<li><strong>Suavizado de Laplace (</strong><span class="math inline">\(\epsilon = 10^{-6}\)</span>) en la matriz de emisión <span class="math inline">\(E\)</span>: Evita que la aparición en validación de un símbolo categórico no observado durante el entrenamiento de una clase colapse toda la log-verosimilitud de la secuencia a <span class="math inline">\(-\infty\)</span>.</li>
+</ul>
 </section>
-<section id="definición-de-parámetros-del-experimento" class="level3" data-number="7.1.2">
-<h3 data-number="7.1.2" class="anchored" data-anchor-id="definición-de-parámetros-del-experimento"><span class="header-section-number">7.1.2</span> Definición de parámetros del experimento</h3>
-<p>A continuación, se definieron los parámetros principales utilizados durante el entrenamiento y la evaluación del sistema:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>N_ESTADOS <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>TRAIN_POR_CLASE <span class="op">=</span> <span class="dv">1500</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>TEST_POR_CLASE <span class="op">=</span> <span class="dv">400</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>IMG_SIZE <span class="op">=</span> <span class="dv">40</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>UMBRAL <span class="op">=</span> <span class="fl">0.30</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ARCHIVO_MODELOS_CAT <span class="op">=</span> <span class="st">"/content/drive/MyDrive/modelos_categorical_v_avanzada_hmm.pkl"</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>TARGETS_MAYUSCULAS <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>,<span class="dv">36</span>))</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>MAPEO_LETTERS <span class="op">=</span> {i: <span class="bu">chr</span>(<span class="bu">ord</span>(<span class="st">'A'</span>) <span class="op">+</span> (i <span class="op">-</span> <span class="dv">10</span>)) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>,<span class="dv">36</span>)}</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>LETRAS_OBJETIVO <span class="op">=</span> [<span class="bu">chr</span>(<span class="bu">ord</span>(<span class="st">'A'</span>) <span class="op">+</span> i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">26</span>)]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Se optó por utilizar 12 estados ocultos para equilibrar la capacidad descriptiva y el costo computacional, seleccionando 1500 muestras de entrenamiento y 400 de prueba por clase con un tamaño de imagen fijado en <span class="math inline">\(40\times40\)</span> píxeles.</p>
+<section id="implementación-del-modelo-cnn" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="implementación-del-modelo-cnn"><span class="header-section-number">7.2</span> Implementación del modelo CNN</h2>
+<p>El enfoque basado en Redes Neuronales Convolucionales sustituye la extracción manual de descriptores unidimensionales por jerarquías de filtros convolucionales bidimensionales entrenados extremo a extremo mediante retropropagación y optimización estocástica Adam.</p>
+<div id="cnn-datos-aumentacion" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, classification_report, accuracy_score</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.callbacks <span class="im">import</span> EarlyStopping, ModelCheckpoint</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Configuración y partición exacta idéntica a la del HMM</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>DATA_DIR <span class="op">=</span> <span class="st">"/content/drive/MyDrive/nahuatl_dataset/dataset_hibrido_final"</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>RUTA_MODELO <span class="op">=</span> <span class="st">"/content/drive/MyDrive/nahuatl_dataset/modelo_nahuatl.keras"</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>IMG_SIZE <span class="op">=</span> (<span class="dv">28</span>, <span class="dv">28</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>BATCH_SIZE <span class="op">=</span> <span class="dv">32</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>TRAIN_RATIO <span class="op">=</span> <span class="fl">0.80</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>RANDOM_STATE <span class="op">=</span> <span class="dv">123</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>EPOCHS_MAX <span class="op">=</span> <span class="dv">60</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>file_paths, labels <span class="op">=</span> [], []</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>class_names <span class="op">=</span> <span class="bu">sorted</span>([</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    d <span class="cf">for</span> d <span class="kw">in</span> os.listdir(DATA_DIR)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.isdir(os.path.join(DATA_DIR, d))</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>num_classes <span class="op">=</span> <span class="bu">len</span>(class_names)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> class_name <span class="kw">in</span> class_names:</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    class_dir <span class="op">=</span> os.path.join(DATA_DIR, class_name)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    img_files <span class="op">=</span> <span class="bu">sorted</span>([</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>        f <span class="cf">for</span> f <span class="kw">in</span> os.listdir(class_dir)</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> f.lower().endswith((<span class="st">'.png'</span>, <span class="st">'.jpg'</span>, <span class="st">'.jpeg'</span>, <span class="st">'.bmp'</span>))</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> fname <span class="kw">in</span> img_files:</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        file_paths.append(os.path.join(class_dir, fname))</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        labels.append(class_name)</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>le <span class="op">=</span> LabelEncoder()</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>y_encoded <span class="op">=</span> le.fit_transform(labels)</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>train_paths, val_paths, y_train, y_val <span class="op">=</span> train_test_split(</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    file_paths, y_encoded,</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    train_size<span class="op">=</span>TRAIN_RATIO,</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span>RANDOM_STATE,</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    stratify<span class="op">=</span>y_encoded</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Pipeline de datos en TensorFlow (tf.data)</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>AUTOTUNE <span class="op">=</span> tf.data.AUTOTUNE</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_and_preprocess_image(path, label):</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    img_bytes <span class="op">=</span> tf.io.read_file(path)</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> tf.io.decode_image(img_bytes, channels<span class="op">=</span><span class="dv">1</span>, expand_animations<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> tf.image.resize(img, IMG_SIZE)</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> tf.cast(img, tf.float32) <span class="op">/</span> <span class="fl">255.0</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> tf.cond(tf.reduce_mean(img) <span class="op">&gt;</span> <span class="fl">0.5</span>, <span class="kw">lambda</span>: <span class="fl">1.0</span> <span class="op">-</span> img, <span class="kw">lambda</span>: img)</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> img, label</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>data_augmentation <span class="op">=</span> tf.keras.Sequential([</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.RandomRotation(<span class="fl">0.05</span>),</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.RandomZoom(<span class="fl">0.1</span>),</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.RandomTranslation(<span class="fl">0.05</span>, <span class="fl">0.05</span>)</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>train_ds <span class="op">=</span> tf.data.Dataset.from_tensor_slices((train_paths, y_train))</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>train_ds <span class="op">=</span> train_ds.<span class="bu">map</span>(load_and_preprocess_image, num_parallel_calls<span class="op">=</span>AUTOTUNE)</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>train_ds <span class="op">=</span> train_ds.cache().shuffle(<span class="dv">5000</span>, seed<span class="op">=</span>RANDOM_STATE).batch(BATCH_SIZE)</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>train_ds <span class="op">=</span> train_ds.<span class="bu">map</span>(<span class="kw">lambda</span> x, y: (data_augmentation(x, training<span class="op">=</span><span class="va">True</span>), y), num_parallel_calls<span class="op">=</span>AUTOTUNE)</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>train_ds <span class="op">=</span> train_ds.prefetch(AUTOTUNE)</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>val_ds <span class="op">=</span> tf.data.Dataset.from_tensor_slices((val_paths, y_val))</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>val_ds <span class="op">=</span> val_ds.<span class="bu">map</span>(load_and_preprocess_image, num_parallel_calls<span class="op">=</span>AUTOTUNE)</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>val_ds <span class="op">=</span> val_ds.batch(BATCH_SIZE).cache().prefetch(AUTOTUNE)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><strong>Por qué se diseña así el pipeline de datos de la CNN:</strong></p>
+<ul>
+<li><strong>Alineación exacta de particiones (<code>train_test_split</code> con <code>random_state = 123</code>):</strong> Construir los objetos <code>tf.data.Dataset</code> a partir de las mismas listas ordenadas <code>train_paths</code> y <code>val_paths</code> garantiza que ambos modelos sean evaluados exactamente sobre los mismos <span class="math inline">\(9{,}000\)</span> glifos de validación.</li>
+<li><strong>Aumentación estocástica en línea sin reflexiones:</strong> Se aplican pequeñas rotaciones (<span class="math inline">\(\pm 5\%\)</span>), escalamientos (<span class="math inline">\(\pm 10\%\)</span>) y traslaciones (<span class="math inline">\(\pm 5\%\)</span>) únicamente sobre <code>train_ds</code> para reforzar la invarianza local sin alterar la orientación semántica de los caracteres.</li>
+</ul>
+<div id="cnn-arquitectura-entrenamiento" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Arquitectura de la CNN (393,362 parámetros totales; 392,914 entrenables)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tf.keras.utils.set_random_seed(RANDOM_STATE)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> tf.keras.Sequential([</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Input(shape<span class="op">=</span>(<span class="dv">28</span>, <span class="dv">28</span>, <span class="dv">1</span>)),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Bloque convolucional 1 -&gt; salida (14, 14, 32)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Conv2D(<span class="dv">32</span>, <span class="dv">3</span>, activation<span class="op">=</span><span class="st">'relu'</span>, padding<span class="op">=</span><span class="st">'same'</span>),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.BatchNormalization(),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.MaxPooling2D(),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.SpatialDropout2D(<span class="fl">0.25</span>),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Bloque convolucional 2 -&gt; salida (7, 7, 64)</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Conv2D(<span class="dv">64</span>, <span class="dv">3</span>, activation<span class="op">=</span><span class="st">'relu'</span>, padding<span class="op">=</span><span class="st">'same'</span>),</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.BatchNormalization(),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.MaxPooling2D(),</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.SpatialDropout2D(<span class="fl">0.25</span>),</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Bloque convolucional 3 -&gt; salida (3, 3, 128)</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Conv2D(<span class="dv">128</span>, <span class="dv">3</span>, activation<span class="op">=</span><span class="st">'relu'</span>, padding<span class="op">=</span><span class="st">'same'</span>),</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.BatchNormalization(),</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.MaxPooling2D(),</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.SpatialDropout2D(<span class="fl">0.25</span>),</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Clasificador denso -&gt; salida (18,)</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Flatten(),</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Dense(<span class="dv">256</span>, activation<span class="op">=</span><span class="st">'relu'</span>),</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Dropout(<span class="fl">0.5</span>),</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Dense(num_classes, activation<span class="op">=</span><span class="st">'softmax'</span>)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span><span class="st">'adam'</span>,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    loss<span class="op">=</span><span class="st">'sparse_categorical_crossentropy'</span>,</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    metrics<span class="op">=</span>[<span class="st">'accuracy'</span>]</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Entrenamiento con parada temprana y evaluación</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>early_stop <span class="op">=</span> EarlyStopping(</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">'val_loss'</span>, patience<span class="op">=</span><span class="dv">7</span>, restore_best_weights<span class="op">=</span><span class="va">True</span>, verbose<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>checkpoint <span class="op">=</span> ModelCheckpoint(</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    RUTA_MODELO, monitor<span class="op">=</span><span class="st">'val_loss'</span>, save_best_only<span class="op">=</span><span class="va">True</span>, verbose<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>t0_train <span class="op">=</span> time.time()</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    train_ds,</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>val_ds,</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>    epochs<span class="op">=</span>EPOCHS_MAX,</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    callbacks<span class="op">=</span>[early_stop, checkpoint]</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>train_time_cnn <span class="op">=</span> time.time() <span class="op">-</span> t0_train</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>t0_inf <span class="op">=</span> time.time()</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>y_pred_probs <span class="op">=</span> model.predict(val_ds, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>inf_time_cnn <span class="op">=</span> time.time() <span class="op">-</span> t0_inf</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> np.argmax(y_pred_probs, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>global_acc_cnn <span class="op">=</span> accuracy_score(y_val, y_pred)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><strong>Por qué se diseña así la arquitectura y optimización de la CNN:</strong></p>
+<ul>
+<li><strong>Jerarquía convolucional con <code>padding='same'</code> (<code>32 -&gt; 64 -&gt; 128</code> filtros de</strong> <span class="math inline">\(3 \times 3\)</span>): Preserva la información de los bordes de la cuadrícula de <span class="math inline">\(28 \times 28\)</span> antes de cada reducción espacial mediante <code>MaxPooling2D</code> (<span class="math inline">\(28 \to 14 \to 7 \to 3\)</span>), extrayendo progresivamente bordes locales, curvaturas y configuraciones topológicas globales.</li>
+<li><strong>Regularización estructural (<code>BatchNormalization</code>, <code>SpatialDropout2D(0.25)</code> y <code>Dropout(0.5)</code>):</strong> Previene la co-adaptación de mapas de activación adyacentes y estabiliza el descenso estocástico con <code>adam</code>, mientras que <code>EarlyStopping(patience=7, restore_best_weights=True)</code> detiene automáticamente el entrenamiento al alcanzar el mínimo de pérdida de validación.</li>
+</ul>
 </section>
-<section id="obtención-del-conjunto-de-datos" class="level3" data-number="7.1.3">
-<h3 data-number="7.1.3" class="anchored" data-anchor-id="obtención-del-conjunto-de-datos"><span class="header-section-number">7.1.3</span> Obtención del conjunto de datos</h3>
-<p>Para el entrenamiento y evaluación del sistema se empleó el conjunto de datos EMNIST ByClass:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Descargando EMNIST ByClass..."</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>emnist_train <span class="op">=</span> datasets.EMNIST(root<span class="op">=</span><span class="st">'./data'</span>, split<span class="op">=</span><span class="st">'byclass'</span>, </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                               train<span class="op">=</span><span class="va">True</span>, download<span class="op">=</span><span class="va">True</span>, </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                               transform<span class="op">=</span>transforms.ToTensor())</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>emnist_test <span class="op">=</span> datasets.EMNIST(root<span class="op">=</span><span class="st">'./data'</span>, split<span class="op">=</span><span class="st">'byclass'</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                               train<span class="op">=</span><span class="va">False</span>, download<span class="op">=</span><span class="va">True</span>, </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                               transform<span class="op">=</span>transforms.ToTensor())</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>De este conjunto se seleccionaron exclusivamente las letras mayúsculas con el propósito de acotar el problema de clasificación.</p>
+<section id="resultados-experimentales-y-análisis-comparativo" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="resultados-experimentales-y-análisis-comparativo"><span class="header-section-number">7.3</span> Resultados Experimentales y Análisis Comparativo</h2>
+<p>Ambos modelos fueron ejecutados sobre el conjunto completo de <span class="math inline">\(45{,}000\)</span> muestras (<span class="math inline">\(36{,}000\)</span> de entrenamiento y <span class="math inline">\(9{,}000\)</span> de validación, con <span class="math inline">\(500\)</span> instancias por glifo en validación). La <a href="#tbl-comparativa-modelos" class="quarto-xref">Tabla&nbsp;<span>7.1</span></a> resume las métricas globales de desempeño, incertidumbre estadística y eficiencia computacional obtenidas.</p>
+<div id="tbl-comparativa-modelos" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-comparativa-modelos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;7.1: Comparación cuantitativa entre el Modelo Oculto de Markov Categórico de Bakis y la Red Neuronal Convolucional sobre el conjunto de validación (<span class="math inline">\(N_{\text{val}} = 9{,}000\)</span>).
+</figcaption>
+<div aria-describedby="tbl-comparativa-modelos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Métrica / Indicador</th>
+<th style="text-align: center;"><code>CategoricalHMM</code> (Topología de Bakis)</th>
+<th style="text-align: center;">Red Neuronal Convolucional (<code>CNN</code>)</th>
+<th style="text-align: center;">Diferencia / Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Exactitud Global (<em>Accuracy</em>)</strong></td>
+<td style="text-align: center;"><span class="math inline">\(50.03\%\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(99.38\%\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(+49.35\text{ pp}\)</span> a favor de CNN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>IC Bootstrap</strong> <span class="math inline">\(95\%\)</span> (<span class="math inline">\(B = 200\)</span>)</td>
+<td style="text-align: center;"><span class="math inline">\([48.93\%,\; 51.02\%]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\([99.23\%,\; 99.54\%]\)</span></td>
+<td style="text-align: center;">Intervalos completamente disjuntos</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Macro F1-Score</strong></td>
+<td style="text-align: center;"><span class="math inline">\(0.50\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.99\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(+0.49\)</span> puntos de F1 promedio</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Parámetros Entrenables</strong></td>
+<td style="text-align: center;"><span class="math inline">\(27{,}810\)</span> <em>(18 modelos</em> <span class="math inline">\(\times\)</span> 1,545)</td>
+<td style="text-align: center;"><span class="math inline">\(392{,}914\)</span> <em>(1.50 MB)</em></td>
+<td style="text-align: center;">HMM usa <span class="math inline">\(14.1\times\)</span> menos parámetros</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Tiempo Total de Entrenamiento</strong></td>
+<td style="text-align: center;"><span class="math inline">\(2{,}061.18\text{ s}\)</span> <em>(978.5s rasgos + 1,082.7s EM)</em></td>
+<td style="text-align: center;"><span class="math inline">\(419.29\text{ s}\)</span> <em>(39 épocas en GPU)</em></td>
+<td style="text-align: center;">CNN es <span class="math inline">\(4.9\times\)</span> más rápida</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Tiempo de Inferencia (9,000 glifos)</strong></td>
+<td style="text-align: center;"><span class="math inline">\(48.310\text{ s}\)</span> (<span class="math inline">\(5.37\text{ ms/glifo}\)</span>)</td>
+<td style="text-align: center;"><span class="math inline">\(1.749\text{ s}\)</span> (<span class="math inline">\(0.194\text{ ms/glifo}\)</span>)</td>
+<td style="text-align: center;">CNN es <span class="math inline">\(27.6\times\)</span> más rápida</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<section id="análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="análisis-del-desempeño-del-modelo-oculto-de-markov-categoricalhmm"><span class="header-section-number">7.3.1</span> Análisis del desempeño del Modelo Oculto de Markov (<code>CategoricalHMM</code>)</h3>
+<p>La cuantificación de los descriptores geométricos produjo una <strong>entropía de Shannon de</strong> <span class="math inline">\(H(Y) = 4.3121 \text{ bits}\)</span> sobre el máximo teórico de <span class="math inline">\(8.0000 \text{ bits}\)</span>, confirmando que la discretización conserva diversidad morfológica sin colapsar en un único símbolo trivial, aunque concentra la masa probabilística en aproximadamente <span class="math inline">\(2^{4.31} \approx 20\)</span> configuraciones verticales dominantes.</p>
+<div id="fig-resultados-hmm" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-resultados-hmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/paste-10.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-resultados-hmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.1: Resultados del modelo <code>CategoricalHMM</code> con topología de Bakis (<span class="math inline">\(N=6\)</span>, <span class="math inline">\(\Delta=2\)</span>): matriz de confusión sobre validación (izquierda), exactitud individual por glifo frente al promedio global (centro) y matriz de transición aprendida para el glifo <code>A</code> (derecha).
+</figcaption>
+</figure>
+</div>
+<p>Como se observa en la <a href="#fig-resultados-hmm" class="quarto-xref">Figura&nbsp;<span>7.1</span></a>, el comportamiento del HMM revela tres hallazgos fundamentales:</p>
+<ol type="1">
+<li><strong>Verificación empírica de la topología de Bakis:</strong> En el panel derecho de la <a href="#fig-resultados-hmm" class="quarto-xref">Figura&nbsp;<span>7.1</span></a>, la matriz de transición aprendida para el glifo <code>A</code> presenta valores estrictamente iguales a <span class="math inline">\(0.00\)</span> en toda la región triangular inferior (<span class="math inline">\(j &lt; i\)</span>) y fuera de la banda <span class="math inline">\(\Delta = 2\)</span>, culminando en un estado final absorbente (<span class="math inline">\(a_{66} = 1.00\)</span>). Esto demuestra que el algoritmo Baum-Welch respeta la restricción de progresión unidireccional de izquierda a derecha.</li>
+<li><strong>Alta discriminabilidad en glifos con envolvente asimétrica:</strong> Los caracteres <strong><code>O</code></strong> (<span class="math inline">\(\text{Recall} = 92\%\)</span>, <span class="math inline">\(\text{F1} = 0.80\)</span>), <strong><code>HJ</code></strong> (<span class="math inline">\(\text{Recall} = 89\%\)</span>, <span class="math inline">\(\text{F1} = 0.55\)</span>), <strong><code>T</code></strong> (<span class="math inline">\(\text{Recall} = 69\%\)</span>, <span class="math inline">\(\text{F1} = 0.65\)</span>) y <strong><code>M</code></strong> (<span class="math inline">\(\text{Recall} = 63\%\)</span>, <span class="math inline">\(\text{F1} = 0.68\)</span>) son identificados con alta eficacia gracias a que su perfil vertical cambia de manera distintiva a lo largo del eje horizontal.</li>
+<li><strong>Ambigüedad por proyección dimensional en glifos con trazos compuestos:</strong> Los glifos <strong><code>A</code></strong> (<span class="math inline">\(\text{F1} = 0.17\)</span>), <strong><code>Ch</code></strong> (<span class="math inline">\(\text{F1} = 0.25\)</span>) y <strong><code>E</code></strong> (<span class="math inline">\(\text{F1} = 0.31\)</span>) presentan las tasas más altas de confusión cruzada con <code>P</code> y <code>HJ</code>. Asimismo, existe una confusión simétrica marcada entre <strong><code>I</code></strong> y <strong><code>UW</code></strong> (<span class="math inline">\(126\)</span> muestras de <code>I</code> clasificadas como <code>UW</code> y <span class="math inline">\(57\)</span> viceversa). Este fenómeno evidencia la limitación teórica anticipada en el mapeo <span class="math inline">\(\mathbb{R}^{28 \times 28} \to O^{13}\)</span>: al proyectar rebanadas verticales mediante centroides y espesores agregados, dos glifos distintos cuyas secciones verticales poseen similar altura media y grosor generan secuencias de símbolos casi idénticas.</li>
+</ol>
 </section>
-<section id="arquitectura-del-hmm" class="level3" data-number="7.1.4">
-<h3 data-number="7.1.4" class="anchored" data-anchor-id="arquitectura-del-hmm"><span class="header-section-number">7.1.4</span> Arquitectura del HMM</h3>
-<p>Se construyó una matriz de transición tipo Bakis flexible para modelar la evolución progresiva de los trazos:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> construir_matriz_bakis_flexible(n_states):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> np.zeros((n_states, n_states))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_states):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">==</span> n_states <span class="op">-</span> <span class="dv">1</span>:</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            A[i, i] <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> i <span class="op">==</span> n_states <span class="op">-</span> <span class="dv">2</span>:</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            A[i, i] <span class="op">=</span> <span class="fl">0.60</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            A[i, i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="fl">0.40</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            A[i, i] <span class="op">=</span> <span class="fl">0.60</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            A[i, i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="fl">0.30</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            A[i, i<span class="op">+</span><span class="dv">2</span>] <span class="op">=</span> <span class="fl">0.10</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> A</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>La estructura Bakis impone una restricción direccional que permite permanecer en el mismo estado o avanzar, evitando retrocesos, lo cual resulta adecuado para describir procesos secuenciales como la formación de trazos manuscritos.</p>
-</section>
-<section id="preprocesamiento-de-imágenes" class="level3" data-number="7.1.5">
-<h3 data-number="7.1.5" class="anchored" data-anchor-id="preprocesamiento-de-imágenes"><span class="header-section-number">7.1.5</span> Preprocesamiento de imágenes</h3>
-<p>Antes de convertir las imágenes en secuencias observables, se aplicó un proceso de normalización y alineamiento:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> procesar_imagen(imagen_tensor):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    imagen <span class="op">=</span> imagen_tensor.squeeze().numpy()</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    imagen <span class="op">=</span> np.fliplr(imagen)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    imagen <span class="op">=</span> np.rot90(imagen)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    img_bin <span class="op">=</span> (imagen <span class="op">&gt;</span> UMBRAL).astype(np.uint8)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    filas <span class="op">=</span> np.<span class="bu">any</span>(img_bin, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    columnas <span class="op">=</span> np.<span class="bu">any</span>(img_bin, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">any</span>(filas) <span class="kw">and</span> np.<span class="bu">any</span>(columnas):</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        ymin, ymax <span class="op">=</span> np.where(filas)[<span class="dv">0</span>][[<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>]]</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        xmin, xmax <span class="op">=</span> np.where(columnas)[<span class="dv">0</span>][[<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>]]</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        recorte <span class="op">=</span> imagen[ymin:ymax<span class="op">+</span><span class="dv">1</span>, xmin:xmax<span class="op">+</span><span class="dv">1</span>]</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        h, w <span class="op">=</span> recorte.shape</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        max_dim <span class="op">=</span> <span class="bu">max</span>(h, w)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        pad_h <span class="op">=</span> max_dim <span class="op">-</span> h</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        pad_w <span class="op">=</span> max_dim <span class="op">-</span> w</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        pad_top <span class="op">=</span> pad_h <span class="op">//</span> <span class="dv">2</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        pad_bottom <span class="op">=</span> pad_h <span class="op">-</span> pad_top</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        pad_left <span class="op">=</span> pad_w <span class="op">//</span> <span class="dv">2</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        pad_right <span class="op">=</span> pad_w <span class="op">-</span> pad_left</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        recorte_cuadrado <span class="op">=</span> np.pad(recorte, ((pad_top, pad_bottom), </span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        (pad_left, pad_right)), </span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        mode<span class="op">=</span><span class="st">'constant'</span>, constant_values<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        imagen <span class="op">=</span> cv2.resize(recorte_cuadrado.astype(np.float32), </span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        (IMG_SIZE, IMG_SIZE),</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>        interpolation<span class="op">=</span>cv2.INTER_LINEAR)</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>        imagen <span class="op">=</span> cv2.resize(imagen.astype(np.float32), (IMG_SIZE, IMG_SIZE), </span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>        interpolation<span class="op">=</span>cv2.INTER_LINEAR)</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    imagen <span class="op">=</span> (imagen <span class="op">&gt;</span> UMBRAL).astype(<span class="bu">float</span>)</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> imagen</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Este procedimiento incluyó la corrección de orientación del conjunto EMNIST, la eliminación de espacios vacíos mediante recortes, relleno para conservar proporciones y redimensionamiento uniforme.</p>
-</section>
-<section id="extracción-de-características" class="level3" data-number="7.1.6">
-<h3 data-number="7.1.6" class="anchored" data-anchor-id="extracción-de-características"><span class="header-section-number">7.1.6</span> Extracción de características</h3>
-<p>Cada imagen preprocesada fue transformada en una secuencia discreta de observaciones mediante ventanas deslizantes verticales:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> imagen_a_secuencia(img, w<span class="op">=</span><span class="dv">5</span>, stride<span class="op">=</span><span class="dv">2</span>):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    secuencia <span class="op">=</span> []</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    altura <span class="op">=</span> IMG_SIZE</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, img.shape[<span class="dv">1</span>] <span class="op">-</span> w <span class="op">+</span> <span class="dv">1</span>, stride):</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        ventana <span class="op">=</span> img[:, t:t<span class="op">+</span>w]</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        columna <span class="op">=</span> np.mean(ventana, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        col_bin <span class="op">=</span> (columna <span class="op">&gt;</span> <span class="fl">0.35</span>).astype(<span class="bu">int</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        suma_tinta <span class="op">=</span> np.<span class="bu">sum</span>(col_bin)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> suma_tinta <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            simbolo <span class="op">=</span> <span class="dv">0</span> </span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>            secuencia.append([simbolo])</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> suma_tinta <span class="op">&lt;</span> <span class="dv">8</span>: tinta_q <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> suma_tinta <span class="op">&lt;</span> <span class="dv">16</span>: tinta_q <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> suma_tinta <span class="op">&lt;</span> <span class="dv">24</span>: tinta_q <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: tinta_q <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        cg <span class="op">=</span> np.<span class="bu">sum</span>(col_bin <span class="op">*</span> np.arange(altura)) <span class="op">/</span> suma_tinta</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> cg <span class="op">&lt;</span> <span class="dv">12</span>: cg_q <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> cg <span class="op">&lt;</span> <span class="dv">20</span>: cg_q <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> cg <span class="op">&lt;</span> <span class="dv">28</span>: cg_q <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: cg_q <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        transiciones <span class="op">=</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(np.diff(col_bin)))</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        trans_q <span class="op">=</span> <span class="bu">min</span>(<span class="bu">int</span>(transiciones), <span class="dv">3</span>)</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>        indices_tinta <span class="op">=</span> np.where(col_bin <span class="op">&gt;</span> <span class="dv">0</span>)[<span class="dv">0</span>]</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>        perfil_sup <span class="op">=</span> indices_tinta[<span class="dv">0</span>]</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>        perfil_inf <span class="op">=</span> indices_tinta[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        up_q <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> perfil_sup <span class="op">&gt;</span> <span class="dv">10</span> <span class="cf">else</span> <span class="dv">0</span>    </span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>        low_q <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> perfil_inf <span class="op">&lt;</span> <span class="dv">30</span> <span class="cf">else</span> <span class="dv">0</span>   </span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        simbolo <span class="op">=</span> (tinta_q <span class="op">&lt;&lt;</span> <span class="dv">6</span>) <span class="op">|</span> (cg_q <span class="op">&lt;&lt;</span> <span class="dv">4</span>) <span class="op">|</span> (trans_q <span class="op">&lt;&lt;</span> <span class="dv">2</span>) <span class="op">|</span> (up_q <span class="op">&lt;&lt;</span> <span class="dv">1</span>) <span class="op">|</span> low_q</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>        secuencia.append([simbolo])</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(secuencia)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Se calcularon características geométricas (distribución de tinta, centro de gravedad, número de transiciones y perfiles superior e inferior), cuantificadas en un conjunto discreto de 256 símbolos observables.</p>
-</section>
-<section id="construcción-de-los-conjuntos-de-entrenamiento-y-prueba" class="level3" data-number="7.1.7">
-<h3 data-number="7.1.7" class="anchored" data-anchor-id="construcción-de-los-conjuntos-de-entrenamiento-y-prueba"><span class="header-section-number">7.1.7</span> Construcción de los conjuntos de entrenamiento y prueba</h3>
-<p>Las secuencias obtenidas fueron organizadas en conjuntos balanceados de entrenamiento y evaluación:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> construir_dataset(dataset, max_muestras):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    X, y <span class="op">=</span> [], []</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    conteos <span class="op">=</span> {k:<span class="dv">0</span> <span class="cf">for</span> k <span class="kw">in</span> TARGETS_MAYUSCULAS}</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> tensor, target <span class="kw">in</span> dataset:</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> target <span class="kw">not</span> <span class="kw">in</span> TARGETS_MAYUSCULAS: <span class="cf">continue</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> conteos[target] <span class="op">&gt;=</span> max_muestras: <span class="cf">continue</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        img <span class="op">=</span> procesar_imagen(tensor)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        seq <span class="op">=</span> imagen_a_secuencia(img)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        X.append(seq)</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        y.append(MAPEO_LETTERS[target])</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        conteos[target] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">all</span>(c <span class="op">&gt;=</span> max_muestras <span class="cf">for</span> c <span class="kw">in</span> conteos.values()): <span class="cf">break</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X, np.array(y)</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Construyendo entrenamiento..."</span>)</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> construir_dataset(emnist_train, TRAIN_POR_CLASE)</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Construyendo prueba..."</span>)</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>X_test, y_test <span class="op">=</span> construir_dataset(emnist_test, TEST_POR_CLASE)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="entrenamiento-de-los-modelos" class="level3" data-number="7.1.8">
-<h3 data-number="7.1.8" class="anchored" data-anchor-id="entrenamiento-de-los-modelos"><span class="header-section-number">7.1.8</span> Entrenamiento de los modelos</h3>
-<p>Se entrenó un modelo HMM independiente para cada una de las letras del alfabeto:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>modelos_hmm <span class="op">=</span> {}</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> os.path.exists(ARCHIVO_MODELOS_CAT):</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">[INFO] Modelos detectados en Drive. Cargando..."</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(ARCHIVO_MODELOS_CAT, <span class="st">'rb'</span>) <span class="im">as</span> f:</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        modelos_hmm <span class="op">=</span> pickle.load(f)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Entrenando CategoricalHMMs...</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    barra <span class="op">=</span> tqdm(LETRAS_OBJETIVO, desc<span class="op">=</span><span class="st">"Entrenando"</span>, unit<span class="op">=</span><span class="st">"letra"</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> letra <span class="kw">in</span> barra:</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        barra.set_description(<span class="ss">f"Entrenando '</span><span class="sc">{</span>letra<span class="sc">}</span><span class="ss">'"</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        idx <span class="op">=</span> np.where(y_train <span class="op">==</span> letra)[<span class="dv">0</span>]</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        secuencias <span class="op">=</span> [X_train[i] <span class="cf">for</span> i <span class="kw">in</span> idx]</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        lengths <span class="op">=</span> [<span class="bu">len</span>(s) <span class="cf">for</span> s <span class="kw">in</span> secuencias]</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        X_concat <span class="op">=</span> np.vstack(secuencias)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> hmm.CategoricalHMM(</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>            n_components<span class="op">=</span>N_ESTADOS,</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>            n_features<span class="op">=</span><span class="dv">256</span>, </span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>            n_iter<span class="op">=</span><span class="dv">250</span>,</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>            random_state<span class="op">=</span><span class="dv">42</span>,</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>            init_params<span class="op">=</span><span class="st">'e'</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        model.startprob_ <span class="op">=</span> np.zeros(N_ESTADOS)</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        model.startprob_[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>        model.transmat_ <span class="op">=</span> construir_matriz_bakis_flexible(N_ESTADOS)</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>        model.fit(X_concat, lengths)</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>        modelos_hmm[letra] <span class="op">=</span> model</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(ARCHIVO_MODELOS_CAT, <span class="st">'wb'</span>) <span class="im">as</span> f:</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>        pickle.dump(modelos_hmm, f)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="inferencia-y-clasificación" class="level3" data-number="7.1.9">
-<h3 data-number="7.1.9" class="anchored" data-anchor-id="inferencia-y-clasificación"><span class="header-section-number">7.1.9</span> Inferencia y clasificación</h3>
-<p>Cada muestra del conjunto de prueba fue evaluada frente a todos los HMM disponibles:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Clasificando...</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> []</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> seq <span class="kw">in</span> tqdm(X_test, desc<span class="op">=</span><span class="st">"Evaluando Inferencia"</span>):</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    scores <span class="op">=</span> {}</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> letra, model <span class="kw">in</span> modelos_hmm.items():</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>: scores[letra] <span class="op">=</span> model.score(seq)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>: scores[letra] <span class="op">=</span> <span class="op">-</span>np.inf</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    pred <span class="op">=</span> <span class="bu">max</span>(scores, key<span class="op">=</span>scores.get)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    y_pred.append(pred)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>La predicción final se obtuvo seleccionando la letra cuyo modelo produjo la mayor puntuación de verosimilitud (principio de máxima verosimilitud).</p>
-</section>
-<section id="evaluación-del-desempeño" class="level3" data-number="7.1.10">
-<h3 data-number="7.1.10" class="anchored" data-anchor-id="evaluación-del-desempeño"><span class="header-section-number">7.1.10</span> Evaluación del desempeño</h3>
-<p>Finalmente, se calcularon métricas globales e individuales de rendimiento para evaluar la capacidad de generalización del sistema:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred, labels<span class="op">=</span>LETRAS_OBJETIVO)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>precision_por_letra <span class="op">=</span> cm.diagonal() <span class="op">/</span> cm.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span><span class="op">*</span><span class="dv">70</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"EXACTITUD (ACCURACY) INDIVIDUAL POR LETRA"</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span><span class="op">*</span><span class="dv">70</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, letra <span class="kw">in</span> <span class="bu">enumerate</span>(LETRAS_OBJETIVO):</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    acc <span class="op">=</span> precision_por_letra[i] <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Precisión Letra </span><span class="sc">{</span>letra<span class="sc">}</span><span class="ss"> : </span><span class="sc">{</span>acc<span class="sc">:&gt;6.2f}</span><span class="ss"> %"</span>)</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span><span class="op">*</span><span class="dv">70</span>)</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"ACCURACY GLOBAL: </span><span class="sc">{</span>accuracy<span class="op">*</span><span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%"</span>)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span><span class="op">*</span><span class="dv">70</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred, target_names<span class="op">=</span>LETRAS_OBJETIVO))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Asimismo, se construyó una matriz de confusión para identificar visualmente los patrones de error entre caracteres similares:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>,<span class="dv">14</span>))</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(cm, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'d'</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>, </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>xticklabels<span class="op">=</span>LETRAS_OBJETIVO,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>yticklabels<span class="op">=</span>LETRAS_OBJETIVO)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f'Matriz CategoricalHMM con Rasgos Estructurales (Precisión: </span><span class="sc">{</span>accuracy<span class="op">*</span><span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%)'</span>, fontsize<span class="op">=</span><span class="dv">16</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Letra Real'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Letra Predicha'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-<section id="caso-cnn" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="caso-cnn"><span class="header-section-number">7.2</span> CASO CNN</h2>
-<section id="arquitectura-de-la-red-neuronal-convolucional" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="arquitectura-de-la-red-neuronal-convolucional"><span class="header-section-number">7.2.1</span> Arquitectura de la red neuronal convolucional</h3>
-<p>La arquitectura propuesta recibe imágenes de tamaño <span class="math inline">\(28\times28\times1\)</span> y está compuesta por tres bloques convolucionales seguidos de un clasificador denso.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> tf.keras.Sequential([</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Input(shape<span class="op">=</span>(<span class="dv">28</span>,<span class="dv">28</span>,<span class="dv">1</span>)),</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Conv2D(<span class="dv">32</span>,<span class="dv">3</span>,activation<span class="op">=</span><span class="st">'relu'</span>),</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.BatchNormalization(),</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.MaxPooling2D(),</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.SpatialDropout2D(<span class="fl">0.25</span>),</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Conv2D(<span class="dv">64</span>,<span class="dv">3</span>,activation<span class="op">=</span><span class="st">'relu'</span>),</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.BatchNormalization(),</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.MaxPooling2D(),</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.SpatialDropout2D(<span class="fl">0.25</span>),</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Conv2D(<span class="dv">128</span>,<span class="dv">3</span>,activation<span class="op">=</span><span class="st">'relu'</span>),</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.MaxPooling2D(),</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.SpatialDropout2D(<span class="fl">0.25</span>),</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Flatten(),</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Dense(<span class="dv">256</span>, activation<span class="op">=</span><span class="st">'relu'</span>),</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Dropout(<span class="fl">0.5</span>),</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    tf.keras.layers.Dense(num_classes, activation<span class="op">=</span><span class="st">'softmax'</span>)</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="primer-bloque-convolucional" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="primer-bloque-convolucional"><span class="header-section-number">7.2.2</span> Primer bloque convolucional</h3>
-<p>La primera capa convolucional emplea 32 filtros de tamaño <span class="math inline">\(3\times3\)</span>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.Conv2D(<span class="dv">32</span>,<span class="dv">3</span>,activation<span class="op">=</span><span class="st">'relu'</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Este bloque se encarga de detectar características de bajo nivel, tales como bordes, esquinas y pequeños segmentos de los trazos.</p>
-<p>La incorporación de una capa de normalización por lotes:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.BatchNormalization()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>permite estabilizar la distribución de las activaciones internas, acelerando el proceso de convergencia.</p>
-<p>Posteriormente, la operación de <em>max pooling</em></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.MaxPooling2D()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>reduce la dimensionalidad espacial de las representaciones, disminuyendo el número de parámetros y haciendo al modelo menos sensible a pequeñas traslaciones.</p>
-<p>Finalmente, se incorpora un mecanismo de regularización:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.SpatialDropout2D(<span class="fl">0.25</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>que desactiva mapas de características completos de manera aleatoria, obligando a la red a aprender representaciones más robustas.</p>
-</section>
-<section id="segundo-y-tercer-bloque-convolucional" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="segundo-y-tercer-bloque-convolucional"><span class="header-section-number">7.2.3</span> Segundo y tercer bloque convolucional</h3>
-<p>Los bloques posteriores incrementan progresivamente el número de filtros hasta 64 y 128, respectivamente. El aumento en la profundidad de la red permite capturar patrones cada vez más complejos, tales como combinaciones de curvas, intersecciones y configuraciones geométricas características de cada glifo.</p>
-</section>
-<section id="clasificador" class="level3" data-number="7.2.4">
-<h3 data-number="7.2.4" class="anchored" data-anchor-id="clasificador"><span class="header-section-number">7.2.4</span> Clasificador</h3>
-<p>Las características extraídas se transforman en un vector unidimensional:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.Flatten()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>y posteriormente se procesan mediante una capa densa:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.Dense(<span class="dv">256</span>, activation<span class="op">=</span><span class="st">'relu'</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>La capa de salida utiliza la función Softmax:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.Dense(num_classes, activation<span class="op">=</span><span class="st">'softmax'</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>la cual produce una distribución de probabilidad sobre todas las clases del alfabeto.</p>
-</section>
-</section>
-<section id="entrenamiento" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="entrenamiento"><span class="header-section-number">7.3</span> Entrenamiento</h2>
-<p>El modelo se compiló utilizando el optimizador Adam:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span><span class="st">'adam'</span>,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    loss<span class="op">=</span><span class="st">'sparse_categorical_crossentropy'</span>,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    metrics<span class="op">=</span>[<span class="st">'accuracy'</span>]</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>La función de pérdida de entropía cruzada dispersa se seleccionó debido a que las etiquetas de las imágenes se encuentran codificadas como enteros y no mediante vectores <em>one-hot</em>.</p>
-<p>Para evitar el sobreajuste se implementó un mecanismo de detención temprana:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>early_stop <span class="op">=</span> EarlyStopping(</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">'val_loss'</span>,</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    patience<span class="op">=</span><span class="dv">7</span>,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    restore_best_weights<span class="op">=</span><span class="va">True</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>La elección de siete épocas de paciencia permite al modelo continuar el aprendizaje ante pequeñas oscilaciones de la pérdida de validación, evitando finalizar el entrenamiento de forma prematura.</p>
-<p>Asimismo, el mejor modelo obtenido se almacenó automáticamente:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>checkpoint <span class="op">=</span> ModelCheckpoint(</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    ruta_modelo,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">'val_loss'</span>,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    save_best_only<span class="op">=</span><span class="va">True</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="sistema-de-inferencia-interactivo" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="sistema-de-inferencia-interactivo"><span class="header-section-number">7.4</span> Sistema de inferencia interactivo</h2>
-<p>Finalmente, se desarrolló una interfaz interactiva en Google Colab que permite dibujar caracteres del alfabeto Náhuatl y obtener predicciones en tiempo real.</p>
-<p>La imagen generada por el usuario se redimensiona a <span class="math inline">\(28\times28\)</span> píxeles:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>img_resized <span class="op">=</span> cv2.resize(img, (<span class="dv">28</span>,<span class="dv">28</span>))</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>img_normalized <span class="op">=</span> img_resized <span class="op">/</span> <span class="fl">255.0</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>img_input <span class="op">=</span> np.expand_dims(img_normalized, axis<span class="op">=</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Posteriormente, el modelo produce un vector de probabilidades:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>predicciones <span class="op">=</span> model.predict(img_input)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>y se determina la clase más probable mediante:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>idx_ganador <span class="op">=</span> np.argmax(predicciones)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Además de la predicción principal, la interfaz presenta las tres clases con mayor probabilidad, proporcionando información adicional sobre la confianza y las posibles ambigüedades del modelo.</p>
+<section id="análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="análisis-del-desempeño-de-la-red-neuronal-convolucional-cnn"><span class="header-section-number">7.3.2</span> Análisis del desempeño de la Red Neuronal Convolucional (<code>CNN</code>)</h3>
+<p>Por su parte, la arquitectura convolucional alcanzó una <strong>exactitud global de</strong> <span class="math inline">\(99.38\%\)</span> (<span class="math inline">\(\text{IC } 95\%: [99.23\%, 99.54\%]\)</span>) y un <span class="math inline">\(\text{Macro F1-Score} = 0.99\)</span>, activando la parada temprana en la época <span class="math inline">\(39\)</span> tras alcanzar su pérdida mínima de validación en la época <span class="math inline">\(32\)</span> (<span class="math inline">\(\text{val\_loss} = 0.0182\)</span>).</p>
+<div id="fig-resultados-cnn" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-resultados-cnn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/paste-11.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-resultados-cnn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.2: Resultados de la Red Neuronal Convolucional (<code>CNN</code>): evolución de la exactitud (izquierda), curva de pérdida de entropía cruzada (centro) y matriz de confusión sobre el conjunto de validación (derecha).
+</figcaption>
+</figure>
+</div>
+<p>A partir de la <a href="#fig-resultados-cnn" class="quarto-xref">Figura&nbsp;<span>7.2</span></a> se destacan los siguientes aspectos:</p>
+<ul>
+<li><strong>Estabilidad de convergencia y ausencia de sobreajuste:</strong> La pérdida de validación desciende de manera paralela a la de entrenamiento sin divergir en épocas tardías, confirmando la efectividad conjunta de <code>BatchNormalization</code>, <code>SpatialDropout2D(0.25)</code> y la aumentación estocástica en línea.</li>
+<li><strong>Resolución de ambigüedades topológicas 2D:</strong> Al operar directamente sobre vecindades bidimensionales mediante filtros aprendidos, la CNN elimina prácticamente todas las confusiones estructurales del HMM: los glifos <code>A</code>, <code>Ch</code>, <code>E</code>, <code>P</code> y <code>HJ</code> alcanzan valores de <span class="math inline">\(\text{F1}\)</span> entre <span class="math inline">\(0.98\)</span> y <span class="math inline">\(1.00\)</span>, y el par morfológicamente cercano <code>I</code> vs.&nbsp;<code>UW</code> reduce sus errores cruzados de <span class="math inline">\(183\)</span> (en el HMM) a apenas <span class="math inline">\(23\)</span> instancias (<span class="math inline">\(14\)</span> y <span class="math inline">\(9\)</span> respectivamente, logrando <span class="math inline">\(\text{F1} = 0.98\)</span> en ambos).</li>
+<li><strong>Eficiencia computacional en producción:</strong> Gracias a la paralelización matricial de las operaciones de convolución en GPU, la CNN completa tanto el entrenamiento (<span class="math inline">\(419.29\text{ s}\)</span>) como la inferencia por lote (<span class="math inline">\(0.194\text{ ms}\)</span> por glifo) en una fracción del tiempo requerido por el cálculo secuencial ventana a ventana del HMM.</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1293,8 +1445,8 @@ window.Quarto = {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./conclusiones.html" class="pagination-link" aria-label="Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusiones: Comparación entre HMM y CNN en Reconocimiento de Caracteres</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./conclusiones.html" class="pagination-link" aria-label="Conclusiones y Trabajo Futuro">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusiones y Trabajo Futuro</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

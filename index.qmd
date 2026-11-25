@@ -13,6 +13,6 @@ crossref:
   eq-prefix: "Ecuación"
 ---
 
-# Introducción
+# 
 
-(pendiente)
+# Introducción

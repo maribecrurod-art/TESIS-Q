@@ -1,481 +1,494 @@
 ---
 title: "Caso de estudio"
+lang: es
 execute:
   freeze: false
+format:
+  html:
+    code-overflow: wrap
+  pdf:
+    code-overflow: wrap
+    include-in-header:
+      text: |
+        \usepackage{fvextra}
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 ---
 
-## CASO HMM
+En este apartado se contrasta el diseño, implementación y comportamiento empírico de dos paradigmas de modelado sobre el conjunto de datos de glifos del alfabeto náhuatl ($45{,}000$ muestras distribuidas equitativamente en $18$ clases, a razón de $2{,}500$ imágenes de $28 \times 28$ píxeles por grafema): un enfoque generativo secuencial basado en **Modelos Ocultos de Markov Categóricos con topología de Bakis (`CategoricalHMM`)** y un enfoque discriminativo espacial profundo basado en **Redes Neuronales Convolucionales (`CNN`)**.
 
-En este capítulo se describe la metodología implementada para el reconocimiento automático de letras mayúsculas manuscritas del alfabeto latino mediante Modelos Ocultos de Markov (HMM). A diferencia del capítulo anterior, los bloques de código se muestran con fines documentales y no son ejecutados automáticamente dentro del documento debido al alto costo computacional del entrenamiento.
+Para garantizar una comparación estadística rigurosa y libre de sesgos de muestreo, ambos modelos se entrenan y evalúan bajo condiciones experimentales estrictamente idénticas: resolución monocromática de $28 \times 28$ píxeles, polaridad normalizada de tinta activa, partición estratificada $80\% / 20\%$ ($36{,}000$ imágenes de entrenamiento y $9{,}000$ de validación sobre exactamente los mismos archivos mediante `random_state = 123`), e intervalos de confianza al $95\%$ estimados mediante remuestreo *bootstrap* no paramétrico ($B = 200$ réplicas).
 
-### Configuración del entorno experimental
+## Implementación del modelo HMM Categórico (Topología de Bakis)
 
-El primer paso consistió en importar las bibliotecas necesarias para el procesamiento de imágenes, manipulación de datos, entrenamiento de los modelos HMM y evaluación de resultados, estableciendo una conexión con un sistema de almacenamiento externo:
+El enfoque basado en HMM reformula el reconocimiento de cada glifo como un problema de inferencia sobre secuencias unidimensionales observadas de izquierda a derecha. Se entrena un modelo generativo independiente $\lambda_c = (\pi, A_c, E_c)$ por cada una de las $18$ clases para clasificar nuevas muestras mediante la regla de máxima log-verosimilitud $\hat{c} = \arg\max_{c} \log \mathbb{P}(Y \mid \lambda_c)$.
 
-``` python
-from google.colab import drive 
-drive.mount('/content/drive') 
-import cv2 
-import numpy as np 
-import torchvision.datasets as datasets 
-import torchvision.transforms as transforms 
-import matplotlib.pyplot as plt 
-import seaborn as sns 
-import random 
-import os 
-import pickle 
-from tqdm import tqdm  
-try:     
-    from hmmlearn import hmm 
-except ImportError:     
-    import subprocess     
-    import sys     
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "hmmlearn"])     
-    from hmmlearn import hmm  
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report 
-import warnings 
+```{python}
+#| label: hmm-config-imports
+#| eval: false
+
+# 1. Instalación de dependencias e importaciones
+!pip install hmmlearn opencv-python-headless scikit-learn matplotlib seaborn tqdm -q
+
+import os
+import cv2
+import time
+import logging
+import warnings
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from tqdm import tqdm
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+from hmmlearn.hmm import CategoricalHMM
+
+warnings.filterwarnings("ignore")
+logging.getLogger("hmmlearn").setLevel(logging.ERROR)
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+# 2. Hiperparámetros y configuración experimental
+DATASET_PATH = "/content/drive/MyDrive/nahuatl_dataset/dataset_hibrido_final"
+
+IMG_SIZE = (28, 28)       # Misma resolución base que la CNN (H=28, W=28)
+WIN_WIDTH = 4             # Ancho de la ventana deslizante vertical (w)
+STRIDE = 2                # Paso horizontal (s) -> T = floor((28-4)/2) + 1 = 13
+N_STATES = 6              # Estados ocultos ordenados de izquierda a derecha (N)
+BAKIS_DELTA = 2           # Orden de salto permitido en topología de Bakis (Delta=2)
+N_SYMBOLS = 256           # Alfabeto discreto de 8 bits (2^8 = 256 símbolos)
+N_ITER = 100              # Iteraciones máximas de Baum-Welch (EM)
+TRAIN_RATIO = 0.80        # Partición 80% entrenamiento / 20% validación
+RANDOM_STATE = 123        # Semilla reproducible
+N_BOOTSTRAP = 200         # Réplicas bootstrap para intervalos de confianza
 ```
 
-Para asegurar la reproducibilidad de los resultados, se fijaron semillas aleatorias y se deshabilitaron advertencias no críticas:
+**Por qué se eligen estos parámetros y configuración:**
 
-``` python
-np.random.seed(42) 
-random.seed(42) 
-warnings.filterwarnings("ignore") 
-```
+-   **Resolución unificada `IMG_SIZE = (28, 28)` en escala de grises:** Mantener exactamente la misma cuadrícula bidimensional de $28 \times 28$ píxeles que recibe la CNN elimina cualquier ventaja artificial derivada de interpolaciones de mayor resolución, asegurando que las diferencias observadas provengan exclusivamente de la naturaleza matemática de cada modelo.
+-   **Ventana deslizante vertical (`WIN_WIDTH = 4`, `STRIDE = 2`):** Recorre el glifo de izquierda a derecha generando $T = \lfloor (28 - 4)/2 \rfloor + 1 = 13$ rebanadas verticales de dimensión $28 \times 4$. Un ancho de $4$ píxeles captura la estructura vertical local del trazo, mientras que el desplazamiento de $2$ píxeles introduce un $50\%$ de solapamiento espacial que suaviza las transiciones entre observaciones consecutivas.
+-   **Alfabeto categórico de** $M = 256$ símbolos y $N = 6$ estados de Bakis: En lugar de vectorizar píxeles crudos en alta dimensión (lo que induce dispersión y singularidades en covarianzas continuas), cada ventana se proyecta en un símbolo discreto de $8$ bits, permitiendo emplear un `CategoricalHMM` con $6$ fases estructurales progresivas y salto máximo $\Delta = 2$.
 
-### Definición de parámetros del experimento
+```{python}
+#| label: hmm-extraccion-division
+#| eval: false
 
-A continuación, se definieron los parámetros principales utilizados durante el entrenamiento y la evaluación del sistema:
+# 3. Extracción de rasgos estructurales y cuantificación de 8 bits
+def quantize_uniform(val, vmin, vmax, n_bins):
+    """Función de cuantificación uniforme q(v) en {0, ..., n_bins - 1}."""
+    val_clipped = np.clip(val, vmin, vmax)
+    q = int(np.floor(((val_clipped - vmin) / (vmax - vmin)) * n_bins))
+    return min(q, n_bins - 1)
 
-``` python
-N_ESTADOS = 12
-TRAIN_POR_CLASE = 1500
-TEST_POR_CLASE = 400
+def extract_discrete_sequence(img_norm, win_width=4, stride=2, ink_thresh=0.25):
+    """
+    Proyecta una imagen 2D (28x28) en una secuencia 1D de símbolos discretos
+    en {0, ..., 255} mediante ventana deslizante vertical y codificación de 8 bits.
+    """
+    H, W = img_norm.shape
+    sequence = []
 
-IMG_SIZE = 40
-UMBRAL = 0.30
+    for x in range(0, W - win_width + 1, stride):
+        window = img_norm[:, x:x + win_width]
+        mass = np.sum(window)
 
-ARCHIVO_MODELOS_CAT = "/content/drive/MyDrive/modelos_categorical_v_avanzada_hmm.pkl"
+        # Perfil de proyección horizontal de la ventana h_t(i)
+        row_profile = np.mean(window, axis=1)
+        active_rows = np.where(row_profile > ink_thresh)[0]
 
-TARGETS_MAYUSCULAS = list(range(10,36))
-MAPEO_LETTERS = {i: chr(ord('A') + (i - 10)) for i in range(10,36)}
-LETRAS_OBJETIVO = [chr(ord('A') + i) for i in range(26)]
-```
-
-Se optó por utilizar 12 estados ocultos para equilibrar la capacidad descriptiva y el costo computacional, seleccionando 1500 muestras de entrenamiento y 400 de prueba por clase con un tamaño de imagen fijado en $40\times40$ píxeles.
-
-### Obtención del conjunto de datos
-
-Para el entrenamiento y evaluación del sistema se empleó el conjunto de datos EMNIST ByClass:
-
-``` python
-print("Descargando EMNIST ByClass...")
-emnist_train = datasets.EMNIST(root='./data', split='byclass', 
-                               train=True, download=True, 
-                               transform=transforms.ToTensor())
-emnist_test = datasets.EMNIST(root='./data', split='byclass',
-                               train=False, download=True, 
-                               transform=transforms.ToTensor())
-```
-
-De este conjunto se seleccionaron exclusivamente las letras mayúsculas con el propósito de acotar el problema de clasificación.
-
-### Arquitectura del HMM
-
-Se construyó una matriz de transición tipo Bakis flexible para modelar la evolución progresiva de los trazos:
-
-``` python
-def construir_matriz_bakis_flexible(n_states):
-    A = np.zeros((n_states, n_states))
-    for i in range(n_states):
-        if i == n_states - 1:
-            A[i, i] = 1.0
-        elif i == n_states - 2:
-            A[i, i] = 0.60
-            A[i, i+1] = 0.40
+        if mass <= 1e-4 or len(active_rows) == 0:
+            # Ventana vacía (fondo sin tinta)
+            mu_y = 0.5
+            delta_p = 0.0
+            transitions = 0
         else:
-            A[i, i] = 0.60
-            A[i, i+1] = 0.30
-            A[i, i+2] = 0.10
-    return A
+            # 1. Centro de gravedad vertical normalizado mu_y(t) en [0, 1]
+            row_indices = np.arange(H).reshape(-1, 1)
+            mu_y = np.sum(row_indices * window) / (mass * (H - 1))
+
+            # 2. Perfiles superior e inferior -> espesor de la envoltura Delta_P(t)
+            p_sup = active_rows[0]
+            p_inf = active_rows[-1]
+            delta_p = (p_inf - p_sup + 1) / H
+
+            # 3. Transiciones de estado fondo-tinta z(t)
+            binary_profile = (row_profile > ink_thresh).astype(int)
+            transitions = int(np.sum(np.abs(np.diff(binary_profile))))
+
+        # Cuantificación: 3 bits (8 niveles) + 3 bits (8 niveles) + 2 bits (4 niveles)
+        q_mu = quantize_uniform(mu_y, 0.0, 1.0, 8)          # {0..7}
+        q_dp = quantize_uniform(delta_p, 0.0, 1.0, 8)       # {0..7}
+        q_tr = min(transitions, 3)                          # {0..3}
+
+        # Codificación entera de 8 bits: y_t in {0, ..., 255}
+        symbol = 32 * q_mu + 4 * q_dp + q_tr
+        sequence.append([symbol])
+
+    return np.array(sequence, dtype=np.int32)
+
+def compute_shannon_entropy(sequences, n_symbols=256):
+    """Calcula la entropía de Shannon H(Y) en bits sobre el alfabeto observado."""
+    all_symbols = np.concatenate(sequences).ravel()
+    counts = np.bincount(all_symbols, minlength=n_symbols)
+    probs = counts[counts > 0] / len(all_symbols)
+    return -np.sum(probs * np.log2(probs))
+
+# 4. Carga y preprocesamiento del dataset (28x28)
+def load_dataset_hmm(dataset_path):
+    sequences, labels = [], []
+    class_names = sorted([
+        d for d in os.listdir(dataset_path)
+        if os.path.isdir(os.path.join(dataset_path, d))
+    ])
+
+    for class_name in class_names:
+        class_dir = os.path.join(dataset_path, class_name)
+        img_files = sorted([
+            f for f in os.listdir(class_dir)
+            if f.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp'))
+        ])
+        for fname in tqdm(img_files, desc=f"Extrayendo rasgos '{class_name}'", leave=False):
+            img_path = os.path.join(class_dir, fname)
+            img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
+            if img is None:
+                continue
+
+            if img.shape != IMG_SIZE:
+                img = cv2.resize(img, IMG_SIZE, interpolation=cv2.INTER_AREA)
+
+            img_norm = img.astype(np.float32) / 255.0
+
+            # Asegurar polaridad: tinta = valores altos (>0.5), fondo = cerca de 0
+            if np.mean(img_norm) > 0.5:
+                img_norm = 1.0 - img_norm
+
+            seq = extract_discrete_sequence(img_norm, WIN_WIDTH, STRIDE)
+            if len(seq) >= N_STATES:
+                sequences.append(seq)
+                labels.append(class_name)
+
+    return sequences, np.array(labels), class_names
+
+t0_prep = time.time()
+sequences, labels, class_names = load_dataset_hmm(DATASET_PATH)
+prep_time = time.time() - t0_prep
+entropy_bits = compute_shannon_entropy(sequences, N_SYMBOLS)
+
+# Partición estratificada 80% / 20%
+le = LabelEncoder()
+y_encoded = le.fit_transform(labels)
+
+seq_train, seq_val, y_train, y_val = train_test_split(
+    sequences, y_encoded,
+    train_size=TRAIN_RATIO,
+    random_state=RANDOM_STATE,
+    stratify=y_encoded
+)
 ```
 
-La estructura Bakis impone una restricción direccional que permite permanecer en el mismo estado o avanzar, evitando retrocesos, lo cual resulta adecuado para describir procesos secuenciales como la formación de trazos manuscritos.
+**Por qué se diseña así la extracción de rasgos y la partición:**
 
-### Preprocesamiento de imágenes
+-   **Normalización de polaridad (`np.mean(img_norm) > 0.5`):** Garantiza que los píxeles pertenecientes al trazo activo tengan intensidades positivas cercanas a $1$ y el fondo cercano a $0$, condición necesaria para que el cálculo del centro de gravedad $\mu_y(t)$ y los perfiles de envoltura $P_{\text{sup}}(t), P_{\text{inf}}(t)$ midan correctamente la masa de tinta.
+-   **Codificación combinatoria de** $8$ bits ($32 \cdot q_{\mu} + 4 \cdot q_{\Delta P} + q_{z}$): Sintetiza simultáneamente la posición vertical del trazo ($3$ bits), su grosor o apertura vertical ($3$ bits) y su complejidad de cruces fondo-tinta ($2$ bits) en un entero único en $\{0, \dots, 255\}$.
+-   **Ordenamiento determinista y partición estratificada (`sorted(...)`, `random_state = 123`):** Asegura que las $36{,}000$ muestras de entrenamiento y $9{,}000$ de validación correspondan exactamente a los mismos archivos empleados posteriormente en la CNN.
 
-Antes de convertir las imágenes en secuencias observables, se aplicó un proceso de normalización y alineamiento:
+```{python}
+#| label: hmm-entrenamiento-evaluacion
+#| eval: false
 
-``` python
-def procesar_imagen(imagen_tensor):
-    imagen = imagen_tensor.squeeze().numpy()
-    imagen = np.fliplr(imagen)
-    imagen = np.rot90(imagen)
+# 5. Construcción y entrenamiento de HMM categóricos con topología de Bakis
+def build_bakis_categorical_hmm(n_states, n_symbols, delta=2, random_state=123):
+    """
+    Inicializa un CategoricalHMM con topología izquierda-derecha de Bakis:
+    - pi = (1, 0, ..., 0)
+    - a_ij = 0 para j < i y j > i + delta
+    """
+    rng = np.random.default_rng(random_state)
+    model = CategoricalHMM(
+        n_components=n_states,
+        n_features=n_symbols,
+        n_iter=N_ITER,
+        tol=1e-4,
+        init_params="",   # Preservar matrices estructuradas
+        params="te",      # Actualizar solo transiciones (t) y emisiones (e)
+        random_state=random_state
+    )
 
-    img_bin = (imagen > UMBRAL).astype(np.uint8)
-    filas = np.any(img_bin, axis=1)
-    columnas = np.any(img_bin, axis=0)
+    # Vector inicial determinista en el primer estado
+    startprob = np.zeros(n_states, dtype=np.float64)
+    startprob[0] = 1.0
+    model.startprob_ = startprob
 
-    if np.any(filas) and np.any(columnas):
-        ymin, ymax = np.where(filas)[0][[0,-1]]
-        xmin, xmax = np.where(columnas)[0][[0,-1]]
-        recorte = imagen[ymin:ymax+1, xmin:xmax+1]
+    # Matriz de transición triangular superior en banda (Bakis)
+    transmat = np.zeros((n_states, n_states), dtype=np.float64)
+    for i in range(n_states):
+        max_j = min(n_states - 1, i + delta)
+        valid_cols = np.arange(i, max_j + 1)
+        weights = rng.uniform(0.3, 1.0, size=len(valid_cols))
+        transmat[i, valid_cols] = weights / np.sum(weights)
+    model.transmat_ = transmat
 
-        h, w = recorte.shape
-        max_dim = max(h, w)
-        pad_h = max_dim - h
-        pad_w = max_dim - w
+    # Matriz de emisión inicializada cerca de uniforme
+    emissionprob = rng.uniform(0.8, 1.2, size=(n_states, n_symbols))
+    emissionprob /= emissionprob.sum(axis=1, keepdims=True)
+    model.emissionprob_ = emissionprob
 
-        pad_top = pad_h // 2
-        pad_bottom = pad_h - pad_top
-        pad_left = pad_w // 2
-        pad_right = pad_w - pad_left
+    return model
 
-        recorte_cuadrado = np.pad(recorte, ((pad_top, pad_bottom), 
-        (pad_left, pad_right)), 
-        mode='constant', constant_values=0)
-        imagen = cv2.resize(recorte_cuadrado.astype(np.float32), 
-        (IMG_SIZE, IMG_SIZE),
-        interpolation=cv2.INTER_LINEAR)
-    else:
-        imagen = cv2.resize(imagen.astype(np.float32), (IMG_SIZE, IMG_SIZE), 
-        interpolation=cv2.INTER_LINEAR)
+t0_train = time.time()
+hmm_models = {}
 
-    imagen = (imagen > UMBRAL).astype(float)
-    return imagen
+for idx, class_name in enumerate(class_names):
+    class_seqs = [s for s, lab in zip(seq_train, y_train) if lab == idx]
+    lengths = [len(s) for s in class_seqs]
+    X_concat = np.vstack(class_seqs)
+
+    model = build_bakis_categorical_hmm(
+        n_states=N_STATES,
+        n_symbols=N_SYMBOLS,
+        delta=BAKIS_DELTA,
+        random_state=RANDOM_STATE + idx
+    )
+    model.fit(X_concat, lengths)
+
+    # Suavizado de Laplace (epsilon = 1e-6) en emisiones para evitar log(0)
+    eps = 1e-6
+    model.emissionprob_ = (model.emissionprob_ + eps) / (1.0 + N_SYMBOLS * eps)
+    hmm_models[class_name] = model
+
+train_time = time.time() - t0_train
+
+# 6. Inferencia por máxima verosimilitud y remuestreo Bootstrap
+t0_inf = time.time()
+y_true_names = [le.inverse_transform([lbl])[0] for lbl in y_val]
+y_pred_names = []
+log_likelihood_matrix = np.zeros((len(seq_val), len(class_names)))
+
+for i, seq in enumerate(tqdm(seq_val, desc="Clasificando validación")):
+    for c_idx, c_name in enumerate(class_names):
+        log_likelihood_matrix[i, c_idx] = hmm_models[c_name].score(seq)
+    best_c_idx = np.argmax(log_likelihood_matrix[i])
+    y_pred_names.append(class_names[best_c_idx])
+
+inf_time = time.time() - t0_inf
+global_acc = accuracy_score(y_true_names, y_pred_names)
+
+# Intervalo de confianza Bootstrap (B = 200)
+rng_boot = np.random.default_rng(RANDOM_STATE)
+n_val = len(y_true_names)
+y_true_arr = np.array(y_true_names)
+y_pred_arr = np.array(y_pred_names)
+boot_accuracies = np.array([
+    np.mean(y_true_arr[idx] == y_pred_arr[idx])
+    for idx in (rng_boot.integers(0, n_val, size=n_val) for _ in range(N_BOOTSTRAP))
+])
+ci_low, ci_high = np.percentile(boot_accuracies, [2.5, 97.5])
 ```
 
-Este procedimiento incluyó la corrección de orientación del conjunto EMNIST, la eliminación de espacios vacíos mediante recortes, relleno para conservar proporciones y redimensionamiento uniforme.
+**Por qué se diseña así el entrenamiento e inferencia del HMM:**
 
-### Extracción de características
+-   **Preservación algebraica de la topología de Bakis (`init_params=""`, `params="te"`):** Al inicializar $a_{ij}^{(0)} = 0$ fuera de la banda $0 \le j - i \le 2$ y fijar $\pi_1 = 1$, las ecuaciones de actualización multiplicativa del algoritmo Baum-Welch mantienen estrictamente en cero las transiciones prohibidas en cada iteración EM, forzando una alineación monotónica izquierda-derecha.
+-   **Suavizado de Laplace (**$\epsilon = 10^{-6}$) en la matriz de emisión $E$: Evita que la aparición en validación de un símbolo categórico no observado durante el entrenamiento de una clase colapse toda la log-verosimilitud de la secuencia a $-\infty$.
 
-Cada imagen preprocesada fue transformada en una secuencia discreta de observaciones mediante ventanas deslizantes verticales:
+## Implementación del modelo CNN
 
-``` python
-def imagen_a_secuencia(img, w=5, stride=2):
-    secuencia = []
-    altura = IMG_SIZE
+El enfoque basado en Redes Neuronales Convolucionales sustituye la extracción manual de descriptores unidimensionales por jerarquías de filtros convolucionales bidimensionales entrenados extremo a extremo mediante retropropagación y optimización estocástica Adam.
 
-    for t in range(0, img.shape[1] - w + 1, stride):
-        ventana = img[:, t:t+w]
-        columna = np.mean(ventana, axis=1)
-        col_bin = (columna > 0.35).astype(int)
+```{python}
+#| label: cnn-datos-aumentacion
+#| eval: false
 
-        suma_tinta = np.sum(col_bin)
+import os
+import time
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 
-        if suma_tinta == 0:
-            simbolo = 0 
-            secuencia.append([simbolo])
-            continue
+from google.colab import drive
+drive.mount('/content/drive')
 
-        if suma_tinta < 8: tinta_q = 0
-        elif suma_tinta < 16: tinta_q = 1
-        elif suma_tinta < 24: tinta_q = 2
-        else: tinta_q = 3
+# 1. Configuración y partición exacta idéntica a la del HMM
+DATA_DIR = "/content/drive/MyDrive/nahuatl_dataset/dataset_hibrido_final"
+RUTA_MODELO = "/content/drive/MyDrive/nahuatl_dataset/modelo_nahuatl.keras"
 
-        cg = np.sum(col_bin * np.arange(altura)) / suma_tinta
-        if cg < 12: cg_q = 0
-        elif cg < 20: cg_q = 1
-        elif cg < 28: cg_q = 2
-        else: cg_q = 3
+IMG_SIZE = (28, 28)
+BATCH_SIZE = 32
+TRAIN_RATIO = 0.80
+RANDOM_STATE = 123
+EPOCHS_MAX = 60
 
-        transiciones = np.sum(np.abs(np.diff(col_bin)))
-        trans_q = min(int(transiciones), 3)
+file_paths, labels = [], []
+class_names = sorted([
+    d for d in os.listdir(DATA_DIR)
+    if os.path.isdir(os.path.join(DATA_DIR, d))
+])
+num_classes = len(class_names)
 
-        indices_tinta = np.where(col_bin > 0)[0]
-        perfil_sup = indices_tinta[0]
-        perfil_inf = indices_tinta[-1]
+for class_name in class_names:
+    class_dir = os.path.join(DATA_DIR, class_name)
+    img_files = sorted([
+        f for f in os.listdir(class_dir)
+        if f.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp'))
+    ])
+    for fname in img_files:
+        file_paths.append(os.path.join(class_dir, fname))
+        labels.append(class_name)
 
-        up_q = 1 if perfil_sup > 10 else 0    
-        low_q = 1 if perfil_inf < 30 else 0   
+le = LabelEncoder()
+y_encoded = le.fit_transform(labels)
 
-        simbolo = (tinta_q << 6) | (cg_q << 4) | (trans_q << 2) | (up_q << 1) | low_q
-        secuencia.append([simbolo])
+train_paths, val_paths, y_train, y_val = train_test_split(
+    file_paths, y_encoded,
+    train_size=TRAIN_RATIO,
+    random_state=RANDOM_STATE,
+    stratify=y_encoded
+)
 
-    return np.array(secuencia)
+# 2. Pipeline de datos en TensorFlow (tf.data)
+AUTOTUNE = tf.data.AUTOTUNE
+
+def load_and_preprocess_image(path, label):
+    img_bytes = tf.io.read_file(path)
+    img = tf.io.decode_image(img_bytes, channels=1, expand_animations=False)
+    img = tf.image.resize(img, IMG_SIZE)
+    img = tf.cast(img, tf.float32) / 255.0
+    img = tf.cond(tf.reduce_mean(img) > 0.5, lambda: 1.0 - img, lambda: img)
+    return img, label
+
+data_augmentation = tf.keras.Sequential([
+    tf.keras.layers.RandomRotation(0.05),
+    tf.keras.layers.RandomZoom(0.1),
+    tf.keras.layers.RandomTranslation(0.05, 0.05)
+])
+
+train_ds = tf.data.Dataset.from_tensor_slices((train_paths, y_train))
+train_ds = train_ds.map(load_and_preprocess_image, num_parallel_calls=AUTOTUNE)
+train_ds = train_ds.cache().shuffle(5000, seed=RANDOM_STATE).batch(BATCH_SIZE)
+train_ds = train_ds.map(lambda x, y: (data_augmentation(x, training=True), y), num_parallel_calls=AUTOTUNE)
+train_ds = train_ds.prefetch(AUTOTUNE)
+
+val_ds = tf.data.Dataset.from_tensor_slices((val_paths, y_val))
+val_ds = val_ds.map(load_and_preprocess_image, num_parallel_calls=AUTOTUNE)
+val_ds = val_ds.batch(BATCH_SIZE).cache().prefetch(AUTOTUNE)
 ```
 
-Se calcularon características geométricas (distribución de tinta, centro de gravedad, número de transiciones y perfiles superior e inferior), cuantificadas en un conjunto discreto de 256 símbolos observables.
+**Por qué se diseña así el pipeline de datos de la CNN:**
 
-### Construcción de los conjuntos de entrenamiento y prueba
+-   **Alineación exacta de particiones (`train_test_split` con `random_state = 123`):** Construir los objetos `tf.data.Dataset` a partir de las mismas listas ordenadas `train_paths` y `val_paths` garantiza que ambos modelos sean evaluados exactamente sobre los mismos $9{,}000$ glifos de validación.
+-   **Aumentación estocástica en línea sin reflexiones:** Se aplican pequeñas rotaciones ($\pm 5\%$), escalamientos ($\pm 10\%$) y traslaciones ($\pm 5\%$) únicamente sobre `train_ds` para reforzar la invarianza local sin alterar la orientación semántica de los caracteres.
 
-Las secuencias obtenidas fueron organizadas en conjuntos balanceados de entrenamiento y evaluación:
+```{python}
+#| label: cnn-arquitectura-entrenamiento
+#| eval: false
 
-``` python
-def construir_dataset(dataset, max_muestras):
-    X, y = [], []
-    conteos = {k:0 for k in TARGETS_MAYUSCULAS}
+# 3. Arquitectura de la CNN (393,362 parámetros totales; 392,914 entrenables)
+tf.keras.utils.set_random_seed(RANDOM_STATE)
 
-    for tensor, target in dataset:
-        if target not in TARGETS_MAYUSCULAS: continue
-        if conteos[target] >= max_muestras: continue
-
-        img = procesar_imagen(tensor)
-        seq = imagen_a_secuencia(img)
-
-        X.append(seq)
-        y.append(MAPEO_LETTERS[target])
-        conteos[target] += 1
-
-        if all(c >= max_muestras for c in conteos.values()): break
-
-    return X, np.array(y)
-
-print("Construyendo entrenamiento...")
-X_train, y_train = construir_dataset(emnist_train, TRAIN_POR_CLASE)
-
-print("Construyendo prueba...")
-X_test, y_test = construir_dataset(emnist_test, TEST_POR_CLASE)
-```
-
-### Entrenamiento de los modelos
-
-Se entrenó un modelo HMM independiente para cada una de las letras del alfabeto:
-
-``` python
-modelos_hmm = {}
-
-if os.path.exists(ARCHIVO_MODELOS_CAT):
-    print("\n[INFO] Modelos detectados en Drive. Cargando...")
-    with open(ARCHIVO_MODELOS_CAT, 'rb') as f:
-        modelos_hmm = pickle.load(f)
-else:
-    print("\nEntrenando CategoricalHMMs...\n")
-    barra = tqdm(LETRAS_OBJETIVO, desc="Entrenando", unit="letra")
-    for letra in barra:
-        barra.set_description(f"Entrenando '{letra}'")
-        idx = np.where(y_train == letra)[0]
-        secuencias = [X_train[i] for i in idx]
-        lengths = [len(s) for s in secuencias]
-        X_concat = np.vstack(secuencias)
-
-        model = hmm.CategoricalHMM(
-            n_components=N_ESTADOS,
-            n_features=256, 
-            n_iter=250,
-            random_state=42,
-            init_params='e'
-        )
-
-        model.startprob_ = np.zeros(N_ESTADOS)
-        model.startprob_[0] = 1.0
-        model.transmat_ = construir_matriz_bakis_flexible(N_ESTADOS)
-
-        model.fit(X_concat, lengths)
-        modelos_hmm[letra] = model
-
-    with open(ARCHIVO_MODELOS_CAT, 'wb') as f:
-        pickle.dump(modelos_hmm, f)
-```
-
-### Inferencia y clasificación
-
-Cada muestra del conjunto de prueba fue evaluada frente a todos los HMM disponibles:
-
-``` python
-print("\nClasificando...\n")
-y_pred = []
-
-for seq in tqdm(X_test, desc="Evaluando Inferencia"):
-    scores = {}
-    for letra, model in modelos_hmm.items():
-        try: scores[letra] = model.score(seq)
-        except: scores[letra] = -np.inf
-
-    pred = max(scores, key=scores.get)
-    y_pred.append(pred)
-```
-
-La predicción final se obtuvo seleccionando la letra cuyo modelo produjo la mayor puntuación de verosimilitud (principio de máxima verosimilitud).
-
-### Evaluación del desempeño
-
-Finalmente, se calcularon métricas globales e individuales de rendimiento para evaluar la capacidad de generalización del sistema:
-
-``` python
-accuracy = accuracy_score(y_test, y_pred)
-cm = confusion_matrix(y_test, y_pred, labels=LETRAS_OBJETIVO)
-
-precision_por_letra = cm.diagonal() / cm.sum(axis=1)
-
-print("\n" + "="*70)
-print("EXACTITUD (ACCURACY) INDIVIDUAL POR LETRA")
-print("="*70)
-for i, letra in enumerate(LETRAS_OBJETIVO):
-    acc = precision_por_letra[i] * 100
-    print(f"Precisión Letra {letra} : {acc:>6.2f} %")
-
-print("\n" + "="*70)
-print(f"ACCURACY GLOBAL: {accuracy*100:.2f}%")
-print("="*70 + "\n")
-
-print(classification_report(y_test, y_pred, target_names=LETRAS_OBJETIVO))
-```
-
-Asimismo, se construyó una matriz de confusión para identificar visualmente los patrones de error entre caracteres similares:
-
-``` python
-plt.figure(figsize=(16,14))
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
-xticklabels=LETRAS_OBJETIVO,
-yticklabels=LETRAS_OBJETIVO)
-plt.title(f'Matriz CategoricalHMM con Rasgos Estructurales (Precisión: {accuracy*100:.2f}%)', fontsize=16, fontweight='bold')
-plt.ylabel('Letra Real', fontsize=14)
-plt.xlabel('Letra Predicha', fontsize=14)
-plt.tight_layout()
-plt.show()
-```
-
-## CASO CNN
-
-### Arquitectura de la red neuronal convolucional
-
-La arquitectura propuesta recibe imágenes de tamaño $28\times28\times1$ y está compuesta por tres bloques convolucionales seguidos de un clasificador denso.
-
-``` python
 model = tf.keras.Sequential([
-    tf.keras.layers.Input(shape=(28,28,1)),
+    tf.keras.layers.Input(shape=(28, 28, 1)),
 
-    tf.keras.layers.Conv2D(32,3,activation='relu'),
+    # Bloque convolucional 1 -> salida (14, 14, 32)
+    tf.keras.layers.Conv2D(32, 3, activation='relu', padding='same'),
     tf.keras.layers.BatchNormalization(),
     tf.keras.layers.MaxPooling2D(),
     tf.keras.layers.SpatialDropout2D(0.25),
 
-    tf.keras.layers.Conv2D(64,3,activation='relu'),
+    # Bloque convolucional 2 -> salida (7, 7, 64)
+    tf.keras.layers.Conv2D(64, 3, activation='relu', padding='same'),
     tf.keras.layers.BatchNormalization(),
     tf.keras.layers.MaxPooling2D(),
     tf.keras.layers.SpatialDropout2D(0.25),
 
-    tf.keras.layers.Conv2D(128,3,activation='relu'),
+    # Bloque convolucional 3 -> salida (3, 3, 128)
+    tf.keras.layers.Conv2D(128, 3, activation='relu', padding='same'),
+    tf.keras.layers.BatchNormalization(),
     tf.keras.layers.MaxPooling2D(),
     tf.keras.layers.SpatialDropout2D(0.25),
 
+    # Clasificador denso -> salida (18,)
     tf.keras.layers.Flatten(),
     tf.keras.layers.Dense(256, activation='relu'),
     tf.keras.layers.Dropout(0.5),
     tf.keras.layers.Dense(num_classes, activation='softmax')
 ])
-```
 
-### Primer bloque convolucional
-
-La primera capa convolucional emplea 32 filtros de tamaño $3\times3$:
-
-``` python
-tf.keras.layers.Conv2D(32,3,activation='relu')
-```
-
-Este bloque se encarga de detectar características de bajo nivel, tales como bordes, esquinas y pequeños segmentos de los trazos.
-
-La incorporación de una capa de normalización por lotes:
-
-``` python
-tf.keras.layers.BatchNormalization()
-```
-
-permite estabilizar la distribución de las activaciones internas, acelerando el proceso de convergencia.
-
-Posteriormente, la operación de *max pooling*
-
-``` python
-tf.keras.layers.MaxPooling2D()
-```
-
-reduce la dimensionalidad espacial de las representaciones, disminuyendo el número de parámetros y haciendo al modelo menos sensible a pequeñas traslaciones.
-
-Finalmente, se incorpora un mecanismo de regularización:
-
-``` python
-tf.keras.layers.SpatialDropout2D(0.25)
-```
-
-que desactiva mapas de características completos de manera aleatoria, obligando a la red a aprender representaciones más robustas.
-
-### Segundo y tercer bloque convolucional
-
-Los bloques posteriores incrementan progresivamente el número de filtros hasta 64 y 128, respectivamente. El aumento en la profundidad de la red permite capturar patrones cada vez más complejos, tales como combinaciones de curvas, intersecciones y configuraciones geométricas características de cada glifo.
-
-### Clasificador
-
-Las características extraídas se transforman en un vector unidimensional:
-
-``` python
-tf.keras.layers.Flatten()
-```
-
-y posteriormente se procesan mediante una capa densa:
-
-``` python
-tf.keras.layers.Dense(256, activation='relu')
-```
-
-La capa de salida utiliza la función Softmax:
-
-``` python
-tf.keras.layers.Dense(num_classes, activation='softmax')
-```
-
-la cual produce una distribución de probabilidad sobre todas las clases del alfabeto.
-
-## Entrenamiento
-
-El modelo se compiló utilizando el optimizador Adam:
-
-``` python
 model.compile(
     optimizer='adam',
     loss='sparse_categorical_crossentropy',
     metrics=['accuracy']
 )
-```
 
-La función de pérdida de entropía cruzada dispersa se seleccionó debido a que las etiquetas de las imágenes se encuentran codificadas como enteros y no mediante vectores *one-hot*.
-
-Para evitar el sobreajuste se implementó un mecanismo de detención temprana:
-
-``` python
+# 4. Entrenamiento con parada temprana y evaluación
 early_stop = EarlyStopping(
-    monitor='val_loss',
-    patience=7,
-    restore_best_weights=True
+    monitor='val_loss', patience=7, restore_best_weights=True, verbose=1
 )
-```
-
-La elección de siete épocas de paciencia permite al modelo continuar el aprendizaje ante pequeñas oscilaciones de la pérdida de validación, evitando finalizar el entrenamiento de forma prematura.
-
-Asimismo, el mejor modelo obtenido se almacenó automáticamente:
-
-``` python
 checkpoint = ModelCheckpoint(
-    ruta_modelo,
-    monitor='val_loss',
-    save_best_only=True
+    RUTA_MODELO, monitor='val_loss', save_best_only=True, verbose=0
 )
+
+t0_train = time.time()
+history = model.fit(
+    train_ds,
+    validation_data=val_ds,
+    epochs=EPOCHS_MAX,
+    callbacks=[early_stop, checkpoint]
+)
+train_time_cnn = time.time() - t0_train
+
+t0_inf = time.time()
+y_pred_probs = model.predict(val_ds, verbose=0)
+inf_time_cnn = time.time() - t0_inf
+
+y_pred = np.argmax(y_pred_probs, axis=1)
+global_acc_cnn = accuracy_score(y_val, y_pred)
 ```
 
-## Sistema de inferencia interactivo
+**Por qué se diseña así la arquitectura y optimización de la CNN:**
 
-Finalmente, se desarrolló una interfaz interactiva en Google Colab que permite dibujar caracteres del alfabeto Náhuatl y obtener predicciones en tiempo real.
+-   **Jerarquía convolucional con `padding='same'` (`32 -> 64 -> 128` filtros de** $3 \times 3$): Preserva la información de los bordes de la cuadrícula de $28 \times 28$ antes de cada reducción espacial mediante `MaxPooling2D` ($28 \to 14 \to 7 \to 3$), extrayendo progresivamente bordes locales, curvaturas y configuraciones topológicas globales.
+-   **Regularización estructural (`BatchNormalization`, `SpatialDropout2D(0.25)` y `Dropout(0.5)`):** Previene la co-adaptación de mapas de activación adyacentes y estabiliza el descenso estocástico con `adam`, mientras que `EarlyStopping(patience=7, restore_best_weights=True)` detiene automáticamente el entrenamiento al alcanzar el mínimo de pérdida de validación.
 
-La imagen generada por el usuario se redimensiona a $28\times28$ píxeles:
+## Resultados Experimentales y Análisis Comparativo
 
-``` python
-img_resized = cv2.resize(img, (28,28))
-img_normalized = img_resized / 255.0
-img_input = np.expand_dims(img_normalized, axis=(0,-1))
-```
+Ambos modelos fueron ejecutados sobre el conjunto completo de $45{,}000$ muestras ($36{,}000$ de entrenamiento y $9{,}000$ de validación, con $500$ instancias por glifo en validación). La @tbl-comparativa-modelos resume las métricas globales de desempeño, incertidumbre estadística y eficiencia computacional obtenidas.
 
-Posteriormente, el modelo produce un vector de probabilidades:
+| Métrica / Indicador | `CategoricalHMM` (Topología de Bakis) | Red Neuronal Convolucional (`CNN`) | Diferencia / Relación |
+|:-----------------|:----------------:|:----------------:|:----------------:|
+| **Exactitud Global (*Accuracy*)** | $50.03\%$ | $99.38\%$ | $+49.35\text{ pp}$ a favor de CNN |
+| **IC Bootstrap** $95\%$ ($B = 200$) | $[48.93\%,\; 51.02\%]$ | $[99.23\%,\; 99.54\%]$ | Intervalos completamente disjuntos |
+| **Macro F1-Score** | $0.50$ | $0.99$ | $+0.49$ puntos de F1 promedio |
+| **Parámetros Entrenables** | $27{,}810$ *(18 modelos* $\times$ 1,545) | $392{,}914$ *(1.50 MB)* | HMM usa $14.1\times$ menos parámetros |
+| **Tiempo Total de Entrenamiento** | $2{,}061.18\text{ s}$ *(978.5s rasgos + 1,082.7s EM)* | $419.29\text{ s}$ *(39 épocas en GPU)* | CNN es $4.9\times$ más rápida |
+| **Tiempo de Inferencia (9,000 glifos)** | $48.310\text{ s}$ ($5.37\text{ ms/glifo}$) | $1.749\text{ s}$ ($0.194\text{ ms/glifo}$) | CNN es $27.6\times$ más rápida |
 
-``` python
-predicciones = model.predict(img_input)
-```
+: Comparación cuantitativa entre el Modelo Oculto de Markov Categórico de Bakis y la Red Neuronal Convolucional sobre el conjunto de validación ($N_{\text{val}} = 9{,}000$). {#tbl-comparativa-modelos}
 
-y se determina la clase más probable mediante:
+### Análisis del desempeño del Modelo Oculto de Markov (`CategoricalHMM`)
 
-``` python
-idx_ganador = np.argmax(predicciones)
-```
+La cuantificación de los descriptores geométricos produjo una **entropía de Shannon de** $H(Y) = 4.3121 \text{ bits}$ sobre el máximo teórico de $8.0000 \text{ bits}$, confirmando que la discretización conserva diversidad morfológica sin colapsar en un único símbolo trivial, aunque concentra la masa probabilística en aproximadamente $2^{4.31} \approx 20$ configuraciones verticales dominantes.
 
-Además de la predicción principal, la interfaz presenta las tres clases con mayor probabilidad, proporcionando información adicional sobre la confianza y las posibles ambigüedades del modelo.
+![Resultados del modelo `CategoricalHMM` con topología de Bakis ($N=6$, $\Delta=2$): matriz de confusión sobre validación (izquierda), exactitud individual por glifo frente al promedio global (centro) y matriz de transición aprendida para el glifo `A` (derecha).](images/paste-10.png){#fig-resultados-hmm fig-align="center" width="100%"}
+
+Como se observa en la @fig-resultados-hmm, el comportamiento del HMM revela tres hallazgos fundamentales:
+
+1.  **Verificación empírica de la topología de Bakis:** En el panel derecho de la @fig-resultados-hmm, la matriz de transición aprendida para el glifo `A` presenta valores estrictamente iguales a $0.00$ en toda la región triangular inferior ($j < i$) y fuera de la banda $\Delta = 2$, culminando en un estado final absorbente ($a_{66} = 1.00$). Esto demuestra que el algoritmo Baum-Welch respeta la restricción de progresión unidireccional de izquierda a derecha.
+2.  **Alta discriminabilidad en glifos con envolvente asimétrica:** Los caracteres **`O`** ($\text{Recall} = 92\%$, $\text{F1} = 0.80$), **`HJ`** ($\text{Recall} = 89\%$, $\text{F1} = 0.55$), **`T`** ($\text{Recall} = 69\%$, $\text{F1} = 0.65$) y **`M`** ($\text{Recall} = 63\%$, $\text{F1} = 0.68$) son identificados con alta eficacia gracias a que su perfil vertical cambia de manera distintiva a lo largo del eje horizontal.
+3.  **Ambigüedad por proyección dimensional en glifos con trazos compuestos:** Los glifos **`A`** ($\text{F1} = 0.17$), **`Ch`** ($\text{F1} = 0.25$) y **`E`** ($\text{F1} = 0.31$) presentan las tasas más altas de confusión cruzada con `P` y `HJ`. Asimismo, existe una confusión simétrica marcada entre **`I`** y **`UW`** ($126$ muestras de `I` clasificadas como `UW` y $57$ viceversa). Este fenómeno evidencia la limitación teórica anticipada en el mapeo $\mathbb{R}^{28 \times 28} \to O^{13}$: al proyectar rebanadas verticales mediante centroides y espesores agregados, dos glifos distintos cuyas secciones verticales poseen similar altura media y grosor generan secuencias de símbolos casi idénticas.
+
+### Análisis del desempeño de la Red Neuronal Convolucional (`CNN`)
+
+Por su parte, la arquitectura convolucional alcanzó una **exactitud global de** $99.38\%$ ($\text{IC } 95\%: [99.23\%, 99.54\%]$) y un $\text{Macro F1-Score} = 0.99$, activando la parada temprana en la época $39$ tras alcanzar su pérdida mínima de validación en la época $32$ ($\text{val\_loss} = 0.0182$).
+
+![Resultados de la Red Neuronal Convolucional (`CNN`): evolución de la exactitud (izquierda), curva de pérdida de entropía cruzada (centro) y matriz de confusión sobre el conjunto de validación (derecha).](images/paste-11.png){#fig-resultados-cnn fig-align="center" width="100%"}
+
+A partir de la @fig-resultados-cnn se destacan los siguientes aspectos:
+
+-   **Estabilidad de convergencia y ausencia de sobreajuste:** La pérdida de validación desciende de manera paralela a la de entrenamiento sin divergir en épocas tardías, confirmando la efectividad conjunta de `BatchNormalization`, `SpatialDropout2D(0.25)` y la aumentación estocástica en línea.
+-   **Resolución de ambigüedades topológicas 2D:** Al operar directamente sobre vecindades bidimensionales mediante filtros aprendidos, la CNN elimina prácticamente todas las confusiones estructurales del HMM: los glifos `A`, `Ch`, `E`, `P` y `HJ` alcanzan valores de $\text{F1}$ entre $0.98$ y $1.00$, y el par morfológicamente cercano `I` vs. `UW` reduce sus errores cruzados de $183$ (en el HMM) a apenas $23$ instancias ($14$ y $9$ respectivamente, logrando $\text{F1} = 0.98$ en ambos).
+-   **Eficiencia computacional en producción:** Gracias a la paralelización matricial de las operaciones de convolución en GPU, la CNN completa tanto el entrenamiento ($419.29\text{ s}$) como la inferencia por lote ($0.194\text{ ms}$ por glifo) en una fracción del tiempo requerido por el cálculo secuencial ventana a ventana del HMM.

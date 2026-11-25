@@ -1,145 +1,97 @@
 ---
 title: "Base de datos"
+format: html
+lang: es
+bibliography: Referencias.bib
 execute:
   freeze: false
+language:
+  crossref-nte-title: "Definición"
+  crossref-nte-prefix: "Definición"
+  crossref-imp-title: "Propiedad"
+  crossref-imp-prefix: "Propiedad"
 ---
 
 ## Generación y Caracterización del Conjunto de Datos
 
-### Construcción del Conjunto de Datos
+### Inexistencia de datasets públicos y justificación
 
-El reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto náhuatl @fig-abcnauatl , presenta una limitación inicial crítica: la inexistencia de un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de alfabetos latinos o asiáticos, que cuentan con repositorios ampliamente documentados (como MNIST o EMNIST), el dominio de los glifos náhuatl carece de recursos computacionales de código abierto.
+El reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto náhuatl (@fig-alfabeto-nahuatl), presenta una limitación inicial crítica: la inexistencia de un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos estadísticos y de aprendizaje profundo. A diferencia de alfabetos latinos o asiáticos, que cuentan con repositorios ampliamente documentados —como MNIST o EMNIST [@cohen2017]—, el dominio de los glifos náhuatl carece de recursos computacionales de código abierto.
 
-Este sistema consta de 18 caracteres base, los cuales, para fines de manipulación computacional, se asocian a etiquetas del alfabeto latino.
+![Glifos del alfabeto náhuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean etiquetas del alfabeto latino para su manipulación computacional. Adaptado de Kanakue (s.f.).](images/Alfabeto%20nahuatl.png){#fig-alfabeto-nahuatl fig-align="center" width="520"}
 
-### Inexistencia de datasets públicos y justificación de la generación sintética
+Ante esta carencia, fue necesario construir un conjunto de datos propio. La decisión de generar un dataset sintético controlado se fundamenta en dos razones principales:
 
-Ante esta carencia de una base de datos pública y estandarizada, fue necesario construir un conjunto de datos propio. La decisión de generar un dataset sintético se fundamenta en dos razones principales: 1. **Volumen de datos:** Proporcionar un número suficiente de ejemplos para evitar el sobreajuste en redes neuronales profundas. 2. **Variabilidad controlada:** Introducir deformaciones geométricas y estocásticas que permitan al modelo generalizar ante las irregularidades presentes en documentos históricos reales (desalineación, degradación de tinta, variabilidad del trazo).
+1.  **Volumen de datos:** proporcionar un número suficiente de ejemplos por clase para evitar el sobreajuste en arquitecturas de alta capacidad como las redes neuronales convolucionales.
+2.  **Variabilidad controlada:** introducir deformaciones geométricas y perturbaciones estocásticas que permitan evaluar la capacidad de generalización ante las irregularidades presentes en documentos históricos reales (desalineación, degradación de tinta y variabilidad del trazo).
 
 ### Diseño de las plantillas base y morfología del glifo náhuatl
 
-Inicialmente, se diseñaron de forma manual y vectorial 25 plantillas base por cada uno de los 18 caracteres. Este diseño no fue arbitrario; se basó en el análisis morfológico de los glifos, los cuales se caracterizan por una combinación de trazos curvos, segmentos rectos, puntos diacríticos y bucles cerrados. La representación base se normalizó a una cuadrícula de $28 \times 28$ píxeles, preservando la proporción y densidad de "tinta" típica de los códices, estableciendo así un punto de partida topológicamente válido para la posterior augmentación.
+Inicialmente, se diseñaron de forma manual y vectorial 25 plantillas base por cada uno de los 18 caracteres. Este diseño se fundamentó en el análisis morfológico de los glifos, los cuales combinan trazos curvos, segmentos rectos, puntos diacríticos aislados y bucles cerrados. La representación base se normalizó a una cuadrícula monocromática de $28 \times 28$ píxeles, preservando la proporción y densidad de tinta característica, estableciendo así un punto de partida topológicamente válido para la posterior aumentación de datos.
+
+```{python}
+#| label: fig-plantillas
+#| fig-cap: "Del lado izquierdo se muestra el glifo correspondiente al fonema /e/ (etl) original y del lado derecho su discretización normalizada a 28 × 28 píxeles utilizada como plantilla base."
+#| fig-align: "center"
+#| echo: false
+
+import matplotlib.pyplot as plt
+from PIL import Image
+
+img_izq = Image.open("images/paste-8.png")
+img_der = Image.open("images/paste-6.png")
+
+fig, axes = plt.subplots(1, 2, figsize=(4.8, 3.2))
+
+axes[0].imshow(img_izq)
+axes[0].axis("off")
+
+axes[1].imshow(img_der, interpolation="nearest")
+axes[1].axis("off")
+
+plt.subplots_adjust(wspace=0.15, left=0.02, right=0.98, top=0.98, bottom=0.02)
+plt.show()
+```
 
 ## Transformaciones Geométricas y Estocásticas (Data Augmentation)
 
-Para emular las condiciones de documentos, se aplicaron transformaciones a las plantillas base. A cada una de las 25 muestras iniciales se le generaron 90 variantes, resultando en un conjunto robusto y diverso.
+Para emular las condiciones de documentos históricos y variaciones caligráficas, se aplicaron transformaciones estocásticas a las plantillas base. A cada una de las 25 muestras iniciales se le generaron 90 variantes, conformando un conjunto diverso y balanceado.
+
+![Proceso de aumentación de datos aplicado a cada una de las 25 plantillas por clase para generar 90 variantes mediante rotación, traslación, distorsión elástica, cambio de escala y ruido aditivo.](images/dataset%20aumentado.png){#fig-dataset-augmentation fig-align="center" width="520"}
 
 ### Aplicación de grupos de Lie en transformaciones afines
 
-Las transformaciones geométricas aplicadas (rotación, traslación y escalamiento) pueden formalizarse como acciones del grupo afín $Aff(2)$ sobre el espacio de la imagen. Una transformación afín se expresa como:
+Las transformaciones geométricas aplicadas (rotación, traslación y escalamiento) se formalizan como acciones del grupo afín $\mathrm{Aff}(2)$ sobre el dominio bidimensional de la imagen. Una transformación afín se expresa como:
 
-$$
-\begin{pmatrix} x' \\ y' \end{pmatrix} = 
-\begin{pmatrix} s_x \cos\theta & -s_y \sin\theta \\ s_x \sin\theta & s_y \cos\theta \end{pmatrix}
-\begin{pmatrix} x \\ y \end{pmatrix} + 
-\begin{pmatrix} t_x \\ t_y \end{pmatrix}
-$$
+$$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} s_x \cos\theta & -s_y \sin\theta \\ s_x \sin\theta & s_y \cos\theta \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} t_x \\ t_y \end{pmatrix},$$
+{#eq-transformacion-afin}
 
-donde $\theta$ representa la rotación, $(t_x, t_y)$ la traslación, y $(s_x, s_y)$ los factores de escalamiento. En la implementación práctica, se utilizaron operadores estocásticos acotados (ej. $\theta \sim \mathcal{U}(-0.05\pi, 0.05\pi)$) para garantizar que la identidad del glifo se preservara semánticamente.
+donde $\theta$ representa el ángulo de rotación, $(t_x, t_y)$ el vector de traslación y $(s_x, s_y)$ los factores de escalamiento. En la implementación práctica se emplearon parámetros aleatorios acotados —por ejemplo, $\theta \sim \mathcal{U}(-0.05\pi, 0.05\pi)$— para preservar la identidad topológica y semántica de cada glifo.
 
 ### Modelado de ruido y degradación
 
-Para simular la naturaleza física del papel histórico y la tinta, se inyectaron perturbaciones estocásticas:
+Para simular la naturaleza física del papel histórico y la tinta, se inyectaron perturbaciones estocásticas adicionales:
 
-**Ruido aditivo:** Se modeló como ruido blanco gaussiano $\mathcal{N}(0, \sigma^2)$ para emular las imperfecciones del sensor de escaneo.
-
-**Degradación de bordes:** Se aplicó un desenfoque gaussiano leve para simular el "sangrado" de la tinta en el papel poroso.
+-   **Ruido aditivo:** modelado mediante ruido blanco gaussiano $\varepsilon \sim \mathcal{N}(0, \sigma^2)$ para emular imperfecciones del sensor óptico de escaneo.
+-   **Degradación de bordes:** aplicación de un filtro de suavizado gaussiano leve para simular la difusión o "sangrado" de la tinta sobre soporte poroso.
 
 ### Análisis estadístico del dataset resultante
 
-El proceso generó un dataset final balanceado de $18 \times 25 \times 90 = 40,500$ imágenes. Al ser sintético, el **balance de clases** es adecuado (exactamente 2,250 muestras por clase), este tamaño es el estandard y usual al trabajar para reconocimiento de patrones. La **varianza intra-clase** fue maximizada de manera controlada mediante las transformaciones afines, asegurando que el modelo no aprenda artefactos de la plantilla base, sino las invariantes morfológicas del carácter.
+El proceso generó un conjunto de datos final balanceado de $18 \times 25 \times 90 = 40{,}500$ imágenes monocromáticas de $28 \times 28$ píxeles, con exactamente $2{,}250$ muestras por clase. Este balance perfecto elimina sesgos hacia clases mayoritarias, mientras que la varianza intra-clase inducida controlada obliga a ambos modelos (HMM y CNN) a capturar las invariantes morfológicas del carácter en lugar de memorizar las plantillas base.
 
-## Mapeo Dimensional: De $\mathbb{R}^{28 \times 28}$ a $\mathbb{R}^T$
+## Carga y Organización de los Datos (Pipeline CNN)
 
-*La pérdida de información topológica al proyectar una imagen en una secuencia temporal.*
+Para garantizar una comparación experimental equitativa, tanto la CNN como el HMM operan sobre la misma resolución base ($28 \times 28$ píxeles en escala de grises) y bajo la misma proporción de partición entrenamiento-validación ($80\% - 20\%$).
 
-Para abordar el reconocimiento desde una perspectiva de secuencias, es necesario proyectar la representación bidimensional de la imagen $X \in \mathbb{R}^{H \times W}$ en una secuencia unidimensional de vectores $S \in \mathbb{R}^T$. Este mapeo implica una pérdida inherente de la topología 2D (vecindades verticales y horizontales simultáneas), la cual debe ser compensada mediante la extracción de rasgos estructurales ricos en cada paso de tiempo.
+En el flujo de la CNN, las imágenes se cargaron desde directorios jerárquicos mediante TensorFlow:
 
-### Definición del operador de ventana deslizante vertical
-
-Se define un operador de ventana deslizante vertical que recorre la imagen de izquierda a derecha. Para una imagen $X$ de ancho $W$, se extraen $T$ ventanas de ancho $w$ y stride $s$, donde $T = \lfloor \frac{W - w}{s} \rfloor + 1$. Cada elemento de la secuencia $S_t \in \mathbb{R}^{H \times w}$ representa una "rebanada" vertical de la imagen en el paso de tiempo $t$, preservando la estructura vertical del trazo en ese instante.
-
-## Extracción Matemática de Rasgos Estructurales (Feature Engineering)
-
-Para mitigar la pérdida topológica mencionada, se extraen descriptores matemáticos de cada ventana $S_t$.
-
-### Cálculo del Centro de Gravedad
-
-El primer momento de la distribución de "tinta" (intensidad de píxeles) proporciona el centroide local de la masa del trazo. Para una ventana $S_t$, las coordenadas del centro de gravedad $(\mu_x, \mu_y)$ se calculan como:
-
-$$
-\mu_x = \frac{\sum_{i,j} j \cdot S_t(i,j)}{\sum_{i,j} S_t(i,j)}, \quad
-\mu_y = \frac{\sum_{i,j} i \cdot S_t(i,j)}{\sum_{i,j} S_t(i,j)}
-$$
-
-Este rasgo es invariante a traslaciones globales y altamente discriminativo para la morfología del glifo.
-
-### Transiciones de estado y cruces por cero
-
-Se analiza la derivada discreta del perfil de proyección horizontal de la ventana. Los cruces por cero de esta derivada indican la presencia de múltiples trazos horizontales superpuestos o la transición entre el fondo y la tinta, proporcionando información sobre la complejidad estructural local.
-
-### Perfiles superior e inferior (Envoltura convexa)
-
-Se calculan los perfiles superior $P_{sup}$ e inferior $P_{inf}$ de la ventana, definidos como los índices de fila mínimo y máximo, respectivamente, donde la intensidad del píxel supera un umbral $\tau$. La diferencia $P_{sup} - P_{inf}$ define el espesor local del trazo, actuando como una aproximación discreta de la envoltura convexa del carácter en esa columna.
-
-## Cuantificación y Discretización del Espacio de Observaciones
-
-Para alimentar modelos que requieren espacios de observación discretos, el espacio continuo de rasgos debe ser discretizado.
-
-### Función de cuantificación por intervalos (Binning)
-
-Dado un rasgo continuo $v \in [v_{min}, v_{max}]$, se aplica una función de cuantificación uniforme que lo mapea a uno de $N$ intervalos (bins):
-
-$$
-q(v) = \left\lfloor \frac{v - v_{min}}{v_{max} - v_{min}} \times N \right\rfloor
-$$
-
-### Codificación binaria y construcción del alfabeto de 256 símbolos observables
-
-Combinando los rasgos cuantificados (por ejemplo, centroide Y, espesor del trazo y perfil superior), se construye un vector de características que se codifica en una representación binaria de 8 bits. Esto permite definir un **alfabeto discreto de exactamente 256 símbolos observables** ($2^8$), donde cada símbolo representa una configuración estructural local única de la ventana deslizante.
-
-### Análisis de la entropía de Shannon de las secuencias generadas
-
-La riqueza informativa de las secuencias generadas se valida mediante la entropía de Shannon $H(S)$ de la distribución de símbolos en el dataset:
-
-$$
-H(S) = - \sum_{i=1}^{256} p(s_i) \log_2 p(s_i)
-$$
-
-Una entropía alta indica que el proceso de generación sintética y extracción de rasgos produce una diversidad de patrones locales rica y no redundante, lo cual es un prerrequisito fundamental para que un modelo de aprendizaje automático pueda aprender representaciones discriminativas y generalizar adecuadamente.
-
-## Construcción del conjunto de datos
-
-El reconocimiento óptico de caracteres para sistemas de escritura indígenas, particularmente para el alfabeto Náhuatl @fig-alfabeto-nahuatl, presenta una limitación inicial importante: no existe un conjunto de datos público, estandarizado y etiquetado que permita entrenar modelos de aprendizaje profundo. A diferencia de otros alfabetos, para los cuales existen repositorios ampliamente documentados, el alfabeto Náhuatl carece de recursos computacionales que puedan emplearse directamente en tareas de clasificación automática.
-
-![Glifos del alfabeto nahuatl. Este alfabeto consta de 18 caracteres, para los cuales se emplean letras del alfabeto latino para su manipulación.](images/Alfabeto%20nahuatl.png){#fig-alfabeto-nahuatl fig-align="center" width="520"}
-
-Ante esta situación, fue necesario construir un conjunto de datos propio. La decisión de generar un dataset sintético se tomó por dos razones principales:
-
-1.  Proporcionar un número suficiente de ejemplos para el entrenamiento de la red neuronal.
-2.  Introducir variaciones geométricas que permitan al modelo generalizar ante deformaciones presentes en documentos reales.
-
-### Generación de las muestras
-
-Inicialmente se diseñaron de forma manual 25 ejemplos base para cada carácter del alfabeto. Posteriormente, a cada muestra se le aplicaron transformaciones geométricas y perturbaciones aleatorias para incrementar la variabilidad del conjunto de datos.
-
-La Figura @fig-dataset-augmentation muestra algunos ejemplos de las imágenes generadas.
-
-![Se observa el proceso por el que pasa cada una de las 25 imagenes por letra para generar 90 variantes obtenidas a partir de rotación, traslación, distorción elástica, cambio de escala y ruido, de este modo se consigue un dataset más completo.](images/dataset%20aumentado.png){#fig-dataset-augmentation fig-align="center" width="520"}
-
-## Carga y organización de los datos
-
-Una vez construido el conjunto de datos, las imágenes se almacenaron siguiendo una estructura jerárquica de directorios, donde cada carpeta representa una clase distinta del alfabeto.
-
-El cargado de las imágenes se realizó mediante la función `image_dataset_from_directory` de TensorFlow:
-
-``` python
+```python
 train_ds = tf.keras.utils.image_dataset_from_directory(
     data_dir,
     validation_split=0.2,
     subset="training",
     seed=123,
-    image_size=(28,28),
+    image_size=(28, 28),
     batch_size=32,
     color_mode="grayscale"
 )
@@ -149,29 +101,25 @@ val_ds = tf.keras.utils.image_dataset_from_directory(
     validation_split=0.2,
     subset="validation",
     seed=123,
-    image_size=(28,28),
+    image_size=(28, 28),
     batch_size=32,
     color_mode="grayscale"
 )
 ```
 
-La elección de una partición de entrenamiento-validación de 80%-20% constituye una práctica común en aprendizaje automático, ya que permite disponer de un número suficiente de ejemplos para el ajuste de los parámetros del modelo y, al mismo tiempo, reservar un conjunto independiente para evaluar la capacidad de generalización.
+Dado que los glifos del alfabeto náhuatl se distinguen por su geometría estructural y no por información cromática, el uso de un único canal ($C = 1$) reduce la dimensionalidad de entrada sin pérdida de información discriminativa.
 
-Asimismo, las imágenes se convirtieron a escala de grises. Dado que los glifos del alfabeto Náhuatl se distinguen principalmente por su geometría y no por información cromática, el uso de un solo canal reduce el costo computacional sin sacrificar información relevante.
+## Normalización y Aumentación en Línea
 
-## Normalización y aumentación de datos
+Antes de ingresar a las capas convolucionales, las intensidades de píxel se normalizan al intervalo $[0, 1]$:
 
-Antes de alimentar las imágenes a la red neuronal, se realizó un proceso de normalización:
-
-``` python
+```python
 normalization_layer = tf.keras.layers.Rescaling(1./255)
 ```
 
-Esta transformación reescala los valores de intensidad al intervalo $[0,1]$, lo cual mejora la estabilidad numérica del proceso de entrenamiento y facilita la convergencia del algoritmo de optimización.
+Adicionalmente, sobre el conjunto de entrenamiento se aplica aumentación estocástica en línea para reforzar la invarianza local y mitigar el sobreajuste:
 
-Adicionalmente, se implementó un mecanismo de aumentación de datos en línea:
-
-``` python
+```python
 data_augmentation = tf.keras.Sequential([
     tf.keras.layers.RandomRotation(0.05),
     tf.keras.layers.RandomZoom(0.1),
@@ -179,13 +127,105 @@ data_augmentation = tf.keras.Sequential([
 ])
 ```
 
-La introducción de pequeñas rotaciones, cambios de escala y traslaciones tiene como objetivo simular las variaciones presentes en documentos escaneados o en la escritura manual. De esta manera, el modelo aprende representaciones más robustas y reduce su tendencia al sobreajuste.
+Finalmente, el flujo de datos se optimiza en memoria mediante almacenamiento en caché y precarga asíncrona:
 
-Finalmente, los datos fueron almacenados temporalmente en memoria y preparados para alimentar la GPU:
-
-``` python
+```python
 train_ds = train_ds.cache().shuffle(5000).prefetch(AUTOTUNE)
 val_ds = val_ds.cache().prefetch(AUTOTUNE)
 ```
 
-El uso de `cache()` evita que las imágenes sean leídas repetidamente desde el disco, mientras que `prefetch()` permite superponer las operaciones de lectura de datos con el entrenamiento de la red, disminuyendo el tiempo total de ejecución.
+## Mapeo Dimensional: De $\mathbb{R}^{28 \times 28}$ a $O^T$ (Pipeline HMM)
+
+Para abordar el reconocimiento mediante un Modelo Oculto de Markov Categórico con topología de Bakis, cada imagen bidimensional $X \in \mathbb{R}^{H \times W}$ ($H = W = 28$) debe proyectarse en una secuencia unidimensional ordenada de observaciones discretas $Y = (y_1, y_2, \dots, y_T) \in O^T$ [@plotz2009]. Dado que esta proyección conlleva una reducción dimensional que sacrifica vecindades bidimensionales simultáneas, la transición se realiza mediante extracción de rasgos estructurales sobre ventanas deslizantes verticales.
+
+::: {#def-ventana-deslizante}
+### Operador de ventana deslizante vertical
+
+Sea $X \in [0, 1]^{H \times W}$ una imagen normalizada con trazo activo (donde los píxeles de tinta tienen valores positivos tras invertir el fondo). El **operador de ventana deslizante vertical** recorre la imagen de izquierda a derecha extrayendo $T$ submatrices (rebanadas verticales) de altura $H$ y ancho $w$ con paso (*stride*) $s$:
+
+$$
+T = \left\lfloor \frac{W - w}{s} \right\rfloor + 1.
+$$ {#eq-longitud-secuencia}
+
+Cada ventana $S_t \in [0, 1]^{H \times w}$, para $t \in \{1, \dots, T\}$, captura la distribución vertical del trazo en la $t$-ésima posición horizontal. Por ejemplo, para $W = 28$, $w = 4$ y $s = 2$, se obtiene una secuencia de longitud $T = 13$ pasos espaciales.
+:::
+
+## Extracción Matemática de Rasgos Estructurales (Feature Engineering)
+
+Con el fin de preservar la geometría vertical del glifo dentro de cada ventana $S_t$, se extraen tres descriptores morfológicos complementarios:
+
+### Cálculo del Centro de Gravedad Vertical
+
+El primer momento de la distribución de masa de tinta proporciona el centroide vertical $\mu_y(t)$ dentro de la ventana $S_t$. Denotando por $M_t = \sum_{i=0}^{H-1} \sum_{j=0}^{w-1} S_t(i,j)$ la masa total de tinta en la ventana, el centroide vertical normalizado se define como:
+
+$$
+\mu_y(t) =
+\begin{cases}
+\dfrac{1}{H - 1} \dfrac{\sum_{i=0}^{H-1} \sum_{j=0}^{w-1} i \cdot S_t(i,j)}{M_t}, & \text{si } M_t > \epsilon, \\[10pt]
+0.5, & \text{si } M_t \le \epsilon,
+\end{cases}
+$$ {#eq-centroide-vertical}
+
+donde $\epsilon > 0$ es un umbral numérico para ventanas vacías (fondo sin trazo). Este descriptor captura la altura relativa del trazo a lo largo del eje horizontal.
+
+### Transiciones de estado y cruces por cero
+
+Se proyecta horizontalmente la ventana $S_t$ sumando sus intensidades por fila para obtener el perfil vertical $h_t(i) = \sum_{j=0}^{w-1} S_t(i,j)$, y se binariza mediante un umbral $\tau$. El número de transiciones fondo-tinta $z(t)$ se calcula contando los cambios de estado entre filas adyacentes:
+
+$$
+z(t) = \sum_{i=0}^{H-2} \left| \mathbb{I}(h_t(i+1) > \tau) - \mathbb{I}(h_t(i) > \tau) \right|.
+$$ {#eq-transiciones-tinta}
+
+Este rasgo permite distinguir trazos simples de estructuras con bucles cerrados o trazos horizontales superpuestos (como en los glifos *A*, *Ch*, *S* o *Ts*).
+
+### Perfiles superior e inferior (envoltura convexa)
+
+Para cada ventana $S_t$ con tinta activa ($M_t > \epsilon$), se definen el **perfil superior** $P_{\text{sup}}(t)$ y el **perfil inferior** $P_{\text{inf}}(t)$ como los índices de fila mínimo y máximo donde la intensidad supera el umbral $\tau$:
+
+$$
+P_{\text{sup}}(t) = \min \{ i : h_t(i) > \tau \}, \qquad P_{\text{inf}}(t) = \max \{ i : h_t(i) > \tau \}.
+$$
+
+Dado que el índice de fila crece de arriba hacia abajo ($0 \le P_{\text{sup}}(t) \le P_{\text{inf}}(t) \le H - 1$), el **espesor local de la envoltura** del carácter en el paso $t$ queda definido de forma no negativa como:
+
+$$
+\Delta P(t) = \frac{P_{\text{inf}}(t) - P_{\text{sup}}(t) + 1}{H} \in (0, 1].
+$$ {#eq-espesor-envoltura}
+
+## Cuantificación y Discretización del Espacio de Observaciones
+
+Para alimentar el **Modelo Oculto de Markov Categórico** desarrollado en el capítulo teórico, el vector continuo de rasgos extraído en cada paso $t$ debe mapearse a un alfabeto finito de símbolos observables $O$.
+
+### Función de cuantificación uniforme (Binning)
+
+Dado un rasgo continuo acotado $v \in [v_{\min}, v_{\max}]$, se aplica una función de cuantificación uniforme que lo asigna a uno de $N_b$ intervalos discretos $\{0, 1, \dots, N_b - 1\}$:
+
+$$
+q(v) = \min\left( \left\lfloor \frac{v - v_{\min}}{v_{\max} - v_{\min}} \times N_b \right\rfloor,\; N_b - 1 \right).
+$$ {#eq-binning}
+
+### Codificación binaria y construcción del alfabeto de 256 símbolos observables
+
+Para cada ventana $S_t$, los rasgos estructurales se cuantifican asignando una resolución de bits específica a cada descriptor:
+
+-   Centroide vertical $\mu_y(t)$: cuantificado en $N_b = 8$ niveles ($3$ bits).
+-   Espesor de la envoltura $\Delta P(t)$: cuantificado en $N_b = 8$ niveles ($3$ bits).
+-   Número de transiciones $z(t)$: acotado en $N_b = 4$ niveles ($2$ bits).
+
+Concatenando estas tres representaciones binarias ($3 + 3 + 2 = 8$ bits), se obtiene un entero único $y_t \in \{0, 1, \dots, 255\}$ mediante:
+
+$$
+y_t = 32 \cdot q(\mu_y(t)) + 4 \cdot q(\Delta P(t)) + q(z(t)).
+$$ {#eq-codificacion-8bits}
+
+De este modo, se construye un **alfabeto discreto de exactamente $M = 2^8 = 256$ símbolos observables**, donde cada símbolo codifica una configuración morfológica local de la ventana deslizante.
+
+### Análisis de la entropía de Shannon de las secuencias generadas
+
+Para verificar que la discretización no colapsa la variabilidad morfológica de los glifos en unos pocos símbolos triviales, se evalúa la **entropía de Shannon** $H(Y)$ sobre la distribución empírica de los 256 símbolos en el conjunto de entrenamiento [@shannon1948]:
+
+$$
+H(Y) = - \sum_{m=0}^{255} p(v_m) \log_2 p(v_m) \in [0, 8] \text{ bits}.
+$$ {#eq-entropia-shannon}
+
+Un valor elevado de $H(Y)$ confirma que el esquema de cuantificación preserva una alta diversidad informativa a lo largo de las secuencias, condición indispensable para que las matrices de emisión $E$ del HMM discriminen eficazmente entre las 18 clases del alfabeto náhuatl.
