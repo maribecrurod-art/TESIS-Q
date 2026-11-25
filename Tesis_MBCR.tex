@@ -624,16 +624,16 @@ de patrones ofrece dos marcos matemáticos estructuralmente opuestos
 investigación}\label{formulaciuxf3n-del-problema-de-investigaciuxf3n}
 
 Dada la escasez de acervos digitales etiquetados en lenguas originarias
----lo cual penaliza la capacidad de generalización de las CNN--- y la
-complejidad topológica bidimensional de los glifos ---que penaliza a los
-HMM por la serialización de sus rasgos---, no existe un consenso teórico
+(lo cual penaliza la capacidad de generalización de las CNN) y la
+complejidad topológica bidimensional de los glifos (que penaliza a los
+HMM por la serialización de sus rasgos), no existe un consenso teórico
 sobre qué arquitectura matemática resulta óptima para este dominio.
 
 En consecuencia, el problema central de esta tesis consiste en
 determinar, mediante un protocolo experimental controlado, \textbf{cuál
-de estos dos paradigmas matemáticos ---la inferencia probabilística
+de estos dos paradigmas matemáticos (la inferencia probabilística
 secuencial (HMM) o la optimización no lineal en espacios tensoriales
-(CNN)--- alcanza un mejor compromiso entre exactitud de clasificación,
+(CNN)) alcanza un mejor compromiso entre exactitud de clasificación,
 eficiencia computacional, estabilidad estadística e interpretabilidad}
 para el reconocimiento de glifos del alfabeto náhuatl.
 
@@ -3509,8 +3509,7 @@ escalamiento) se formalizan como acciones del grupo afín
 \(\mathrm{Aff}(2)\) sobre el dominio bidimensional de la imagen. Una
 transformación afín se expresa como:
 
-\[\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} s_x \cos\theta & -s_y \sin\theta \\ s_x \sin\theta & s_y \cos\theta \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} t_x \\ t_y \end{pmatrix},\]
-\{\#eq-transformacion-afin\}
+\begin{equation}\phantomsection\label{eq-transformacion-afin}{\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} s_x \cos\theta & -s_y \sin\theta \\ s_x \sin\theta & s_y \cos\theta \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} t_x \\ t_y \end{pmatrix},}\end{equation}
 
 donde \(\theta\) representa el ángulo de rotación, \((t_x, t_y)\) el
 vector de traslación y \((s_x, s_y)\) los factores de escalamiento. En
@@ -3772,8 +3771,8 @@ mediante:
 y_t = 32 \cdot q(\mu_y(t)) + 4 \cdot q(\Delta P(t)) + q(z(t)).
 }\end{equation}
 
-De este modo, se construye un \textbf{alfabeto discreto de exactamente
-\(M = 2^8 = 256\) símbolos observables}, donde cada símbolo codifica una
+De este modo, se construye un \textbf{alfabeto discreto de exactamente}
+\(M = 2^8 = 256\) símbolos observables, donde cada símbolo codifica una
 configuración morfológica local de la ventana deslizante.
 
 \subsection{Análisis de la entropía de Shannon de las secuencias

@@ -1,6 +1,7 @@
 ---
 title: "Caso de estudio"
 lang: es
+bibliography: Referencias.bib
 execute:
   freeze: false
 format:
@@ -9,9 +10,15 @@ format:
   pdf:
     code-overflow: wrap
     include-in-header:
-      text: |
-        \usepackage{fvextra}
-        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+      - packa.tex
+      - text: |
+          \usepackage{fvextra}
+          \DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+            breaklines=true,
+            breakanywhere=true,
+            commandchars=\\\{\},
+            fontsize=\footnotesize
+          }
 ---
 
 En este apartado se contrasta el diseño, implementación y comportamiento empírico de dos paradigmas de modelado sobre el conjunto de datos de glifos del alfabeto náhuatl ($45{,}000$ muestras distribuidas equitativamente en $18$ clases, a razón de $2{,}500$ imágenes de $28 \times 28$ píxeles por grafema): un enfoque generativo secuencial basado en **Modelos Ocultos de Markov Categóricos con topología de Bakis (`CategoricalHMM`)** y un enfoque discriminativo espacial profundo basado en **Redes Neuronales Convolucionales (`CNN`)**.

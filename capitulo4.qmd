@@ -63,8 +63,7 @@ Para emular las condiciones de documentos históricos y variaciones caligráfica
 
 Las transformaciones geométricas aplicadas (rotación, traslación y escalamiento) se formalizan como acciones del grupo afín $\mathrm{Aff}(2)$ sobre el dominio bidimensional de la imagen. Una transformación afín se expresa como:
 
-$$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} s_x \cos\theta & -s_y \sin\theta \\ s_x \sin\theta & s_y \cos\theta \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} t_x \\ t_y \end{pmatrix},$$
-{#eq-transformacion-afin}
+$$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} s_x \cos\theta & -s_y \sin\theta \\ s_x \sin\theta & s_y \cos\theta \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} t_x \\ t_y \end{pmatrix},$$ {#eq-transformacion-afin}
 
 donde $\theta$ representa el ángulo de rotación, $(t_x, t_y)$ el vector de traslación y $(s_x, s_y)$ los factores de escalamiento. En la implementación práctica se emplearon parámetros aleatorios acotados —por ejemplo, $\theta \sim \mathcal{U}(-0.05\pi, 0.05\pi)$— para preservar la identidad topológica y semántica de cada glifo.
 
@@ -85,7 +84,7 @@ Para garantizar una comparación experimental equitativa, tanto la CNN como el H
 
 En el flujo de la CNN, las imágenes se cargaron desde directorios jerárquicos mediante TensorFlow:
 
-```python
+``` python
 train_ds = tf.keras.utils.image_dataset_from_directory(
     data_dir,
     validation_split=0.2,
@@ -113,13 +112,13 @@ Dado que los glifos del alfabeto náhuatl se distinguen por su geometría estruc
 
 Antes de ingresar a las capas convolucionales, las intensidades de píxel se normalizan al intervalo $[0, 1]$:
 
-```python
+``` python
 normalization_layer = tf.keras.layers.Rescaling(1./255)
 ```
 
 Adicionalmente, sobre el conjunto de entrenamiento se aplica aumentación estocástica en línea para reforzar la invarianza local y mitigar el sobreajuste:
 
-```python
+``` python
 data_augmentation = tf.keras.Sequential([
     tf.keras.layers.RandomRotation(0.05),
     tf.keras.layers.RandomZoom(0.1),
@@ -129,7 +128,7 @@ data_augmentation = tf.keras.Sequential([
 
 Finalmente, el flujo de datos se optimiza en memoria mediante almacenamiento en caché y precarga asíncrona:
 
-```python
+``` python
 train_ds = train_ds.cache().shuffle(5000).prefetch(AUTOTUNE)
 val_ds = val_ds.cache().prefetch(AUTOTUNE)
 ```
@@ -218,7 +217,7 @@ $$
 y_t = 32 \cdot q(\mu_y(t)) + 4 \cdot q(\Delta P(t)) + q(z(t)).
 $$ {#eq-codificacion-8bits}
 
-De este modo, se construye un **alfabeto discreto de exactamente $M = 2^8 = 256$ símbolos observables**, donde cada símbolo codifica una configuración morfológica local de la ventana deslizante.
+De este modo, se construye un **alfabeto discreto de exactamente** $M = 2^8 = 256$ símbolos observables, donde cada símbolo codifica una configuración morfológica local de la ventana deslizante.
 
 ### Análisis de la entropía de Shannon de las secuencias generadas
 
